@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawnbringer — White Lily Cookie Anniversary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer">
+        An unofficial fan-made tribute inspired by CookieRun: Kingdom. Not affiliated with or endorsed by Devsisters. Cookie Run and its characters belong to their respective owners. This project is created by fans to celebrate White Lily Cookie and her story.
+    </div>
+
+    <main>
+        <!-- Welcome Screen -->
+        <section id="welcome" class="screen active">
+            <div class="welcome-content">
+                <h1>Happy 1st Anniversary, Awakened White Lily Cookie!</h1>
+                <p class="dates">October 22, 2025 – October 22, 2026</p>
+                <div class="petal-container" id="petalContainer"></div>
+                <button id="beginBtn" class="cta-button">Begin the Celebration</button>
+                <p class="dedication">
+                    To White Lily Cookie, our unforgettable Ancient Hero: one year has passed since your awakening. Your journey reminds us that hope can bloom even after the darkest days. May your story continue to inspire every Cookie Runner who remembers you.
+                </p>
+            </div>
+        </section>
+
+        <!-- The Legend's Journey -->
+        <section id="journey" class="screen">
+            <h2>The Legend's Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Origins as an Ancient Hero</h3>
+                    <p class="info">White Lily Cookie existed as an Ancient Hero, embodying truth, sacrifice, courage, friendship, and hope long before the events of CookieRun: Kingdom.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>The Search for Truth</h3>
+                    <p class="info">Guided by her principles, she sought answers about the world and her purpose, facing trials that tested her resolve.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Awakening as Dawnbringer</h3>
+                    <p class="info">On October 22, 2025, White Lily Cookie awakened her true power, becoming Dawnbringer—a beacon of light and remembrance.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Anniversary Celebration</h3>
+                    <p class="info">One year later, Cookie Runners gather to honor her legend, share memories, and renew the hope she represents.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hall of Remembrance -->
+        <section id="hall" class="screen">
+            <h2>Hall of Remembrance</h2>
+            <div class="gallery" id="remembranceGallery">
+                <!-- Placeholder images -->
+                <figure class="gallery-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='14'%3EOfficial Art Placeholder%3C/text%3E%3C/svg%3E" alt="Official Art Placeholder">
+                    <figcaption>White Lily Cookie – Official Art (Placeholder)</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='14'%3EDawnbringer Form Placeholder%3C/text%3E%3C/svg%3E" alt="Dawnbringer Form Placeholder">
+                    <figcaption>Awakened White Lily Cookie – Dawnbringer (Placeholder)</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='14'%3EFan Art Placeholder%3C/text%3E%3C/svg%3E" alt="Fan Art Placeholder">
+                    <figcaption>Fan Art – Add your own!</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- A Message for Our Legend -->
+        <section id="message" class="screen">
+            <h2>A Message for Our Legend</h2>
+            <p class="original-dedication">
+                “To White Lily Cookie, our unforgettable Ancient Hero: one year has passed since your awakening. Your journey reminds us that hope can bloom even after the darkest days. May your story continue to inspire every Cookie Runner who remembers you.”
+            </p>
+            <div class="message-form">
+                <label for="visitorMessage">Share your own message:</label>
+                <textarea id="visitorMessage" placeholder="Write your thoughts, memories, or hopes for White Lily Cookie..."></textarea>
+                <button id="saveMessageBtn" class="cta-button">Save Message</button>
+                <p id="messageStatus" class="status"></p>
+                <div class="saved-messages" id="savedMessages">
+                    <h3>Messages from Cookie Runners</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Anniversary Celebration -->
+        <section id="celebration" class="screen">
+            <h2>Interactive Anniversary Celebration</h2>
+            <div class="celebration-controls">
+                <button id="lilyGardenBtn" class="cta-button">Leave a Flower for Dawnbringer</button>
+                <button id="cardGeneratorBtn" class="cta-button">Create Anniversary Card</button>
+                <button id="showMemoriesBtn" class="cta-button">View Anniversary Memories</button>
+                <p id="anniversaryDate" class="date-display">First Anniversary Celebration • October 22, 2026</p>
+            </div>
+            <div id="lilyGarden" class="lily-garden"></div>
+            <div id="cardModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h3>Create Your Anniversary Card</h3>
+                    <div class="card-preview" id="cardPreview">
+                        <div class="card-front">
+                            <h2>Happy Anniversary, White Lily!</h2>
+                            <p class="card-message"></p>
+                        </div>
+                    </div>
+                    <label for="cardText">Your message:</label>
+                    <textarea id="cardText" placeholder="Write a personal message for the card..."></textarea>
+                    <button id="generateCardBtn" class="cta-button">Generate Card</button>
+                    <button id="downloadCardBtn" class="cta-button" disabled>Download Card</button>
+                </div>
+            </div>
+            <div id="memoriesGallery" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close-memories">&times;</span>
+                    <h3>Anniversary Memories Gallery</h3>
+                    <div id="memoriesDisplay" class="memories-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cookie Runners Community Corner -->
+        <section id="community" class="screen">
+            <h2>Cookie Runners Community Corner</h2>
+            <div class="community-grid">
+                <div class="community-section">
+                    <h3>Community Dedication Wall</h3>
+                    <div id="dedicationWall" class="dedication-wall"></div>
+                </div>
+                <div class="community-section">
+                    <h3>Fan-Project Credits</h3>
+                    <div id="creditsSection" class="credits-section">
+                        <p>Created with 💖 by CookieVerse Hermes and fellow Cookie Runners.</p>
+                        <button id="editCreditsBtn" class="cta-button small">Edit Credits</button>
+                    </div>
+                </div>
+                <div class="community-section">
+                    <h3>Favorite Moments</h3>
+                    <div id="favoriteMoments" class="moments-list">
+                        <p>Share your favorite White Lily Cookie moments here.</p>
+                    </div>
+                    <button id="addMomentBtn" class="cta-button small">Add a Moment</button>
+                </div>
+                <div class="community-section">
+                    <h3>Future Anniversary Memories</h3>
+                    <div id="futureMemories" class="future-memories">
+                        <p>What hopes do you hold for future celebrations?</p>
+                    </div>
+                    <button id="addFutureBtn" class="cta-button small">Add Hope</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
