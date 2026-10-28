@@ -20,6 +20,20 @@ def save_entries(entries):
 def home():
     return render_template("index.html", entries=load_entries())
 
+@app.get("/trinity")
+def trinity():
+    return render_template("trinity.html")
+
+@app.get("/api/trinity-config")
+def trinity_config():
+    import json as _json
+    config_path = os.path.join(os.path.dirname(__file__), "static", "data", "trinity-timeline.json")
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            return _json.load(f)
+    except (OSError, _json.JSONDecodeError):
+        return jsonify({"error": "config not found"}), 404
+
 @app.post("/api/oath")
 def oath():
     payload = request.get_json(silent=True) or {}

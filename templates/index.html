@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17142d">
+  <meta name="description" content="The CookieVerse Eternal Ceremony — an unofficial fan celebration of friendship, teamwork, and Cookie Run adventures.">
+  <title>CookieVerse Eternal Ceremony</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="starfield" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="CookieVerse home"><span class="brand-mark">✦</span><span>COOKIEVERSE <small>ETERNAL CEREMONY</small></span></a>
+    <nav><a href="#program">Ceremony</a><a href="#oath">Friendship Oath</a><a href="#guestbook">Guestbook</a></nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="eyebrow"><span class="sparkle">✧</span> AN UNOFFICIAL COOKIE RUN FAN CELEBRATION <span class="sparkle">✧</span></div>
+      <div class="orbit" aria-hidden="true"><span>✦</span><i>✧</i><b>✦</b><em>✧</em></div>
+      <h1>Different kingdoms.<br><span>One Cookie family.</span></h1>
+      <p class="hero-copy">Welcome, Cookie Runners. Every adventure leaves a little sparkle behind — in the friendships we make, the legends we remember, and the worlds we explore together.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#program">Enter the ceremony <span>↗</span></a>
+        <button class="button ghost" id="lightButton" type="button">Light the celebration ✨</button>
+      </div>
+      <div class="scroll-note">SCROLL TO BEGIN <span>↓</span></div>
+    </section>
+
+    <section class="welcome strip">
+      <div class="strip-icon">🍪</div>
+      <div><p class="eyebrow">A PLACE FOR EVERY RUNNER</p><h2>CRK · CROB · OvenSmash · Every adventure</h2><p>Different games, favorite Cookies, unforgettable moments — everyone is welcome at this fan-made celebration.</p></div>
+    </section>
+
+    <section id="program" class="section">
+      <div class="section-heading"><p class="eyebrow">THE EVENING PROGRAM</p><h2>Five moments. <span>One shared story.</span></h2><p>Explore each part of our community ceremony at your own pace.</p></div>
+      <div class="program-grid">
+        <article class="program-card"><div class="card-top"><span class="number">01</span><span class="emoji">🌅</span></div><h3>The Grand Opening</h3><p>Raise the curtain on every kingdom, every runner, and every new beginning.</p><span class="tag">WELCOME</span></article>
+        <article class="program-card"><div class="card-top"><span class="number">02</span><span class="emoji">🕯️</span></div><h3>The Hall of Memories</h3><p>Pause to honor the stories, characters, and moments that mean something to us.</p><span class="tag">REMEMBRANCE</span></article>
+        <article class="program-card"><div class="card-top"><span class="number">03</span><span class="emoji">🌈</span></div><h3>The Golden Jelly Moment</h3><p>Celebrate milestones, creative fan projects, and the joy of discovering something new.</p><span class="tag">CELEBRATION</span></article>
+        <article class="program-card"><div class="card-top"><span class="number">04</span><span class="emoji">⭐</span></div><h3>The Cookie Legends</h3><p>Heroes, villains, Beasts, Dragons, and all the characters who make each story memorable.</p><span class="tag">LEGENDS</span></article>
+        <article class="program-card featured"><div class="card-top"><span class="number">05</span><span class="emoji">🤝</span></div><h3>The Eternal Friendship Oath</h3><p>Make a little promise to bring kindness, teamwork, and good spirit to every run.</p><span class="tag">TOGETHER</span></article>
+      </div>
+    </section>
+
+    <section id="oath" class="oath-section">
+      <div class="oath-decoration" aria-hidden="true">✧</div>
+      <p class="eyebrow">THE ETERNAL FRIENDSHIP OATH</p>
+      <h2>Our worlds may be different.<br><span>Our kindness connects us.</span></h2>
+      <blockquote>“I celebrate friendship over rivalry, teamwork over going alone, and kindness in every kingdom. I will welcome new Cookie Runners, respect every fan, and keep the joy of adventure alive.”</blockquote>
+      <div class="oath-form">
+        <label for="runnerName">Your Cookie Runner name <span>(optional)</span></label>
+        <input id="runnerName" maxlength="32" placeholder="e.g. JellybeanRunner" autocomplete="nickname">
+        <label for="oathMessage">Add your own message</label>
+        <textarea id="oathMessage" maxlength="180" rows="3" placeholder="What does the Cookie Run community mean to you?"></textarea>
+        <button class="button primary wide" id="oathButton" type="button">Make my promise ✦</button>
+        <p id="oathStatus" class="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="guestbook" class="section guestbook-section">
+      <div class="section-heading"><p class="eyebrow">THE COMMUNITY GUESTBOOK</p><h2>Leave a little <span>sparkle.</span></h2><p>Messages are stored locally by this Flask app in its guestbook file.</p></div>
+      <div id="entries" class="entries">
+        {% for entry in entries|reverse %}
+        <article class="entry"><div class="entry-avatar">✦</div><div><h3>{{ entry.name|e }}</h3><p>{{ entry.message|e }}</p><small>{{ entry.time|e }}</small></div></article>
+        {% else %}
+        <div class="empty-state" id="emptyState"><span>✧</span><p>Your message could be the first sparkle in the guestbook.</p></div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="closing-star">✦</div><p class="eyebrow">UNTIL THE NEXT ADVENTURE</p>
+      <h2>Keep running.<br><span>Keep caring.</span></h2>
+      <p>May every kingdom find a little more friendship along the way.</p>
+      <a href="#home" class="back-top">Back to the beginning ↑</a>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand">COOKIEVERSE <span>✦</span></div><p>Unofficial fan-made project created by Cookie Runners, for Cookie Runners.</p><p class="legal">Not affiliated with or endorsed by Devsisters or the official Cookie Run games. All related names and trademarks belong to their respective owners. No official status is implied.</p><p class="copyright">Made with friendship, teamwork, and a sprinkle of jelly ✧</p></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

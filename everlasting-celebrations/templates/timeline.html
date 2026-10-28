@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Timeline — CookieVerse{% endblock %}
+
+{% block content %}
+<section class="glass-panel" aria-labelledby="timeline-heading">
+    <h2 id="timeline-heading">Anniversary Timeline</h2>
+    <p class="lead" style="margin-bottom: 1.25rem;">
+        Milestones across Cookie Run history, laid out chronologically.
+        <strong>Verified</strong> entries use community-documented dates; <strong>fan</strong> entries are community-created and clearly marked.
+    </p>
+
+    <div class="timeline-list" id="timeline-list">
+        <!-- Timeline cards injected by JavaScript -->
+    </div>
+
+    <div id="timeline-empty" class="memory-card memory-card--empty" style="display:none;">
+        <span class="empty-icon">&#128204;</span>
+        <p>No timeline entries yet.</p>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/timeline.js') }}"></script>
+{% endblock %}

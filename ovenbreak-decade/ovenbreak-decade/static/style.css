@@ -1,0 +1,437 @@
+/* OvenBreak Decade — The Golden Run Styles */
+/* Golden anniversary theme with cream backgrounds, rainbow jelly accents */
+
+:root {
+    --cream: #fff8e1;
+    --gold: #ffd700;
+    --dark-gold: #b8860b;
+    --jelly-red: #ff6b6b;
+    --jelly-orange: #ff9f40;
+    --jelly-yellow: #ffee93;
+    --jelly-green: #6bcf72;
+    --jelly-blue: #4fc3f7;
+    --jelly-purple: #9d81d3;
+    --text-dark: #2c2c2c;
+    --text-light: #ffffff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --border-radius: 12px;
+    --transition: 0.3s ease;
+}
+
+/* Base styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+#page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, var(--gold), var--dark-gold);
+    color: var(--text-light);
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin: 0.5rem 0;
+    opacity: 0.9;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--gold);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main content */
+main {
+    display: grid;
+    gap: 2rem;
+}
+
+section {
+    background: var(--text-light);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+section h2 {
+    margin-top: 0;
+    color: var(--dark-gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 0.5rem;
+}
+
+/* Landing section */
+#landing {
+    text-align: center;
+    padding: 3rem;
+}
+
+#celebrate-btn {
+    background: var(--gold);
+    color: var(--text-dark);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    margin: 1rem 0;
+}
+
+#celebrate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+#celebration-panel {
+    background: linear-gradient(135deg, var(--jelly-yellow), var(--jelly-green));
+    color: var(--text-dark);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 2rem;
+    display: none;
+}
+
+/* Game section */
+#game-container {
+    position: relative;
+    background: #f0f0f0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    margin-bottom: 1.5rem;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#game-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#game-controls button {
+    background: var(--gold);
+    border: none;
+    color: var(--text-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#game-controls button:hover {
+    background: var(--dark-gold);
+    color: var(--text-light);
+}
+
+#game-info {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+#instructions {
+    background: var(--cream);
+    border: 1px dashed var(--gold);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+#toggle-instructions {
+    background: none;
+    border: 1px solid var(--gold);
+    color: var(--dark-gold);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Timeline section */
+#timeline-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.timeline-item {
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    padding: 1rem;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 1rem;
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+}
+
+.timeline-year {
+    font-weight: bold;
+    color: var(--dark-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Memory Oven section */
+#memory-form {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#memory-form input,
+#memory-form textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    resize: vertical;
+}
+
+#memory-form textarea {
+    min-height: 100px;
+}
+
+#bake-memory-btn {
+    background: var(--gold);
+    border: none;
+    color: var(--text-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+#bake-memory-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+#memory-preview {
+    background: var(--cream);
+    border: 2px dashed var(--gold);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.memory-card {
+    background: var(--text-light);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+#memory-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#memory-actions button {
+    background: var(--jelly-green);
+    border: none;
+    color: var(--text-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#memory-actions button:hover {
+    opacity: 0.9;
+}
+
+#copy-btn {
+    background: var(--jelly-blue);
+}
+
+#save-memory-btn {
+    background: var(--jelly-green);
+}
+
+#saved-memories-list {
+    display: grid;
+    gap: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.saved-memory {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.saved-memory-content {
+    flex: 1;
+    min-width: 200px;
+}
+
+.saved-memory-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.saved-memory-actions button {
+    background: none;
+    border: 1px solid #ddd;
+    color: var(--text-dark);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.saved-memory-actions button:hover {
+    background: #f0f0f0;
+}
+
+#clear-all-btn {
+    background: #ff6b6b;
+    border: none;
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: var(--transition);
+}
+
+#clear-all-btn:hover {
+    background: #ff5252;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    margin-top: 3rem;
+}
+
+#countdown-display {
+    font-weight: bold;
+    color: var(--dark-gold);
+    margin: 1rem 0;
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+    }
+    #menu-toggle {
+        display: block;
+    }
+    nav ul {
+        display: none;
+    }
+    nav ul.active {
+        display: flex;
+    }
+    
+    section {
+        padding: 1rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section aria-label="Edit event">
+  <h2>Edit Event</h2>
+  <form method="post" action="/edit/{{ event.id }}" class="card" style="max-width:640px;">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" value="{{ event.title }}" required style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+    <label for="date">Date</label>
+    <input id="date" name="date" type="date" value="{{ event.date }}" required style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+    <label for="category">Category</label>
+    <select id="category" name="category" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+      <option value="franchise" {% if event.category=='franchise' %}selected{% endif %}>Franchise</option>
+      <option value="personal" {% if event.category=='personal' %}selected{% endif %}>Personal Journey</option>
+      <option value="milestone" {% if event.category=='milestone' %}selected{% endif %}>Legendary Milestones</option>
+      <option value="project" {% if event.category=='project' %}selected{% endif %}>Cookie Runners Projects</option>
+      <option value="future" {% if event.category=='future' %}selected{% endif %}>Future Events</option>
+    </select>
+    <label for="source">Source</label>
+    <select id="source" name="source" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+      <option value="official" {% if event.source=='official' %}selected{% endif %}>Official</option>
+      <option value="personal" {% if event.source=='personal' %}selected{% endif %}>Personal</option>
+      <option value="fan" {% if event.source=='fan' %}selected{% endif %}>Fan Project</option>
+      <option value="uncertain" {% if event.source=='uncertain' %}selected{% endif %}>Uncertain / Verify</option>
+    </select>
+    <label for="event_type">Event Type</label>
+    <select id="event_type" name="event_type" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+      <option value="release" {% if event.event_type=='release' %}selected{% endif %}>Release</option>
+      <option value="update" {% if event.event_type=='update' %}selected{% endif %}>Update</option>
+      <option value="milestone" {% if event.event_type=='milestone' %}selected{% endif %}>Milestone</option>
+      <option value="memory" {% if event.event_type=='memory' %}selected{% endif %}>Memory</option>
+      <option value="anniversary" {% if event.event_type=='anniversary' %}selected{% endif %}>Anniversary</option>
+      <option value="collaboration" {% if event.event_type=='collaboration' %}selected{% endif %}>Collaboration</option>
+    </select>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;resize:vertical;">{{ event.description }}</textarea>
+    <label><input type="checkbox" name="is_verified" value="1" {% if event.is_verified %}checked{% endif %}> Verified / Confirmed</label><br>
+    <label><input type="checkbox" name="is_future" value="1" {% if event.is_future %}checked{% endif %}> Future event placeholder</label><br>
+    <label for="details_json">Details JSON (optional)</label>
+    <textarea id="details_json" name="details_json" rows="2" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:16px;resize:vertical;">{{ event.details_json }}</textarea>
+    <button type="submit" class="btn">Update</button>
+    <a href="/timeline" class="btn btn-outline">Cancel</a>
+  </form>
+</section>
+{% endblock %}

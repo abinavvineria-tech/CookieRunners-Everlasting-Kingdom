@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowVerse — The Eternal Masquerade</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
+    <header>
+        <h1>ShadowVerse</h1>
+        <p class="tagline">Behind Every Smile Lies Another Story.</p>
+    </header>
+    <main>
+        <section id="home" class="page active">
+            <div class="hero">
+                <img src="assets/images/shadow-milk-cookie.png" alt="Shadow Milk Cookie" class="hero-image">
+                <div class="hero-content">
+                    <h2>Welcome to the Masquerade</h2>
+                    <button id="enter-btn" class="primary-btn">Enter the Masquerade</button>
+                </div>
+            </div>
+        </section>
+        <section id="arena" class="page">
+            <h2>The Trickster's Arena</h2>
+            <div class="arena-controls">
+                <button id="filter-all" class="filter-btn active">All</button>
+                <button id="filter-champions" class="filter-btn">Champions</button>
+                <button id="filter-tricksters" class="filter-btn">Tricksters</button>
+                <input type="text" id="search-arena" placeholder="Search characters...">
+            </div>
+            <div class="character-grid" id="character-grid">
+                <!-- Character cards will be inserted here by JS -->
+            </div>
+            <div class="match-history">
+                <h3>Recent Matches</h3>
+                <table id="match-table">
+                    <thead>
+                        <tr>
+                            <th>Match</th>
+                            <th>Player</th>
+                            <th>Opponent</th>
+                            <th>Result</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Match rows will be inserted here by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="anniversary" class="page">
+            <h2>Anniversary Hall</h2>
+            <div class="anniversary-config">
+                <label for="anniversary-title">Anniversary Title:</label>
+                <input type="text" id="anniversary-title" value="ShadowVerse Anniversary">
+                <label for="anniversary-date">Anniversary Date:</label>
+                <input type="date" id="anniversary-date" value="2026-10-25">
+                <button id="begin-celebration" class="primary-btn">Begin the Celebration</button>
+                <button id="skip-celebration" class="secondary-btn">Skip Animation</button>
+                <button id="replay-celebration" class="secondary-btn">Replay</button>
+            </div>
+            <div id="celebration-display">
+                <p class="tribute-message">Every legend leaves a story. Every mask hides a mystery.</p>
+                <div id="timeline"></div>
+                <div id="particles-container"></div>
+            </div>
+        </section>
+        <section id="gallery" class="page">
+            <h2>Shadow Gallery</h2>
+            <div class="gallery-controls">
+                <input type="text" id="search-gallery" placeholder="Search gallery...">
+                <button id="clear-filter" class="secondary-btn">Clear Filter</button>
+            </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items will be inserted here by JS -->
+            </div>
+        </section>
+        <section id="journal" class="page">
+            <h2>The Trickster's Journal</h2>
+            <div class="journal-controls">
+                <button id="clear-journal" class="secondary-btn">Clear All Memories</button>
+            </div>
+            <div class="journal-entry">
+                <textarea id="journal-input" placeholder="Write your fan memory or story..."></textarea>
+                <button id="save-journal" class="primary-btn">Save Memory</button>
+            </div>
+            <div class="journal-entries" id="journal-entries">
+                <!-- Saved entries will appear here -->
+            </div>
+        </section>
+    </main>
+    <nav>
+        <ul>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#arena" class="nav-link">Arena</a></li>
+            <li><a href="#anniversary" class="nav-link">Anniversary</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#journal" class="nav-link">Journal</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <p>ShadowVerse — An unofficial Cookie Runners fan project. Not affiliated with Devsisters.</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

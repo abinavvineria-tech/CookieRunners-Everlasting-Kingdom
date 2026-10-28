@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OvenBreak Decade — The Golden Run</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="page-container">
+        <!-- Header -->
+        <header>
+            <h1>OvenBreak Decade — The Golden Run</h1>
+            <p>2016–2026</p>
+            <p>&ldquo;Ten Years. Countless Runs. One Legendary Adventure.&rdquo;</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="#landing">Landing</a></li>
+                <li><a href="#game">Jump & Slide Arcade</a></li>
+                <li><a href="#timeline">Timeline Museum</a></li>
+                <li><a href="#memory">Memory Oven</a></li>
+            </ul>
+            <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Landing Section -->
+            <section id="landing">
+                <h2>The Golden Run</h2>
+                <p>A tribute to ten years of Cookie Running.</p>
+                <button id="celebrate-btn">Begin the Celebration</button>
+                <div id="celebration-panel" class="hidden">
+                    <h3>Celebration Panel</h3>
+                    <p>Welcome to the celebration! Explore the sections above to relive the journey.</p>
+                </div>
+            </section>
+
+            <!-- Jump & Slide Arcade -->
+            <section id="game">
+                <h2>Jump & Slide Arcade</h2>
+                <div id="game-container">
+                    <canvas id="game-canvas"></canvas>
+                    <div id="game-controls">
+                        <button id="start-btn">Start</button>
+                        <button id="pause-btn">Pause</button>
+                        <button id="restart-btn">Restart</button>
+                    </div>
+                    <div id="game-info">
+                        <p>Score: <span id="score">0</span></p>
+                        <p>Best Score: <span id="best-score">0</span></p>
+                    </div>
+                    <div id="instructions" class="hidden">
+                        <h3>How to Play</h3>
+                        <p>Use the jump and slide buttons to avoid obstacles and collect jelly.</p>
+                        <p>Keyboard: Spacebar to jump, Down arrow to slide.</p>
+                    </div>
+                    <button id="toggle-instructions">Show Instructions</button>
+                </div>
+            </section>
+
+            <!-- Timeline Museum -->
+            <section id="timeline">
+                <h2>Cookie Runner Timeline Museum</h2>
+                <div id="timeline-container">
+                    <!-- Timeline items will be inserted here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Memory Oven -->
+            <section id="memory">
+                <h2>Memory Oven</h2>
+                <div id="memory-form">
+                    <input type="text" id="memory-title" placeholder="Title (optional)">
+                    <textarea id="memory-content" placeholder="Your favorite Cookie Run memory" rows="4"></textarea>
+                    <input type="text" id="favorite-cookie" placeholder="Favorite Cookie (optional)">
+                    <button id="bake-memory-btn">Bake My Memory</button>
+                </div>
+                <div id="memory-preview" class="hidden">
+                    <div class="memory-card">
+                        <h3 id="preview-title"></h3>
+                        <p id="preview-content"></p>
+                        <p id="preview-cookie"></p>
+                    </div>
+                    <div id="memory-actions">
+                        <button id="copy-btn">Copy to Clipboard</button>
+                        <button id="save-memory-btn">Save Memory</button>
+                    </div>
+                </div>
+                <div id="saved-memories">
+                    <h3>Saved Memories</h3>
+                    <div id="saved-memories-list">
+                        <!-- Saved memories will appear here -->
+                    </div>
+                    <button id="clear-all-btn">Clear All Memories</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>This is an unofficial CookieRun: OvenBreak anniversary fan project. It is not affiliated with or endorsed by Devsisters. All respective trademarks and intellectual property belong to their owners.</p>
+            <p id="countdown-display"></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Fan Events — CookieVerse{% endblock %}
+
+{% block content %}
+<section class="glass-panel" aria-labelledby="fan-events-heading">
+    <h2 id="fan-events-heading">Fan Event Studio</h2>
+    <p style="margin-top: 0; color: var(--text-secondary);">Create your own Cookie Run fan celebration. All events here are fan-made and unofficial.</p>
+
+    <div class="event-presets">
+        <h3 style="margin:0 0 0.75rem; font-size:1rem; color:var(--text-secondary);">Quick presets</h3>
+        <div id="preset-list" style="display:grid; gap:0.75rem;">
+            <!-- Preset cards injected by JavaScript -->
+        </div>
+    </div>
+
+    <form id="fan-event-form" class="event-form" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="form-group">
+            <label for="event-title">Event title *</label>
+            <input type="text" id="event-title" name="title" class="form-control" maxlength="100" placeholder="e.g. My Cookie Run Anniversary Party" required>
+        </div>
+
+        <div class="form-group">
+            <label for="event-description">Description *</label>
+            <textarea id="event-description" name="description" class="form-control" maxlength="2000" placeholder="What are we celebrating? Who's invited? What's the theme?" required></textarea>
+        </div>
+
+        <div class="form-group" style="grid-column: span 2;">
+            <label for="event-celebration-date">Celebration date (optional)</label>
+            <input type="date" id="event-celebration-date" name="celebration_date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="event-theme">Celebration theme</label>
+            <select id="event-theme" name="theme" class="form-control">
+                <option value="golden">Golden</option>
+                <option value="rainbow">Rainbow Jelly</option>
+                <option value="cream">Cream</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="event-preset">Event type</label>
+            <select id="event-preset" name="preset" class="form-control">
+                <option value="original">Original fan celebration</option>
+                <option value="ovenbreak">Cookie Run: OvenBreak</option>
+                <option value="kingdom">Cookie Run: Kingdom</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" id="create-event-btn" class="btn btn--primary btn--jelly">Create Fan Event &#127909;</button>
+        </div>
+    </form>
+
+    <div id="event-error" class="msg msg--error" style="display:none;"></div>
+    <div id="event-success" class="msg msg--success" style="display:none;"></div>
+</section>
+
+<section class="glass-panel" aria-labelledby="fan-events-list-heading">
+    <h2 id="fan-events-list-heading">Community Fan Events</h2>
+
+    <div id="events-loading" style="text-align:center; color: var(--text-muted); padding: 1rem;">Loading events&#8230;</div>
+    <div id="events-empty" class="memory-card memory-card--empty" style="display:none;">
+        <span class="empty-icon">&#127909;</span>
+        <p>No fan events yet. Create one above!</p>
+    </div>
+    <div class="event-list" id="events-list"></div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/fan_events.js') }}"></script>
+{% endblock %}

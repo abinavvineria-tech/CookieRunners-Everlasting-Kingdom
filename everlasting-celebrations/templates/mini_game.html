@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Mini Game — CookieVerse{% endblock %}
+
+{% block content %}
+<section class="game-wrapper" aria-labelledby="mini-game-heading">
+    <h2 id="mini-game-heading">Jelly Rush Mini Game</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+        Collect the rainbow jellies, avoid the crumbs. Original fan-made mini-game — keyboard and touch friendly.
+    </p>
+
+    <div class="game-hud">
+        <span>Jellies: <span id="game-score">0</span></span>
+        <span>Best: <span id="game-best">0</span></span>
+    </div>
+
+    <div class="game-canvas-wrap">
+        <canvas id="game-canvas" width="480" height="270" aria-label="Jelly Rush game canvas" role="application" tabindex="0" aria-describedby="game-instructions"></canvas>
+    </div>
+
+    <div class="game-controls">
+        <button id="game-start" class="btn btn--primary">Start Game</button>
+        <button id="game-pause" class="btn btn--ghost">Pause</button>
+        <button id="game-restart" class="btn btn--danger">Restart</button>
+    </div>
+
+    <div class="game-touch">
+        <button id="touch-jump" class="btn btn--ghost btn--lg" aria-label="Jump">Jump</button>
+        <button id="touch-slide" class="btn btn--ghost btn--lg" aria-label="Slide">Slide</button>
+    </div>
+
+    <div id="victory-message" role="alert" aria-live="polite">
+        <h3 style="color:var(--text-primary); margin:0 0 0.5rem;">Victory! &#127873;</h3>
+        <p id="victory-text" style="margin:0;">You collected enough jellies to win!</p>
+    </div>
+
+    <div class="game-instructions" id="game-instructions">
+        <strong>How to play:</strong> Press <kbd>Space</kbd> to jump, <kbd>&#8595;</kbd> to slide. Avoid green crumbs, collect rainbow jellies. Reach 50 jellies to win. On mobile, use the Jump and Slide buttons.
+    </div>
+
+    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:1rem;">
+        Unofficial fan-made mini-game. Not affiliated with Devsisters.
+    </p>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mini_game.js') }}"></script>
+{% endblock %}

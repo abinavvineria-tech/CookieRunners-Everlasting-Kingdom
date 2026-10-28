@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section aria-label="Add event">
+  <h2>Add Event</h2>
+  <form method="post" action="/add" class="card" style="max-width:640px;">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {% if error %}<p style="color:#b22;font-weight:600;">{{ error }}</p>{% endif %}
+    <label for="title" style="font-weight:600;display:block;margin:10px 0 4px;">Title</label>
+    <input id="title" name="title" type="text" required style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+
+    <label for="date" style="font-weight:600;display:block;margin:10px 0 4px;">Date (YYYY-MM-DD)</label>
+    <input id="date" name="date" type="date" required style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+
+    <label for="category" style="font-weight:600;display:block;margin:10px 0 4px;">Category</label>
+    <select id="category" name="category" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+      <option value="franchise">Franchise History</option>
+      <option value="personal">My Personal Journey</option>
+      <option value="milestone">Legendary Milestones</option>
+      <option value="project">Cookie Runners Projects</option>
+      <option value="future">Future Events</option>
+    </select>
+
+    <label for="source" style="font-weight:600;display:block;margin:10px 0 4px;">Source</label>
+    <select id="source" name="source" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+      <option value="official">Official</option>
+      <option value="personal">Personal</option>
+      <option value="fan">Fan Project</option>
+      <option value="uncertain">Uncertain / Verify</option>
+    </select>
+
+    <label for="event_type" style="font-weight:600;display:block;margin:10px 0 4px;">Event Type</label>
+    <select id="event_type" name="event_type" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;">
+      <option value="release">Release</option>
+      <option value="update">Update</option>
+      <option value="milestone">Milestone</option>
+      <option value="memory">Memory</option>
+      <option value="anniversary">Anniversary</option>
+      <option value="collaboration">Collaboration</option>
+    </select>
+
+    <label for="description" style="font-weight:600;display:block;margin:10px 0 4px;">Description</label>
+    <textarea id="description" name="description" rows="4" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:12px;resize:vertical;"></textarea>
+
+    <label style="font-size:.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <input type="checkbox" name="is_verified" value="1" checked> Verified / Confirmed
+    </label>
+    <label style="font-size:.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <input type="checkbox" name="is_future" value="1"> Future event placeholder
+    </label>
+
+    <label for="details_json" style="font-weight:600;display:block;margin:10px 0 4px;">Details JSON (optional)</label>
+    <textarea id="details_json" name="details_json" rows="2" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem;margin-bottom:16px;resize:vertical;">{}</textarea>
+
+    <button type="submit" class="btn">Save Event</button>
+    <a href="/timeline" class="btn btn-outline">Cancel</a>
+  </form>
+</section>
+{% endblock %}

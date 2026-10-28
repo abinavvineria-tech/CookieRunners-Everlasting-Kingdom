@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>CookieVerse Chronicles</h1>
+  <p>Worlds, Legends &amp; My Journey — a living digital museum for Cookie Run history and personal Cookie Runner memories.</p>
+  <p class="tagline">“Every Cookie Has a Story. Every Runner Leaves a Legacy.”</p>
+</section>
+
+<section aria-label="Key stats">
+  <div class="stats">
+    <div class="stat"><div class="num">{{ stats.total }}</div><div class="label">Timeline Events</div></div>
+    <div class="stat"><div class="num">{{ stats.verified }}</div><div class="label">Verified / Confirmed</div></div>
+    <div class="stat"><div class="num">{{ stats.milestones }}</div><div class="label">Legendary Milestones</div></div>
+    <div class="stat"><div class="num">{{ stats.projects }}</div><div class="label">Fan Projects</div></div>
+  </div>
+</section>
+
+<section aria-label="Latest entries">
+  <h2>Latest Entries</h2>
+  <div class="cards">
+    {% for e in events %}
+    <article class="card" aria-label="Event: {{ e.title }}">
+      <div class="meta">
+        <span>{{ e.date }}</span>
+        <span class="badge {{ e.category }}">{{ e.category }}</span>
+        <span class="badge {{ e.source }}">{{ e.source }}</span>
+        {% if e.is_future %}<span class="badge future">future</span>{% endif %}
+        {% if not e.is_verified %}<span class="badge uncertain">uncertain</span>{% endif %}
+      </div>
+      <h3>{{ e.title }}</h3>
+      <p>{{ e.description }}</p>
+      <div class="actions">
+        <a href="/project/{{ e.id }}" class="btn">View</a>
+        <a href="/edit/{{ e.id }}" class="btn btn-outline">Edit</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section aria-label="About this archive">
+  <h2>About This Archive</h2>
+  <div class="card">
+    <h3>Identity &amp; Purpose</h3>
+    <p>This archive is an <strong>unofficial fan-made digital museum</strong> — not affiliated with or endorsed by Devsisters. It separates verified franchise history from personal journey milestones and clearly labels fan-created content. Historical dates come from user-verified references or are marked <strong>uncertain</strong> to avoid inventing official timelines. Personal achievements (Eternal Sugar Cookie, Timekeeper Cookie, White Lily / Awakened White Lily memories, B!TES Fan Contest, Collector title, Rajapendra Cookie) are documented as personal milestones — never presented as official game events.</p>
+    <p>Every interactive element performs a real action: navigation links load content, the timeline filters by year/category/source/search, events can be added and edited, and all changes persist in SQLite.</p>
+  </div>
+</section>
+{% endblock %}

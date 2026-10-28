@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Memory Oven — CookieVerse{% endblock %}
+
+{% block content %}
+<section class="memory-form" aria-labelledby="memory-oven-heading">
+    <h2 id="memory-oven-heading">Bake a Memory</h2>
+    <p style="margin-top: 0; color: var(--text-secondary);">Share a Cookie Run moment you'll never forget.</p>
+
+    <form id="memory-form" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="form-group">
+            <label for="memory-title">Title (optional)</label>
+            <input type="text" id="memory-title" name="title" class="form-control" maxlength="100" placeholder="e.g. My first Pure Vanilla Cookie">
+        </div>
+
+        <div class="form-group">
+            <label for="memory-content">Your memory (required)</label>
+            <textarea id="memory-content" name="content" class="form-control" maxlength="2000" placeholder="Tell us about a run, a pull, a friendship, or a celebration..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="memory-favorite-cookie">Favorite Cookie (optional)</label>
+            <input type="text" id="memory-favorite-cookie" name="favorite_cookie" class="form-control" maxlength="50" placeholder="e.g. White Lily Cookie">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" id="bake-memory-btn" class="btn btn--primary btn--jelly">Bake This Memory &#127875;</button>
+        </div>
+    </form>
+
+    <div id="memory-error" class="msg msg--error" style="display:none;"></div>
+    <div id="memory-success" class="msg msg--success" style="display:none;"></div>
+</section>
+
+<section class="glass-panel" aria-labelledby="saved-memories-heading">
+    <h2 id="saved-memories-heading">Saved Memories</h2>
+
+    <div id="memories-loading" style="text-align:center; color: var(--text-muted); padding: 1rem;">Loading memories&#8230;</div>
+
+    <div id="memories-empty" class="memory-card memory-card--empty" style="display:none;">
+        <span class="empty-icon">&#128381;</span>
+        <p>No memories baked yet. Create your first one above!</p>
+    </div>
+
+    <div class="memory-list" id="memories-list"></div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/memories.js') }}"></script>
+{% endblock %}

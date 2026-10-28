@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Home — CookieVerse{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="sparkles" id="sparkles"></div>
+
+    <div class="hero-content">
+        <span class="hero-kicker">10 Years of Running &#127847;</span>
+        <h1 class="hero-title">CookieVerse</h1>
+        <p class="hero-subtitle">
+            Every Legend. Every Memory. Every Celebration.
+            <br>
+            An unofficial anniversary fan studio for Cookie Runners everywhere.
+        </p>
+
+        <div class="btn-group" style="justify-content: center;">
+            <button id="celebrate-btn" class="btn btn--primary btn--lg" aria-label="Begin the anniversary celebration">
+                Begin the Celebration &#127873;
+            </button>
+            <button id="confetti-btn" class="btn btn--jelly btn--lg" aria-label="Launch confetti">
+                Launch Confetti &#127881;
+            </button>
+        </div>
+
+        <!-- Celebration success message (shown when celebration is activated) -->
+        <div id="celebration-success" class="celebration-success" role="status" aria-live="polite">
+            <span class="celebration-icon">&#127873;</span>
+            <h2>Celebration Activated!</h2>
+            <p id="celebration-message">The party has begun — sparkles flying, jelly shimmering, and the Oven is warm.</p>
+        </div>
+    </div>
+</section>
+
+<section class="glass-panel" aria-labelledby="quick-start-heading">
+    <h3 id="quick-start-heading">Quick Start</h3>
+    <p>Pick a celebration and begin:</p>
+    <div class="btn-group" style="flex-direction: column; align-items: flex-start;">
+        <a href="{{ url_for('timeline') }}" class="btn btn--ghost" style="width: auto;">Explore the Timeline &#128204;</a>
+        <a href="{{ url_for('memories_page') }}" class="btn btn--ghost" style="width: auto;">Bake a Memory &#127875;</a>
+        <a href="{{ url_for('fan_events_page') }}" class="btn btn--ghost" style="width: auto;">Create a Fan Event &#127909;</a>
+        <a href="{{ url_for('countdown_page') }}" class="btn btn--ghost" style="width: auto;">Set a Countdown &#128337;</a>
+        <a href="{{ url_for('mini_game_page') }}" class="btn btn--ghost" style="width: auto;">Play the Mini Game &#127920;</a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/celebration.js') }}"></script>
+{% endblock %}

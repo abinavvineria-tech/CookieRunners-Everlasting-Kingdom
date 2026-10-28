@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f4f0">
+  <meta name="description" content="The Everlasting Trinity — an unofficial CookieVerse fan timeline celebrating White Lily Cookie, Pure Vanilla Cookie, and a real Cookie Runner's journey.">
+  <title>The Everlasting Trinity — CookieVerse Everlasting Bloom</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='trinity.css') }}">
+</head>
+<body>
+
+  <!-- Return to main Everlasting Bloom memorial -->
+  <header class="trinity-topbar">
+    <div class="topbar-inner">
+      <a class="button ghost back-to-bloom" href="/" type="button">
+        ↩ Back to Everlasting Bloom memorial
+      </a>
+      <div class="topbar-ghost" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main class="trinity-page" id="trinity-root">
+
+    <!-- Hero / trio banner -->
+    <section class="trinity-hero">
+      <div class="hero-eyebrow">UNOFFICIAL COOKIEVERSE FAN PROJECT</div>
+      <div class="hero-trio" aria-label="The Everlasting Trinity trio">
+        <div class="trio-mark whitelily" aria-label="White Lily Cookie — pearl white / sage green">✦</div>
+        <div class="trio-mark purevanilla" aria-label="Pure Vanilla Cookie — soft gold / cream">✦</div>
+        <div class="trio-mark creator" aria-label="The Cookie Runner — rainbow jelly">✦</div>
+      </div>
+      <h1>The Everlasting Trinity</h1>
+      <p class="hero-subtitle">Three journeys. Countless memories. One everlasting bloom.</p>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-note"><strong>Unofficial fan tribute.</strong> Not affiliated with or endorsed by Devsisters. Game dates are presented as official Cookie Run: Kingdom lore where marked; creator dates are personal memories supplied by the fan.</p>
+    </section>
+
+    <!-- Central illustration: glowing lily garden -->
+    <section class="garden-section" aria-label="Central lily garden illustration">
+      <div class="garden-wrapper">
+        <svg class="garden-svg" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Glowing lily garden with three tracks converging">
+          <defs>
+            <linearGradient id="lilyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fdfbfb" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#eef3ea" stop-opacity="0.9"/>
+            </linearGradient>
+            <radialGradient id="glowCore" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="#f8f4f0" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#f8f4f0" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="14" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Background glow -->
+          <circle cx="450" cy="260" r="260" fill="url(#glowCore)" class="garden-glow"/>
+
+          <!-- Floating petals (decorative, reduced-motion safe) -->
+          <g class="petals" aria-hidden="true">
+            <circle cx="120" cy="140" r="6" fill="#f8f4f0" opacity="0.7"/>
+            <circle cx="780" cy="160" r="5" fill="#e8c87a" opacity="0.6"/>
+            <circle cx="850" cy="380" r="7" fill="#b19cd9" opacity="0.5"/>
+            <circle cx="200" cy="420" r="5" fill="#f8f4f0" opacity="0.6"/>
+            <circle cx="600" cy="90" r="6" fill="#f4e8c7" opacity="0.6"/>
+          </g>
+
+          <!-- Three converging stems / subtle connecting lines -->
+          <path d="M150 460 Q250 260 450 260" fill="none" stroke="#8fa38d" stroke-width="3" stroke-linecap="round" opacity="0.55" class="stem wl-stem"/>
+          <path d="M750 460 Q650 260 450 260" fill="none" stroke="#e8c87a" stroke-width="3" stroke-linecap="round" opacity="0.55" class="stem pv-stem"/>
+          <path d="M450 460 L450 260" fill="none" stroke="#b19cd9" stroke-width="3" stroke-linecap="round" opacity="0.55" class="stem cr-stem"/>
+
+          <!-- Central glowing lily -->
+          <g class="central-lily" filter="url(#softGlow)">
+            <ellipse cx="450" cy="260" rx="150" ry="90" fill="url(#lilyGrad)" stroke="#fff" stroke-width="2" opacity="0.9"/>
+            <path d="M330 260 Q450 170 570 260" fill="none" stroke="#f8f4f0" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <path d="M330 260 Q450 350 570 260" fill="none" stroke="#f8f4f0" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <circle cx="450" cy="260" r="22" fill="#fff" opacity="0.95"/>
+            <circle cx="450" cy="260" r="10" fill="#f8f4f0"/>
+          </g>
+        </svg>
+        <div class="garden-caption">Three tracks, one garden — where the lily meets the vanilla, and every Cookie Runner's story grows.</div>
+      </div>
+    </section>
+
+    <!-- Controls bar -->
+    <section class="controls-section">
+      <div class="controls-inner">
+        <div class="tab-group" role="tablist" aria-label="Timeline tracks">
+          <button class="tab active" role="tab" id="tab-all" aria-selected="true" data-tab="all">All Three</button>
+          <button class="tab" role="tab" id="tab-whitelily" aria-selected="false" data-tab="whitelily">White Lily</button>
+          <button class="tab" role="tab" id="tab-purevanilla" aria-selected="false" data-tab="purevanilla">Pure Vanilla</button>
+          <button class="tab" role="tab" id="tab-creator" aria-selected="false" data-tab="creator">My Journey</button>
+          <button class="tab" role="tab" id="tab-purelily" aria-selected="false" data-tab="purelily">PureLily</button>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" for="filter-type">Show:</label>
+          <select class="filter-select" id="filter-type" aria-label="Filter by lore or memory">
+            <option value="all">Official Lore &amp; Personal Memories</option>
+            <option value="official">Official Lore only</option>
+            <option value="personal">Personal Memories only</option>
+          </select>
+        </div>
+
+        <div class="sort-group">
+          <label class="filter-label" for="sort-order">Order:</label>
+          <select class="filter-select" id="sort-order" aria-label="Sort milestones chronologically">
+            <option value="asc">Chronological (earliest first)</option>
+            <option value="desc">Chronological (latest first)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline lanes -->
+    <section class="timeline-section" aria-label="Everlasting Trinity timeline">
+      <div class="timeline-inner">
+        <div class="track-lane" id="lane-whitelily" data-track="whitelily">
+          <div class="lane-header">
+            <span class="lane-badge whitelily">White Lily Cookie</span>
+            <h2 class="lane-title">The Legend of Truth</h2>
+          </div>
+          <div class="lane-events" id="events-whitelily"></div>
+        </div>
+
+        <div class="track-lane" id="lane-purevanilla" data-track="purevanilla">
+          <div class="lane-header">
+            <span class="lane-badge purevanilla">Pure Vanilla Cookie</span>
+            <h2 class="lane-title">The Light of Hope</h2>
+          </div>
+          <div class="lane-events" id="events-purevanilla"></div>
+        </div>
+
+        <div class="track-lane" id="lane-creator" data-track="creator">
+          <div class="lane-header">
+            <span class="lane-badge creator">The Cookie Runner</span>
+            <h2 class="lane-title">The Keeper of Memories</h2>
+          </div>
+          <div class="lane-events" id="events-creator"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PureLily chapter -->
+    <section class="purelily-section" id="purelily-chapter" aria-label="Where Lily Meets Vanilla">
+      <div class="purelily-inner">
+        <div class="purelily-badge">Where Lily Meets Vanilla</div>
+        <h2>The PureLily Bond</h2>
+        <p class="purelily-lead">A gentle chapter about White Lily Cookie and Pure Vanilla Cookie — and what their connection means to the fans who cherish it.</p>
+
+        <div class="purelily-grid">
+          <article class="purelily-card">
+            <h3>Their first story connection</h3>
+            <p>White Lily Cookie and Pure Vanilla Cookie share roots in the same ancient world of Cookie Run: Kingdom, both carrying the weight of legacy and the quiet strength of those who came before them.</p>
+            <span class="type-tag canon">Game canon · Cookie Run: Kingdom story</span>
+          </article>
+
+          <article class="purelily-card">
+            <h3>Shared history and emotional significance</h3>
+            <p>Their connection is one of mutual respect and quiet understanding — two souls shaped by duty, sacrifice, and the hope of protecting what they love. For many fans, this bond represents the comfort of being seen and the courage found in shared purpose.</p>
+            <span class="type-tag interpretation">Fan interpretation · emotional reading</span>
+          </article>
+
+          <article class="purelily-card">
+            <h3>Important verified story milestones</h3>
+            <p>Both Cookies appear as Ancient Heroes within Cookie Run: Kingdom's overarching story. Their individual arcs — White Lily's Dawnbringer awakening and Pure Vanilla's healing light — intersect in themes of truth, redemption, and hope.</p>
+            <span class="type-tag canon">Game canon · Cookie Run: Kingdom</span>
+          </article>
+
+          <article class="purelily-card">
+            <h3>A personal tribute to PureLily</h3>
+            <p>PureLily is a fan-named pairing celebrating the bond between White Lily Cookie and Pure Vanilla Cookie. This tribute honors that fan-created name, the art and stories it inspires, and the gentle hope it represents — without claiming it as official canon.</p>
+            <span class="type-tag personal">Fan tribute · not official canon</span>
+          </article>
+        </div>
+
+        <div class="memory-card-box">
+          <div class="memory-card-header">
+            <h3>Memory Card — "The Last Dance"</h3>
+            <span class="memory-date">August 12, 2026</span>
+          </div>
+          <p class="memory-body">The creator's personal memory card titled "The Last Dance," honoring the PureLily bond on a date meaningful to them. This is a personal remembrance — not a verified official Cookie Run event.</p>
+          <span class="type-tag personal">Creator's personal remembered date</span>
+        </div>
+
+        <div class="purelily-note"><strong>Labeling:</strong> Game canon = official Cookie Run: Kingdom story. Interpretation = fan reading. Personal = the creator's own memories. Nothing here claims the creator is an official Cookie Run character.</div>
+      </div>
+    </section>
+
+    <!-- Creator profile card -->
+    <section class="creator-profile-section" aria-label="The Cookie Runner profile">
+      <div class="creator-profile">
+        <div class="profile-avatar" aria-hidden="true">🍪</div>
+        <div class="profile-body">
+          <div class="profile-badge creator">The Cookie Runner</div>
+          <h2>A real Cookie Runner — not an official character</h2>
+          <p><strong>Abinav / abinavzoey</strong> (CookieVerse Hermes) · Tamil Nadu, India</p>
+          <p>Joined Cookie Run: Kingdom on April 22, 2026, after discovering Cookie Run through the K-pop Demon Hunters collaboration.</p>
+          <p class="profile-disclaimer"><strong>Important:</strong> This creator is a real fan. Their personal milestones are distinct from official Cookie Run lore. The creator is not represented as an official Cookie Run character, and no personal events are invented. Every entry in this timeline is editable through the local configuration file <code>static/data/trinity-timeline.json</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add My Memory form -->
+    <section class="add-memory-section" aria-label="Add your own memory">
+      <div class="add-memory-card">
+        <div class="add-memory-header">
+          <h3>Add My Memory</h3>
+          <p class="add-memory-eyebrow">Your story, saved privately in your browser</p>
+        </div>
+        <form id="addMemoryForm" novalidate>
+          <label for="memoryName">Your Cookie Runner name <span>(optional)</span></label>
+          <input id="memoryName" type="text" maxlength="32" placeholder="e.g. JellybeanRunner">
+
+          <label for="memoryTrack">Which journey is this memory for?</label>
+          <select id="memoryTrack">
+            <option value="whitelily">White Lily Cookie — The Legend of Truth</option>
+            <option value="purevanilla">Pure Vanilla Cookie — The Light of Hope</option>
+            <option value="creator">The Cookie Runner — The Keeper of Memories</option>
+            <option value="purelily">PureLily — Where Lily Meets Vanilla</option>
+          </select>
+
+          <label for="memoryDate">Date</label>
+          <input id="memoryDate" type="text" placeholder="e.g. August 12, 2026">
+
+          <label for="memoryType">Type of memory</label>
+          <select id="memoryType">
+            <option value="personal">Personal Memory</option>
+            <option value="official">Official Lore</option>
+          </select>
+
+          <label for="memoryHeadline">Headline</label>
+          <input id="memoryHeadline" type="text" maxlength="80" placeholder="A short title for your memory">
+
+          <label for="memoryBody">Your memory</label>
+          <textarea id="memoryBody" maxlength="500" rows="4" placeholder="Share your memory…"></textarea>
+
+          <div class="privacy-note">
+            <strong>Privacy:</strong> Memories are saved only in your browser's local storage (localStorage) on this device. They are not sent to any server, not shared with anyone, and not part of the official game. Clearing your browser data will remove them.
+          </div>
+
+          <div class="form-actions">
+            <button class="button secondary" type="button" id="cancelMemory">Cancel</button>
+            <button class="button primary" type="submit">Save my memory</button>
+          </div>
+          <p id="memoryStatus" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Reset controls -->
+    <section class="reset-section">
+      <div class="reset-card">
+        <button class="button ghost" id="resetMemories" type="button">Reset all my memories</button>
+        <p id="resetStatus" class="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Final inscription -->
+    <section class="inscription-section">
+      <div class="inscription">
+        <div class="inscription-mark">✦</div>
+        <p class="inscription-text">"The Lily carries the memory. The Vanilla carries the hope. The Cookie Runner carries their stories forward."</p>
+        <p class="inscription-small">The Everlasting Trinity · An unofficial CookieVerse fan tribute</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="trinity-footer">
+    <p>Unofficial fan-made project created by Cookie Runners, for Cookie Runners.</p>
+    <p class="legal">Not affiliated with or endorsed by Devsisters or the official Cookie Run games. All related names and trademarks belong to their respective owners. No official status is implied.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='trinity.js') }}"></script>
+</body>
+</html>

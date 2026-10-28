@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<section aria-label="Memory museum">
+  <h2>Memory Museum</h2>
+
+  <div class="cards">
+    <article class="card">
+      <h3>Favorite Cookies</h3>
+      <p><strong>White Lily</strong> (Ancient Hero) — tribute file preserved in workspace. Verified quotes only: <em>"I know what must be done."</em> / <em>"I will never forgive what I've done."</em></p>
+      <p><strong>Mogra Cookie</strong> — another favorite reflected in fan work and personal notes.</p>
+      <p><strong>Shadow Milk</strong> — favorite noted in profile; referenced across fan projects.</p>
+    </article>
+    <article class="card">
+      <h3>Legendary Milestones</h3>
+      <ul style="padding-left:18px;margin:0;line-height:1.65;">
+        <li>Eternal Sugar Cookie achievement</li>
+        <li>Timekeeper Cookie milestone</li>
+        <li>White Lily &amp; Awakened White Lily remembrance</li>
+        <li>B!TES Fan Contest victory</li>
+        <li>Collector title earned</li>
+        <li>Rajapendra Cookie achievement</li>
+      </ul>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-top:8px;">All milestones are personal achievements, not official game events.</p>
+    </article>
+  </div>
+
+  <h2>Personal Reflections</h2>
+  <div class="cards">
+    {% for r in reflections %}
+    <article class="card" aria-label="Reflection: {{ r.title }}">
+      <div class="meta"><span>{{ r.date }}</span></div>
+      <h3>{{ r.title }}</h3>
+      <p>{{ r.note }}</p>
+    </article>
+    {% endfor %}
+  </div>
+
+  <h2>Favorite Milestones Timeline</h2>
+  <div class="cards">
+    {% for e in favorites %}
+    <article class="card" aria-label="Favorite event: {{ e.title }}">
+      <div class="meta">
+        <span>{{ e.date }}</span>
+        <span class="badge personal">personal</span>
+      </div>
+      <h3>{{ e.title }}</h3>
+      <p>{{ e.description }}</p>
+      <div class="actions"><a href="/project/{{ e.id }}" class="btn">View</a></div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

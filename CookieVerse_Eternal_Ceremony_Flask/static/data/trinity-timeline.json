@@ -1,0 +1,220 @@
+{
+  "meta": {
+    "trio_name": "THE EVERLASTING TRINITY",
+    "subtitle": "Three journeys. Countless memories. One everlasting bloom.",
+    "final_inscription": "The Lily carries the memory. The Vanilla carries the hope. The Cookie Runner carries their stories forward.",
+    "last_updated": "2026-10-28",
+    "unofficial": true,
+    "note": "Unofficial CookieVerse fan project. Not affiliated with or endorsed by Devsisters."
+  },
+  "tracks": {
+    "whitelily": {
+      "id": "whitelily",
+      "name": "White Lily Cookie",
+      "title": "The Legend of Truth",
+      "color": {
+        "primary": "#f8f4f0",
+        "secondary": "#8fa38d",
+        "accent": "#d7e0d5"
+      },
+      "badge": "WHITE LILY",
+      "editor_note": "Game canon dates verified against Cookie Run: Kingdom sources. Personal remembrance date is the creator's own choice.",
+      "events": [
+        {
+          "id": "wl-2021-01-21",
+          "date": "January 21, 2021",
+          "iso": "2021-01-21",
+          "headline": "First appearance in Cookie Run: Kingdom",
+          "body": "White Lily Cookie first appears in Cookie Run: Kingdom as an Ancient Hero whose journey is defined by truth, sacrifice, courage, friendship, and hope.",
+          "type": "official",
+          "source": "Cookie Run: Kingdom (Devsisters)",
+          "tags": ["appearance", "ancient hero", "kingdom"]
+        },
+        {
+          "id": "wl-2024-01-19",
+          "date": "January 19, 2024",
+          "iso": "2024-01-19",
+          "headline": "Playable release",
+          "body": "White Lily Cookie becomes playable in Cookie Run: Kingdom, stepping into the story as a legendary Ancient Hero.",
+          "type": "official",
+          "source": "Cookie Run: Kingdom (Devsisters)",
+          "tags": ["playable", "release"]
+        },
+        {
+          "id": "wl-2025-10-22",
+          "date": "October 22, 2025",
+          "iso": "2025-10-22",
+          "headline": "Dawnbringer awakening",
+          "body": "White Lily Cookie awakens as the Dawnbringer, carrying the light forward into a new chapter of her legend.",
+          "type": "official",
+          "source": "Cookie Run: Kingdom (Devsisters)",
+          "tags": ["awakening", "dawnbringer"]
+        },
+        {
+          "id": "wl-remembrance",
+          "date": "March 11, annually",
+          "iso": "03-11",
+          "headline": "Personal remembrance",
+          "body": "The creator's chosen annual remembrance date for White Lily Cookie — a quiet moment to honor her legend of truth and sacrifice.",
+          "type": "personal",
+          "source": "Creator's personal remembrance",
+          "tags": ["remembrance", "personal", "annual"]
+        }
+      ]
+    },
+    "purevanilla": {
+      "id": "purevanilla",
+      "name": "Pure Vanilla Cookie",
+      "title": "The Light of Hope",
+      "color": {
+        "primary": "#fffdf7",
+        "secondary": "#e8c87a",
+        "accent": "#f4e8c7"
+      },
+      "badge": "PURE VANILLA",
+      "editor_note": "Game lore presented as canon; PureLily section describes a fan-interpreted relationship. Verify any additional dates against reliable sources before presenting them as facts.",
+      "events": [
+        {
+          "id": "pv-2021-04-08",
+          "date": "April 8, 2021",
+          "iso": "2021-04-08",
+          "headline": "Original playable release",
+          "body": "Pure Vanilla Cookie is first released as a playable Cookie in Cookie Run: Kingdom.",
+          "type": "official",
+          "source": "Cookie Run: Kingdom (Devsisters)",
+          "tags": ["playable", "release"]
+        },
+        {
+          "id": "pv-king",
+          "date": "Story canon",
+          "iso": "story-canon",
+          "headline": "King of the Vanilla Kingdom",
+          "body": "Pure Vanilla Cookie is the gentle and wise king of the Vanilla Kingdom, a realm built on healing, harmony, and hope.",
+          "type": "official",
+          "source": "Cookie Run: Kingdom story (Devsisters)",
+          "tags": ["king", "vanilla kingdom", "lore"]
+        },
+        {
+          "id": "pv-healing",
+          "date": "Story canon",
+          "iso": "story-canon",
+          "headline": "Healing abilities",
+          "body": "Pure Vanilla Cookie's magic centers on healing and restoration, mending both wounds and weary hearts across the kingdoms.",
+          "type": "official",
+          "source": "Cookie Run: Kingdom story (Devsisters)",
+          "tags": ["healing", "abilities"]
+        },
+        {
+          "id": "pv-story",
+          "date": "Story canon",
+          "iso": "story-canon",
+          "headline": "Role in the story",
+          "body": "Pure Vanilla Cookie guides the heroes with quiet wisdom, standing as a beacon of hope and a steady light through the darkest moments.",
+          "type": "official",
+          "source": "Cookie Run: Kingdom story (Devsisters)",
+          "tags": ["story", "guide", "hope"]
+        }
+      ],
+      "purelily": {
+        "id": "purelily",
+        "title": "Where Lily Meets Vanilla",
+        "intro": "A gentle chapter about the bond between White Lily Cookie and Pure Vanilla Cookie — and what it means to the fans who cherish it.",
+        "sections": [
+          {
+            "heading": "Their first story connection",
+            "body": "White Lily Cookie and Pure Vanilla Cookie share roots in the same ancient world of Cookie Run: Kingdom, both carrying the weight of legacy and the quiet strength of those who came before them."
+          },
+          {
+            "heading": "Shared history and emotional significance",
+            "body": "Their connection is one of mutual respect and quiet understanding — two souls shaped by duty, sacrifice, and the hope of protecting what they love. For many fans, this bond represents the comfort of being seen and the courage found in shared purpose."
+          },
+          {
+            "heading": "Important verified story milestones",
+            "body": "Both Cookies appear as Ancient Heroes within Cookie Run: Kingdom's overarching story. Their individual arcs — White Lily's Dawnbringer awakening and Pure Vanilla's healing light — intersect in themes of truth, redemption, and hope."
+          },
+          {
+            "heading": "A personal tribute to PureLily",
+            "body": "PureLily is a fan-named pairing celebrating the bond between White Lily Cookie and Pure Vanilla Cookie. This tribute honors that fan-created name, the art and stories it inspires, and the gentle hope it represents — without claiming it as official canon."
+          }
+        ],
+        "memory_card": {
+          "title": "The Last Dance",
+          "date": "August 12, 2026",
+          "label": "creator's personal remembered date — not a verified official event",
+          "body": "The creator's personal memory card titled 'The Last Dance,' honoring the PureLily bond on a date meaningful to them. This is a personal remembrance, not an official Cookie Run event."
+        }
+      }
+    },
+    "creator": {
+      "id": "creator",
+      "name": "The Cookie Runner",
+      "title": "The Keeper of Memories",
+      "color": {
+        "primary": "#fdfdff",
+        "secondary": "#b19cd9",
+        "accent": "#ffb347"
+      },
+      "badge": "CREATOR'S JOURNEY",
+      "profile": {
+        "name": "Abinav / abinavzoey",
+        "handle": "CookieVerse Hermes",
+        "location": "Tamil Nadu, India",
+        "joined_crk": "April 22, 2026",
+        "bio": "A real Cookie Runner — not an official Cookie Run character. Personal milestones below are supplied by the fan, not Devsisters."
+      },
+      "editor_note": "The creator is a real fan whose personal milestones are distinct from official Cookie Run lore. No personal events are invented, and the creator is not represented as an official character in the game. Each entry is editable in static/data/trinity-timeline.json.",
+      "events": [
+        {
+          "id": "cr-2026-04-22",
+          "date": "April 22, 2026",
+          "iso": "2026-04-22",
+          "headline": "Journey began",
+          "body": "Discovered Cookie Run through the K-pop Demon Hunters collaboration and joined Cookie Run: Kingdom.",
+          "type": "personal",
+          "source": "Creator's personal account",
+          "tags": ["journey", "began", "kpop-demon-hunters"]
+        },
+        {
+          "id": "cr-2026-05-07",
+          "date": "May 7, 2026",
+          "iso": "2026-05-07",
+          "headline": "Timekeeper Cookie obtained",
+          "body": "Obtained Timekeeper Cookie on the first try, according to the creator's personal account.",
+          "type": "personal",
+          "source": "Creator's personal account",
+          "tags": ["timekeeper", "first try"]
+        },
+        {
+          "id": "cr-2026-07-14",
+          "date": "July 14, 2026",
+          "iso": "2026-07-14",
+          "headline": "Completed the CRK journey",
+          "body": "A personal milestone described by the creator as completing the CRK journey.",
+          "type": "personal",
+          "source": "Creator's personal account",
+          "tags": ["milestone", "completed"]
+        },
+        {
+          "id": "cr-2026-09-14",
+          "date": "September 14, 2026",
+          "iso": "2026-09-14",
+          "headline": "Won the B!TES fan contest",
+          "body": "Celebrated becoming a B!TES fan contest winner.",
+          "type": "personal",
+          "source": "Creator's personal account",
+          "tags": ["bites", "winner", "contest"]
+        },
+        {
+          "id": "cr-2026-10-07",
+          "date": "October 7, 2026",
+          "iso": "2026-10-07",
+          "headline": "Obtained Rajapendra Cookie — Operation Rajapendra",
+          "body": "Completed the personal collection goal described as Operation Rajapendra by obtaining Rajapendra Cookie.",
+          "type": "personal",
+          "source": "Creator's personal account",
+          "tags": ["rajapendra", "collection", "operation"]
+        }
+      ]
+    }
+  }
+}

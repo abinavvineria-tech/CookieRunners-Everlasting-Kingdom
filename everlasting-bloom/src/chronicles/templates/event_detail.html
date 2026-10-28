@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<section aria-label="Event detail">
+  <a href="/timeline" class="btn btn-outline" style="margin-bottom:14px;">← Back to Timeline</a>
+  <article class="card" aria-label="Event detail">
+    <div class="meta">
+      <span>{{ event.date }}</span>
+      <span class="badge {{ event.category }}">{{ event.category }}</span>
+      <span class="badge {{ event.source }}">{{ event.source }}</span>
+      <span class="badge">{{ event.event_type }}</span>
+      {% if event.is_future %}<span class="badge future">future</span>{% endif %}
+      {% if not event.is_verified %}<span class="badge uncertain">uncertain / verify</span>{% endif %}
+    </div>
+    <h2 style="margin-top:8px;">{{ event.title }}</h2>
+    <p style="font-size:1.05rem;line-height:1.7;color:var(--text);">{{ event.description }}</p>
+    {% if event.details_json %}
+    <p style="font-size:.9rem;color:var(--text-secondary);margin-top:14px;">Details: {{ event.details_json }}</p>
+    {% endif %}
+    <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="/edit/{{ event.id }}" class="btn">Edit</a>
+      <form method="post" action="/delete/{{ event.id }}" onsubmit="return confirm('Delete this event?');">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="btn btn-outline" style="background:transparent;border-color:#b22;color:#b22;">Delete</button>
+      </form>
+    </div>
+  </article>
+</section>
+{% endblock %}

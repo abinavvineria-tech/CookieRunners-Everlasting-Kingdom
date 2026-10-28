@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<section aria-label="Interactive timeline">
+  <h2>Interactive Timeline</h2>
+  <form class="filters" action="/timeline/filter" method="get">
+    <input type="text" name="q" placeholder="Search events, cookies, milestones..." value="{{ request.args.get('q','') }}" aria-label="Search timeline">
+    <select name="year" aria-label="Filter by year">
+      <option value="">All years</option>
+      {% for y in years %}<option value="{{ y.y }}" {% if request.args.get('year')==y.y %}selected{% endif %}>{{ y.y }}</option>{% endfor %}
+    </select>
+    <select name="category" aria-label="Filter by category">
+      <option value="">All categories</option>
+      <option value="franchise" {% if request.args.get('category')=='franchise' %}selected{% endif %}>Franchise</option>
+      <option value="personal" {% if request.args.get('category')=='personal' %}selected{% endif %}>Personal Journey</option>
+      <option value="milestone" {% if request.args.get('category')=='milestone' %}selected{% endif %}>Legendary Milestones</option>
+      <option value="project" {% if request.args.get('category')=='project' %}selected{% endif %}>Cookie Runners Projects</option>
+      <option value="future" {% if request.args.get('category')=='future' %}selected{% endif %}>Future Events</option>
+    </select>
+    <select name="source" aria-label="Filter by source">
+      <option value="">All sources</option>
+      <option value="official" {% if request.args.get('source')=='official' %}selected{% endif %}>Official</option>
+      <option value="personal" {% if request.args.get('source')=='personal' %}selected{% endif %}>Personal</option>
+      <option value="fan" {% if request.args.get('source')=='fan' %}selected{% endif %}>Fan Project</option>
+      <option value="uncertain" {% if request.args.get('source')=='uncertain' %}selected{% endif %}>Uncertain / Verify</option>
+    </select>
+    <button type="submit" class="btn">Filter</button>
+    <a href="/timeline" class="btn btn-outline">Reset</a>
+  </form>
+
+  <div class="cards">
+    {% for e in events %}
+    <article class="card" aria-label="Event: {{ e.title }}">
+      <div class="meta">
+        <span>{{ e.date }}</span>
+        <span class="badge {{ e.category }}">{{ e.category }}</span>
+        <span class="badge {{ e.source }}">{{ e.source }}</span>
+        <span class="badge">{{ e.event_type }}</span>
+        {% if e.is_future %}<span class="badge future">future</span>{% endif %}
+        {% if not e.is_verified %}<span class="badge uncertain">uncertain</span>{% endif %}
+      </div>
+      <h3>{{ e.title }}</h3>
+      <p>{{ e.description }}</p>
+      <div class="actions">
+        <a href="/project/{{ e.id }}" class="btn">Details</a>
+        <a href="/edit/{{ e.id }}" class="btn btn-outline">Edit</a>
+        <form method="post" action="/delete/{{ e.id }}" style="display:inline;" onsubmit="return confirm('Delete this event?');">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-outline" style="background:transparent;border-color:#b22;color:#b22;">Delete</button>
+        </form>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CookieVerse — Everlasting Celebrations{% endblock %}</title>
+    <meta name="description" content="Unofficial Cookie Run fan anniversary studio. Celebrate legends, memories, and milestones.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="preload" as="style" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body data-theme="{{ settings.theme }}">
+
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Unofficial fan-project label (always visible) -->
+    <div class="unofficial-banner">
+        &#9888; {{ unofficial_label }} Original fan-made graphics and layouts only.
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="{{ url_for('home') }}" class="brand-link" aria-label="CookieVerse home">
+                <span class="brand-name">CookieVerse</span>
+                <span class="brand-tagline">Everlasting Celebrations</span>
+            </a>
+
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch theme" aria-pressed="{{ 'true' if settings.theme == 'dark' else 'false' }}">
+                <span class="theme-icon" id="theme-icon">&#127760;</span>
+                <span class="theme-text">Theme</span>
+            </button>
+
+            <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="site-nav">
+        <ul class="nav-list" id="main-nav">
+            <li><a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
+            <li><a href="{{ url_for('timeline') }}" class="nav-link {% if request.endpoint == 'timeline' %}active{% endif %}">Timeline</a></li>
+            <li><a href="{{ url_for('memories_page') }}" class="nav-link {% if request.endpoint == 'memories_page' %}active{% endif %}">Memory Oven</a></li>
+            <li><a href="{{ url_for('fan_events_page') }}" class="nav-link {% if request.endpoint == 'fan_events_page' %}active{% endif %}">Fan Events</a></li>
+            <li><a href="{{ url_for('countdown_page') }}" class="nav-link {% if request.endpoint == 'countdown_page' %}active{% endif %}">Countdown</a></li>
+            <li><a href="{{ url_for('mini_game_page') }}" class="nav-link {% if request.endpoint == 'mini_game_page' %}active{% endif %}">Mini Game</a></li>
+            <li><a href="{{ url_for('settings_page') }}" class="nav-link {% if request.endpoint == 'settings_page' %}active{% endif %}">Settings</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-disclaimer">&#9888; {{ unofficial_label }}</div>
+            <p>&copy; 2026 CookieVerse Fan Project. Cookie Run is a trademark of Devsisters Corporation. This is an independent fan-made project and is not affiliated with, endorsed, or sponsored by Devsisters.</p>
+            <p>Original fan-made graphics and layouts. No official assets copied.</p>
+        </div>
+    </footer>
+
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

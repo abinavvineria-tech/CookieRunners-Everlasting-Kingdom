@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Countdown — CookieVerse{% endblock %}
+
+{% block content %}
+<section class="countdown-panel" aria-labelledby="countdown-heading">
+    <h2 id="countdown-heading">Anniversary Countdown</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        Pick a celebration date and count down to it.
+        <strong>Community note:</strong> the OvenBreak 10th anniversary reference date is October 27, 2026 — a fan-maintained reference, not an official Devsisters announcement.
+    </p>
+
+    <div class="countdown-display" id="countdown-display">--d --h --m --s</div>
+    <p id="countdown-message" style="color: var(--text-secondary); font-weight: 600; margin-bottom: 1rem;">Select a date to begin.</p>
+
+    <form id="countdown-form" class="countdown-form" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="form-group">
+            <label for="countdown-target">Target celebration date</label>
+            <input type="date" id="countdown-target" name="target_date" class="form-control" required>
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+            <button type="submit" id="calc-countdown-btn" class="btn btn--primary">Calculate Countdown &#128337;</button>
+        </div>
+    </form>
+
+    <div id="countdown-result" class="countdown-result" style="display:none;"></div>
+
+    <div class="btn-group" style="justify-content:center; margin-top: 1rem;">
+        <button id="ovenbreak-ref-btn" class="btn btn--ghost" style="width: auto;">Show OvenBreak 10th Anniversary Reference</button>
+    </div>
+    <div id="ovenbreak-ref-result" style="margin-top: 1rem; display:none;"></div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/countdown.js') }}"></script>
+{% endblock %}
