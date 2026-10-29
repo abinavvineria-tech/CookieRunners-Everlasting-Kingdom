@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17142d">
+  <meta name="description" content="The CookieVerse Eternal Ceremony — an unofficial fan celebration of Cookie Run legends, awards, and the worldwide Cookie Runners community.">
+  <title>CookieVerse Eternal Ceremony</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#ceremony">Skip to ceremony</a>
+
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home" aria-label="CookieVerse home">
+        <span class="brand-mark">&#10024;</span>
+        <span>COOKIEVERSE <small>ETERNAL CEREMONY</small></span>
+      </a>
+      <nav class="topbar-nav">
+        <a href="#home">Home</a>
+        <a href="#ceremony">Ceremony</a>
+        <a href="#disclaimer">Fan disclaimer</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================ WELCOME SCREEN ============================ -->
+  <section id="home" class="welcome-screen" aria-labelledby="welcome-heading">
+    <div class="starfield" aria-hidden="true"></div>
+    <div class="sparkle-layer" aria-hidden="true"></div>
+    <div class="welcome-inner">
+      <div class="orbit" aria-hidden="true">
+        <span class="orbit-mark">&#10024;</span>
+        <i class="orbit-mark orbit-small">&#10039;</i>
+        <b class="orbit-mark orbit-small">&#10024;</b>
+        <em class="orbit-mark orbit-small">&#10039;</em>
+      </div>
+      <h1 id="welcome-heading">The Eternal Ceremony</h1>
+      <p class="tagline">One CookieVerse. Many legends. One unforgettable celebration.</p>
+      <p class="welcome-copy">Welcome, Cookie Runners. Celebrate legendary characters, memorable updates, and the worldwide Cookie Runners community — one award at a time.</p>
+      <button class="button primary" id="beginButton" type="button">
+        Begin the Eternal Ceremony <span class="arrow">&#10140;</span>
+      </button>
+      <p class="live-date" id="liveDate"></p>
+    </div>
+  </section>
+
+  <!-- ============================ CEREMONY FLOW ============================ -->
+  <section id="ceremony" class="ceremony-screen hidden" aria-label="Award ceremony" tabindex="-1">
+    <div class="ceremony-header">
+      <div class="ceremony-badge">CookieVerse Eternal Ceremony</div>
+      <div class="progress" id="progress" aria-live="polite">Award <span id="progressCurrent">1</span> of <span id="progressTotal">10</span></div>
+    </div>
+
+    <div class="award-stage" id="awardStage" aria-live="polite">
+      <!-- Award cards rendered by JavaScript -->
+    </div>
+
+    <div class="ceremony-controls">
+      <button class="button ghost" id="prevButton" type="button" aria-label="Previous award">&#10095; Previous Award</button>
+      <button class="button primary" id="nextButton" type="button" aria-label="Next award">Next Award &#10096;</button>
+      <button class="button ghost" id="skipFinaleButton" type="button" aria-label="Skip to finale">Skip to Finale &#10140;</button>
+      <button class="button ghost" id="copyButton" type="button" aria-label="Copy ceremony summary">Copy Ceremony Summary &#128203;</button>
+    </div>
+
+    <p id="ceremonyHint" class="ceremony-hint">Tap Next Award to reveal each legend. Use Previous Award to go back.</p>
+  </section>
+
+  <!-- ============================ FINALE ============================ -->
+  <section id="finale" class="finale-screen hidden" aria-label="Ceremony finale" tabindex="-1">
+    <div class="finale-inner">
+      <div class="finale-star" aria-hidden="true">&#10024;</div>
+      <h2 id="finale-heading">The Finale</h2>
+      <p class="finale-message" id="finaleMessage"></p>
+      <div class="finale-winners" id="finaleWinners" aria-label="All award winners">
+        <!-- Winners rendered by JavaScript -->
+      </div>
+      <div class="finale-actions">
+        <button class="button ghost" id="replayButton" type="button" aria-label="Replay ceremony">Replay Ceremony &#10227;</button>
+        <button class="button ghost" id="copyFinaleButton" type="button" aria-label="Copy ceremony summary">Copy Ceremony Summary &#128203;</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="disclaimer">
+    <div class="footer-inner">
+      <div class="footer-brand">COOKIEVERSE <span>&#10024;</span></div>
+      <p class="fan-note">Unofficial fan-made celebration created by Cookie Runners, for Cookie Runners.</p>
+      <p class="legal" id="disclaimerText"></p>
+      <p class="copyright">Made with friendship, teamwork, and a sprinkle of jelly &#10039;</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Embedded award data passed from Flask so JS can drive the ceremony client-side.
+    const CEREMONY_AWARDS = {{ awards|tojson|safe }};
+    const CEREMONY_FINALE_MESSAGE = {{ finale_message|tojson }};
+    const CEREMONY_DISCLAIMER = {{ disclaimer|tojson }};
+    const CEREMONY_NOW = {{ now|tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='ceremony.js') }}"></script>
+</body>
+</html>
