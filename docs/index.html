@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Runners Everlasting Kingdom — Unofficial Fan Project</title>
+  <meta name="description" content="An unofficial Cookie Run fan-community project celebrating milestones, timelines, and creative experiments by Cookie Runners.">
+  <style>
+    :root {
+      --navy: #0b0d17;
+      --midnight: #12142b;
+      --purple-deep: #2e1a47;
+      --purple: #5b2a72;
+      --gold: #d4a843;
+      --gold-soft: #e6c572;
+      --pink: #f0b8d6;
+      --text: #eee8d6;
+      --text-muted: #a89bb3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--midnight) 60%, var(--purple-deep) 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(11,13,23,0.85); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212,168,67,0.15);
+    }
+    nav { max-width: 1100px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; gap: 1.1rem; align-items: center; flex-wrap: wrap; }
+    nav a { color: var(--gold-soft); text-decoration: none; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em; padding: 0.2rem 0.35rem; border-radius: 6px; }
+    nav a:hover { color: var(--pink); background: rgba(212,168,67,0.08); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    .hero {
+      padding: 4rem 1.25rem 3.5rem;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(91,42,114,0.45) 0%, rgba(11,13,23,0.9) 70%);
+      border-bottom: 1px solid rgba(212,168,67,0.12);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+      background: linear-gradient(135deg, var(--gold-soft) 0%, var(--pink) 50%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 14px rgba(212,168,67,0.3));
+    }
+    .hero .subtitle { font-size: 1.1rem; color: var(--text-muted); margin-top: 0.6rem; }
+    .hero .tagline { color: var(--gold); font-weight: 700; letter-spacing: 0.12em; font-size: 0.85rem; margin-top: 1.2rem; text-transform: uppercase; }
+    section { margin: 3rem 0; }
+    section h2 { font-size: 1.6rem; font-weight: 700; color: var(--gold-soft); border-left: 4px solid var(--gold); padding-left: 0.7rem; margin-bottom: 1rem; }
+    section p { color: var(--text); }
+    .card-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,168,67,0.12);
+      border-radius: 16px; padding: 1.25rem 1.25rem 1.1rem;
+      backdrop-filter: blur(6px); transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .card:hover { border-color: rgba(212,168,67,0.35); transform: translateY(-2px); }
+    .card h3 { color: var(--pink); font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .card a { color: var(--gold-soft); text-decoration: none; }
+    .card a:hover { color: var(--pink); text-decoration: underline; }
+    .status-label { display: inline-block; padding: 0.15rem 0.45rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; margin-top: 0.35rem; }
+    .status-prototype { background: rgba(212,168,67,0.15); color: var(--gold-soft); }
+    .status-planned { background: rgba(240,184,214,0.12); color: var(--pink); }
+    .status-verified { background: rgba(212,168,67,0.15); color: #bfa76a; }
+    .disclaimer-box {
+      background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 12px; padding: 1rem 1.2rem; margin-top: 1.5rem;
+    }
+    .disclaimer-box h3 { color: var(--gold); margin-bottom: 0.3rem; font-size: 1.05rem; }
+    .disclaimer-box p { font-size: 0.92rem; }
+    code { background: rgba(212,168,67,0.1); padding: 0.15rem 0.35rem; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+    pre { background: rgba(0,0,0,0.35); border: 1px solid rgba(212,168,67,0.12); border-radius: 10px; padding: 1rem; overflow-x: auto; font-size: 0.9rem; }
+    footer { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid rgba(212,168,67,0.1); }
+    @media (max-width: 720px) {
+      .hero { padding: 3rem 1rem 2.5rem; }
+      .container { padding: 2rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary">
+      <a href="#welcome">Welcome</a>
+      <a href="#projects">Projects</a>
+      <a href="#install">Installation</a>
+      <a href="#contribute">Contribute</a>
+      <a href="#disclaimer">Disclaimer</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="welcome" aria-label="Welcome">
+    <div>
+      <p class="tagline">One Community. Many Adventures. An Everlasting Legacy.</p>
+      <h1>Cookie Runners Everlasting Kingdom</h1>
+      <p class="subtitle">An unofficial, community-made fan space celebrating Cookie Run — timelines, milestones, and the creativity of Cookie Runners everywhere.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="welcome-main" aria-label="Project identity">
+      <h2>Project Identity</h2>
+      <p>This site represents the <strong>Cookie Runners Everlasting Kingdom</strong> community. It is an <strong>unofficial fan project</strong> — not affiliated with, endorsed by, or sponsored by Devsisters Corporation or the official Cookie Run games. All Cookie Run names, characters, artwork, trademarks, and related intellectual property belong to their respective owners.</p>
+      <p>The repository is in a <strong>documentation / seed stage</strong>. Only what is committed and verified to run should be considered available. Items marked <span class="status-label status-planned">planned</span> or prototype are not guaranteed installable products.</p>
+    </section>
+
+    <section id="directory" aria-label="Project directory">
+      <h2>Project Directory</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>CookieVerse_Eternal_Ceremony_Flask</h3>
+          <p>Flask-based ceremony site prototype. <a href="CookieVerse_Eternal_Ceremony_Flask/README.md">README</a> · <a href="CookieVerse_Eternal_Ceremony_Flask/app.py">app.py</a> · <a href="CookieVerse_Eternal_Ceremony_Flask/requirements.txt">requirements</a></p>
+          <span class="status-label status-prototype">Prototype (verified)</span>
+        </article>
+        <article class="card">
+          <h3>everlasting-bloom</h3>
+          <p>Bloom and timeline projects. <a href="everlasting-bloom/README.md">README</a> · <a href="everlasting-bloom/app/">app/</a> · <a href="everlasting-bloom/lilyverse/">lilyverse</a></p>
+          <span class="status-label status-prototype">In progress</span>
+        </article>
+        <article class="card">
+          <h3>everlink-ssh</h3>
+          <p>SSH connection manager with CLI + Flask GUI. <a href="everlink-ssh/README.md">README</a> · <a href="everlink-ssh/CLI.md">CLI docs</a></p>
+          <span class="status-label status-prototype">Working prototype</span>
+        </article>
+        <article class="card">
+          <h3>shadowverse</h3>
+          <p>ShadowVerse fan project workspace with templates and static assets.</p>
+          <span class="status-label status-planned">In development</span>
+        </article>
+        <article class="card">
+          <h3>cookieverse</h3>
+          <p>Cookieverse workspace with app and database components. <a href="cookieverse/README.md">README</a> · <a href="cookieverse/app.py">app.py</a></p>
+          <span class="status-label status-prototype">Prototype exists</span>
+        </article>
+        <article class="card">
+          <h3>final_ceremony_ending</h3>
+          <p>Ceremony documentation and design notes. <a href="final_ceremony_ending/README.md">README</a> · <a href="final_ceremony_ending/PROMPT.MD">PROMPT</a></p>
+          <span class="status-label status-planned">Design / docs</span>
+        </article>
+        <article class="card">
+          <h3>golden-legends-2026</h3>
+          <p>Golden legends celebration workspace (React/Vite; no root README — check <code>package.json</code> and <code>dist/</code>).</p>
+          <span class="status-label status-planned">Seasonal / planned (React workspace; no root README)</span>
+        </article>
+        <article class="card">
+          <h3>ovenbreak-decade</h3>
+          <p>OvenBreak Decade (2016–2026) celebration workspace.</p>
+          <span class="status-label status-planned">Planned / seasonal</span>
+        </article>
+        <article class="card">
+          <h3>dawnbringer</h3>
+          <p>Dawnbringer fan workspace (index, scripts, styles).</p>
+          <span class="status-label status-planned">In development</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="install" aria-label="Installation">
+      <h2>Installation Guide</h2>
+      <p>These instructions apply to real, verified sub-projects. If a sub-project does not yet include <code>requirements.txt</code> or <code>app.py</code>, treat it as planned or prototype only.</p>
+
+      <h3>Prerequisites</h3>
+      <ul>
+        <li><strong>Python 3</strong> (3.9+ recommended)</li>
+        <li><strong>pip</strong> (included with Python)</li>
+        <li><strong>git</strong> (to clone)</li>
+        <li>A terminal — <strong>Termux</strong> on Android, or regular terminal on Ubuntu / Linux</li>
+      </ul>
+
+      <h3>Clone</h3>
+      <pre><code>git clone https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom.git
+cd CookieRunners-Everlasting-Kingdom</code></pre>
+
+      <h3>Virtual Environment</h3>
+      <pre><code># Ubuntu / Linux
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Android Termux
+python -m venv .venv
+source .venv/bin/activate</code></pre>
+
+      <h3>Dependencies</h3>
+      <pre><code># From the sub-project folder that has requirements.txt
+pip install -r requirements.txt
+
+# Example (Flask ceremony prototype):
+# Flask&gt;=3.0,&lt;4.0</code></pre>
+
+      <h3>Run (verified prototype example)</h3>
+      <pre><code># From the folder containing app.py
+python app.py
+
+# Default: http://127.0.0.1:5000</code></pre>
+      <p><strong>Note:</strong> Do not expose a development server directly to the public internet without production hosting and a security review. Some sub-projects are not yet installable — inspect each folder individually.</p>
+    </section>
+
+    <section id="contribute" aria-label="Contribute">
+      <h2>Contribution Guide</h2>
+      <ul>
+        <li><strong>Fork</strong> the repository and create a new branch from <code>main</code>.</li>
+        <li><strong>Add or improve</strong> documentation, code, assets, or celebration ideas.</li>
+        <li><strong>Test</strong> changes on Android/Termux or Ubuntu before submitting.</li>
+        <li><strong>Label clearly</strong> anything demo, prototype, or unverified.</li>
+        <li><strong>Open a pull request</strong> with a clear description.</li>
+        <li>Be respectful and inclusive. Cookie Runners of all backgrounds are welcome.</li>
+      </ul>
+      <p>Avoid claiming official affiliation with Devsisters. Preserve existing documentation. Do not invent achievements, dates, or endorsements.</p>
+    </section>
+
+    <section id="disclaimer" aria-label="Disclaimer">
+      <h2>Unofficial Fan-Project Disclaimer</h2>
+      <div class="disclaimer-box" aria-label="Disclaimer box">
+        <h3>Not official. Not sponsored.</h3>
+        <p><strong>Cookie Runners Everlasting Kingdom</strong> is an unofficial, community-made fan project. It is <strong>not</strong> affiliated with, endorsed by, or sponsored by <strong>Devsisters Corporation</strong> or the official <strong>Cookie Run</strong> games. All Cookie Run names, characters, artwork, trademarks, and related intellectual property belong to their respective owners.</p>
+        <p>This page is a landing site — not a finished, installable product. Project status is clearly labeled per folder (prototype / planned / verified). Celebrate the journey honestly.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Cookie Runners Everlasting Kingdom — Unofficial Fan Project</p>
+    <p>Slogan: <strong>One Community. Many Adventures. An Everlasting Legacy.</strong></p>
+    <p>Design identity: dark cinematic purple, soft pink and gold accents. Made with 🍪 by Cookie Runners, for Cookie Runners.</p>
+  </footer>
+</body>
+</html>
