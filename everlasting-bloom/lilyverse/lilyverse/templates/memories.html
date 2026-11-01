@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Eternal Memory Garden — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Eternal Memory Garden</h1>
+  <p>A respectful place to remember White Lily Cookie and offer your memories.</p>
+</section>
+
+<section class="garden-hero" aria-label="Tribute">
+  <div class="tribute-card card">
+    <h2>White Lily Cookie — Eternal Remembrance</h2>
+    <p>Ancient Hero. Her journey: truth, sacrifice, courage, friendship, hope.</p>
+    <div class="flower-offering" aria-label="Offer a flower">
+      <button id="offer-flower" class="btn btn-primary" onclick="offerFlower()">🌸 Offer a Flower</button>
+      <span class="flower-count" aria-live="polite">Flowers offered this session: <strong>{{ flower_count }}</strong></span>
+    </div>
+    <p class="tribute-quote">“I know what must be done.” — White Lily Cookie</p>
+    <p class="unofficial-note"><small>Unofficial fan tribute. Only verified canon quotes are used; no invented dialogue.</small></p>
+  </div>
+</section>
+
+<section class="visitor-messages" aria-label="Visitor messages">
+  <h2>Leave a Memory</h2>
+  <form method="POST" action="{{ url_for('memories') }}" class="message-form" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="name">Your name</label>
+    <input type="text" id="name" name="name" placeholder="Visitor" maxlength="80">
+    <label for="message">Your message</label>
+    <textarea id="message" name="message" rows="4" placeholder="Share a memory or tribute…" maxlength="500" required></textarea>
+    <button type="submit" class="btn btn-primary">Offer Memory</button>
+  </form>
+</section>
+
+<section class="message-gallery" aria-label="Message gallery">
+  <h2>Offered Memories</h2>
+  {% if messages %}
+    <div class="message-list">
+      {% for msg in messages %}
+      <article class="message-card card">
+        <div class="message-header"><strong>{{ msg.name }}</strong> <span class="message-time">{{ msg.at }}</span></div>
+        <p>{{ msg.message }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No memories offered yet. Be the first.</p>
+  {% endif %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function offerFlower() {
+  fetch("{{ url_for('offer_flower') }}", {
+    method: "POST",
+    headers: { "X-CSRFToken": "{{ csrf_token() }}", "Accept": "application/json" }
+  })
+  .then(r => r.json())
+  .then(data => {
+    document.querySelector('.flower-count strong').textContent = data.flowers;
+  })
+  .catch(() => {});
+}
+</script>
+{% endblock %}

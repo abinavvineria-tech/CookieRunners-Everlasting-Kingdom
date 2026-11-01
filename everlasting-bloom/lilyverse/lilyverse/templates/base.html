@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<title>{% block title %}LilyVerse{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="site-header">
+  <div class="unofficial-banner" role="banner">
+    <strong>Unofficial fan project.</strong> LilyVerse is not affiliated with or endorsed by Devsisters.
+    Cookie Run, Cookie Run: Kingdom, Cookie Run: OvenBreak, White Lily Cookie, Pure Vanilla Cookie, Mogra Cookie
+    and related names are trademarks of their respective owners.
+  </div>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="{{ url_for('index') }}" class="logo">🌸 <span>LilyVerse</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">☰</button>
+    <div class="nav-menu" id="nav-menu">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('timeline') }}">Timeline</a>
+      <a href="{{ url_for('characters') }}">Characters</a>
+      <a href="{{ url_for('pla') }}">PLA Memories</a>
+      <a href="{{ url_for('memories') }}">Memory Garden</a>
+      <a href="{{ url_for('timeline_add') }}">Add Milestone</a>
+      <span class="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle dark mode" tabindex="0" onclick="toggleTheme()">🌙</span>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <section class="flash-messages" aria-live="polite">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}" role="alert">{{ message }}</div>
+        {% endfor %}
+      </section>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div>© LilyVerse — unofficial fan archive. Not affiliated with Devsisters.</div>
+  <div><a href="{{ url_for('index') }}">Home</a> · <a href="{{ url_for('timeline') }}">Timeline</a> · <a href="{{ url_for('memories') }}">Memory Garden</a></div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

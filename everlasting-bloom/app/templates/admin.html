@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — EVERLASTING BLOOM</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--pearl:#f6f2eb;--lavender:#c5b8e8;--gold:#bfa15f;--navy:#1a1525;--glass:rgba(255,255,255,.35);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',system-ui,sans-serif;background:linear-gradient(170deg,#120e1a 0%,#1a1525 100%);color:var(--pearl);min-height:100vh;padding:40px 24px;line-height:1.65;}
+header{max-width:980px;margin:0 auto 24px;display:flex;align-items:center;justify-content:space-between;}
+header h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;}
+main{max-width:980px;margin:0 auto;}
+.card{background:rgba(255,255,255,.04);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:36px;margin-bottom:24px;}
+.card h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;margin-bottom:16px;color:var(--gold-soft);}
+ul{list-style:none;padding:0;}
+li{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+li form{display:inline;margin-left:12px;}
+button{padding:6px 14px;border-radius:8px;background:var(--gold);border:none;font-family:inherit;font-weight:600;color:#3a2800;cursor:pointer;font-size:.85rem;}
+</style>
+</head>
+<body>
+<header>
+  <h1>EVERLASTING BLOOM — Admin</h1>
+  <a href="/" style="color:var(--gold-soft);text-decoration:none;font-weight:500;font-size:.9rem;">← Back to site</a>
+</header>
+<main>
+  <article class="card">
+    <h2>Pending Letters</h2>
+    {% if pending %}
+      <ul>
+      {% for p in pending %}
+        <li>
+          <strong style="color:var(--lavender);">{{ p['author'] }}</strong> — <span style="font-size:.95rem;">{{ p['message'] }}</span>
+          <form method="POST">
+            <input type="hidden" name="approve" value="{{ p['id'] }}">
+            <button type="submit">Approve</button>
+          </form>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No pending letters.</p>
+    {% endif %}
+  </article>
+</main>
+</body>
+</html>

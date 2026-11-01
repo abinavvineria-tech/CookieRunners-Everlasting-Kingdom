@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Nomination Center — Cookie Runners{% endblock %}
+{% block content %}
+<section>
+  <h1>Nomination Center</h1>
+  <p class="subtitle">Nominate a legend, teammate, or unforgettable moment.</p>
+  <form action="/nominate" method="POST" style="max-width:600px;margin:2rem auto;background:rgba(255,255,255,0.03);border:1px solid rgba(200,165,86,0.2);border-radius:16px;padding:2rem;">
+    <label for="category_id" style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--gold);">Award Category</label>
+    <select name="category_id" id="category_id" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);margin-bottom:1.2rem;">
+      {% for cat in cats %}
+      <option value="{{ cat.id }}">{{ cat.name }}</option>
+      {% endfor %}
+    </select>
+    <label for="name" style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--gold);">Nominee Name</label>
+    <input type="text" name="name" id="name" placeholder="Character or team name" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);margin-bottom:1.2rem;" required>
+    <label for="nominated_by" style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--gold);">Nominated By</label>
+    <input type="text" name="nominated_by" id="nominated_by" placeholder="Your name (optional)" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);margin-bottom:1.2rem;">
+    <label for="year" style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--gold);">Edition Year</label>
+    <input type="number" name="year" id="year" value="2026" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);margin-bottom:1.5rem;">
+    <button type="submit" class="btn-gold">Submit Nomination</button>
+  </form>
+</section>
+{% endblock %}

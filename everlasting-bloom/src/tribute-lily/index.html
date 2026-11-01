@@ -1,56 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>White Lily Cookie Tribute</title>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #fafafa;
-            color: #444;
-            margin: 0;
-            padding: 2rem;
-            text-align: center;
-        }
-        h1 {
-            color: #8b0000; /* deep rose */
-        }
-        .lily {
-            width: 120px;
-            height: auto;
-            margin: 1rem auto;
-        }
-        .button {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            margin: 1rem;
-            background-color: #fff0f5;
-            color: #8b0000;
-            border: 2px solid #8b0000;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.2s, color 0.2s;
-        }
-        .button:hover {
-            background-color: #8b0000;
-            color: #fff;
-        }
-        .note {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 2rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<meta name="theme-color" content="#0f172a">
+<title>White Lily Cookie — Eternal Tribute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* EverUI design system — deep navy / gold / violet */
+  --navy-deep:#0b1028;--navy:#0f172a;--navy-mid:#141e35;--navy-light:#1a2542;
+  --gold:#e6b84a;--gold-soft:#c9983a;--gold-glow:#f0d988;
+  --violet:#9e7fd6;--cyan:#6ecbd6;--rose-soft:#e88aa0;
+  --cream:#f6f2eb;--cream-dim:#eae6dc;--white:#ffffff;
+  --text-primary:#f0ebe4;--text-secondary:#b0a898;--text-muted:#7a706a;
+  --border-subtle:rgba(230,184,74,0.15);--border-glass:rgba(255,255,255,0.08);
+  --shadow-card:0 20px 50px rgba(11,16,40,0.55),0 4px 14px rgba(11,16,40,0.3);
+  --shadow-glow:0 0 40px rgba(230,184,74,0.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:'Outfit',system-ui,sans-serif;
+  background:linear-gradient(170deg,#0b1028 0%,#0f172a 40%,#111b30 70%,#0b1028 100%);
+  color:var(--text-primary);
+  min-height:100vh;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* Ambient background orbs */
+.bg-orb{
+  position:fixed;pointer-events:none;z-index:0;
+  border-radius:50%;filter:blur(100px);opacity:.55;mix-blend-mode:screen;
+}
+.orb-1{width:600px;height:600px;background:radial-gradient(circle,#9e7fd6 0%,transparent 70%);top:-120px;left:-120px;opacity:.35}
+.orb-2{width:500px;height:500px;background:radial-gradient(circle,#6ecbd6 0%,transparent 70%);bottom:-80px;right:-80px;opacity:.3}
+.orb-3{width:400px;height:400px;background:radial-gradient(circle,#e6b84a 0%,transparent 70%);top:40%;left:60%;opacity:.18}
+
+/* Glass header */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(15,23,42,0.65);backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border-bottom:1px solid var(--border-glass);
+  transition:background .3s ease;
+}
+.site-header:hover{background:rgba(15,23,42,0.78)}
+nav{
+  max-width:980px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.logo{
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.25rem;
+  color:var(--text-primary);text-decoration:none;letter-spacing:0.04em;
+  display:flex;align-items:center;gap:10px;
+}
+.logo-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 20px rgba(230,184,74,.35),inset 0 0 20px rgba(255,255,255,.25);
+}
+.logo-icon span{font-size:1.1rem;line-height:1}
+nav a{
+  color:var(--text-secondary);text-decoration:none;font-size:.85rem;font-weight:500;
+  padding:7px 14px;border-radius:999px;transition:all .2s ease;
+  position:relative;overflow:hidden;
+}
+nav a::after{
+  content:'';position:absolute;bottom:4px;left:50%;width:0;height:2px;background:var(--gold);border-radius:999px;
+  transition:width .25s ease,left .25s ease;
+}
+nav a:hover,nav a.active{color:var(--text-primary)}
+nav a:hover::after,nav a.active::after{width:60%;left:20%}
+
+/* Hero */
+.hero{
+  position:relative;z-index:10;max-width:980px;margin:0 auto;padding:120px 24px 100px;
+  text-align:center;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:400;font-size:clamp(3rem,10vw,6rem);line-height:1.05;letter-spacing:-0.03em;
+  background:linear-gradient(135deg,#f0ebe4 20%,#e6b84a 50%,#c9983a 75%,#f0ebe4 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:0 0 80px rgba(230,184,74,.15);
+}
+.hero .subtitle{
+  font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.45rem);
+  color:var(--gold);margin-top:18px;letter-spacing:0.02em;
+  text-shadow:0 0 40px rgba(230,184,74,.2);
+}
+.hero .description{
+  max-width:560px;margin:28px auto 0;color:var(--text-secondary);font-size:1.05rem;line-height:1.75;
+}
+/* Glass divider */
+.divider-line{
+  width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:36px auto 0;opacity:.6;
+}
+
+/* Card */
+.card-glass{
+  position:relative;z-index:10;max-width:700px;margin:0 auto 48px;
+  background:rgba(255,255,255,.035);backdrop-filter:blur(24px) saturate(130%);
+  -webkit-backdrop-filter:blur(24px) saturate(130%);
+  border:1px solid var(--border-glass);border-radius:24px;
+  padding:48px 36px;box-shadow:var(--shadow-card),var(--shadow-glow);
+  overflow:hidden;
+}
+.card-glass::before{
+  content:'';position:absolute;inset:0;border-radius:24px;padding:1.2px;
+  background:linear-gradient(135deg,rgba(230,184,74,.35),rgba(158,127,214,.2),rgba(110,203,214,.15),rgba(230,184,74,.35));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+.card-glass h2{
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.8rem;
+  color:var(--cream);margin-bottom:24px;letter-spacing:-0.01em;
+}
+/* Principles */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;}
+.principle{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;
+  padding:22px 20px;transition:transform .2s ease,background .2s ease,border-color .2s ease;
+}
+.principle:hover{transform:translateY(-3px);background:rgba(255,255,255,.06);border-color:rgba(230,184,74,.15)}
+.principle .num{
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:600;color:var(--gold);
+  line-height:1;margin-bottom:6px;
+}
+.principle h3{font-size:1.05rem;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+.principle p{font-size:.9rem;color:var(--text-secondary);line-height:1.55;}
+
+/* Quotes */
+.quotes{margin-top:8px;}
+.quote-block{
+  position:relative;padding:22px 24px 22px 28px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(230,184,74,.05),rgba(255,255,255,.02));
+  border-left:3px solid var(--gold);margin-bottom:14px;
+}
+.quote-block:last-child{margin-bottom:0}
+.quote-text{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.15rem;color:var(--cream);line-height:1.45;margin-bottom:8px;}
+.quote-source{font-size:.78rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;}
+
+/* Tribute image / illustration */
+.illustration{
+  display:flex;align-items:center;justify-content:center;gap:10px;margin:36px 0 8px;
+}
+.illustration .flower{
+  width:80px;height:80px;position:relative;
+  animation:floatFlower 6s ease-in-out infinite;
+}
+@keyframes floatFlower{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  33%{transform:translateY(-8px) rotate(2deg)}
+  66%{transform:translateY(4px) rotate(-1deg)}
+}
+.illustration .flower .petal{
+  position:absolute;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#fff8e8,#e8d4b0);
+  box-shadow:0 4px 14px rgba(230,184,74,.35);
+}
+.illustration .flower .petal:nth-child(1){top:10px;left:14px;transform:rotate(-30deg)}
+.illustration .flower .petal:nth-child(2){top:8px;left:36px;transform:rotate(30deg)}
+.illustration .flower .petal:nth-child(3){top:26px;left:26px;transform:rotate(0deg)}
+.illustration .flower .center{position:absolute;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#ffd75a,#e6b84a);top:34px;left:33px;box-shadow:0 0 12px rgba(230,184,74,.5)}
+
+/* Button */
+.btn-glass{
+  display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:14px;
+  font-family:'Outfit',system-ui,sans-serif;font-weight:600;font-size:.95rem;color:#3a2800;
+  background:linear-gradient(135deg,var(--gold-glow),var(--gold));text-decoration:none;
+  box-shadow:0 6px 24px rgba(230,184,74,.3),0 1px 3px rgba(230,184,74,.15);
+  transition:all .2s ease;position:relative;overflow:hidden;border:none;cursor:pointer;
+}
+.btn-glass:hover{
+  transform:translateY(-2px);box-shadow:0 12px 32px rgba(230,184,74,.45),0 4px 10px rgba(230,184,74,.2);
+  filter:brightness(1.08);
+}
+.btn-glass:active{transform:translateY(0);box-shadow:0 4px 14px rgba(230,184,74,.25)}
+
+/* Unofficial banner */
+.unofficial-banner{
+  background:linear-gradient(90deg,rgba(230,184,74,.08) 0%,rgba(158,127,214,.08) 50%,rgba(110,203,214,.08) 100%);
+  border-bottom:1px solid var(--border-glass);
+  padding:10px 24px;text-align:center;font-size:.82rem;color:var(--text-secondary);
+}
+.unofficial-banner strong{color:var(--gold-soft);font-weight:600;}
+
+/* Footer */
+.site-footer{
+  position:relative;z-index:10;max-width:980px;margin:0 auto;padding:48px 24px 36px;
+  border-top:1px solid var(--border-glass);display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;color:var(--text-muted);font-size:.82rem;
+}
+.site-footer a{color:var(--gold);text-decoration:none;font-weight:500;transition:color .2s}
+.site-footer a:hover{color:var(--gold-glow)}
+
+/* Responsive */
+@media (max-width:640px){
+  .hero{padding:80px 20px 60px}
+  .card-glass{padding:32px 24px;margin:0 16px 40px;border-radius:20px}
+  nav{padding:12px 16px;gap:8px}
+  .site-footer{flex-direction:column;text-align:center;padding-top:32px}
+  .illustration .flower{width:60px;height:60px}
+  .illustration .flower .petal{width:22px;height:22px}
+}
+</style>
 </head>
 <body>
+<div class="bg-orb orb-1" aria-hidden="true"></div>
+<div class="bg-orb orb-2" aria-hidden="true"></div>
+<div class="bg-orb orb-3" aria-hidden="true"></div>
+
+<header class="site-header">
+  <nav aria-label="Main">
+    <a href="#" class="logo" aria-label="White Lily Tribute Home">
+      <div class="logo-icon" aria-hidden="true"><span>🌸</span></div>
+      <span>White Lily Tribute</span>
+    </a>
+    <a href="#tribute">Tribute</a>
+    <a href="#principles">Principles</a>
+    <a href="WHITE_LILY_REMEMBRANCE.md" aria-label="Read full remembrance">Read Full</a>
+  </nav>
+</header>
+
+<div class="unofficial-banner">
+  <strong>Unofficial fan tribute</strong> — Not affiliated with or endorsed by Devsisters. Cookie Run trademarks belong to their owners.
+</div>
+
+<main>
+  <section class="hero" id="top">
     <h1>White Lily Cookie</h1>
-    <img class="lily" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 C30 10, 20 30, 20 50 C20 70, 30 90, 50 90 C70 90, 80 70, 80 50 C80 30, 70 10, 50 10 Z' fill='%23fff0f5'/%3E%3Cpath d='M50 20 C40 20, 35 30, 35 45 C35 60, 40 70, 50 70 C60 70, 65 60, 65 45 C65 30, 60 20, 50 20 Z' fill='%23ffe4e1'/%3E%3Cpath d='M30 50 C20 50, 15 60, 15 70 C15 80, 20 90, 30 90 C40 90, 45 80, 45 70 C45 60, 40 50, 30 50 Z' fill='%23fff0f5'/%3E%3Cpath d='M70 50 C80 50, 85 60, 85 70 C85 80, 80 90, 70 90 C60 90, 55 80, 55 70 C55 60, 60 50, 70 50 Z' fill='%23fff0f5'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23ffb6c1'/%3E%3C/svg%3E" alt="White Lily">
-    <p>Unofficial fan tribute (not Devsisters)</p>
-    <a href="WHITE_LILY_REMEMBRANCE.md" class="button">Read the Remembrance</a>
-    <p class="note">
-        Honoring the legend of White Lily Cookie: truth, sacrifice, courage, friendship, hope.<br>
-        May her petals forever remind us to walk with integrity and compassion.
+    <p class="subtitle">Ancient Hero &mdash; Truth, Sacrifice, Courage, Friendship, Hope</p>
+    <p class="description">
+      A memorial tribute to the legend of White Lily Cookie. May her petals forever remind us to walk with integrity and compassion.
     </p>
+    <div class="divider-line" aria-hidden="true"></div>
+  </section>
+
+  <section class="illustration" aria-label="Decorative lily illustration" aria-hidden="true">
+    <div class="flower">
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="center"></div>
+    </div>
+  </section>
+
+  <article class="card-glass" id="tribute">
+    <h2>The Remembrance</h2>
+    <p style="color:var(--text-secondary);margin-bottom:20px;font-size:.95rem;line-height:1.7;">
+      Unofficial fan tribute honoring the story and spirit of White Lily Cookie — Ancient Hero of the CookieVerse. This tribute preserves verified canon and avoids invented dialogue.
+    </p>
+
+    <div class="quotes">
+      <blockquote class="quote-block">
+        <p class="quote-text">“I know what must be done.”</p>
+        <p class="quote-source">Verified Canon Quote</p>
+      </blockquote>
+      <blockquote class="quote-block">
+        <p class="quote-text">“I will never forgive what I've done.”</p>
+        <p class="quote-source">Verified Canon Quote</p>
+      </blockquote>
+    </div>
+
+    <a href="WHITE_LILY_REMEMBRANCE.md" class="btn-glass" aria-label="Read the full remembrance">
+      <span>📖 Read the Remembrance</span>
+    </a>
+  </article>
+
+  <article class="card-glass" id="principles">
+    <h2>Eight Principles of White Lily's Light</h2>
+    <div class="principles">
+      <div class="principle"><div class="num">1</div><h3>Truth</h3><p>Guides every step, even when the path is dark.</p></div>
+      <div class="principle"><div class="num">2</div><h3>Sacrifice</h3><p>Made not for glory, but for those we love.</p></div>
+      <div class="principle"><div class="num">3</div><h3>Courage</h3><p>Blooms in the heart that refuses to yield.</p></div>
+      <div class="principle"><div class="num">4</div><h3>Friendship</h3><p>The root that steadies the stem through storms.</p></div>
+      <div class="principle"><div class="num">5</div><h3>Hope</h3><p>The seed that never ceases to sprout anew.</p></div>
+      <div class="principle"><div class="num">6</div><h3>Honor</h3><p>Kept in silence when words would break the vow.</p></div>
+      <div class="principle"><div class="num">7</div><h3>Redemption</h3><p>Grows from accepting the past, not denying it.</p></div>
+      <div class="principle"><div class="num">8</div><h3>Eternity</h3><p>Found in the moments we share, not the span of years.</p></div>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div>White Lily Cookie — Unofficial Fan Tribute</div>
+  <div>Not affiliated with Devsisters. Every interface deserves to bloom. 🌸</div>
+</footer>
 </body>
 </html>

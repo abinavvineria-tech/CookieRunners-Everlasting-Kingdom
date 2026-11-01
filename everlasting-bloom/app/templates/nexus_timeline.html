@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width:1100px;margin:0 auto;padding:0 24px 60px;">
+  <section class="hero" style="padding-top:60px; padding-bottom:30px;">
+    <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;letter-spacing:-.03em;color:#F3F6FF;">Journey Timeline</h1>
+    <p class="subtitle" style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:#55C9F5;font-size:1.1rem;">Every milestone, preserved in time.</p>
+  </section>
+
+  <div style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap; align-items:center;">
+    <a href="{{ url_for('timeline') }}" style="padding:8px 16px; border-radius:10px; background:rgba(245,199,110,0.1); border:1px solid rgba(245,199,110,0.2); color:#F5C76E; text-decoration:none; font-size:.82rem; font-weight:600;">Classic View</a>
+    <span style="color:rgba(243,246,255,0.45); font-size:.8rem;">Interactive timeline loaded from database.</span>
+  </div>
+
+  <article class="card-glass" style="margin-bottom:30px;">
+    <h2>Timeline Engine</h2>
+    <p>The timeline engine pulls verified milestones from the database. Each event carries: unique ID, title, date, category (Legend / Chronicle / Memory / Timeline), character association, optional image reference, tags, and favourite status. All historical dates come from verified sources — never silently changed or fabricated.</p>
+  </article>
+
+  <section aria-label="Milestones" style="margin-top:20px;">
+    <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.3rem;color:#F3F6FF;margin-bottom:14px;">Recorded Milestones</h3>
+    <div style="display:grid; gap:16px;">
+    {% for m in milestones %}
+      <article class="card-glass" style="margin-bottom:0; padding:22px 26px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+          <span style="font-size:.72rem; font-weight:700; color:#55C9F5; letter-spacing:.06em;">{{ m.date }}</span>
+          <span style="font-size:.7rem; padding:3px 9px; border-radius:999px; background:rgba(245,199,110,0.08); color:#F5C76E; border:1px solid rgba(245,199,110,0.15);">{{ m.category }}</span>
+        </div>
+        <h4 style="font-size:1.05rem; color:#F3F6FF; font-weight:600; margin-bottom:4px;">{{ m.title }}</h4>
+        <p style="font-size:.85rem; color:rgba(246,242,235,0.7); line-height:1.5;">Character: <strong style="color:#F58FB9;">{{ m.character }}</strong> · Source: {{ m.source }}</p>
+      </article>
+    {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Diagnostics · EverLink SSH{% endblock %}
+{% block body_class %}page-diagnostics{% endblock %}
+
+{% block content %}
+<section class="card">
+  <div class="card-header"><h2>System Diagnostics</h2></div>
+
+  <h3>EverLink SSH</h3>
+  <p>Version: <span class="mono">{{ info.everlink_version }}</span></p>
+  <p>Python: <span class="mono">{{ info.python.version }}</span> (<span class="mono">{{ info.python.executable }}</span>)</p>
+
+  <h3>OpenSSH</h3>
+  <ul class="kv">
+    <li><strong>ssh:</strong> <span class="mono">{{ info.openssh.ssh or 'NOT FOUND' }}</span></li>
+    <li><strong>ssh-keygen:</strong> <span class="mono">{{ info.openssh['ssh-keygen'] or 'NOT FOUND' }}</span></li>
+    <li><strong>ssh-add:</strong> <span class="mono">{{ info.openssh['ssh-add'] or 'NOT FOUND' }}</span></li>
+  </ul>
+  <p class="{{ 'ok' if info.openssh.ssh_available else 'warn' }}">{{ 'OpenSSH client is available.' if info.openssh.ssh_available else 'OpenSSH client is not installed.' }}</p>
+
+  <h3>Dependencies</h3>
+  <ul class="kv">
+    {% for d in info.dependencies %}
+    <li><strong>{{ d.module }}:</strong> <span class="{{ 'ok' if d.available else 'warn' }}">{{ 'available' if d.available else 'MISSING' }}</span></li>
+    {% endfor %}
+  </ul>
+
+  <h3>Paths</h3>
+  <ul class="kv mono">
+    {% for k, v in info.paths.items() %}
+    <li><strong>{{ k }}:</strong> {{ v }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Permissions</h3>
+  <table>
+    <thead><tr><th>Path</th><th>Exists</th><th>Readable</th><th>Writable</th><th>Mode</th></tr></thead>
+    <tbody>
+      {% for c in info.permissions %}
+      <tr>
+        <td class="mono">{{ c.path }}</td>
+        <td>{{ c.exists }}</td>
+        <td>{{ c.readable }}</td>
+        <td>{{ c.writable }}</td>
+        <td class="mono">{{ c.mode }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <div class="card-header"><h3>TCP Reachability Check</h3></div>
+  <form method="get" class="reach-form">
+    <div class="form-row">
+      <label for="check_host">Host</label>
+      <input type="text" id="check_host" name="check_host" placeholder="example.com" value="{{ request.args.get('check_host','') }}">
+    </div>
+    <div class="form-row">
+      <label for="check_port">Port</label>
+      <input type="number" id="check_port" name="check_port" value="{{ request.args.get('check_port', 22) }}" min="1" max="65535">
+    </div>
+    <button type="submit" class="btn btn-primary">Check</button>
+  </form>
+
+  {% if reachable is not none %}
+    <div class="result {{ 'ok' if reachable else 'warn' }}">
+      <strong>Result:</strong> {{ reach_message }}
+    </div>
+    <p class="hint">TCP reachability is not the same as successful SSH authentication. A reachable port only means the host accepted the connection.</p>
+  {% endif %}
+</section>
+{% endblock %}

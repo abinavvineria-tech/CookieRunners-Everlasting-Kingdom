@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Hosts · EverLink SSH{% endblock %}
+{% block body_class %}page-hosts{% endblock %}
+
+{% block content %}
+<section class="card">
+  <div class="card-header">
+    <h2>Host Manager</h2>
+    <a href="{{ url_for('host_add') }}" class="btn btn-primary">Add Host</a>
+  </div>
+
+  <form method="get" class="search-form">
+    <input type="search" name="search" value="{{ search }}" placeholder="Search hosts…" class="search-input">
+    <button type="submit" class="btn btn-outline">Search</button>
+    {% if search %}
+      <a href="{{ url_for('hosts') }}" class="btn btn-outline">Clear</a>
+    {% endif %}
+  </form>
+
+  {% if hosts %}
+    <table class="host-table">
+      <thead>
+        <tr><th>Name</th><th>User</th><th>Host</th><th>Port</th><th>Identity</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        {% for h in hosts %}
+        <tr>
+          <td><strong>{{ h.name }}</strong></td>
+          <td>{{ h.username }}</td>
+          <td>{{ h.hostname }}</td>
+          <td>{{ h.port }}</td>
+          <td class="mono">{{ h.identity_file or '(default key)' }}</td>
+          <td class="actions">
+            <a href="{{ url_for('host_edit', host_id=h.id) }}" class="btn btn-outline btn-sm">Edit</a>
+            <form action="{{ url_for('host_delete', host_id=h.id) }}" method="post" style="display:inline">
+              {{ csrf_field() }}
+              <button type="submit" class="btn btn-outline btn-sm btn-danger" onclick="return confirm('Delete profile {{ h.name }}?')">Delete</button>
+            </form>
+            <form action="{{ url_for('host_connect', host_id=h.id) }}" method="post" style="display:inline">
+              {{ csrf_field() }}
+              <button type="submit" class="btn btn-primary btn-sm">Connect</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="muted">No saved hosts. Add one below.</p>
+  {% endif %}
+</section>
+{% endblock %}

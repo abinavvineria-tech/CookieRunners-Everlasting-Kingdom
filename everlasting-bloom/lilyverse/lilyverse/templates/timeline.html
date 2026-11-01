@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Timeline — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Interactive Timeline</h1>
+  <p>Chronological milestone cards. Search, filter, sort, and expand details.</p>
+</section>
+
+<section class="controls" aria-label="Timeline controls">
+  <form method="GET" action="{{ url_for('timeline') }}" class="control-row" id="timeline-form">
+    <label for="q">Search title or description</label>
+    <input type="search" id="q" name="q" value="{{ query }}" placeholder="Search…">
+    <label for="character">Character</label>
+    <select id="character" name="character">
+      <option value="">All</option>
+      {% for name, info in characters.items() %}
+        <option value="{{ name }}" {% if selected_character == name %}selected{% endif %}>{{ name }}</option>
+      {% endfor %}
+    </select>
+    <label for="category">Category</label>
+    <select id="category" name="category">
+      <option value="">All</option>
+      {% for cat in categories %}
+        <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+      {% endfor %}
+    </select>
+    <label for="sort">Sort</label>
+    <select id="sort" name="sort">
+      <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>Oldest first</option>
+      <option value="newest" {% if sort == 'newest' %}selected{% endif %}>Newest first</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Apply</button>
+    <a href="{{ url_for('timeline') }}" class="btn btn-outline">Clear</a>
+  </form>
+</section>
+
+<section class="timeline-list" aria-label="Milestones">
+  {% if events %}
+    <div class="cards">
+      {% for e in events %}
+      <article class="card" aria-label="Milestone: {{ e.title }}">
+        <div class="meta">
+          <span class="date">{{ e.date or 'Undated' }}</span>
+          <span class="badge badge-{{ e.entry_type|replace(' ', '-') }}">{{ e.entry_type }}</span>
+          <span class="badge badge-char">{{ e.character }}</span>
+        </div>
+        <h3>{{ e.title }}</h3>
+        <p class="desc">{{ e.description }}</p>
+        <div class="card-meta-small">
+          <span>Category: {{ e.category }}</span>
+          <span>Source: {{ e.source }}</span>
+        </div>
+        <div class="card-actions">
+          <a href="{{ url_for('timeline_detail', milestone_id=e.id) }}" class="btn btn-sm">Details</a>
+          <a href="{{ url_for('timeline_edit', milestone_id=e.id) }}" class="btn btn-sm btn-outline">Edit</a>
+          <form method="POST" action="{{ url_for('timeline_delete', milestone_id=e.id) }}" class="inline" onsubmit="return confirm('Delete this milestone?')">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-sm btn-delete">Delete</button>
+          </form>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="count">{{ events|length }} milestone(s) displayed.</p>
+  {% else %}
+    <p>No milestones match your filters. <a href="{{ url_for('timeline_add') }}">Add one.</a></p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Characters — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Character Archives</h1>
+  <p>Biographies, milestones, and memories for each character.</p>
+</section>
+
+<section class="char-grid" aria-label="Character profiles">
+  {% if characters %}
+    <div class="cards">
+      {% for name, info in characters.items() %}
+      <article class="card" aria-label="Character: {{ name }}">
+        <h3>{{ name }}</h3>
+        <p class="role">{{ info.role }}</p>
+        <p>{{ info.description }}</p>
+        <p class="origin"><small>Origin: {{ info.origin }}</small></p>
+        <a href="{{ url_for('character_detail', name=name) }}" class="btn btn-sm">View {{ name }}</a>
+      </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No character profiles defined.</p>
+  {% endif %}
+</section>
+{% endblock %}

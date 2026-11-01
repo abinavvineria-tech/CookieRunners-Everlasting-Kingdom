@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Everlasting Garden</h1>
+  <p class="subtitle">Plant a flower in memory of White Lily Cookie</p>
+</section>
+
+<article class="card-glass">
+  <h2>Interactive Garden</h2>
+  <p>Click anywhere in the garden below to plant a white lily or lavender bloom. Each flower is saved and displayed for all visitors. Let the garden grow with every act of remembrance.</p>
+  <form method="POST" style="margin-top:24px;">
+    <label for="color" style="font-size:.9rem;color:rgba(246,242,235,.8);">Flower color</label>
+    <select name="color" id="color" style="margin:8px 0;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:var(--pearl);font-family:inherit;">
+      <option value="#f6f2eb">Pearl White</option>
+      <option value="#c5b8e8">Lavender</option>
+      <option value="#fff8e8">Lily White</option>
+      <option value="#e8d4b0">Soft Gold</option>
+    </select><br>
+    <button type="submit" class="btn-glass">Plant in Garden</button>
+  </form>
+</article>
+
+<article class="card-glass" style="min-height:300px;position:relative;overflow:hidden;">
+  <h2>Live Garden</h2>
+  <div id="garden-canvas" style="width:100%;height:300px;position:relative;background:linear-gradient(135deg,#181228,#120e1a);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);">
+    {% for f in flowers %}
+      <div style="position:absolute;width:20px;height:20px;border-radius:50%;background:{{ f['color'] }};box-shadow:0 0 14px {{ f['color'] }};left:{{ f['x'] }}%;top:{{ f['y'] }}%;opacity:.85;transition:transform .3s;"></div>
+    {% endfor %}
+  </div>
+  <p style="margin-top:14px;font-size:.85rem;color:rgba(246,242,235,.5);">Flowers planted: {{ flowers|length }}</p>
+</article>
+{% endblock %}

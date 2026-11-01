@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Timeline</h1>
+  <p class="subtitle">2023 — 2026, with August 12, 2026 highlighted</p>
+</section>
+
+<article class="card-glass">
+  <h2>Journey Through Time</h2>
+  <p>This timeline preserves verified milestones from White Lily Cookie's journey within the Cookie Run: Kingdom universe and the community tribute that followed. August 12, 2026 is highlighted as the launch of EVERLASTING BLOOM.</p>
+</article>
+
+<article class="card-glass">
+  <h2>Milestones</h2>
+  {% if milestones %}
+    <ul style="list-style:none;padding:0;">
+    {% for m in milestones %}
+      <li style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06);{
+        'box-shadow:inset 4px 0 0 var(--gold-soft);padding-left:14px;border-radius:8px;background:rgba(191,161,95,.05);' if m['date'] == '2026-08-12' else ''
+      }">
+        <div style="font-weight:600;color:var(--gold-soft);font-size:.95rem;">{{ m['date'] or 'Undated' }}</div>
+        <div style="font-size:1.05rem;color:var(--pearl);font-weight:500;margin:4px 0;">{{ m['title'] }}</div>
+        <div style="font-size:.85rem;color:rgba(246,242,235,.6);">{{ m['category'] }} — {{ m['character'] }} — {{ m['source'] }}</div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No milestones recorded.</p>
+  {% endif %}
+</article>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Awards — Cookie Runners Golden Ballon d'Or{% endblock %}
+{% block content %}
+<section>
+  <h1>Award Categories</h1>
+  <p class="subtitle">Every award tells a story of legend, heart, and legacy.</p>
+  <div class="search-bar">
+    <input type="text" id="catSearch" placeholder="Search categories..." oninput="filterCategory(this.value)">
+  </div>
+  {% for item in data %}
+  <section class="category-section" id="cat-{{ item.category.slug }}" style="margin-top:5rem;border-top:2px solid rgba(200,165,86,0.15);padding-top:3rem;">
+    <h2>{{ item.category.name }}</h2>
+    <p style="color:var(--text-muted);font-style:italic;font-size:0.95rem;">{{ item.category.description }}</p>
+    {% if item.winners %}
+    <div class="card-grid" style="margin-top:2rem;">
+      {% for w in item.winners %}
+      <article class="card">
+        <img src="{{ w.image_path }}" alt="{{ w.name }}" onerror="this.style.display='none';this.parentElement.querySelector('.card-name').innerText='{{ w.name }}';">
+        <h3>{{ w.name }}</h3>
+        <p class="role">{{ w.role_text }}</p>
+        <p>{{ w.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p style="color:var(--text-muted);margin-top:1rem;font-style:italic;">No winners yet for this award. Future editions will add legends here.</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+</section>
+<script>
+function filterCategory(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.category-section').forEach(section => {
+    const text = section.textContent.toLowerCase();
+    section.style.display = text.includes(q) ? 'block' : 'none';
+  });
+}
+</script>
+{% endblock %}

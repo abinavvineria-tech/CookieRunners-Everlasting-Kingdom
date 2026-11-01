@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}EverLink SSH{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <header class="shell-header">
+    <div class="shell-header-inner">
+      <a href="{{ url_for('dashboard') }}" class="brand">EverLink<span class="brand-dot">SSH</span></a>
+      <nav class="shell-nav">
+        <a href="{{ url_for('dashboard') }}" class="nav-link {% if request.endpoint=='dashboard' %}active{% endif %}">Dashboard</a>
+        <a href="{{ url_for('hosts') }}" class="nav-link {% if request.endpoint=='hosts' %}active{% endif %}">Hosts</a>
+        <a href="{{ url_for('keys') }}" class="nav-link {% if request.endpoint=='keys' %}active{% endif %}">SSH Keys</a>
+        <a href="{{ url_for('diagnostics') }}" class="nav-link {% if request.endpoint=='diagnostics' %}active{% endif %}">Diagnostics</a>
+        <a href="{{ url_for('settings') }}" class="nav-link {% if request.endpoint=='settings' %}active{% endif %}">Settings</a>
+      </nav>
+      <div class="shell-status">
+        <span class="pill {{ 'ok' if ssh_available else 'warn' }}">
+          {{ 'OpenSSH ready' if ssh_available else 'OpenSSH not found' }}
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell-main">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <section class="flash-container">
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </section>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="shell-footer">
+    <div class="shell-footer-inner">
+      <span>EverLink SSH v{{ version() }}</span>
+      <span class="muted">Local-only · Unofficial fan project · Not affiliated with Devsisters</span>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

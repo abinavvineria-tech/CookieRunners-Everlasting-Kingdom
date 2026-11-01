@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if mode=='edit' else 'Add' }} Host · EverLink SSH{% endblock %}
+{% block body_class %}page-host-form{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+  <div class="card-header">
+    <h2>{{ 'Edit' if mode=='edit' else 'Add' }} Host Profile</h2>
+    <a href="{{ url_for('hosts') }}" class="btn btn-outline">Back to hosts</a>
+  </div>
+
+  <form method="post" novalidate>
+    {{ csrf_field() }}
+    <div class="form-row">
+      <label for="name">Profile name <span class="req">*</span></label>
+      <input type="text" id="name" name="name" value="{{ (form.name if form else host.name) if (form or host) else '' }}" required>
+      <p class="hint">A short name to identify this connection.</p>
+    </div>
+
+    <div class="form-row">
+      <label for="username">Username <span class="req">*</span></label>
+      <input type="text" id="username" name="username" value="{{ (form.username if form else host.username) if (form or host) else '' }}" required>
+      <p class="hint">SSH login name on the remote host.</p>
+    </div>
+
+    <div class="form-row">
+      <label for="hostname">Hostname / IP <span class="req">*</span></label>
+      <input type="text" id="hostname" name="hostname" value="{{ (form.hostname if form else host.hostname) if (form or host) else '' }}" placeholder="example.com" required>
+      <p class="hint">Hostname or IP address.</p>
+    </div>
+
+    <div class="form-row">
+      <label for="port">Port</label>
+      <input type="number" id="port" name="port" value="{{ (form.port if form else host.port) if (form or host) else settings().default_ssh_port }}" min="1" max="65535">
+      <p class="hint">TCP port for SSH (default {{ settings().default_ssh_port }}).</p>
+    </div>
+
+    <div class="form-row">
+      <label for="identity_file">Identity file (optional)</label>
+      <input type="text" id="identity_file" name="identity_file" value="{{ (form.identity_file if form else host.identity_file) if (form or host) else '' }}" placeholder="/data/data/com.termux/files/home/.ssh/id_ed25519">
+      <p class="hint">Absolute path to your private key. Leave blank to use the default key.</p>
+    </div>
+
+    <div class="form-actions">
+      {% if mode=='edit' %}
+        <a href="{{ url_for('host_delete', host_id=host.id) }}" class="btn btn-outline btn-danger" onclick="return confirm('Delete profile {{ host.name }}?')">Delete</a>
+      {% endif %}
+      <button type="submit" class="btn btn-primary">{{ 'Save changes' if mode=='edit' else 'Add host' }}</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

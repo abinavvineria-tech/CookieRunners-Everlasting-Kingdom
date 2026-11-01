@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · EverLink SSH{% endblock %}
+{% block body_class %}page-dashboard{% endblock %}
+
+{% block content %}
+<section class="card hero">
+  <h1>EverLink SSH</h1>
+  <p class="subtitle">One Connection. Two Interfaces. Endless Possibilities.</p>
+  <div class="hero-actions">
+    <a href="{{ url_for('hosts') }}" class="btn btn-primary">Manage Hosts</a>
+    <a href="{{ url_for('keys') }}" class="btn">SSH Keys</a>
+  </div>
+</section>
+
+<section class="grid stats">
+  <div class="stat-card">
+    <div class="stat-label">Saved hosts</div>
+    <div class="stat-value">{{ host_count }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">OpenSSH</div>
+    <div class="stat-value {{ 'ok' if ssh_available else 'warn' }}">{{ 'Available' if ssh_available else 'Not found' }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Default port</div>
+    <div class="stat-value">{{ settings().default_ssh_port }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">GUI bound to</div>
+    <div class="stat-value">{{ settings().web_host }}:{{ settings().web_port }}</div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Quick Connect</h2>
+  <form action="{{ url_for('host_connect', host_id=0) }}" method="post" class="quick-form" novalidate>
+    {{ csrf_field() }}
+    <div class="form-row">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="user" required>
+    </div>
+    <div class="form-row">
+      <label>Hostname / IP</label>
+      <input type="text" name="hostname" placeholder="example.com" required>
+    </div>
+    <div class="form-row">
+      <label>Port</label>
+      <input type="number" name="port" value="{{ settings().default_ssh_port }}" min="1" max="65535">
+    </div>
+    <div class="form-row">
+      <label>Identity file (optional)</label>
+      <input type="text" name="identity_file" placeholder="/data/data/com.termux/files/home/.ssh/id_ed25519">
+    </div>
+    <button type="submit" class="btn btn-primary">Connect</button>
+    <p class="hint">Launches the local OpenSSH client in your terminal. Termux users: use the CLI fallback if a terminal is not available.</p>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Recent Connection Attempts</h2>
+  {% if attempts %}
+    <table>
+      <thead><tr><th>Profile</th><th>Target</th><th>Status</th><th>Message</th><th>When</th></tr></thead>
+      <tbody>
+        {% for a in attempts %}
+        <tr>
+          <td>{{ a.profile_name or '—' }}</td>
+          <td>{{ a.target }}</td>
+          <td><span class="pill {{ 'ok' if a.status=='ok' else 'warn' }}">{{ a.status }}</span></td>
+          <td>{{ a.message or '—' }}</td>
+          <td>{{ a.created_at[:16] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="muted">No recent attempts.</p>
+  {% endif %}
+</section>
+{% endblock %}

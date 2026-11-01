@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abinav's Universe — One Journey. Countless Memories.</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-bloom">
+  <div class="glass-nav">
+    <a href="#home" class="nav-brand">ABINAV'S UNIVERSE</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#purelily">PureLily</a>
+      <a href="#mogra">Mogra</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#projects">Projects</a>
+      <a href="#tech">Tech</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#future">Future</a>
+    </div>
+  </div>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <p>An unofficial Cookie Run fan tribute. All Cookie Run content, characters, and trademarks belong to Devsisters Corp. This is a personal creative project by Abinav (Abinavzoey) — a Cookie Runner from Tamil Nadu, India.</p>
+    <p>CREATE. PLAY. REMEMBER. INNOVATE.</p>
+  </footer>
+
+  <div class="theme-switcher">
+    <button onclick="setTheme('bloom')" aria-label="Bloom theme" class="theme-btn bloom" title="Bloom"></button>
+    <button onclick="setTheme('kingdom')" aria-label="Kingdom theme" class="theme-btn kingdom" title="Kingdom"></button>
+    <button onclick="setTheme('shadow')" aria-label="Shadow theme" class="theme-btn shadow" title="Shadow"></button>
+  </div>
+
+  <script>
+    function setTheme(t) {
+      document.body.className = 'theme-' + t;
+      localStorage.setItem('abinav-theme', t);
+    }
+    (function() {
+      const saved = localStorage.getItem('abinav-theme');
+      if (saved) document.body.className = 'theme-' + saved;
+    })();
+  </script>
+</body>
+</html>

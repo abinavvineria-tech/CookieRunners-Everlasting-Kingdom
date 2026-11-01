@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Add Milestone — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Add a Milestone</h1>
+  <p>Record a new memory in the Eternal Bloom Timeline.</p>
+</section>
+
+<section class="form-section" aria-label="Add milestone form">
+  <form method="POST" action="{{ url_for('timeline_add') }}" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="title">Title <span class="req">*</span></label>
+    <input type="text" id="title" name="title" required maxlength="160" placeholder="e.g. White Lily tribute created">
+
+    <label for="date">Date (YYYY-MM-DD)</label>
+    <input type="date" id="date" name="date">
+
+    <label for="character">Character <span class="req">*</span></label>
+    <input type="text" id="character" name="character" list="char-list" required placeholder="e.g. White Lily Cookie">
+    <datalist id="char-list">
+      {% for name in characters %}
+        <option value="{{ name }}">
+      {% endfor %}
+    </datalist>
+
+    <label for="category">Category <span class="req">*</span></label>
+    <select id="category" name="category" required>
+      <option value="">Choose a category</option>
+      {% for cat in categories %}
+        <option value="{{ cat }}">{{ cat }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="entry_type">Entry Type <span class="req">*</span></label>
+    <select id="entry_type" name="entry_type" required>
+      {% for et in entry_types %}
+        <option value="{{ et }}">{{ et }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="source">Source</label>
+    <select id="source" name="source">
+      <option value="personal">personal</option>
+      <option value="official">official</option>
+      <option value="fan">fan</option>
+    </select>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4" placeholder="Describe this memory or milestone…"></textarea>
+
+    <button type="submit" class="btn btn-primary">Add Milestone</button>
+    <a href="{{ url_for('timeline') }}" class="btn btn-outline">Cancel</a>
+  </form>
+</section>
+
+<section class="legend" aria-label="Entry type guide">
+  <h3>Entry Types</h3>
+  <ul>
+    <li><strong>official fact</strong> — verified game information.</li>
+    <li><strong>personal memory</strong> — your own journey and achievements.</li>
+    <li><strong>fan interpretation</strong> — fan-created content, clearly not official.</li>
+  </ul>
+  <p class="unofficial-note"><small>Unofficial fan project — not affiliated with or endorsed by Devsisters.</small></p>
+</section>
+{% endblock %}

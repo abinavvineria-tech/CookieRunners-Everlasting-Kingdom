@@ -1,0 +1,168 @@
+/* NEXUS UI — Design System for Cookie Runners Nexus
+Built on top of EVERLASTING BLOOM base styles.
+Theme modes: Kingdom (warm/gold), Shadow (midnight blue/violet), Bloom (pink/white/gold)
+*/
+:root, :root[data-theme="bloom"] {
+  --nexus-midnight: #0B1226;
+  --nexus-deep-blue: #14213B;
+  --nexus-sky-cyan: #55C9F5;
+  --nexus-bloom-pink: #F58FB9;
+  --nexus-dream-violet: #9B8BFA;
+  --nexus-gold-cookie: #F5C76E;
+  --nexus-soft-white: #F3F6FF;
+  --nexus-card-glass: rgba(255,255,255,0.06);
+  --nexus-border-glow: rgba(255,255,255,0.08);
+  --nexus-text: #F3F6FF;
+  --nexus-text-muted: rgba(243,246,255,0.65);
+  --nexus-gradient-bg: linear-gradient(170deg,#0B1226 0%,#14213B 50%,#0B1226 100%);
+  --nexus-hero-gradient: linear-gradient(135deg,#F5C76E 0%,#55C9F5 50%,#F58FB9 100%);
+  --nexus-shadow-soft: 0 20px 60px rgba(11,18,38,0.6);
+  --nexus-glow-gold: rgba(245,199,110,0.25);
+  --nexus-glow-pink: rgba(245,143,185,0.2);
+  --nexus-glow-violet: rgba(155,139,250,0.2);
+}
+
+/* Kingdom Mode */
+:root[data-theme="kingdom"] {
+  --nexus-midnight: #1A0B2E;
+  --nexus-deep-blue: #2D1B4E;
+  --nexus-gradient-bg: linear-gradient(170deg,#2D1B4E 0%,#4A306D 40%,#6D4B7C 100%);
+  --nexus-hero-gradient: linear-gradient(135deg,#F5C76E 0%,#F58FB9 60%,#9B8BFA 100%);
+  --nexus-card-glass: rgba(245,199,110,0.08);
+  --nexus-border-glow: rgba(245,199,110,0.2);
+  --nexus-glow-gold: rgba(245,199,110,0.35);
+  --nexus-glow-pink: rgba(245,143,185,0.25);
+  --nexus-glow-violet: rgba(155,139,250,0.15);
+}
+
+/* Shadow Mode */
+:root[data-theme="shadow"] {
+  --nexus-midnight: #050A14;
+  --nexus-deep-blue: #0A1628;
+  --nexus-gradient-bg: linear-gradient(170deg,#050A14 0%,#080F1A 60%,#0B1226 100%);
+  --nexus-hero-gradient: linear-gradient(135deg,#55C9F5 0%,#9B8BFA 60%,#55C9F5 100%);
+  --nexus-card-glass: rgba(11,18,38,0.55);
+  --nexus-border-glow: rgba(85,201,245,0.15);
+  --nexus-glow-gold: rgba(245,199,110,0.12);
+  --nexus-glow-pink: rgba(245,143,185,0.1);
+  --nexus-glow-violet: rgba(155,139,250,0.25);
+  --nexus-text-muted: rgba(243,246,255,0.5);
+}
+
+/* NEXUS Layout */
+.nexus-app { display:flex; min-height:100vh; }
+
+/* Sidebar Navigation */
+.nexus-sidebar {
+  width: 260px; min-width: 260px;
+  background: rgba(11,18,38,0.88);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 14px;
+  position: sticky; top: 0; height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+  z-index: 50;
+}
+.nexus-sidebar .logo-area {
+  display:flex; align-items:center; gap:12px; padding:0 6px 28px; border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nexus-sidebar .logo-icon {
+  width:42px; height:42px; border-radius:12px;
+  background: linear-gradient(135deg,#F5C76E,#55C9F5);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; box-shadow: 0 4px 18px rgba(245,199,110,0.3);
+}
+.nexus-sidebar .logo-text { font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:1.1rem; color:#F3F6FF; letter-spacing:.01em; }
+.nexus-sidebar .logo-sub { font-size:.7rem; color:rgba(243,246,255,0.45); font-weight:400; margin-top:2px; }
+
+.nexus-nav-section { margin-top: 24px; }
+.nexus-nav-section h3 {
+  font-size:.65rem; text-transform:uppercase; letter-spacing:.12em; color:rgba(243,246,255,0.35);
+  padding: 0 8px 8px; font-weight:700;
+}
+.nexus-nav a {
+  display:flex; align-items:center; gap:12px; padding: 10px 12px; border-radius: 12px;
+  color:rgba(243,246,255,0.75); text-decoration:none; font-size:.9rem; font-weight:500;
+  transition: all .2s; margin-bottom:3px;
+}
+.nexus-nav a:hover { background:rgba(255,255,255,0.05); color:#F3F6FF; }
+.nexus-nav a.active { background:rgba(245,199,110,0.1); color:#F5C76E; border-left: 3px solid #F5C76E; }
+.nexus-nav .nav-icon { width:22px; text-align:center; font-size:1rem; }
+
+/* Theme Switcher */
+.theme-switcher { display:flex; gap:6px; margin-top: 24px; padding: 14px; }
+.theme-btn {
+  flex: 1; padding: 10px 4px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03); color: rgba(243,246,255,0.6); font-size:.75rem; font-weight:600;
+  cursor: pointer; transition: all .2s; text-align:center;
+}
+.theme-btn.active { border-color: #F5C76E; color:#F5C76E; background: rgba(245,199,110,0.08); }
+.theme-btn:hover:not(.active) { background: rgba(255,255,255,0.06); color:#F3F6FF; }
+
+/* Main Content */
+.nexus-main { flex:1; padding: 32px 36px; max-width: 1200px; }
+
+/* Hero Dashboard */
+.nexus-hero {
+  position: relative; overflow:hidden;
+  border-radius: 28px; padding: 48px 40px; margin-bottom: 32px;
+  background: linear-gradient(135deg, rgba(11,18,38,0.9) 0%, rgba(20,33,59,0.95) 50%, rgba(11,18,38,0.9) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--nexus-shadow-soft);
+}
+.nexus-hero::before {
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background: radial-gradient(circle at 20% 30%, rgba(245,143,185,0.18) 0%, transparent 45%),
+              radial-gradient(circle at 80% 70%, rgba(85,201,245,0.15) 0%, transparent 45%),
+              radial-gradient(circle at 50% 10%, rgba(245,199,110,0.12) 0%, transparent 40%);
+}
+.nexus-hero h1 { position:relative; z-index:2; font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(2rem,5vw,3.2rem); line-height:1.1; letter-spacing:-0.02em; color:#F3F6FF; text-shadow: 0 4px 30px rgba(245,199,110,0.15); }
+.nexus-hero h1 .accent { background: linear-gradient(135deg,#F5C76E,#55C9F5,#F58FB9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.nexus-hero .subtitle { position:relative; z-index:2; color:rgba(243,246,255,0.65); font-size:1.05rem; margin-top:14px; max-width:640px; line-height:1.7; }
+
+/* Cards Grid */
+.nexus-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(min(100%,300px),1fr)); gap:20px; }
+.nexus-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+  padding: 28px; backdrop-filter: blur(16px); transition: all .25s; position: relative; overflow:hidden;
+}
+.nexus-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.15); box-shadow: 0 12px 40px rgba(11,18,38,0.4); }
+.nexus-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg,#F5C76E,#55C9F5,#F58FB9); opacity:0.7;
+}
+.nexus-card h3 { font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:1.15rem; color:#F3F6FF; margin-bottom:8px; letter-spacing:-.01em; }
+.nexus-card p { color:rgba(243,246,255,0.6); font-size:.9rem; line-height:1.55; }
+.nexus-card .meta { display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; }
+.nexus-card .tag { font-size:.7rem; padding:4px 10px; border-radius:999px; background:rgba(245,199,110,0.1); color:#F5C76E; border:1px solid rgba(245,199,110,0.15); font-weight:600; }
+.nexus-card .tag.pink { background:rgba(245,143,185,0.1); color:#F58FB9; border-color:rgba(245,143,185,0.15); }
+.nexus-card .tag.violet { background:rgba(155,139,250,0.1); color:#9B8BFA; border-color:rgba(155,139,250,0.15); }
+
+/* Recent Timeline Preview */
+.timeline-preview { display:flex; flex-direction:column; gap:14px; margin-top:12px; }
+.timeline-item { display:flex; gap:14px; align-items:flex-start; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+.timeline-item:last-child { border-bottom:none; }
+.timeline-date { font-size:.78rem; color:#55C9F5; font-weight:700; min-width:80px; white-space:nowrap; }
+.timeline-content h4 { font-size:.92rem; color:#F3F6FF; font-weight:600; margin-bottom:2px; }
+.timeline-content p { font-size:.82rem; color:rgba(243,246,255,0.55); line-height:1.4; }
+
+/* Stats row */
+.stats-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:16px; margin-bottom:32px; }
+.stat-block { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:22px; text-align:center; }
+.stat-number { font-family:'Cormorant Garamond',Georgia,serif; font-size:2.2rem; color:#F5C76E; font-weight:600; line-height:1; }
+.stat-label { font-size:.82rem; color:rgba(243,246,255,0.5); margin-top:6px; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .nexus-app { flex-direction: column; }
+  .nexus-sidebar { width:100%; height:auto; position:relative; padding:16px; border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .nexus-sidebar .logo-area { padding-bottom:16px; }
+  .nexus-main { padding: 24px 20px; }
+}
+@media (max-width: 640px) {
+  .nexus-hero { padding: 32px 24px; }
+  .nexus-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+}

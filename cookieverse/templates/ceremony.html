@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Ceremony — Cookie Runners{% endblock %}
+{% block content %}
+<section class="stage" aria-label="Interactive award ceremony">
+  <div class="spotlight" aria-hidden="true"></div>
+  <h1 style="font-size:clamp(2.2rem,6vw,4.5rem);">The Golden Ceremony</h1>
+  <p class="subtitle">An immersive presentation of the first Golden Ballon d'Or.</p>
+  <button onclick="startCeremony()" class="btn-gold" style="font-size:1.1rem;padding:1.2rem 3rem;">Start Ceremony</button>
+  <button onclick="toggleSound()" id="sound-toggle" class="btn-gold" style="margin-top:1rem;background:linear-gradient(135deg,#8a6e24,var(--gold-dark));font-size:0.85rem;">Sound: On</button>
+
+  <div id="ceremony-stage" style="margin-top:4rem;">
+    <h2>The Cookie Runners Golden Ballon d'Or 2026</h2>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.5rem;">First Edition — A new gateway. A fresh beginning.</p>
+  </div>
+
+  <div style="margin-top:4rem;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:1000px;">
+    <article class="card" style="text-align:center;">
+      <h3>Golden Ballon d'Or</h3>
+      <p class="role">Co-Winners</p>
+      <p><strong>White Lily Cookie</strong> · <strong>Mogra Cookie</strong></p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;">First Edition — 2026</p>
+    </article>
+    <article class="card" style="text-align:center;">
+      <h3>Golden Heart Award</h3>
+      <p class="role">Recipients</p>
+      <p><strong>White Lily Cookie</strong> · <strong>Mogra Cookie</strong></p>
+    </article>
+    <article class="card" style="text-align:center;">
+      <h3>Golden Teammate Award</h3>
+      <p class="role">Recipient</p>
+      <p><strong>Pure Vanilla Cookie</strong></p>
+    </article>
+  </div>
+</section>
+
+<section aria-label="Award sequence">
+  <h2>Announcement Sequence</h2>
+  <div class="timeline">
+    <div class="timeline-item"><h3>First Announcement</h3><p>"THE COOKIE RUNNERS GOLDEN BALLON D'OR 2026"</p></div>
+    <div class="timeline-item"><h3>Second Announcement</h3><p>"OUR GOLDEN BALLON D'OR CO-WINNERS" — White Lily Cookie & Mogra Cookie</p></div>
+    <div class="timeline-item"><h3>Third Announcement</h3><p>"THE GOLDEN HEART AWARD" — White Lily Cookie & Mogra Cookie</p></div>
+    <div class="timeline-item"><h3>Fourth Announcement</h3><p>"THE GOLDEN TEAMMATE AWARD" — Pure Vanilla Cookie</p></div>
+    <div class="timeline-item"><h3>Final Announcement</h3><p>"THANK YOU, COOKIE RUNNERS!" — Final celebration screen.</p></div>
+  </div>
+</section>
+{% endblock %}

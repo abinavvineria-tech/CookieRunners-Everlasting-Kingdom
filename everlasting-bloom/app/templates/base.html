@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<meta name="theme-color" content="#f6f2eb">
+<title>EVERLASTING BLOOM — White Lily Cookie Tribute</title>
+<meta name="description" content="An unofficial fan tribute to White Lily Cookie from Cookie Run: Kingdom. Kindness, friendship, respect, courage and hope.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lily:#fff8e8; --lavender:#c5b8e8; --pearl:#f6f2eb; --gold-soft:#d4af37; --gold:#bfa15f;
+  --navy:#1a1525; --navy-deep:#120e1a; --text:#2a2235; --text-muted:#7a706a; --glass:rgba(255,255,255,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:'Outfit',system-ui,sans-serif; background:linear-gradient(170deg,var(--navy-deep) 0%,#1a1525 40%,#181228 100%);
+  color:var(--pearl); min-height:100vh; line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.bg-glow{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(120px);opacity:.35;mix-blend-mode:screen}
+.glow-1{width:600px;height:600px;background:radial-gradient(circle,var(--lavender) 0%,transparent 70%);top:-140px;left:-120px;opacity:.25}
+.glow-2{width:500px;height:500px;background:radial-gradient(circle,var(--gold) 0%,transparent 70%);bottom:-80px;right:-80px;opacity:.2}
+.glow-3{width:400px;height:400px;background:radial-gradient(circle,var(--lily) 0%,transparent 70%);top:40%;left:60%;opacity:.12}
+
+.site-header{position:sticky;top:0;z-index:60;background:rgba(18,14,26,.75);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08);}
+nav{max-width:980px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.2rem;color:var(--pearl);text-decoration:none;letter-spacing:.03em;display:flex;align-items:center;gap:10px;}
+.logo-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-soft));display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(191,161,95,.35);font-size:1.1rem;}
+nav a{color:rgba(246,242,235,.75);text-decoration:none;font-size:.85rem;font-weight:500;padding:7px 14px;border-radius:999px;transition:all .2s;position:relative;}
+nav a:hover{color:var(--pearl);background:rgba(255,255,255,.05);}
+nav a.active{color:var(--pearl);}
+
+main{position:relative;z-index:10;max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{text-align:center;padding:120px 24px 80px;}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:clamp(3rem,10vw,6rem);line-height:1.05;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--lily) 20%,var(--gold-soft) 55%,var(--gold) 80%,var(--lily) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 0 80px rgba(191,161,95,.18);}
+.subtitle{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.5rem);color:var(--gold-soft);margin-top:16px;letter-spacing:.02em;}
+.description{max-width:560px;margin:24px auto 0;color:rgba(246,242,235,.7);font-size:1.05rem;line-height:1.75;}
+.divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);margin:36px auto 0;opacity:.7}
+
+.card-glass{position:relative;z-index:10;background:rgba(255,255,255,.04);backdrop-filter:blur(24px) saturate(130%);-webkit-backdrop-filter:blur(24px) saturate(130%);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:48px 36px;margin-bottom:48px;box-shadow:0 20px 50px rgba(11,14,20,.55),0 0 30px rgba(191,161,95,.08);overflow:hidden;}
+.card-glass::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1.2px;background:linear-gradient(135deg,rgba(191,161,95,.35),rgba(197,184,232,.2),rgba(255,248,232,.15),rgba(191,161,95,.35));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
+.card-glass h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.8rem;color:var(--pearl);margin-bottom:20px;letter-spacing:-.01em;}
+.card-glass p{color:rgba(246,242,235,.82);font-size:.95rem;line-height:1.7;}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;}
+.principle{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:22px 20px;transition:transform .2s,background .2s,border-color .2s;}
+.principle:hover{transform:translateY(-3px);background:rgba(255,255,255,.06);border-color:rgba(191,161,95,.2);}
+.principle .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:600;color:var(--gold);line-height:1;margin-bottom:6px;}
+.principle h3{font-size:1.05rem;font-weight:600;color:var(--pearl);margin-bottom:6px;}
+.principle p{font-size:.88rem;color:rgba(246,242,235,.65);line-height:1.55;}
+
+.btn-glass{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:14px;font-family:'Outfit',system-ui,sans-serif;font-weight:600;font-size:.95rem;color:#3a2800;background:linear-gradient(135deg,var(--gold),var(--gold-soft));text-decoration:none;box-shadow:0 6px 24px rgba(191,161,95,.3),0 1px 3px rgba(191,161,95,.15);transition:all .2s;position:relative;overflow:hidden;border:none;cursor:pointer;}
+.btn-glass:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(191,161,95,.45),0 4px 10px rgba(191,161,95,.2);filter:brightness(1.08);}
+
+.unofficial-banner{background:linear-gradient(90deg,rgba(191,161,95,.08) 0%,rgba(197,184,232,.08) 50%,rgba(255,248,232,.08) 100%);border-bottom:1px solid rgba(255,255,255,.08);padding:10px 24px;text-align:center;font-size:.82rem;color:rgba(246,242,235,.75);}
+.unofficial-banner strong{color:var(--gold-soft);font-weight:600;}
+
+.site-footer{position:relative;z-index:10;max-width:980px;margin:0 auto;padding:48px 24px 36px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;color:rgba(246,242,235,.45);font-size:.82rem;}
+.site-footer a{color:var(--gold-soft);text-decoration:none;font-weight:500;transition:color .2s;}
+.site-footer a:hover{color:var(--gold);}
+
+@media(max-width:640px){
+  .hero{padding:80px 20px 60px;}
+  .card-glass{padding:32px 24px;margin:0 16px 40px;border-radius:20px;}
+  nav{padding:12px 16px;gap:8px;}
+  .site-footer{flex-direction:column;text-align:center;padding-top:32px;}
+}
+</style>
+</head>
+<body>
+<div class="bg-glow glow-1" aria-hidden="true"></div>
+<div class="bg-glow glow-2" aria-hidden="true"></div>
+<div class="bg-glow glow-3" aria-hidden="true"></div>
+
+<header class="site-header">
+  <nav aria-label="Main">
+    <a href="{{ url_for('home') }}" class="logo" aria-label="EVERLASTING BLOOM Home">
+      <div class="logo-icon" aria-hidden="true"><span>🌸</span></div>
+      <span>EVERLASTING BLOOM</span>
+    </a>
+    <div>
+      <a href="{{ url_for('legend') }}">Her Legend</a>
+      <a href="{{ url_for('chronicles') }}">Chronicles</a>
+      <a href="{{ url_for('timeline') }}">Timeline</a>
+      <a href="{{ url_for('garden') }}">Garden</a>
+      <a href="{{ url_for('letters') }}">Letters</a>
+      <a href="{{ url_for('memories') }}">Memories</a>
+      <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('nexus') }}">Nexus</a>
+    </div>
+  </nav>
+</header>
+
+<div class="unofficial-banner">
+  <strong>Unofficial fan tribute</strong> — Not affiliated with or endorsed by Devsisters. Cookie Run trademarks belong to their owners.
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div style="max-width:980px;margin:20px auto;padding:0 24px;position:relative;z-index:20;">
+      {% for category, message in messages %}
+        <div style="padding:14px 20px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--pearl);font-size:.9rem;margin-bottom:10px;">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div>EVERLASTING BLOOM — Unofficial Tribute to White Lily Cookie</div>
+  <div>Some flowers never stop blooming in our memories. 🌸</div>
+</footer>
+</body>
+</html>

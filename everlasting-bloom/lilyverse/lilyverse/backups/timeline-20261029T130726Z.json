@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "milestones": [
+    {
+      "id": "cookie-run-original-mobile",
+      "title": "Cookie Run (original mobile)",
+      "date": "2009-06-12",
+      "character": "franchise",
+      "category": "franchise",
+      "entry_type": "official fact",
+      "description": "First Cookie Run game released. Date from user-provided fan reference (unofficial anniversary marker). Verify via official archives before quoting as official release date.",
+      "source": "fan",
+      "created_at": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-25T00:00:00Z"
+    },
+    {
+      "id": "ovenbreak-release",
+      "title": "Cookie Run: OvenBreak release",
+      "date": "2016-10-27",
+      "character": "franchise",
+      "category": "franchise",
+      "entry_type": "official fact",
+      "description": "Cookie Run: OvenBreak released. Anniversary observed 2026-10-27.",
+      "source": "official",
+      "created_at": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-25T00:00:00Z"
+    },
+    {
+      "id": "crk-launch",
+      "title": "Cookie Run: Kingdom — launch",
+      "date": "2021-01-21",
+      "character": "franchise",
+      "category": "franchise",
+      "entry_type": "official fact",
+      "description": "Cookie Run: Kingdom global launch. Verified via public release records.",
+      "source": "official",
+      "created_at": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-25T00:00:00Z"
+    },
+    {
+      "id": "my-crk-journey-begins",
+      "title": "My Cookie Run: Kingdom journey begins",
+      "date": "2026-04-22",
+      "character": "Abinav",
+      "category": "personal",
+      "entry_type": "personal memory",
+      "description": "Started playing Cookie Run: Kingdom after discovering the K-pop Demon Hunters collaboration. From Tamil Nadu — part of Tamil Nadu Cookie Runners community.",
+      "source": "personal",
+      "created_at": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-25T00:00:00Z"
+    },
+    {
+      "id": "white-lily-tribute",
+      "title": "White Lily Cookie tribute created",
+      "date": "2026-10-24",
+      "character": "White Lily Cookie",
+      "category": "personal",
+      "entry_type": "personal memory",
+      "description": "Dedicated tribute to White Lily Cookie — Ancient Hero. Unofficial fan tribute. Only verified canon quotes are used; no invented dialogue.",
+      "source": "personal",
+      "created_at": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-25T00:00:00Z"
+    },
+    {
+      "id": "lilyverse-launch",
+      "title": "LilyVerse — The Eternal Bloom Timeline launched",
+      "date": "2026-10-29",
+      "character": "Abinav",
+      "category": "project",
+      "entry_type": "fan interpretation",
+      "description": "LilyVerse fan project launch — Flask website + CLI timeline manager celebrating White Lily Cookie, Pure Vanilla Cookie, Mogra Cookie, and the PLA trio.",
+      "source": "fan",
+      "created_at": "2026-10-29T00:00:00Z",
+      "updated_at": "2026-10-29T00:00:00Z"
+    },
+    {
+      "id": "ovenbreak-anniversary-project",
+      "title": "Cookie Run: OvenBreak Anniversary project",
+      "date": "2026-10-27",
+      "character": "franchise",
+      "category": "project",
+      "entry_type": "fan interpretation",
+      "description": "Anniversary tribute project for OvenBreak (2016-10-27). Unofficial fan project — not an official Devsisters event.",
+      "source": "fan",
+      "created_at": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-25T00:00:00Z"
+    },
+    {
+      "id": "next-anniversary-placeholder",
+      "title": "Next Cookie Run anniversary / achievement",
+      "date": "2027-01-01",
+      "character": "Abinav",
+      "category": "future",
+      "entry_type": "personal memory",
+      "description": "Placeholder for a future milestone. Edit this entry to keep the archive current.",
+      "source": "personal",
+      "created_at": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-25T00:00:00Z"
+    }
+  ]
+}

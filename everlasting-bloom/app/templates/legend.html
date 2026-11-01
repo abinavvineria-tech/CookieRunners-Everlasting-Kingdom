@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Her Legend</h1>
+  <p class="subtitle">Ancient Hero — Truth, Sacrifice, Courage, Friendship, Hope</p>
+</section>
+
+<article class="card-glass">
+  <h2>Character History</h2>
+  <p>White Lily Cookie stands as an Ancient Hero within Cookie Run: Kingdom's wider narrative. This tribute preserves only verified elements of her story: her role as a protector, her deep friendship with Pure Vanilla Cookie, and her journey marked by truth, sacrifice, and enduring hope.</p>
+  <p style="margin-top:14px;color:rgba(246,242,235,.65);font-size:.9rem;">All dates and details reflect verified fan-documented milestones. No unverified official lore is presented as fact.</p>
+</article>
+
+<article class="card-glass">
+  <h2>Verified Milestones</h2>
+  {% if milestones %}
+    <ul style="list-style:none;padding:0;">
+    {% for m in milestones %}
+      <li style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);">
+        <strong style="color:var(--gold-soft);">{{ m['date'] or 'Undated' }}</strong> — <strong style="color:var(--pearl);">{{ m['title'] }}</strong>
+        <div style="font-size:.85rem;color:rgba(246,242,235,.6);margin-top:4px;">Category: {{ m['category'] }} | Character: {{ m['character'] }} | Source: {{ m['source'] }}</div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No milestones recorded yet.</p>
+  {% endif %}
+</article>
+{% endblock %}

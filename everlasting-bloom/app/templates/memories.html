@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Memory Archive</h1>
+  <p class="subtitle">Memorable moments and milestones</p>
+</section>
+
+<article class="card-glass">
+  <h2>Archive of Moments</h2>
+  <p>This archive collects significant events, community reflections, and verified milestones related to White Lily Cookie and the broader tribute movement. All entries respect verified canon and avoid fabricated lore.</p>
+</article>
+
+<article class="card-glass">
+  <h2>Recorded Memories</h2>
+  {% if milestones %}
+    <ul style="list-style:none;padding:0;">
+    {% for m in milestones %}
+      <li style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06);">
+        <div style="font-weight:600;color:var(--gold-soft);font-size:.95rem;">{{ m['date'] or 'Undated' }}</div>
+        <div style="font-size:1.05rem;color:var(--pearl);font-weight:500;margin:4px 0;">{{ m['title'] }}</div>
+        <div style="font-size:.85rem;color:rgba(246,242,235,.6);">Character: {{ m['character'] }} — Source: {{ m['source'] }}</div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No memories recorded yet.</p>
+  {% endif %}
+</article>
+{% endblock %}

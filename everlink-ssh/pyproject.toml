@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "everlink-ssh"
+version = "1.0.0"
+description = "EverLink SSH — a secure SSH connection manager with CLI and Flask GUI"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "Abinav / CookieVerse Hermes" }]
+keywords = ["ssh", "cli", "flask", "termux", "ubuntu"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: POSIX :: Linux",
+  "Environment :: Console",
+  "Topic :: System :: Networking",
+]
+
+[project.scripts]
+everlink = "everlink.cli:main"
+
+[tool.setuptools]
+packages = ["everlink"]

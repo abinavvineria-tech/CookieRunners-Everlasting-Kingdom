@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ name }} — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>{{ name }}</h1>
+  <p class="role">{{ info.role }}</p>
+</section>
+
+<section class="character-bio" aria-label="Biography">
+  <h2>About {{ name }}</h2>
+  <p>{{ info.description }}</p>
+  <p class="origin"><small>Origin: {{ info.origin }}</small></p>
+</section>
+
+<section class="character-milestones" aria-label="Milestones">
+  <h2>Associated Milestones</h2>
+  {% if milestones %}
+    <div class="cards">
+      {% for m in milestones %}
+      <article class="card" aria-label="Milestone: {{ m.title }}">
+        <div class="meta">
+          <span class="date">{{ m.date or 'Undated' }}</span>
+          <span class="badge badge-{{ m.entry_type|replace(' ', '-') }}">{{ m.entry_type }}</span>
+        </div>
+        <h3>{{ m.title }}</h3>
+        <p>{{ m.description }}</p>
+        <a href="{{ url_for('timeline_detail', milestone_id=m.id) }}" class="btn btn-sm">View</a>
+      </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No milestones associated with {{ name }} yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard — Cookie Runners{% endblock %}
+{% block content %}
+<section>
+  <h1>Admin Dashboard</h1>
+  <p class="subtitle">Manage editions, categories, winners, nominees, and ceremony history.</p>
+
+  <h2>First Edition Winners (Protected)</h2>
+  <div class="card-grid" style="margin-top:1rem;">
+    <article class="card">
+      <h3>White Lily Cookie</h3>
+      <p class="role">Golden Ballon d'Or — Co-Winner</p>
+      <p>Golden Heart Award — Recipient</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Predefined 2026 winner — preserved.</p>
+    </article>
+    <article class="card">
+      <h3>Mogra Cookie</h3>
+      <p class="role">Golden Ballon d'Or — Co-Winner</p>
+      <p>Golden Heart Award — Recipient</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Predefined 2026 winner — preserved.</p>
+    </article>
+    <article class="card">
+      <h3>Pure Vanilla Cookie</h3>
+      <p class="role">Golden Teammate Award</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Predefined 2026 winner — preserved.</p>
+    </article>
+  </div>
+
+  <h2 style="margin-top:4rem;">Add Winner</h2>
+  <form action="/admin" method="POST" style="max-width:700px;background:rgba(255,255,255,0.03);border:1px solid rgba(200,165,86,0.2);border-radius:16px;padding:1.5rem;">
+    <input type="hidden" name="action" value="add_winner">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+      <div>
+        <label style="display:block;color:var(--gold);font-weight:600;margin-bottom:0.4rem;">Category</label>
+        <select name="category_id" style="width:100%;padding:0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);">
+          {% for cat in cats %}<option value="{{ cat.id }}">{{ cat.name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label style="display:block;color:var(--gold);font-weight:600;margin-bottom:0.4rem;">Name</label>
+        <input type="text" name="name" placeholder="Winner name" style="width:100%;padding:0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);">
+      </div>
+      <div>
+        <label style="display:block;color:var(--gold);font-weight:600;margin-bottom:0.4rem;">Role</label>
+        <input type="text" name="role_text" placeholder="Role text" style="width:100%;padding:0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);">
+      </div>
+      <div>
+        <label style="display:block;color:var(--gold);font-weight:600;margin-bottom:0.4rem;">Year</label>
+        <input type="number" name="year" value="2026" style="width:100%;padding:0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);">
+      </div>
+    </div>
+    <div style="margin-top:1rem;">
+      <label style="display:block;color:var(--gold);font-weight:600;margin-bottom:0.4rem;">Image Path</label>
+      <input type="text" name="image_path" value="/static/images/default.jpg" style="width:100%;padding:0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);">
+    </div>
+    <div style="margin-top:1rem;">
+      <label style="display:block;color:var(--gold);font-weight:600;margin-bottom:0.4rem;">Description</label>
+      <textarea name="description" rows="2" style="width:100%;padding:0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);">A golden legacy.</textarea>
+    </div>
+    <button type="submit" class="btn-gold" style="margin-top:1rem;">Add Winner</button>
+  </form>
+
+  <h2 style="margin-top:4rem;">All Winners</h2>
+  <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.9rem;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--gold);text-align:left;color:var(--gold);">
+        <th>Category</th><th>Name</th><th>Role</th><th>Year</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for w in winners %}
+      <tr style="border-bottom:1px solid rgba(200,165,86,0.1);">
+        <td>{{ w.category_name }}</td><td>{{ w.name }}</td><td>{{ w.role_text }}</td><td>{{ w.year }}</td>
+        <td>
+          <form action="/admin" method="POST" style="display:inline;" onsubmit="return confirm('Delete this winner?');">
+            <input type="hidden" name="action" value="delete_winner">
+            <input type="hidden" name="winner_id" value="{{ w.id }}">
+            <button type="submit" style="background:none;border:none;color:#c44;cursor:pointer;font-size:0.8rem;">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:4rem;">Nominees</h2>
+  <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.9rem;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--gold);text-align:left;color:var(--gold);">
+        <th>Category</th><th>Name</th><th>Year</th><th>Nominated By</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for n in nominees %}
+      <tr style="border-bottom:1px solid rgba(200,165,86,0.1);">
+        <td>{{ n.category_id }}</td><td>{{ n.name }}</td><td>{{ n.year }}</td><td>{{ n.nominated_by }}</td>
+        <td>
+          <form action="/admin" method="POST" style="display:inline;" onsubmit="return confirm('Delete nominee?');">
+            <input type="hidden" name="action" value="delete_nominee">
+            <input type="hidden" name="nominee_id" value="{{ n.id }}">
+            <button type="submit" style="background:none;border:none;color:#c44;cursor:pointer;font-size:0.8rem;">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:4rem;">Export</h2>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+    <a href="/admin/export/json" class="btn-gold">Export JSON</a>
+    <a href="/admin/export/csv" class="btn-gold">Export CSV</a>
+  </div>
+
+  <div style="margin-top:2rem;text-align:center;">
+    <a href="/admin/logout" class="btn-gold" style="background:linear-gradient(135deg,#8a6e24,var(--gold-dark));">Logout</a>
+  </div>
+</section>
+{% endblock %}

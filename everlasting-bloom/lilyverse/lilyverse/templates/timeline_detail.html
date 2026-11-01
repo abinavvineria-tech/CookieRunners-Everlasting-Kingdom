@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Milestone Details — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>{{ m.title }}</h1>
+  <div class="detail-meta">
+    <span class="date">{{ m.date or 'Undated' }}</span>
+    <span class="badge badge-{{ m.entry_type|replace(' ', '-') }}">{{ m.entry_type }}</span>
+    <span class="badge badge-source-{{ m.source }}">{{ m.source }}</span>
+    <span class="badge badge-char">{{ m.character }}</span>
+    <span class="badge badge-cat">{{ m.category }}</span>
+  </div>
+  <div class="detail-actions">
+    <a href="{{ url_for('timeline') }}" class="btn btn-outline">Back to Timeline</a>
+    <a href="{{ url_for('timeline_edit', milestone_id=m.id) }}" class="btn btn-sm btn-outline">Edit</a>
+    <form method="POST" action="{{ url_for('timeline_delete', milestone_id=m.id) }}" class="inline" onsubmit="return confirm('Delete this milestone?')">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="btn btn-sm btn-delete">Delete</button>
+    </form>
+  </div>
+</section>
+
+<section class="detail-description" aria-label="Description">
+  <h2>Description</h2>
+  <p>{{ m.description }}</p>
+</section>
+
+<section class="detail-timestamps" aria-label="Timestamps">
+  <h2>Record Info</h2>
+  <dl>
+    <dt>ID</dt><dd>{{ m.id }}</dd>
+    <dt>Character</dt><dd>{{ m.character }}</dd>
+    <dt>Category</dt><dd>{{ m.category }}</dd>
+    <dt>Entry type</dt><dd>{{ m.entry_type }}</dd>
+    <dt>Source</dt><dd>{{ m.source }}</dd>
+    <dt>Created</dt><dd>{{ m.created_at }}</dd>
+    <dt>Updated</dt><dd>{{ m.updated_at }}</dd>
+  </dl>
+</section>
+{% endblock %}

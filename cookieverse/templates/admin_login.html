@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Admin Login — Cookie Runners{% endblock %}
+{% block content %}
+<section style="max-width:420px;margin:4rem auto;text-align:center;">
+  <h2>Admin Access</h2>
+  <p class="subtitle">Authorized administrators only.</p>
+  <form action="/admin/login" method="POST" style="margin-top:2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(200,165,86,0.2);border-radius:16px;padding:2rem;text-align:left;">
+    <label for="username" style="display:block;margin-bottom:0.4rem;color:var(--gold);font-weight:600;">Username</label>
+    <input type="text" name="username" id="username" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);margin-bottom:1rem;" required>
+    <label for="password" style="display:block;margin-bottom:0.4rem;color:var(--gold);font-weight:600;">Password</label>
+    <input type="password" name="password" id="password" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.05);border:1px solid rgba(200,165,86,0.3);border-radius:8px;color:var(--cream);margin-bottom:1.5rem;" required>
+    <button type="submit" class="btn-gold">Enter Ceremony</button>
+  </form>
+</section>
+{% endblock %}

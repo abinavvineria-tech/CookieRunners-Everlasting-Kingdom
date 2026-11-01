@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Home — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <h1>LilyVerse</h1>
+    <p class="subtitle">The Eternal Bloom Timeline</p>
+    <p class="tagline">“One Lily. Countless Memories. An Eternal Bloom.”</p>
+    <div class="hero-actions">
+      <a href="{{ url_for('timeline') }}" class="btn btn-primary">Explore the Timeline</a>
+      <a href="{{ url_for('characters') }}" class="btn btn-outline">Character Archives</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Timeline statistics">
+  <h2>Your Bloom at a Glance</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">{{ stats.total }}</div><div class="label">Total Milestones</div></div>
+    <div class="stat-card"><div class="num">{{ stats.by_character.get('White Lily Cookie', 0) }}</div><div class="label">White Lily</div></div>
+    <div class="stat-card"><div class="num">{{ stats.by_character.get('Pure Vanilla Cookie', 0) }}</div><div class="label">Pure Vanilla</div></div>
+    <div class="stat-card"><div class="num">{{ stats.by_character.get('Mogra Cookie', 0) }}</div><div class="label">Mogra</div></div>
+    <div class="stat-card"><div class="num">{{ stats.by_character.get('Abinav', 0) }}</div><div class="label">Abinav</div></div>
+  </div>
+</section>
+
+<section class="latest" aria-label="Recent milestones">
+  <h2>Recent Memories</h2>
+  {% if events %}
+    <div class="cards">
+      {% for e in events %}
+      <article class="card" aria-label="Milestone: {{ e.title }}">
+        <div class="meta">
+          <span class="date">{{ e.date or 'Undated' }}</span>
+          <span class="badge badge-{{ e.entry_type|replace(' ', '-') }}">{{ e.entry_type }}</span>
+          <span class="badge badge-source-{{ e.source }}">{{ e.source }}</span>
+        </div>
+        <h3>{{ e.title }}</h3>
+        <p>{{ e.description }}</p>
+        <div class="card-actions">
+          <a href="{{ url_for('timeline_detail', milestone_id=e.id) }}" class="btn btn-sm">View</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No milestones yet. <a href="{{ url_for('timeline_add') }}">Add your first memory.</a></p>
+  {% endif %}
+</section>
+
+<section class="about" aria-label="About LilyVerse">
+  <h2>About LilyVerse</h2>
+  <div class="card">
+    <p>LilyVerse celebrates White Lily Cookie, Pure Vanilla Cookie, Mogra Cookie, the PLA trio
+    (Pure Vanilla, Lily, and Abinav), and your personal Cookie Run journey.</p>
+    <p><strong>Unofficial fan project</strong> — not affiliated with or endorsed by Devsisters.
+    Official game facts are clearly separated from personal memories and fan interpretations.</p>
+  </div>
+</section>
+{% endblock %}

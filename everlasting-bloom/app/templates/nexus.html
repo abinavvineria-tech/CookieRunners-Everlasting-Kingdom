@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Link Nexus CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/nexus.css') }}">
+
+<div class="nexus-app">
+
+  <!-- Sidebar Navigation -->
+  <aside class="nexus-sidebar" aria-label="Nexus Navigation">
+    <div class="logo-area" aria-label="Cookie Runners Nexus">
+      <div class="logo-icon" aria-hidden="true">🍪</div>
+      <div>
+        <div class="logo-text">NEXUS</div>
+        <div class="logo-sub">Cookie Runners</div>
+      </div>
+    </div>
+
+    <nav class="nexus-nav" aria-label="Nexus Sections">
+      <div class="nexus-nav-section">
+        <h3>Dashboard</h3>
+        <a href="#" class="active" aria-current="page"><span class="nav-icon">🏠</span> Home</a>
+        <a href="#"><span class="nav-icon">📅</span> Timeline</a>
+        <a href="#"><span class="nav-icon">🏆</span> Awards</a>
+        <a href="#"><span class="nav-icon">📸</span> Gallery</a>
+      </div>
+      <div class="nexus-nav-section">
+        <h3>Archives</h3>
+        <a href="#"><span class="nav-icon">🌸</span> PureLily</a>
+        <a href="#"><span class="nav-icon">⚪</span> White Lily Tribute</a>
+        <a href="#"><span class="nav-icon">☕</span> Mogra</a>
+        <a href="#"><span class="nav-icon">📚</span> Character Collection</a>
+      </div>
+      <div class="nexus-nav-section">
+        <h3>Studio</h3>
+        <a href="#"><span class="nav-icon">🎬</span> Project Studio</a>
+        <a href="#"><span class="nav-icon">💻</span> Dev Workspace</a>
+        <a href="#"><span class="nav-icon">📋</span> Tasks</a>
+      </div>
+      <div class="nexus-nav-section">
+        <h3>System</h3>
+        <a href="#"><span class="nav-icon">⚙️</span> Settings</a>
+        <a href="#"><span class="nav-icon">💾</span> Backup</a>
+      </div>
+    </nav>
+
+    <div class="theme-switcher" aria-label="Theme Modes">
+      <button class="theme-btn active" onclick="setTheme('bloom')" aria-label="Bloom Mode" type="button">Bloom</button>
+      <button class="theme-btn" onclick="setTheme('kingdom')" aria-label="Kingdom Mode" type="button">Kingdom</button>
+      <button class="theme-btn" onclick="setTheme('shadow')" aria-label="Shadow Mode" type="button">Shadow</button>
+    </div>
+  </aside>
+
+  <!-- Main Dashboard -->
+  <main class="nexus-main" id="main-content">
+
+    <!-- Hero -->
+    <section class="nexus-hero" aria-label="Welcome">
+      <h1>EVERY COOKIE. <span class="accent">EVERY JOURNEY.</span> EVERY MEMORY.</h1>
+      <p class="subtitle">Welcome to the Cookie Runners Nexus — a unified creative studio, archive, and developer workspace. Explore timelines, projects, tributes, and the journey of every cookie.</p>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-row" aria-label="Quick Stats">
+      <div class="stat-block"><div class="stat-number">8</div><div class="stat-label">Milestones</div></div>
+      <div class="stat-block"><div class="stat-number">3</div><div class="stat-label">Archive Sections</div></div>
+      <div class="stat-block"><div class="stat-number">7</div><div class="stat-label">Projects</div></div>
+      <div class="stat-block"><div class="stat-number">3</div><div class="stat-label">Theme Modes</div></div>
+    </section>
+
+    <!-- Featured Cards -->
+    <section aria-label="Featured Sections">
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:1.4rem; color:#F3F6FF; margin-bottom:18px; letter-spacing:-.01em;">Explore the Nexus</h2>
+      <div class="nexus-grid">
+        <article class="nexus-card">
+          <h3>Personal Journey Timeline</h3>
+          <p>Interactive chronological timeline of your Cookie Run journey — from first discovery to recent celebrations. Edit, search, and filter milestones with character associations.</p>
+          <div class="meta">
+            <span class="tag">Milestones</span>
+            <span class="tag violet">Interactive</span>
+          </div>
+        </article>
+
+        <article class="nexus-card">
+          <h3>Project Studio</h3>
+          <p>Manage Cookie Runners creative projects: Everlasting Bloom, ShadowVerse, OvenBreak Decade, Cookie Runners CLI, and more. Track status, versions, and tasks.</p>
+          <div class="meta">
+            <span class="tag">Projects</span>
+            <span class="tag pink">Studio</span>
+          </div>
+        </article>
+
+        <article class="nexus-card">
+          <h3>Cookie Runners Awards</h3>
+          <p>Personal fan awards celebrating characters and moments. Nominate, vote, and browse winners for Legend Cookie, Golden Heart, Golden Teammate, and Creative Achievement.</p>
+          <div class="meta">
+            <span class="tag">Awards</span>
+            <span class="tag violet">Community</span>
+          </div>
+        </article>
+
+        <article class="nexus-card">
+          <h3>Developer Workspace</h3>
+          <p>Agent dashboard, terminal references, build status, error logs, and deployment state. Professional dark interface for the development side of the Nexus.</p>
+          <div class="meta">
+            <span class="tag">Dev</span>
+            <span class="tag pink">Workspace</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Timeline Preview -->
+    <section aria-label="Recent Timeline" style="margin-top:40px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:1.4rem; color:#F3F6FF; letter-spacing:-.01em;">Recent Milestones</h2>
+        <a href="#" style="font-size:.85rem; color:#55C9F5; text-decoration:none; font-weight:600;">View Full Timeline →</a>
+      </div>
+      <div class="nexus-card" style="padding:20px 24px;">
+        <div class="timeline-preview">
+          <div class="timeline-item">
+            <div class="timeline-date">31 Oct 2026</div>
+            <div class="timeline-content"><h4>Nexus Development Milestone</h4><p>Cookie Runners Nexus core dashboard launched inside the everlasting-bloom tribute platform.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">21 Oct 2026</div>
+            <div class="timeline-content"><h4>Cookie Runners Update Celebration</h4><p>Celebration of the latest Cookie Run updates and community milestones.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">7 Oct 2026</div>
+            <div class="timeline-content"><h4>Rajapendra Cookie Obtained</h4><p>A new cookie joined the journey — a special milestone worth remembering.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1 Oct 2026</div>
+            <div class="timeline-content"><h4>Collector Title Milestone</h4><p>Reached an important collector milestone in the Cookie Run journey.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">14 Sep 2026</div>
+            <div class="timeline-content"><h4>B!TES Fan Contest Victory</h4><p>A creative victory celebrated with the community — proof that cookie runners shine together.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Cards Quick View -->
+    <section aria-label="Project Studio" style="margin-top:40px;">
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:1.4rem; color:#F3F6FF; margin-bottom:18px; letter-spacing:-.01em;">Project Studio</h2>
+      <div class="nexus-grid">
+        <article class="nexus-card">
+          <h3>Everlasting Bloom</h3>
+          <p>White Lily Cookie tribute archive, memorial timeline, and the original evergreen garden. Active and maintained.</p>
+          <div class="meta"><span class="tag">Active</span><span class="tag violet">Tribute</span></div>
+        </article>
+        <article class="nexus-card">
+          <h3>ShadowVerse</h3>
+          <p>Cinematic midnight-blue project exploring shadow cookies, dark themes, and visionary art directions.</p>
+          <div class="meta"><span class="tag">In Progress</span><span class="tag pink">Creative</span></div>
+        </article>
+        <article class="nexus-card">
+          <h3>OvenBreak Decade</h3>
+          <p>Celebration of 10 years of Cookie Run: OvenBreak. Timeline, achievements, and anniversary events.</p>
+          <div class="meta"><span class="tag">Planned</span><span class="tag violet">Anniversary</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PureLily & Mogra Preview -->
+    <section aria-label="Archives Preview" style="margin-top:40px;">
+      <div class="nexus-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%,340px),1fr));">
+        <article class="nexus-card" style="border-top-color:#F58FB9;">
+          <h3 style="color:#F58FB9;">PureLily Archive</h3>
+          <p>White Lily Cookie and Pure Vanilla Cookie relationship archive. Story moments, favourite quotes, anniversary reminders, and tribute pages — presented with peaceful, respectful beauty.</p>
+          <div class="meta"><span class="tag pink">Archive</span><span class="tag">Respectful</span></div>
+        </article>
+        <article class="nexus-card" style="border-top-color:#F5C76E;">
+          <h3 style="color:#F5C76E;">Mogra Archive</h3>
+          <p>Dedicated Mogra Cookie section — character profile, gallery, Burning Spice story links, Jasminum sambac-inspired visual decorations, and personal notes. Separate from White Lily tribute.</p>
+          <div class="meta"><span class="tag">Archive</span><span class="tag violet">Character</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer inside main -->
+    <footer style="margin-top:60px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.06); color:rgba(243,246,255,0.35); font-size:.82rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div><strong style="color:#F5C76E;">Cookie Runners Nexus</strong> — Every Cookie. Every Journey. Every Memory.</div>
+      <div>Unofficial fan project. Not affiliated with Devsisters.</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+// Theme persistence
+function setTheme(mode) {
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('nexus-theme', mode);
+  document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+  // Find clicked button by checking onclick content roughly; simpler: use index
+  const buttons = document.querySelectorAll('.theme-btn');
+  if (mode === 'bloom') buttons[0].classList.add('active');
+  if (mode === 'kingdom') buttons[1].classList.add('active');
+  if (mode === 'shadow') buttons[2].classList.add('active');
+}
+
+// Restore on load
+(function() {
+  const saved = localStorage.getItem('nexus-theme');
+  if (saved && ['bloom','kingdom','shadow'].includes(saved)) {
+    document.documentElement.setAttribute('data-theme', saved);
+    const buttons = document.querySelectorAll('.theme-btn');
+    if (saved === 'bloom') buttons[0].classList.add('active');
+    if (saved === 'kingdom') buttons[1].classList.add('active');
+    if (saved === 'shadow') buttons[2].classList.add('active');
+  }
+})();
+</script>
+{% endblock %}

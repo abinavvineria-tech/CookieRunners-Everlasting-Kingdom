@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Cookie Runners Golden Ballon d'Or 2026 — Home{% endblock %}
+{% block content %}
+<section class="hero" aria-label="Grand opening">
+  <div class="spotlight" aria-hidden="true"></div>
+  <p style="font-size:1rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:600;">Cookie Runners Golden Ballon d'Or</p>
+  <h1>Every Cookie. Every Legend.<br>One Golden Legacy.</h1>
+  <p class="subtitle">First Edition — 2026. A new gateway. A fresh beginning. An everlasting bloom.</p>
+  <p class="tagline">"Every Cookie has a story. Every Cookie Runner has a memory. Every legend deserves a golden moment."</p>
+  <a href="#ceremony" onclick="startCeremony(); return false;" class="btn-gold" style="margin-top:2.5rem;font-size:1rem;">Start Ceremony</a>
+</section>
+
+<section id="ceremony" aria-label="Award ceremony presentation" style="position:relative;overflow:hidden;">
+  <div class="spotlight" aria-hidden="true"></div>
+  <h2>The First Golden Ballon d'Or — 2026</h2>
+  <p class="subtitle">Celebrating the legends of Cookie Run Kingdom, OvenBreak, OvenSmash, and the entire Cookie Run universe.</p>
+  <div class="trophy-container" aria-label="Golden trophy">
+    <div class="trophy">
+      <div class="stem"></div>
+      <div class="cup-body"></div>
+      <div class="cup-handle"></div>
+      <div class="cup-handle right"></div>
+      <div class="base"></div>
+    </div>
+  </div>
+  <h3 style="color:var(--gold-light);font-size:1.8rem;letter-spacing:0.08em;">White Lily Cookie & Mogra Cookie</h3>
+  <p class="subtitle">Co-winners — Golden Ballon d'Or 2026</p>
+  <p style="margin-top:1rem;color:var(--cream-soft);font-style:italic;">Golden Heart Award — White Lily Cookie & Mogra Cookie</p>
+  <p style="margin-top:0.3rem;color:var(--cream-soft);font-style:italic;">Golden Teammate Award — Pure Vanilla Cookie</p>
+  <a href="/ceremony" class="btn-gold" style="margin-top:2rem;">Experience the Full Ceremony</a>
+</section>
+
+<section aria-label="Awards overview">
+  <h2>The Awards</h2>
+  <p class="subtitle">Fifteen categories honoring legend, heart, teamwork, and memory.</p>
+  <div class="card-grid" style="margin-top:2rem;">
+    {% for cat in cats %}
+    <article class="card">
+      <h3>{{ cat.name }}</h3>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.8rem;">{{ cat.description }}</p>
+      <a href="/awards#cat-{{ cat.slug }}" class="btn-gold" style="font-size:0.75rem;padding:0.6rem 1.4rem;">View Winners</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section aria-label="Hall of Fame" style="text-align:center;">
+  <h2>2026 Hall of Fame</h2>
+  <p class="subtitle">The first edition's immortal winners.</p>
+  <div class="card-grid" style="margin-top:2rem;max-width:900px;margin-left:auto;margin-right:auto;">
+    <article class="card">
+      <img src="/static/images/white_lily.jpg" alt="White Lily Cookie" onerror="this.style.display='none';this.parentElement.querySelector('.card-name').innerText='White Lily Cookie';">
+      <h3>White Lily Cookie</h3>
+      <p class="role">Golden Ballon d'Or — Co-Winner</p>
+      <p>A gentle soul who carries eternal grace. Golden Heart Award co-recipient.</p>
+    </article>
+    <article class="card">
+      <img src="/static/images/mogra.jpg" alt="Mogra Cookie" onerror="this.style.display='none';this.parentElement.querySelector('.card-name').innerText='Mogra Cookie';">
+      <h3>Mogra Cookie</h3>
+      <p class="role">Golden Ballon d'Or — Co-Winner</p>
+      <p>A powerful presence with a golden heart. Golden Heart Award co-recipient.</p>
+    </article>
+    <article class="card">
+      <img src="/static/images/pure_vanilla.jpg" alt="Pure Vanilla Cookie" onerror="this.style.display='none';this.parentElement.querySelector('.card-name').innerText='Pure Vanilla Cookie';">
+      <h3>Pure Vanilla Cookie</h3>
+      <p class="role">Golden Teammate Award</p>
+      <p>The teammate every legend dreams of. A golden teammate for all time.</p>
+    </article>
+  </div>
+  <p style="margin-top:2rem;color:var(--text-muted);font-size:0.9rem;">Additional award categories include Golden Legend, Rising Star, Best Guardian, Best Villain, Best Duo, Best Friendship, Golden Leadership, Best Teammate, Eternal Legacy, Golden Memory, Best Cookie Run Game, Best Update, Community Award, Creative Cookie Runner, and Lifetime Achievement.</p>
+</section>
+
+<section aria-label="About" style="text-align:center;padding-bottom:3rem;">
+  <h2>About This Ceremony</h2>
+  <p>This is an unofficial fan-created project celebrating Cookie Run characters, stories, and community. It is not affiliated with, endorsed by, or sponsored by Devsisters Corp. Cookie Run: Kingdom, Cookie Run: OvenBreak, CookieRun: OvenSmash, and all related trademarks belong to their respective owners.</p>
+  <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="/about" class="btn-gold">About</a>
+    <a href="/community" class="btn-gold">Community</a>
+    <a href="/nomination" class="btn-gold">Nominate</a>
+  </div>
+  <p style="margin-top:2rem;color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;">"United by Cookies. Remembered by Legends."</p>
+</section>
+
+<section id="final-message" aria-label="Final message" style="text-align:center;background:linear-gradient(135deg,rgba(200,165,86,0.05),rgba(200,165,86,0.02));border-top:1px solid rgba(200,165,86,0.1);border-bottom:1px solid rgba(200,165,86,0.1);padding:5rem 2rem;">
+  <h2>Every Cookie has a story.<br>Every Cookie Runner has a memory.<br>Every legend deserves a golden moment.</h2>
+  <p class="subtitle" style="margin-top:1.5rem;font-size:1.3rem;">COOKIE RUNNERS GOLDEN BALLON D'OR 2026.</p>
+  <p style="margin-top:0.5rem;color:var(--gold);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;font-size:0.85rem;">Every Cookie. Every Legend. One Golden Legacy.</p>
+</section>
+{% endblock %}

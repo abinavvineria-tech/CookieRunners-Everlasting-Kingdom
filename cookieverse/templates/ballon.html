@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}The Golden Ballon d'Or — Cookie Runners{% endblock %}
+{% block content %}
+<section style="text-align:center;min-height:80vh;display:flex;flex-direction:column;justify-content:center;">
+  <h1>The Golden Ballon d'Or</h1>
+  <p class="subtitle">The highest honor. The golden ball of legends.</p>
+  <div class="trophy-container" aria-label="Golden trophy">
+    <div class="trophy">
+      <div class="stem"></div>
+      <div class="cup-body"></div>
+      <div class="cup-handle"></div>
+      <div class="cup-handle right"></div>
+      <div class="base"></div>
+    </div>
+  </div>
+  <h2>White Lily Cookie & Mogra Cookie</h2>
+  <p style="color:var(--gold);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Co-Winners — First Edition 2026</p>
+  <p style="max-width:600px;margin:1.5rem auto;color:var(--cream-soft);">The Golden Ballon d'Or is the ultimate recognition of legend, heart, and unforgettable contribution across the Cookie Run universe. In its first edition, two souls share the golden crown: White Lily Cookie, a gentle soul who carries eternal grace, and Mogra Cookie, a powerful presence with a golden heart.</p>
+  <a href="/ceremony" class="btn-gold" style="margin-top:1.5rem;">Experience the Ceremony</a>
+</section>
+{% endblock %}

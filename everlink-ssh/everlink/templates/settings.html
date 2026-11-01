@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Settings · EverLink SSH{% endblock %}
+{% block body_class %}page-settings{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+  <div class="card-header"><h2>Settings</h2></div>
+
+  <form method="post" novalidate>
+    {{ csrf_field() }}
+
+    <div class="form-row">
+      <label for="default_ssh_port">Default SSH port</label>
+      <input type="number" id="default_ssh_port" name="default_ssh_port" value="{{ settings.default_ssh_port }}" min="1" max="65535">
+      <p class="hint">Default port used when adding hosts and quick-connecting.</p>
+    </div>
+
+    <div class="form-row">
+      <label for="web_port">GUI web-server port</label>
+      <input type="number" id="web_port" name="web_port" value="{{ settings.web_port }}" min="1" max="65535">
+      <p class="hint">Port the Flask GUI binds to (localhost only).</p>
+    </div>
+
+    <div class="form-row">
+      <label for="theme">Theme</label>
+      <select id="theme" name="theme">
+        <option value="midnight" {% if settings.theme=='midnight' %}selected{% endif %}>Midnight (dark)</option>
+        <option value="solar" {% if settings.theme=='solar' %}selected{% endif %}>Solar (light)</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="terminal_preference">Terminal preference</label>
+      <select id="terminal_preference" name="terminal_preference">
+        <option value="native" {% if settings.terminal_preference=='native' %}selected{% endif %}>Native terminal</option>
+        <option value="copy-command" {% if settings.terminal_preference=='copy-command' %}selected{% endif %}>Copy connection command</option>
+      </select>
+      <p class="hint">How the GUI offers connections on devices without a native terminal.</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save settings</button>
+  </form>
+
+  <section class="card" style="margin-top:1.5rem">
+    <div class="card-header"><h3>Configuration &amp; data paths</h3></div>
+    <ul class="kv mono">
+      <li><strong>Config file:</strong> <span class="mono">{{ url_for('settings') }}</span></li>
+      <li><strong>Database:</strong> <span class="mono">{{ url_for('settings') }}</span></li>
+    </ul>
+    <p class="hint">Actual filesystem paths are shown on the Diagnostics page. No passwords or private keys are ever stored.</p>
+  </section>
+</section>
+{% endblock %}

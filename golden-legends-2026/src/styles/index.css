@@ -1,0 +1,89 @@
+/* Cookie Runners Golden Legends Awards 2026 — Premium Gold Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --midnight: #060b14;
+  --deep-blue: #0B1226;
+  --deep-blue-light: #101D3A;
+  --champagne: #E8D8A0;
+  --champagne-soft: #C8AE6C;
+  --gold: #D4AF37;
+  --gold-dim: #8A6E25;
+  --ivory: #F5EDD8;
+  --ivory-soft: #F3E6CC;
+  --rose-glow: #C78B8B;
+  --violet-soft: #A89BCF;
+  --cream: #FAF7F0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #060b14;
+  color: #F5EDD8;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.25);
+  color: #F5EDD8;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F5EDD8 0%, #D4AF37 40%, #C8AE6C 70%, #F5EDD8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse { animation: pulse 2s ease-in-out infinite; }
+
+.glass-card {
+  background: rgba(11, 18, 38, 0.65);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+
+.gold-glow {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.35) 30%, rgba(212, 175, 55, 0.6) 50%, rgba(212, 175, 55, 0.35) 70%, transparent 100%);
+}
+
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}

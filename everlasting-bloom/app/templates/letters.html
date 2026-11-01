@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Letters of Kindness</h1>
+  <p class="subtitle">Moderated visitor messages</p>
+</section>
+
+<article class="card-glass">
+  <h2>Share Your Kindness</h2>
+  <p>Leave a brief, respectful message honoring White Lily Cookie and the values she represents. All messages are moderated before appearing publicly.</p>
+  <form method="POST" style="margin-top:24px;">
+    <label for="author" style="font-size:.9rem;color:rgba(246,242,235,.8);">Your name</label>
+    <input type="text" name="author" id="author" maxlength="120" required style="width:100%;margin-top:6px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:var(--pearl);font-family:inherit;font-size:.95rem;">
+    <label for="message" style="font-size:.9rem;color:rgba(246,242,235,.8);margin-top:14px;display:block;">Message</label>
+    <textarea name="message" id="message" rows="4" maxlength="1000" required style="width:100%;margin-top:6px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:var(--pearl);font-family:inherit;font-size:.95rem;resize:vertical;"></textarea>
+    <button type="submit" class="btn-glass" style="margin-top:16px;">Submit Letter</button>
+  </form>
+</article>
+
+{% if letters %}
+<article class="card-glass">
+  <h2>Approved Letters</h2>
+  {% for l in letters %}
+    <blockquote style="margin:16px 0;padding:18px 20px;border-left:3px solid var(--gold);background:rgba(255,255,255,.03);border-radius:0 14px 14px 0;">
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.05rem;color:var(--pearl);margin-bottom:8px;">"{{ l['message'] }}"</p>
+      <cite style="font-size:.82rem;color:rgba(246,242,235,.55);font-style:normal;">— {{ l['author'] }}</cite>
+    </blockquote>
+  {% endfor %}
+</article>
+{% endif %}
+{% endblock %}

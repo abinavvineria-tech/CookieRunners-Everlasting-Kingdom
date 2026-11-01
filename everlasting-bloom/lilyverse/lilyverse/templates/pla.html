@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}PLA Memories — LilyVerse{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>PLA Memories</h1>
+  <p>Pure Vanilla Cookie · White Lily Cookie · Abinav</p>
+</section>
+
+<section class="pla-grid" aria-label="PLA trio sections">
+  {% for section in sections %}
+  <article class="pla-card card" aria-label="{{ section.name }}">
+    <h2>{{ section.name }}</h2>
+    <p class="role">{{ section.info.role }}</p>
+    <p>{{ section.info.description }}</p>
+    <p class="origin"><small>Origin: {{ section.info.origin }}</small></p>
+    <h3>Shared Memories</h3>
+    {% if section.milestones %}
+      <ul class="memory-list">
+        {% for m in section.milestones %}
+        <li>{{ m.date or 'Undated' }} — <strong>{{ m.title }}</strong>: {{ m.description }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No milestones recorded yet.</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+
+<section class="pla-reflection" aria-label="Personal reflections">
+  <h2>Three-Part Reflection</h2>
+  <div class="reflection-cols">
+    <div class="reflection-col">
+      <h3>Pure Vanilla Cookie</h3>
+      <p>Wise guardian of the Ancient Heroes — a gentle light guiding the kingdom.</p>
+    </div>
+    <div class="reflection-col">
+      <h3>White Lily Cookie</h3>
+      <p>Ancient Hero of truth, sacrifice, courage, friendship, and hope. Her petals remind us to walk with integrity.</p>
+    </div>
+    <div class="reflection-col">
+      <h3>Abinav</h3>
+      <p>Cookie Runner from Tamil Nadu, joined Cookie Run: Kingdom on 2026-04-22 during the K-pop Demon Hunters collaboration. 188 days as of the OvenBreak anniversary.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
