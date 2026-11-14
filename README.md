@@ -1,7 +1,7 @@
 
 # Cookie Runners Everlasting Kingdom 🍪👑
 
-**Website:** [Cookie Runners Everlasting Kingdom — GitHub Pages](https://abinavvineria-tech.github.io/CookieRunners-Everlasting-Kingdom/) · [docs/index.html](docs/index.html) · [docs directory](docs/)
+**Website:** [Cookie Runners Everlasting Kingdom — GitHub Pages](https://abinavvineria-tech.github.io/CookieRunners-Everlasting-Kingdom/) · [Main Landing Page](https://abinavvineria-tech.github.io/) · [docs/index.html](docs/index.html) · [docs directory](docs/)
 
 **Documentation navigation:** [Welcome](#welcome) · [Features](#features) · [Installation](#installation-prerequisites) · [Usage](#usage) · [Contribute](#contribution-guidelines) · [Disclaimer](#unofficial-fan-project-disclaimer)
 
