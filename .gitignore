@@ -1,0 +1,56 @@
+# Everlasting Bloom Studio — gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+.env
+.python-version
+
+# Flask
+instance/
+.webassets-cache
+
+# SQLite / data
+*.db
+*.db-shm
+*.db-wal
+data/*.sqlite
+data/*.sqlite3
+
+# Uploads (user data — not committed)
+uploads/*
+
+# Frontend
+frontend/node_modules/
+frontend/.vite/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+.npm
+.npmrc
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Hermes — do NOT commit agent operational data
+.hermes/
+
+# Releases
+*.zip
+*.tar.gz
