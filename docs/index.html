@@ -3,231 +3,440 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cookie Runners Everlasting Kingdom — Unofficial Fan Project</title>
-  <meta name="description" content="An unofficial Cookie Run fan-community project celebrating milestones, timelines, and creative experiments by Cookie Runners.">
-  <style>
-    :root {
-      --navy: #0b0d17;
-      --midnight: #12142b;
-      --purple-deep: #2e1a47;
-      --purple: #5b2a72;
-      --gold: #d4a843;
-      --gold-soft: #e6c572;
-      --pink: #f0b8d6;
-      --text: #eee8d6;
-      --text-muted: #a89bb3;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
-      background: linear-gradient(180deg, var(--navy) 0%, var(--midnight) 60%, var(--purple-deep) 100%);
-      color: var(--text);
-      line-height: 1.55;
-    }
-    header {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(11,13,23,0.85); backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(212,168,67,0.15);
-    }
-    nav { max-width: 1100px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; gap: 1.1rem; align-items: center; flex-wrap: wrap; }
-    nav a { color: var(--gold-soft); text-decoration: none; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em; padding: 0.2rem 0.35rem; border-radius: 6px; }
-    nav a:hover { color: var(--pink); background: rgba(212,168,67,0.08); }
-    .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
-    .hero {
-      padding: 4rem 1.25rem 3.5rem;
-      text-align: center;
-      background: radial-gradient(ellipse at 50% 0%, rgba(91,42,114,0.45) 0%, rgba(11,13,23,0.9) 70%);
-      border-bottom: 1px solid rgba(212,168,67,0.12);
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 6vw, 3.6rem);
-      font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
-      background: linear-gradient(135deg, var(--gold-soft) 0%, var(--pink) 50%, var(--purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 14px rgba(212,168,67,0.3));
-    }
-    .hero .subtitle { font-size: 1.1rem; color: var(--text-muted); margin-top: 0.6rem; }
-    .hero .tagline { color: var(--gold); font-weight: 700; letter-spacing: 0.12em; font-size: 0.85rem; margin-top: 1.2rem; text-transform: uppercase; }
-    section { margin: 3rem 0; }
-    section h2 { font-size: 1.6rem; font-weight: 700; color: var(--gold-soft); border-left: 4px solid var(--gold); padding-left: 0.7rem; margin-bottom: 1rem; }
-    section p { color: var(--text); }
-    .card-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(212,168,67,0.12);
-      border-radius: 16px; padding: 1.25rem 1.25rem 1.1rem;
-      backdrop-filter: blur(6px); transition: transform 0.15s ease, border-color 0.2s ease;
-    }
-    .card:hover { border-color: rgba(212,168,67,0.35); transform: translateY(-2px); }
-    .card h3 { color: var(--pink); font-size: 1.05rem; margin-bottom: 0.4rem; }
-    .card a { color: var(--gold-soft); text-decoration: none; }
-    .card a:hover { color: var(--pink); text-decoration: underline; }
-    .status-label { display: inline-block; padding: 0.15rem 0.45rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; margin-top: 0.35rem; }
-    .status-prototype { background: rgba(212,168,67,0.15); color: var(--gold-soft); }
-    .status-planned { background: rgba(240,184,214,0.12); color: var(--pink); }
-    .status-verified { background: rgba(212,168,67,0.15); color: #bfa76a; }
-    .disclaimer-box {
-      background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.2);
-      border-radius: 12px; padding: 1rem 1.2rem; margin-top: 1.5rem;
-    }
-    .disclaimer-box h3 { color: var(--gold); margin-bottom: 0.3rem; font-size: 1.05rem; }
-    .disclaimer-box p { font-size: 0.92rem; }
-    code { background: rgba(212,168,67,0.1); padding: 0.15rem 0.35rem; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
-    pre { background: rgba(0,0,0,0.35); border: 1px solid rgba(212,168,67,0.12); border-radius: 10px; padding: 1rem; overflow-x: auto; font-size: 0.9rem; }
-    footer { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid rgba(212,168,67,0.1); }
-    @media (max-width: 720px) {
-      .hero { padding: 3rem 1rem 2.5rem; }
-      .container { padding: 2rem 1rem 3rem; }
-    }
-  </style>
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Cookie Runners Everlasting Kingdom — an unofficial, community-made fan space celebrating Cookie Run games, characters, anniversaries, and creative experiments by Cookie Runners around the world.">
+  <meta name="theme-color" content="#0b0d17">
+
+  <title>Cookie Runners Everlasting Kingdom — A Community for Cookie Runners</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abinavvineria-tech.github.io/CookieRunners-Everlasting-Kingdom/">
+  <meta property="og:title" content="Cookie Runners Everlasting Kingdom — A Community for Cookie Runners">
+  <meta property="og:description" content="An unofficial, community-made fan space celebrating Cookie Run games, characters, anniversaries, and creative experiments.">
+  <meta property="og:site_name" content="Cookie Runners Everlasting Kingdom">
+  <meta property="og:image" content="https://abinavvineria-tech.github.io/CookieRunners-Everlasting-Kingdom/assets/images/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@CookieRunKingdom">
+
+  <noscript><img height="1" src="https://www.facebook.com/tr?id=0&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 </head>
 <body>
-  <header>
-    <nav aria-label="Primary">
-      <a href="#welcome">Welcome</a>
-      <a href="#projects">Projects</a>
-      <a href="#install">Installation</a>
-      <a href="#contribute">Contribute</a>
-      <a href="#disclaimer">Disclaimer</a>
-    </nav>
+
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Particle canvas (hero background) -->
+  <canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <nav class="topbar" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#" aria-label="Cookie Runners Everlasting Kingdom home">
+        <span class="brand-mark">🍪</span>
+        <div class="brand-text">
+          <span class="brand-name">Cookie Runners</span>
+          <span class="brand-sub">Everlasting Kingdom</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a class="nav-link" href="#hero">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#features">Features</a></li>
+        <li><a class="nav-link" href="#showcase">Showcase</a></li>
+        <li><a class="nav-link" href="#technology">Technology</a></li>
+        <li><a class="nav-link" href="#updates">Updates</a></li>
+        <li><a class="nav-link" href="#community">Community</a></li>
+        <li><a class="nav-link" href="#faq">FAQ</a></li>
+        <li><a class="nav-link theme-trigger" id="themeTrigger" aria-label="Toggle theme" title="Toggle theme">🌙</a></li>
+        <li><a class="nav-button" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom" target="_blank" rel="noopener">View on GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="hero" aria-label="Hero section">
+    <div class="hero-inner">
+      <div class="hero-badge"><span class="sparkle">✦</span> A Community-Driven Fan Project</div>
+      <h1 class="hero-title">
+        A New Adventure <span class="accent">Begins.</span>
+      </h1>
+      <p class="hero-subtitle">A world built by Cookie Runners, for Cookie Runners. Celebrating games, characters, anniversaries, and the creativity of the Cookie Run community.</p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="#showcase">Explore Repository</a>
+        <a class="button ghost" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value" id="statStars">—</span>
+          <span class="stat-label">stars</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="statForks">—</span>
+          <span class="stat-label">forks</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="statIssues">—</span>
+          <span class="stat-label">open issues</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="statContributors">1</span>
+          <span class="stat-label">contributor</span>
+        </div>
+      </div>
+
+      <a class="scroll-indicator" href="#about">
+        <span class="scroll-text">Scroll to begin</span>
+        <span class="scroll-arrow">▼</span>
+      </a>
+    </div>
   </header>
 
-  <section class="hero" id="welcome" aria-label="Welcome">
-    <div>
-      <p class="tagline">One Community. Many Adventures. An Everlasting Legacy.</p>
-      <h1>Cookie Runners Everlasting Kingdom</h1>
-      <p class="subtitle">An unofficial, community-made fan space celebrating Cookie Run — timelines, milestones, and the creativity of Cookie Runners everywhere.</p>
-    </div>
-  </section>
+  <!-- Main content -->
+  <main id="main-content">
 
-  <main class="container">
-    <section id="welcome-main" aria-label="Project identity">
-      <h2>Project Identity</h2>
-      <p>This site represents the <strong>Cookie Runners Everlasting Kingdom</strong> community. It is an <strong>unofficial fan project</strong> — not affiliated with, endorsed by, or sponsored by Devsisters Corporation or the official Cookie Run games. All Cookie Run names, characters, artwork, trademarks, and related intellectual property belong to their respective owners.</p>
-      <p>The repository is in a <strong>documentation / seed stage</strong>. Only what is committed and verified to run should be considered available. Items marked <span class="status-label status-planned">planned</span> or prototype are not guaranteed installable products.</p>
-    </section>
+    <!-- About -->
+    <section class="section section-about" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="about-heading"><span class="section-number">01</span>About the Kingdom</h2>
+          <p class="section-dek">Every Cookie Runner has a story. Every repository begins an adventure.</p>
+        </div>
 
-    <section id="directory" aria-label="Project directory">
-      <h2>Project Directory</h2>
-      <div class="card-grid">
-        <article class="card">
-          <h3>CookieVerse_Eternal_Ceremony_Flask</h3>
-          <p>Flask-based ceremony site prototype. <a href="CookieVerse_Eternal_Ceremony_Flask/README.md">README</a> · <a href="CookieVerse_Eternal_Ceremony_Flask/app.py">app.py</a> · <a href="CookieVerse_Eternal_Ceremony_Flask/requirements.txt">requirements</a></p>
-          <span class="status-label status-prototype">Prototype (verified)</span>
-        </article>
-        <article class="card">
-          <h3>everlasting-bloom</h3>
-          <p>Bloom and timeline projects. <a href="everlasting-bloom/README.md">README</a> · <a href="everlasting-bloom/app/">app/</a> · <a href="everlasting-bloom/lilyverse/">lilyverse</a></p>
-          <span class="status-label status-prototype">In progress</span>
-        </article>
-        <article class="card">
-          <h3>everlink-ssh</h3>
-          <p>SSH connection manager with CLI + Flask GUI. <a href="everlink-ssh/README.md">README</a> · <a href="everlink-ssh/CLI.md">CLI docs</a></p>
-          <span class="status-label status-prototype">Working prototype</span>
-        </article>
-        <article class="card">
-          <h3>shadowverse</h3>
-          <p>ShadowVerse fan project workspace with templates and static assets.</p>
-          <span class="status-label status-planned">In development</span>
-        </article>
-        <article class="card">
-          <h3>cookieverse</h3>
-          <p>Cookieverse workspace with app and database components. <a href="cookieverse/README.md">README</a> · <a href="cookieverse/app.py">app.py</a></p>
-          <span class="status-label status-prototype">Prototype exists</span>
-        </article>
-        <article class="card">
-          <h3>final_ceremony_ending</h3>
-          <p>Ceremony documentation and design notes. <a href="final_ceremony_ending/README.md">README</a> · <a href="final_ceremony_ending/PROMPT.MD">PROMPT</a></p>
-          <span class="status-label status-planned">Design / docs</span>
-        </article>
-        <article class="card">
-          <h3>golden-legends-2026</h3>
-          <p>Golden legends celebration workspace (React/Vite; no root README — check <code>package.json</code> and <code>dist/</code>).</p>
-          <span class="status-label status-planned">Seasonal / planned (React workspace; no root README)</span>
-        </article>
-        <article class="card">
-          <h3>ovenbreak-decade</h3>
-          <p>OvenBreak Decade (2016–2026) celebration workspace.</p>
-          <span class="status-label status-planned">Planned / seasonal</span>
-        </article>
-        <article class="card">
-          <h3>dawnbringer</h3>
-          <p>Dawnbringer fan workspace (index, scripts, styles).</p>
-          <span class="status-label status-planned">In development</span>
-        </article>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Welcome to <strong>Cookie Runners Everlasting Kingdom</strong> — an unofficial, community-made fan space celebrating Cookie Run games, characters, anniversaries, and the creativity of Cookie Runners around the world.</p>
+            <p>This repository is a <strong>community-driven home</strong> for fan-made projects, Flask websites, Termux tools, Cookie Run timelines, anniversary celebrations, and creative experiments inspired by CRK, OvenBreak, OvenSmash, and more.</p>
+            <p>Whether you're here for the lore, the celebrations, or the code — you belong in this kitchen.</p>
+            <ul class="about-list">
+              <li><span class="tick">✦</span> One community. Many adventures. An everlasting legacy.</li>
+              <li><span class="tick">✦</span> Welcoming Cookie Runners of all experience levels.</li>
+              <li><span class="tick">✦</span> Documenting Cookie Run milestones and anniversaries.</li>
+              <li><span class="tick">✦</span> Hosting small, working fan creations anyone can run and modify.</li>
+            </ul>
+          </div>
+
+          <div class="about-statement glass-card">
+            <div class="statement-mark">🍪</div>
+            <h3>Our Motto</h3>
+            <blockquote>
+              "Every Cookie Runner has a story. Every repository begins an adventure."
+            </blockquote>
+            <p class="statement-note">Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="install" aria-label="Installation">
-      <h2>Installation Guide</h2>
-      <p>These instructions apply to real, verified sub-projects. If a sub-project does not yet include <code>requirements.txt</code> or <code>app.py</code>, treat it as planned or prototype only.</p>
+    <!-- Features -->
+    <section class="section section-features" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="features-heading"><span class="section-number">02</span>Features</h2>
+          <p class="section-dek">What makes this kingdom special.</p>
+        </div>
 
-      <h3>Prerequisites</h3>
-      <ul>
-        <li><strong>Python 3</strong> (3.9+ recommended)</li>
-        <li><strong>pip</strong> (included with Python)</li>
-        <li><strong>git</strong> (to clone)</li>
-        <li>A terminal — <strong>Termux</strong> on Android, or regular terminal on Ubuntu / Linux</li>
-      </ul>
-
-      <h3>Clone</h3>
-      <pre><code>git clone https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom.git
-cd CookieRunners-Everlasting-Kingdom</code></pre>
-
-      <h3>Virtual Environment</h3>
-      <pre><code># Ubuntu / Linux
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Android Termux
-python -m venv .venv
-source .venv/bin/activate</code></pre>
-
-      <h3>Dependencies</h3>
-      <pre><code># From the sub-project folder that has requirements.txt
-pip install -r requirements.txt
-
-# Example (Flask ceremony prototype):
-# Flask&gt;=3.0,&lt;4.0</code></pre>
-
-      <h3>Run (verified prototype example)</h3>
-      <pre><code># From the folder containing app.py
-python app.py
-
-# Default: http://127.0.0.1:5000</code></pre>
-      <p><strong>Note:</strong> Do not expose a development server directly to the public internet without production hosting and a security review. Some sub-projects are not yet installable — inspect each folder individually.</p>
-    </section>
-
-    <section id="contribute" aria-label="Contribute">
-      <h2>Contribution Guide</h2>
-      <ul>
-        <li><strong>Fork</strong> the repository and create a new branch from <code>main</code>.</li>
-        <li><strong>Add or improve</strong> documentation, code, assets, or celebration ideas.</li>
-        <li><strong>Test</strong> changes on Android/Termux or Ubuntu before submitting.</li>
-        <li><strong>Label clearly</strong> anything demo, prototype, or unverified.</li>
-        <li><strong>Open a pull request</strong> with a clear description.</li>
-        <li>Be respectful and inclusive. Cookie Runners of all backgrounds are welcome.</li>
-      </ul>
-      <p>Avoid claiming official affiliation with Devsisters. Preserve existing documentation. Do not invent achievements, dates, or endorsements.</p>
-    </section>
-
-    <section id="disclaimer" aria-label="Disclaimer">
-      <h2>Unofficial Fan-Project Disclaimer</h2>
-      <div class="disclaimer-box" aria-label="Disclaimer box">
-        <h3>Not official. Not sponsored.</h3>
-        <p><strong>Cookie Runners Everlasting Kingdom</strong> is an unofficial, community-made fan project. It is <strong>not</strong> affiliated with, endorsed by, or sponsored by <strong>Devsisters Corporation</strong> or the official <strong>Cookie Run</strong> games. All Cookie Run names, characters, artwork, trademarks, and related intellectual property belong to their respective owners.</p>
-        <p>This page is a landing site — not a finished, installable product. Project status is clearly labeled per folder (prototype / planned / verified). Celebrate the journey honestly.</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🏰</div>
+            <h3>Community Home</h3>
+            <p>A welcoming front door for Cookie Runners everywhere — fans, creators, and collectors alike.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">📜</div>
+            <h3>Timelines &amp; Milestones</h3>
+            <p>Community-maintained notes on game milestones, anniversaries, and celebrations.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🎂</div>
+            <h3>Anniversary Celebrations</h3>
+            <p>Fan events marking Cookie Run anniversaries — seasonal, community-led.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🐍</div>
+            <h3>Flask Websites</h3>
+            <p>Small, working Flask-based fan sites designed to run locally (Termux + Ubuntu).</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Termux Tools</h3>
+            <p>Android-friendly command-line utilities for Cookie Runners on Termux.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h3>Ubuntu Utilities</h3>
+            <p>Linux/Ubuntu command-line and desktop utilities for the community.</p>
+          </article>
+        </div>
       </div>
     </section>
+
+    <!-- Showcase -->
+    <section class="section section-showcase" id="showcase" aria-labelledby="showcase-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="showcase-heading"><span class="section-number">03</span>Project Showcase</h2>
+          <p class="section-dek">Fan-made projects tracked in this repository.</p>
+        </div>
+
+        <div class="showcase-grid">
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">Verified prototype</div>
+            <h3>CookieVerse_Eternal_Ceremony_Flask</h3>
+            <p>Flask-based ceremony site prototype with README, app.py, and requirements.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/CookieVerse_Eternal_Ceremony_Flask" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">In progress</div>
+            <h3>everlasting-bloom</h3>
+            <p>Bloom and timeline projects with app/ and lilyverse components.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/everlasting-bloom" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">Working prototype</div>
+            <h3>everlink-ssh</h3>
+            <p>SSH connection manager with CLI + Flask GUI.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/everlink-ssh" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">In development</div>
+            <h3>shadowverse</h3>
+            <p>ShadowVerse fan project workspace with templates and static assets.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/shadowverse_backup" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">Prototype exists</div>
+            <h3>cookieverse</h3>
+            <p>Cookieverse workspace with app and database components.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/cookieverse" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">Design / docs</div>
+            <h3>final_ceremony_ending</h3>
+            <p>Ceremony documentation and design notes.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/final_ceremony_ending" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">Seasonal / planned</div>
+            <h3>golden-legends-2026</h3>
+            <p>Golden legends celebration workspace (React/Vite).</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/golden-legends-2026" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">Planned / seasonal</div>
+            <h3>ovenbreak-decade</h3>
+            <p>OvenBreak Decade (2016–2026) celebration workspace.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/ovenbreak-decade" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+          <article class="showcase-card glass-card">
+            <div class="showcase-tag">In development</div>
+            <h3>dawnbringer</h3>
+            <p>Dawnbringer fan workspace with index, scripts, and styles.</p>
+            <a class="showcase-link" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/tree/main/dawnbringer" target="_blank" rel="noopener">Open folder →</a>
+          </article>
+        </div>
+
+        <p class="showcase-note">Repository is in a documentation/seed stage. Folder statuses are labeled as tracked in the repo — nothing is presented as a finished, installable product yet.</p>
+      </div>
+    </section>
+
+    <!-- Technology -->
+    <section class="section section-technology" id="technology" aria-labelledby="technology-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="technology-heading"><span class="section-number">04</span>Technology</h2>
+          <p class="section-dek">Tools and frameworks used across the kingdom.</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-item glass-card">
+            <span class="tech-badge">Python 3.9+</span>
+            <p>Core language for Flask backends and Termux tools.</p>
+          </div>
+          <div class="tech-item glass-card">
+            <span class="tech-badge">Flask</span>
+            <p>Web framework for fan-site prototypes and APIs.</p>
+          </div>
+          <div class="tech-item glass-card">
+            <span class="tech-badge">SQLite</span>
+            <p>Lightweight database for local persistence.</p>
+          </div>
+          <div class="tech-item glass-card">
+            <span class="tech-badge">Git</span>
+            <p>Version control — clone, branch, and contribute.</p>
+          </div>
+          <div class="tech-item glass-card">
+            <span class="tech-badge">Termux</span>
+            <p>Android terminal environment for mobile-first development.</p>
+          </div>
+          <div class="tech-item glass-card">
+            <span class="tech-badge">Ubuntu / Linux</span>
+            <p>Desktop and server deployment target.</p>
+          </div>
+          <div class="tech-item glass-card">
+            <span class="tech-badge">GitHub Pages</span>
+            <p>Hosting for this landing page.</p>
+          </div>
+          <div class="tech-item glass-card">
+            <span class="tech-badge">HTML / CSS / JS</span>
+            <p>Frontend for this landing page — no build step required.</p>
+          </div>
+        </div>
+
+        <div class="supported-environments glass-card">
+          <h3>Supported Environments</h3>
+          <ul class="env-list">
+            <li><span class="tick">✦</span> Android with Termux — Python + Flask</li>
+            <li><span class="tick">✦</span> Linux / Ubuntu — same instructions apply</li>
+            <li><span class="tick">✦</span> Other platforms — Python/Flask where supported</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Updates -->
+    <section class="section section-updates" id="updates" aria-labelledby="updates-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="updates-heading"><span class="section-number">05</span>Repository Updates</h2>
+          <p class="section-dek">Latest activity from GitHub.</p>
+        </div>
+
+        <div class="updates-intro glass-card">
+          <p><strong>Repository:</strong> <a href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom" target="_blank" rel="noopener">CookieRunners-Everlasting-Kingdom</a></p>
+          <p><strong>Stars:</strong> <span id="repoStars">—</span> &nbsp;|&nbsp; <strong>Forks:</strong> <span id="repoForks">—</span> &nbsp;|&nbsp; <strong>Open issues:</strong> <span id="repoIssues">—</span></p>
+          <p><strong>Latest release:</strong> <span id="repoRelease">No releases yet</span></p>
+          <p><strong>License:</strong> <span id="repoLicense">None detected</span></p>
+        </div>
+
+        <div class="updates-list" id="repoUpdates">
+          <div class="update-empty">Loading repository activity…</div>
+        </div>
+
+        <p class="updates-note">Repository statistics are fetched live from the GitHub API (no tokens required). Release, license, and issue data reflect what is actually tracked on GitHub — nothing is invented.</p>
+      </div>
+    </section>
+
+    <!-- Community -->
+    <section class="section section-community" id="community" aria-labelledby="community-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="community-heading"><span class="section-number">06</span>Community</h2>
+          <p class="section-dek">Contributors and community links.</p>
+        </div>
+
+        <div class="contributors-grid" id="contributorsList">
+          <div class="contributor-card glass-card">
+            <img class="contributor-avatar" src="https://avatars.githubusercontent.com/u/240036042?v=4" alt="abinavvineria-tech" width="64" height="64">
+            <div class="contributor-info">
+              <h3>abinavvineria-tech</h3>
+              <p class="contributor-login">@abinavvineria-tech</p>
+              <p class="contributor-contrib">1 contribution</p>
+            </div>
+            <a class="contributor-link" href="https://github.com/abinavvineria-tech" target="_blank" rel="noopener">Profile →</a>
+          </div>
+        </div>
+        <p class="contributors-note" id="contributorsNote">Contributor data fetched live from GitHub. Repository currently has 1 contributor.</p>
+
+        <div class="community-links glass-card">
+          <h3>Connect</h3>
+          <div class="link-grid">
+            <a class="link-card" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom" target="_blank" rel="noopener">
+              <span class="link-icon">🐙</span>
+              <span>Repository on GitHub</span>
+            </a>
+            <a class="link-card" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/issues" target="_blank" rel="noopener">
+              <span class="link-icon">📋</span>
+              <span>Open an Issue</span>
+            </a>
+            <a class="link-card" href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/discussions" target="_blank" rel="noopener">
+              <span class="link-icon">💬</span>
+              <span>Discussions</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="faq-heading"><span class="section-number">07</span>Frequently Asked Questions</h2>
+          <p class="section-dek">Common questions about the kingdom.</p>
+        </div>
+
+        <div class="faq-grid">
+          <details class="faq-item glass-card">
+            <summary>Is this an official Cookie Run project?</summary>
+            <p>No. Cookie Runners Everlasting Kingdom is an unofficial, community-made fan project. It is not affiliated with, endorsed by, or sponsored by Devsisters Corporation or the official Cookie Run games. All Cookie Run names, characters, artwork, trademarks, and related intellectual property belong to their respective owners.</p>
+          </details>
+          <details class="faq-item glass-card">
+            <summary>Can I install and run this?</summary>
+            <p>This repository is currently in a documentation/seed stage. Some folders contain verified prototypes (e.g., CookieVerse_Eternal_Ceremony_Flask, everlink-ssh) with their own README and requirements. Other folders are marked planned or in development and are not yet installable products. Inspect each folder individually.</p>
+          </details>
+          <details class="faq-item glass-card">
+            <summary>What platforms are supported?</summary>
+            <p>Android with Termux, Linux/Ubuntu, and other platforms where Python 3.9+ and Flask are supported.</p>
+          </details>
+          <details class="faq-item glass-card">
+            <summary>How can I contribute?</summary>
+            <p>Fork the repository, create a new branch from <code>main</code>, add or improve documentation/code/assets, test on Android/Termux or Ubuntu, label prototype or unverified items clearly, and open a pull request with a clear description.</p>
+          </details>
+          <details class="faq-item glass-card">
+            <summary>Are there releases?</summary>
+            <p>No releases have been published yet. Check the Updates section for live repository statistics.</p>
+          </details>
+          <details class="faq-item glass-card">
+            <summary>Is there a license?</summary>
+            <p>No license has been detected on the repository yet.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <p>Cookie Runners Everlasting Kingdom — Unofficial Fan Project</p>
-    <p>Slogan: <strong>One Community. Many Adventures. An Everlasting Legacy.</strong></p>
-    <p>Design identity: dark cinematic purple, soft pink and gold accents. Made with 🍪 by Cookie Runners, for Cookie Runners.</p>
+  <!-- Footer -->
+  <footer class="site-footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark">🍪</span>
+          <span class="footer-name">Cookie Runners Everlasting Kingdom</span>
+        </div>
+        <p class="footer-motto">Every Cookie Runner has a story. Every repository begins an adventure.</p>
+        <div class="footer-links">
+          <a href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom" target="_blank" rel="noopener">GitHub</a>
+          <a href="#about">About</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://github.com/abinavvineria-tech/CookieRunners-Everlasting-Kingdom/issues" target="_blank" rel="noopener">Issues</a>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.</p>
+        <p>Made with 🍪 by Cookie Runners, for Cookie Runners.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
