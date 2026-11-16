@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel of Doom — Hermes Agent Dashboard</title>
+    <meta name="description" content="Angel of Doom — Celestial Fantasy Intelligence. Personal AI agent and Cookie Runner project assistant. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.">
+    <meta name="author" content="CookieBloom Nexus / Everlasting Bloom Studio">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fan-project disclaimer banner (every page) -->
+    <header class="fan-banner" role="banner">
+        <span class="disclaimer-icon">&#9899;</span>
+        <strong>Unofficial fan project.</strong> Angel of Doom — Hermes Agent is a fan-made Cookie Run: Kingdom project. Not affiliated with or endorsed by Devsisters Corporation. Character names, lore, and related trademarks belong to their respective owners.
+    </header>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+            <div class="sidebar-brand">
+                <div class="brand-mark">𪽊</div>
+                <div class="brand-text">
+                    <div class="brand-name">Angel of Doom</div>
+                    <div class="brand-sub">Hermes Agent</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-label">Dashboard</div>
+                    <a href="#" class="nav-item active" data-panel="overview" aria-current="page">
+                        <span class="nav-icon">&#9881;</span>
+                        <span class="nav-label">Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="agents">
+                        <span class="nav-icon">&#9998;</span>
+                        <span class="nav-label">Agents</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="projects">
+                        <span class="nav-icon">&#128221;</span>
+                        <span class="nav-label">Projects</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Cookie Run</div>
+                    <a href="#" class="nav-item" data-panel="cookies">
+                        <span class="nav-icon">&#127853;</span>
+                        <span class="nav-label">Cookies</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="events">
+                        <span class="nav-icon">&#127881;</span>
+                        <span class="nav-label">Events</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="lore">
+                        <span class="nav-icon">&#128187;</span>
+                        <span class="nav-label">Lore</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">System</div>
+                    <a href="#" class="nav-item" data-panel="settings">
+                        <span class="nav-icon">&#9881;</span>
+                        <span class="nav-label">Settings</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="logs">
+                        <span class="nav-icon">&#128222;</span>
+                        <span class="nav-label">Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-status">
+                    <span class="status-dot status-online" title="Online"></span>
+                    <span class="status-text">System Online</span>
+                </div>
+                <div class="sidebar-version">
+                    Hermes Agent v1.0.0 &bull; Angel of Doom
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content" id="main-content">
+            <!-- Top bar -->
+            <header class="topbar" id="topbar">
+                <button class="topbar-toggle" id="topbar-toggle" aria-label="Toggle sidebar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <div class="topbar-title">
+                    <div class="topbar-app">Angel of Doom</div>
+                    <div class="topbar-mode">Celestial Intelligence Mode</div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="topbar-status">
+                        <span class="topbar-status-dot status-online" title="Online"></span>
+                        <span class="topbar-status-text">Online</span>
+                        <span class="topbar-clock" id="topbar-clock" title="IST">--:--:-- IST</span>
+                    </div>
+                    <button class="topbar-btn" id="topbar-notify" aria-label="Notifications">
+                        &#128227;
+                    </button>
+                    <button class="topbar-btn topbar-btn-user" id="topbar-user" aria-label="User profile">
+                        AD
+                    </button>
+                </div>
+            </header>
+
+            <!-- Overview / active panel -->
+            <section class="panel" id="panel-overview" aria-label="Overview">
+                <div class="panel-header">
+                    <h1 class="panel-title">Overview</h1>
+                    <p class="panel-sub">Celestial Intelligence status and Cookie Runner project activity.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-label">System Status</div>
+                        <div class="stat-card-value">ONLINE</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">All celestial systems nominal</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Active Agents</div>
+                        <div class="stat-card-value">1</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Angel of Doom — Hermes Agent</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Cookie Run Projects</div>
+                        <div class="stat-card-value">4</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="stat-card-note">CRK, OvenBreak, OvenSmash, Crumble</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Lore Tracked</div>
+                        <div class="stat-card-value">8</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="stat-card-note">White Lily, Pure Vanilla, Ancients, Beasts</div>
+                    </div>
+                </div>
+
+                <div class="panel-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Agent Activity</h2>
+                            <span class="card-badge status-online">Active</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-meta">
+                                        <span class="activity-time">Just now</span>
+                                        <span class="activity-tag status-online">online</span>
+                                    </div>
+                                    <div class="activity-text">Welcome screen initialized — Angel of Doom identity loaded.</div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-meta">
+                                        <span class="activity-time">Moments ago</span>
+                                        <span class="activity-tag status-online">online</span>
+                                    </div>
+                                    <div class="activity-text">Theme palette extracted from Angel of Doom reference (iTFYKXee6N0).</div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-meta">
+                                        <span class="activity-time">Moments ago</span>
+                                        <span class="activity-tag status-success">success</span>
+                                    </div>
+                                    <div class="activity-text">Cookie Run: Kingdom knowledge loaded — White Lily Cookie, Pure Vanilla Cookie, Ancients.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">System Status</h2>
+                            <span class="card-badge status-online">Nominal</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span class="status-item-name">Hermes Agent Core</span>
+                                    <span class="status-item-value status-online">ONLINE</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Terminal UI</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Dashboard</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Cookie Run Knowledge</span>
+                                    <span class="status-item-value status-online">LOADED</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Termux / Android 14</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Logs</h2>
+                        <span class="card-badge status-muted">live</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="log-console" id="log-console">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Angel of Doom terminal welcome screen rendered.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Theme palette loaded from hermes-theme/theme.json.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Dashboard initialized — sidebar, navigation, cards active.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Unofficial fan project — not affiliated with Devsisters.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:04]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">All systems celestial. Ready to assist Cookie Runners.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agents panel -->
+            <section class="panel hidden" id="panel-agents" aria-label="Agents">
+                <div class="panel-header">
+                    <h1 class="panel-title">Agents</h1>
+                    <p class="panel-sub">Manage and monitor Hermes Agent instances.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>No additional agents configured. Angel of Doom is the active personal AI agent.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects panel -->
+            <section class="panel hidden" id="panel-projects" aria-label="Projects">
+                <div class="panel-header">
+                    <h1 class="panel-title">Projects</h1>
+                    <p class="panel-sub">Cookie Run fan projects under the Everlasting Bloom Studio umbrella.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="project-list">
+                            <li class="project-item">
+                                <span class="project-name">PureLily: Forever Together</span>
+                                <span class="project-tag status-success">Flask</span>
+                                <span class="project-desc">Celebration of White Lily Cookie's return — PureLily friendship.</span>
+                            </li>
+                            <li class="project-item">
+                                <span class="project-name">Everlasting Bloom Studio</span>
+                                <span class="project-tag status-online">Studio</span>
+                                <span class="project-desc">Creative universe: botanical fantasy, white lilies, soft green and white, golden accents.</span>
+                            </li>
+                            <li class="project-item">
+                                <span class="project-name">Angel of Doom Nexus</span>
+                                <span class="project-tag status-online">Active</span>
+                                <span class="project-desc">Hermes Agent Angel of Doom identity — this dashboard.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cookies panel -->
+            <section class="panel hidden" id="panel-cookies" aria-label="Cookies">
+                <div class="panel-header">
+                    <h1 class="panel-title">Cookies</h1>
+                    <p class="panel-sub">Tracked Cookie Run: Kingdom cookies and lore connections.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="cookie-list">
+                            <li class="cookie-item">
+                                <span class="cookie-name">White Lily Cookie</span>
+                                <span class="cookie-tag status-online">Ancient</span>
+                                <span class="cookie-desc">Central inspiration — freedom, friendship, hope, memories, reunion.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Pure Vanilla Cookie</span>
+                                <span class="cookie-tag status-success">Ancient Hero</span>
+                                <span class="cookie-desc">PureLily friendship and story connection with White Lily Cookie.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Hollyberry Cookie</span>
+                                <span class="cookie-tag status-warning">Cookie Knight</span>
+                                <span class="cookie-desc">Kingdom protector, Ancient Heroes ally.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Dark Cacao Cookie</span>
+                                <span class="cookie-tag status-warning">Dark Enchantress</span>
+                                <span class="cookie-desc">Ancient Hero, Black Dragon ally.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Mogra Cookie</span>
+                                <span class="cookie-tag status-info">Watcher</span>
+                                <span class="cookie-desc">Connected Cookie Runner community favourite.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Events panel -->
+            <section class="panel hidden" id="panel-events" aria-label="Events">
+                <div class="panel-header">
+                    <h1 class="panel-title">Events</h1>
+                    <p class="panel-sub">Cookie Run updates and community events.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Angel of Doom — Cookie Run: Kingdom update (reference video iTFYKXee6N0). Palette extracted and applied.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lore panel -->
+            <section class="panel hidden" id="panel-lore" aria-label="Lore">
+                <div class="panel-header">
+                    <h1 class="panel-title">Lore</h1>
+                    <p class="panel-sub">Ancient Heroes, Beasts, and Cookie Run mythology.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="lore-list">
+                            <li class="lore-item">
+                                <span class="lore-name">Ancient Heroes</span>
+                                <span class="lore-tag status-online">Official</span>
+                                <span class="lore-desc">Pure Vanilla, Hollyberry, Dark Cacao, and other Ancient protectors.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Beasts</span>
+                                <span class="lore-tag status-warning">Official</span>
+                                <span class="lore-desc">Powerful entities tied to Ancient Cookie history.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">PureLily</span>
+                                <span class="lore-tag status-info">Fan theory</span>
+                                <span class="lore-desc">White Lily Cookie × Pure Vanilla Cookie friendship connection — treat as theory.</span>
+                            </li>
+                        </ul>
+                        <p class="lore-note">Fan theories are treated as theories. Official information is distinguished from fan-created content.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings panel -->
+            <section class="panel hidden" id="panel-settings" aria-label="Settings">
+                <div class="panel-header">
+                    <h1 class="panel-title">Settings</h1>
+                    <p class="panel-sub">Configure the Angel of Doom Hermes Agent experience.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form class="settings-form">
+                            <div class="setting-group">
+                                <label class="setting-label">Agent Identity</label>
+                                <select class="setting-select">
+                                    <option value="angel-of-doom" selected>Angel of Doom</option>
+                                    <option value="cookiebloom-nexus">CookieBloom Nexus</option>
+                                </select>
+                                <p class="setting-hint">Changes the agent's personality and visual theme.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Timezone</label>
+                                <select class="setting-select">
+                                    <option value="Asia/Kolkata" selected>Asia/Kolkata (IST, UTC+5:30)</option>
+                                    <option value="UTC">UTC</option>
+                                </select>
+                                <p class="setting-hint">All times displayed in IST per Cookie Run update tracking preference.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Theme</label>
+                                <select class="setting-select">
+                                    <option value="celestial-dark" selected>Celestial Dark (Angel of Doom)</option>
+                                </select>
+                                <p class="setting-hint">Measured palette from the Angel of Doom reference video.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Status Indicators</label>
+                                <div class="setting-toggle">
+                                    <input type="checkbox" id="toggle-status" checked>
+                                    <label for="toggle-status" class="setting-toggle-slider"></label>
+                                </div>
+                                <p class="setting-hint">Show online/warning/error status dots throughout the UI.</p>
+                            </div>
+
+                            <div class="setting-actions">
+                                <button class="btn btn-primary" type="button">Save Settings</button>
+                                <button class="btn btn-ghost" type="button">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Logs panel -->
+            <section class="panel hidden" id="panel-logs" aria-label="Logs">
+                <div class="panel-header">
+                    <h1 class="panel-title">Logs</h1>
+                    <p class="panel-sub">System and agent activity log.</p>
+                </div>
+                <div class="card full-width">
+                    <div class="card-body">
+                        <div class="log-console" id="log-console-full">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Angel of Doom Hermes Agent session started.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Visual identity palette loaded from measured reference.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Terminal UI and dashboard initialized.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Unofficial fan project — verify official sources for announcements.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

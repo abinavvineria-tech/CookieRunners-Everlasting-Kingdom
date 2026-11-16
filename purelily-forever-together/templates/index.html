@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+
+{% block title %}PureLily: Forever Together — Welcome Home, White Lily{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero" aria-label="Welcome">
+  <div class="hero-content">
+    <div class="hero-badge">A Reunion Celebration</div>
+    <h1 class="hero-title">PureLily<span class="dot">&#10033;</span>: Forever Together</h1>
+    <p class="hero-subtitle">White Lily Cookie returns. The garden blooms again, and friends gather to welcome her home.</p>
+    <a href="#garden-awaits" class="btn btn-primary">Begin at The Garden Awaits</a>
+  </div>
+  <div class="hero-decoration" aria-hidden="true">
+    <div class="lily-bloom"></div>
+    <div class="petal-bg p1"></div>
+    <div class="petal-bg p2"></div>
+    <div class="petal-bg p3"></div>
+  </div>
+</section>
+
+<!-- ===== NOV 4 — THE GARDEN AWAITS ===== -->
+<section id="garden-awaits" class="section day-section" aria-label="November 4 — The Garden Awaits">
+  <div class="container">
+    <div class="day-header">
+      <span class="day-tag">November 4, 2026</span>
+      <h2 class="day-title">The Garden Awaits</h2>
+      <p class="day-intro">Quiet anticipation. A welcome is being prepared, and memories of friends fill the air.</p>
+    </div>
+
+    <div class="day-narrative">
+      <p>The garden has been tended through every season of waiting. Soft soil, open gates, a place set at the table — everything ready for the day White Lily Cookie steps back into the light. It is a gentle thing, this kind of hope: not loud, not hurried, simply steady.</p>
+      <p>Friends remember her in their own ways. A shared promise. A quiet joke. A moment under the same moon. Each memory is a bud waiting to open.</p>
+    </div>
+
+    <div class="petal-garden" aria-label="Friendship memories — open each to read a welcome message">
+      <h3 class="visually-hidden">Friendship memories</h3>
+
+      <article class="memory-bud" data-target="msg-purevanilla">
+        <button class="bud-trigger" aria-expanded="false" aria-controls="msg-purevanilla">
+          <div class="bud">
+            <div class="bud-center"></div>
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+          </div>
+          <span class="bud-label">Pure Vanilla Cookie</span>
+          <span class="open-hint">Open memory</span>
+        </button>
+      </article>
+
+      <article class="memory-bud" data-target="msg-ancients">
+        <button class="bud-trigger" aria-expanded="false" aria-controls="msg-ancients">
+          <div class="bud">
+            <div class="bud-center"></div>
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+          </div>
+          <span class="bud-label">The Ancient Heroes</span>
+          <span class="open-hint">Open memory</span>
+        </button>
+      </article>
+
+      <article class="memory-bud" data-target="msg-mogra">
+        <button class="bud-trigger" aria-expanded="false" aria-controls="msg-mogra">
+          <div class="bud">
+            <div class="bud-center"></div>
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+          </div>
+          <span class="bud-label">Mogra Cookie</span>
+          <span class="open-hint">Open memory</span>
+        </button>
+      </article>
+
+      <article class="memory-bud" data-target="msg-hollyberry">
+        <button class="bud-trigger" aria-expanded="false" aria-controls="msg-hollyberry">
+          <div class="bud">
+            <div class="bud-center"></div>
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+          </div>
+          <span class="bud-label">Hollyberry Cookie</span>
+          <span class="open-hint">Open memory</span>
+        </button>
+      </article>
+    </div>
+
+    <!-- Welcome message panels (revealed when a bud opens) -->
+    <div class="message-panels" aria-live="polite">
+      <div id="msg-purevanilla" class="message-panel" role="region" aria-labelledby="msg-pv-title">
+        <button class="msg-close" aria-label="Close message">&#10006;</button>
+        <h3 id="msg-pv-title">Pure Vanilla Cookie welcomes White Lily</h3>
+        <p>"Welcome back, White Lily. The garden has kept your place through every season, and so have I. Your light never faded from our memories — rest here, among friends, where you belong."</p>
+        <span class="fan-story-tag">fan story</span>
+      </div>
+
+      <div id="msg-ancients" class="message-panel" role="region" aria-labelledby="msg-ah-title">
+        <button class="msg-close" aria-label="Close message">&#10006;</button>
+        <h3 id="msg-ah-title">The Ancient Heroes welcome White Lily</h3>
+        <p>"We stood together once, and we stand together again. No age, no slumber, no distance can part what friendship has built across the ages. Welcome home."</p>
+        <span class="fan-story-tag">fan story</span>
+      </div>
+
+      <div id="msg-mogra" class="message-panel" role="region" aria-labelledby="msg-mg-title">
+        <button class="msg-close" aria-label="Close message">&#10006;</button>
+        <h3 id="msg-mg-title">Mogra Cookie welcomes White Lily</h3>
+        <p>"Oh, White Lily! The blossoms have all been abuzz — they've been waiting to greet you too. Let's make the garden bright together, just like old times."</p>
+        <span class="fan-story-tag">fan story</span>
+      </div>
+
+      <div id="msg-hollyberry" class="message-panel" role="region" aria-labelledby="msg-hb-title">
+        <button class="msg-close" aria-label="Close message">&#10006;</button>
+        <h3 id="msg-hb-title">Hollyberry Cookie welcomes White Lily</h3>
+        <p>"You came all this way — a long road, traveled with courage. The castle gates are open, and so is my heart. Welcome home, friend."</p>
+        <p class="tribute-note">A small tribute to Hollyberry Cookie's warm greeting — in my own words, no copied dialogue.</p>
+        <span class="fan-story-tag">fan story</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOV 5 — WELCOME HOME ===== -->
+<section id="welcome-home" class="section day-section" aria-label="November 5 — Welcome Home">
+  <div class="container">
+    <div class="day-header">
+      <span class="day-tag">November 5, 2026</span>
+      <h2 class="day-title">Welcome Home</h2>
+      <p class="day-intro">The reunion. Friends gathering. A hopeful ending about togetherness.</p>
+    </div>
+
+    <div class="day-narrative">
+      <p>The day has come. White Lily Cookie steps into the garden, and the friends who love her are already there — Pure Vanilla Cookie with a gentle smile, the Ancient Heroes standing side by side as they once did, Mogra Cookie buzzing with joy, Hollyberry Cookie holding the gate open wide.</p>
+      <p>There are no grand speeches, only quiet laughter and the rustle of petals in the breeze. Years fold into moments, and the garden remembers what time cannot erase.</p>
+      <div class="reunion-glow" aria-hidden="true"></div>
+      <p class="ending">Togetherness is not the absence of distance — it is the promise that, no matter how long the road, there will always be a garden waiting, and friends ready to say: welcome home.</p>
+    </div>
+
+    <div class="reunion-image" aria-hidden="true">
+      <div class="petal-cluster"></div>
+      <div class="soft-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMUNITY WALL ===== -->
+<section id="community-wall" class="section community-section" aria-label="Community Wall">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Community Wall</h2>
+      <p class="section-intro">Leave a welcome note for White Lily Cookie. Every Cookie Runner is welcome.</p>
+    </div>
+
+    <form id="wall-form" class="wall-form" novalidate>
+      <div class="wall-form-group">
+        <label for="wall-name">Your name (Cookie Runner handle)</label>
+        <input type="text" id="wall-name" name="name" maxlength="40" placeholder="e.g. LilyRunner99" required>
+      </div>
+      <div class="wall-form-group">
+        <label for="wall-note">Your welcome note</label>
+        <textarea id="wall-note" name="note" maxlength="200" rows="3" placeholder="Welcome home, White Lily…" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="wall-submit">Leave a note</button>
+    </form>
+
+    <div id="wall-empty" class="wall-empty">No notes yet. Be the first to welcome her home.</div>
+    <div id="wall-list" class="wall-list" aria-live="polite"></div>
+    <p class="wall-note">Notes are kept only in your browser (localStorage) and are not sent anywhere. This is an unofficial fan space.</p>
+  </div>
+</section>
+
+<!-- ===== LORE NOTES ===== -->
+<section id="lore-notes" class="section lore-section" aria-label="Lore Notes">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Lore Notes</h2>
+      <p class="section-intro">Keeping official lore, fan imagination, and personal dates clearly separate.</p>
+    </div>
+
+    <div class="lore-grid">
+      <div class="lore-card lore-official">
+        <h3><span class="lore-badge">official lore</span> Cookie Run: Kingdom</h3>
+        <ul>
+          <li>White Lily Cookie is an Ancient Hero.</li>
+          <li>Her journey themes: truth, sacrifice, courage, friendship, and hope.</li>
+          <li>Official quotes: <em>"I know what must be done."</em> and <em>"I will never forgive what I've done."</em></li>
+        </ul>
+        <p class="lore-source">Source: Cookie Run: Kingdom (Devsisters Corporation). Character names and lore belong to their respective owners.</p>
+      </div>
+
+      <div class="lore-card lore-fan">
+        <h3><span class="lore-badge">fan story</span> PureLily: Forever Together</h3>
+        <ul>
+          <li>The reunion days of November 4–5, 2026.</li>
+          <li>The garden welcome, each friend's message, and Hollyberry's greeting moment.</li>
+          <li>All dialogue in this project is original fan writing — no copied dialogue.</li>
+        </ul>
+        <p class="lore-source">Imaginative fan creation by Abinav / Everlasting Bloom Studio. Not official Cookie Run content.</p>
+      </div>
+
+      <div class="lore-card lore-personal">
+        <h3><span class="lore-badge">personal date</span> Abinav's fandom calendar</h3>
+        <ul>
+          <li>November 4–5, 2026 chosen as the reunion celebration days.</li>
+        </ul>
+        <p class="lore-source">Personal fandom date selected by Abinav. Not an official Cookie Run announcement.</p>
+      </div>
+    </div>
+
+    <p class="lore-disclaimer"><strong>Unofficial fan project.</strong> PureLily: Forever Together is not affiliated with or endorsed by Devsisters Corporation. No official logos, copied art, or copied text are used. All official lore is attributed; all imaginative content is labeled "fan story."</p>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Inline page-specific init (falls back to main.js if loaded)
+  document.addEventListener("DOMContentLoaded", () => {
+    initPetalBuds();
+    initFallingPetals();
+    initCommunityWall();
+  });
+
+  function initPetalBuds() {
+    const triggers = document.querySelectorAll(".bud-trigger");
+    const panels = document.querySelectorAll(".message-panel");
+
+    triggers.forEach((trigger) => {
+      const bud = trigger.querySelector(".bud");
+      const targetId = trigger.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+
+      trigger.addEventListener("click", () => {
+        const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+        // Close all others
+        triggers.forEach((t) => {
+          t.setAttribute("aria-expanded", "false");
+          t.querySelector(".bud").classList.remove("open");
+          const id = t.getAttribute("data-target");
+          document.getElementById(id).hidden = true;
+        });
+
+        if (!isOpen) {
+          trigger.setAttribute("aria-expanded", "true");
+          bud.classList.add("open");
+          target.hidden = false;
+          target.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      });
+    });
+
+    document.querySelectorAll(".msg-close").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const panel = btn.closest(".message-panel");
+        panel.hidden = true;
+        const id = panel.id;
+        const trigger = document.querySelector(`.bud-trigger[data-target="${id}"]`);
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.querySelector(".bud").classList.remove("open");
+        }
+      });
+    });
+  }
+
+  function initFallingPetals() {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const container = document.querySelector(".hero") || document.body;
+    const count = 12;
+
+    for (let i = 0; i < count; i++) {
+      const petal = document.createElement("div");
+      petal.className = "falling-petal";
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.top = -(Math.random() * 20) + "vh";
+      petal.style.animationDuration = (10 + Math.random() * 10) + "s";
+      petal.style.animationDelay = (Math.random() * 5) + "s";
+      petal.style.opacity = 0.4 + Math.random() * 0.4;
+      container.appendChild(petal);
+    }
+  }
+
+  function initCommunityWall() {
+    const form = document.getElementById("wall-form");
+    const list = document.getElementById("wall-list");
+    const empty = document.getElementById("wall-empty");
+    const nameInput = document.getElementById("wall-name");
+    const noteInput = document.getElementById("wall-note");
+
+    let notes = JSON.parse(localStorage.getItem("purelily_notes") || "[]");
+
+    function render() {
+      list.innerHTML = "";
+      if (notes.length === 0) {
+        empty.hidden = false;
+        return;
+      }
+      empty.hidden = true;
+      notes.slice().reverse().forEach((note, idx) => {
+        const el = document.createElement("article");
+        el.className = "wall-note-item";
+        el.innerHTML = `
+          <span class="wall-note-author">${escapeHtml(note.name)}</span>
+          <p class="wall-note-text">${escapeHtml(note.text)}</p>
+          <time class="wall-note-time">${new Date(note.at).toLocaleString()}</time>
+        `;
+        list.appendChild(el);
+      });
+    }
+
+    function escapeHtml(s) {
+      const d = document.createElement("div");
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const text = noteInput.value.trim();
+      if (!name || !text) return;
+      notes.push({ name, text, at: new Date().toISOString() });
+      localStorage.setItem("purelily_notes", JSON.stringify(notes));
+      nameInput.value = "";
+      noteInput.value = "";
+      render();
+    });
+
+    render();
+  }
+</script>
+{% endblock %}

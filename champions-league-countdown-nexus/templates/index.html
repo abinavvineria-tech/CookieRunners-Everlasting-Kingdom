@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0b1f16" />
+  <title>Champions League Countdown Nexus — Welcome Night</title>
+  <meta name="description" content="Champions League Countdown Nexus — Cookie Run Kingdom Champions League Welcome Night. Unofficial fan project — not an official Devsisters website." />
+  <link rel="preload" as="style" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="preload" as="script" href="{{ url_for('static', filename='js/app.js') }}" />
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body class="theme-dark" data-theme="dark">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="site-header" class="site-header">
+    <div class="header-inner">
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <div class="brand" aria-label="Champions League Countdown Nexus">
+        <div class="brand-mark" aria-hidden="true">&#127942;</div>
+        <div class="brand-text">
+          <div class="brand-name">Champions League Countdown Nexus</div>
+          <div class="brand-edition">Welcome Night &#8226; 11 Nov 2026</div>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark/light theme" title="Theme">
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">&#127774;</span>
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">&#127768;</span>
+          <span class="visually-hidden" id="theme-toggle-text">Switch to light theme</span>
+        </button>
+        <button class="icon-btn" id="share-btn" aria-label="Share event details" title="Share">
+          <span class="share-icon" aria-hidden="true">&#128640;</span>
+          <span class="visually-hidden">Share event</span>
+        </button>
+        <button class="icon-btn" id="copy-btn" aria-label="Copy event details" title="Copy">
+          <span class="copy-icon" aria-hidden="true">&#128203;</span>
+          <span class="visually-hidden">Copy event details</span>
+        </button>
+        <button class="icon-btn" id="notify-btn" aria-label="Browser notifications" title="Notifications">
+          <span class="notify-icon" aria-hidden="true">&#128222;</span>
+          <span class="visually-hidden" id="notify-text">Enable notifications</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+    <ul class="nav-list">
+      <li><a href="#countdown" class="nav-link active" data-section="countdown">Countdown</a></li>
+      <li><a href="#event" class="nav-link" data-section="event">Event</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="page">
+    <section id="countdown" class="section countdown-section" aria-labelledby="countdown-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="countdown-title" class="section-title">Welcome Night Countdown</h2>
+          <p class="section-lead">Synchronized with your system clock &#8226; Asia/Kolkata (IST)</p>
+        </div>
+        <div class="countdown-card" id="countdown-card" aria-live="polite" aria-label="Launch countdown">
+          <div class="countdown-label">Time until Champions League Welcome Night</div>
+          <div class="countdown" id="countdown">
+            <div class="countdown-item">
+              <span class="countdown-value" id="c-days">00</span>
+              <span class="countdown-unit">Days</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="c-hours">00</span>
+              <span class="countdown-unit">Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="c-minutes">00</span>
+              <span class="countdown-unit">Minutes</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="c-seconds">00</span>
+              <span class="countdown-unit">Seconds</span>
+            </div>
+          </div>
+          <div class="countdown-meta" id="countdown-meta"></div>
+          <div class="countdown-state" id="countdown-state" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="event" class="section event-section" aria-labelledby="event-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="event-title" class="section-title">Event Information</h2>
+          <p class="section-lead">Champions League Welcome Night details</p>
+        </div>
+        <div class="event-card">
+          <div class="event-field">
+            <span class="event-label">Event</span>
+            <span class="event-value" id="ev-name"></span>
+          </div>
+          <div class="event-field">
+            <span class="event-label">Date &amp; Time (IST)</span>
+            <span class="event-value" id="ev-datetime"></span>
+          </div>
+          <div class="event-field">
+            <span class="event-label">Timezone</span>
+            <span class="event-value" id="ev-tz"></span>
+          </div>
+          <div class="event-field">
+            <span class="event-label">Status</span>
+            <span class="event-value badge" id="ev-status"></span>
+          </div>
+          <div class="event-field">
+            <span class="event-label">Description</span>
+            <span class="event-value event-description" id="ev-desc"></span>
+          </div>
+          <p class="event-disclaimer" id="ev-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="about-title" class="section-title">About</h2>
+        </div>
+        <div class="about-content">
+          <p><strong>Champions League Countdown Nexus</strong> is a live countdown companion for the Cookie Run: Kingdom Champions League Welcome Night.</p>
+          <p>This project is <strong>not affiliated with or endorsed by Devsisters</strong>. All franchise references belong to their respective owners.</p>
+          <div class="about-meta">
+            <div class="meta-item"><strong>Event:</strong> Cookie Run Kingdom Champions League Welcome Night</div>
+            <div class="meta-item"><strong>Date:</strong> 11 November 2026</div>
+            <div class="meta-item"><strong>Kickoff:</strong> 8:30 PM IST (Asia/Kolkata)</div>
+            <div class="meta-item"><strong>Backend:</strong> Python Flask</div>
+            <div class="meta-item"><strong>Frontend:</strong> HTML5, CSS3, vanilla JavaScript</div>
+          </div>
+          <button class="btn btn-outline" id="copy-details-btn" title="Copy event details">Copy Event Details</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="brand-mark" aria-hidden="true">&#127942;</div>
+        <div>Champions League Countdown Nexus &#8226; Welcome Night</div>
+      </div>
+      <p class="footer-disclaimer">Unofficial fan project &#8212; not an official Devsisters website.</p>
+      <div class="closing">
+        <p class="closing-line">LET THE CHAMPIONSHIP BEGIN!</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <span aria-hidden="true">&#8593;</span>
+    <span class="visually-hidden">Back to top</span>
+  </button>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Event-started screen overlay (shown when countdown reaches zero) -->
+  <div id="event-started-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Event started">
+    <div class="overlay-card">
+      <h2 class="overlay-title">THE CHAMPIONSHIP HAS BEGUN!</h2>
+      <p class="overlay-sub">Welcome Night is now live. &#127942;</p>
+      <button class="btn btn-primary" id="close-overlay" title="Close">Back to Countdown</button>
+    </div>
+  </div>
+</body>
+</html>

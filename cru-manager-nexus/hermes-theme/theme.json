@@ -1,0 +1,80 @@
+{
+  "comment": "CRU MANAGER — Hermes Agent visual identity. Dark military charcoal/slate theme with steel and crimson accents inspired by Shadow Milk Cookie, Head Coach of Cookie Runners United (Master of Deceit). Design palette chosen for the CRU identity — not measured from a reference frame. Dark slate military theme with steel highlights. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.",
+  "profile": {
+    "name": "CRU Manager",
+    "abbreviation": "CRU",
+    "club": "Cookie Runners United",
+    "former_identity": "Cookie Run Football Club (CRFC)",
+    "universe": "Cookie Run Football",
+    "identity": "AI Football Management Assistant",
+    "role": "Official AI Football Management Assistant of Cookie Runners United — football operations, squad development, transfers, competitions and club history",
+    "head_coach": "Shadow Milk Cookie",
+    "club_captain": "Abinav",
+    "motto": "ONE CLUB. ONE DREAM. ETERNAL GLORY."
+  },
+  "palette": {
+    "note": "Dark military charcoal/slate palette for the CRU Manager identity. Steel primary accent with crimson secondary (Master of Deceit flair). Dark slate theme with steel highlights.",
+    "background": {
+      "primary": "#1A1A1E",
+      "secondary": "#2A2A36",
+      "tertiary": "#3A3A46",
+      "surface": "#24242E",
+      "surface-lift": "#3A3A46"
+    },
+    "accent": {
+      "main": "#C0C5CE",
+      "main-dim": "#8E93A0",
+      "soft": "#D8DEE9"
+    },
+    "accent-secondary": {
+      "main": "#B04040",
+      "main-dim": "#8E3434",
+      "soft": "#D48484"
+    },
+    "text": {
+      "primary": "#ECEFF4",
+      "secondary": "#BEC8D6",
+      "muted": "#6E7383",
+      "inverse": "#1A1A1E"
+    },
+    "highlight": {
+      "glow": "#ECEFF4",
+      "bright": "#FFFFFF"
+    },
+    "gradient": {
+      "military": ["#C0C5CE", "#8E93A0", "#3A3A46", "#1A1A1E"],
+      "horizon": ["#ECEFF4", "#C0C5CE", "#2A2A36"]
+    },
+    "border": {
+      "default": "#D8DEE9",
+      "focus": "#C0C5CE",
+      "glow": "#ECEFF4"
+    },
+    "status": {
+      "online": "#C0C5CE",
+      "offline": "#6E7383",
+      "warning": "#D8DEE9",
+      "error": "#B04040",
+      "success": "#A3BE8C"
+    }
+  },
+  "typography": {
+    "display": "Cinzel",
+    "body": "Lora",
+    "mono": "JetBrains Mono"
+  },
+  "effects": {
+    "shadow_soft": "0 4px 16px rgba(42, 42, 54, 0.35)",
+    "shadow_glow": "0 0 24px rgba(192, 197, 206, 0.20)",
+    "border_glow": "0 0 14px rgba(236, 239, 244, 0.40)",
+    "radius": "10px",
+    "radius_sm": "6px",
+    "transition": "all 0.45s cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "metadata": {
+    "source": "CRU Manager design palette — Shadow Milk Cookie military theme",
+    "status": "DESIGN (palette chosen for CRU identity)",
+    "fan_project": true,
+    "official_endorsement": false
+  }
+}

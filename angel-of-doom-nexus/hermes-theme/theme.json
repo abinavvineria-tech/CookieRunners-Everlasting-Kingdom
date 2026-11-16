@@ -1,0 +1,70 @@
+{
+  "comment": "ANGEL OF DOOM — Hermes Agent visual identity. Colour palette extracted from the official Cookie Run: Kingdom 'Angel of Doom' YouTube reference (video ID iTFYKXee6N0, @CookieRunKingdom). These are the SOURCE OF TRUTH. Do not invent a new palette. Do not default to purple/gold/blue/pink. Dark celestial (deep earth heavens) with celestial gold light — a dark/light balance matching the reference. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.",
+  "profile": {
+    "name": "Angel of Doom",
+    "universe": "Cookie Run: Kingdom",
+    "identity": "Celestial Fantasy Intelligence",
+    "role": "Personal AI agent and Cookie Runner project assistant",
+    "motto": "Beyond the heavens, beyond destiny, a new era begins."
+  },
+  "palette": {
+    "note": "Colours measured from the Angel of Doom reference thumbnail (1280x720). Warm celestial gold / amber / cream / deep earth tones. Dark celestial theme: deep earth backgrounds with gold celestial accents.",
+    "background": {
+      "primary": "#1E170B",
+      "secondary": "#3A2E19",
+      "tertiary": "#5A4624",
+      "surface": "#2E2416",
+      "surface-lift": "#443622"
+    },
+    "accent": {
+      "main": "#F9BC04",
+      "main-dim": "#D4A017",
+      "soft": "#E1C175"
+    },
+    "text": {
+      "primary": "#F3E8D0",
+      "secondary": "#C9B984",
+      "muted": "#8E7A4E",
+      "inverse": "#473727"
+    },
+    "highlight": {
+      "glow": "#FDF78A",
+      "bright": "#FDF9C9"
+    },
+    "gradient": {
+      "celestial": ["#F9BC04", "#B4690E", "#774A10", "#473727"],
+      "horizon": ["#FDF78A", "#F9BC04", "#3A2E19"]
+    },
+    "border": {
+      "default": "#E1C175",
+      "focus": "#F9BC04",
+      "glow": "#FDF78A"
+    },
+    "status": {
+      "online": "#F9BC04",
+      "offline": "#6E5438",
+      "warning": "#E1C175",
+      "error": "#B4690E",
+      "success": "#C9B984"
+    }
+  },
+  "typography": {
+    "display": "Cinzel",
+    "body": "Lora",
+    "mono": "JetBrains Mono"
+  },
+  "effects": {
+    "shadow_soft": "0 4px 16px rgba(58, 46, 25, 0.35)",
+    "shadow_glow": "0 0 24px rgba(249, 188, 4, 0.20)",
+    "border_glow": "0 0 14px rgba(253, 247, 138, 0.40)",
+    "radius": "10px",
+    "radius_sm": "6px",
+    "transition": "all 0.45s cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "metadata": {
+    "source": "YouTube thumbnail iTFYKXee6N0 (@CookieRunKingdom), measured Nov 13 2026",
+    "status": "CONFIRMED (palette extracted from reference frame)",
+    "fan_project": true,
+    "official_endorsement": false
+  }
+}

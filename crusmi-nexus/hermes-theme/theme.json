@@ -1,0 +1,81 @@
+{
+  "comment": "CRUSMI — Hermes Agent visual identity. Cookie Runners United Shadow Milk India. Warm Indian earth palette with saffron and cream accents, dark story-telling theme. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.",
+  "profile": {
+    "name": "CRUSMI",
+    "abbreviation": "CRUSMI",
+    "club": "Cookie Runners United Shadow Milk India",
+    "universe": "Cookie Run Football — Fictional Story",
+    "identity": "Story Memory & Narrative Intelligence",
+    "role": "CRUSMI story continuity and narrative assistant",
+    "head_coach": "Shadow Milk Cookie",
+    "club_captain": "Abinav",
+    "home_country": "India",
+    "motto": "We stand together, we play together, and we rise together."
+  },
+  "palette": {
+    "note": "Warm Indian earth palette for CRUSMI. Dark story-telling background with saffron and cream accents. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.",
+    "background": {
+      "primary": "#1B1212",
+      "secondary": "#2E1E1E",
+      "tertiary": "#4A3232",
+      "surface": "#241A1A",
+      "surface-lift": "#3A2A2A"
+    },
+    "accent": {
+      "main": "#E8871E",
+      "main-dim": "#B86A16",
+      "soft": "#F0C08A"
+    },
+    "accent-secondary": {
+      "main": "#C04040",
+      "main-dim": "#8E3434",
+      "soft": "#D48484"
+    },
+    "text": {
+      "primary": "#F5E6D3",
+      "secondary": "#D8B890",
+      "muted": "#8E7360",
+      "inverse": "#1B1212"
+    },
+    "highlight": {
+      "glow": "#FDF1DC",
+      "bright": "#FFFFFF"
+    },
+    "gradient": {
+      "india-earth": ["#E8871E", "#B86A16", "#4A3232", "#1B1212"],
+      "horizon": ["#FDF1DC", "#E8871E", "#2E1E1E"]
+    },
+    "border": {
+      "default": "#F0C08A",
+      "focus": "#E8871E",
+      "glow": "#FDF1DC"
+    },
+    "status": {
+      "online": "#E8871E",
+      "offline": "#6E5448",
+      "warning": "#F0C08A",
+      "error": "#C04040",
+      "success": "#A3BE8C"
+    }
+  },
+  "typography": {
+    "display": "Cinzel",
+    "body": "Lora",
+    "mono": "JetBrains Mono"
+  },
+  "effects": {
+    "shadow_soft": "0 4px 16px rgba(46, 30, 30, 0.35)",
+    "shadow_glow": "0 0 24px rgba(232, 135, 30, 0.20)",
+    "border_glow": "0 0 14px rgba(253, 241, 220, 0.40)",
+    "radius": "10px",
+    "radius_sm": "6px",
+    "transition": "all 0.45s cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "metadata": {
+    "source": "CRUSMI story memory — user-provided fictional Cookie Run football narrative",
+    "status": "CONFIRMED (user-provided story memory)",
+    "fan_project": true,
+    "official_endorsement": false,
+    "fictional_story": true
+  }
+}

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captain's Legacy — Hermes Agent Dashboard</title>
+    <meta name="description" content="Captain's Legacy — Personal Football Career Manager for Captain Abinav of Cookie Runners United (CRU). Preserving the captain's football journey from CRFC to CRU. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.">
+    <meta name="author" content="CookieBloom Nexus / Everlasting Bloom Studio">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fan-project disclaimer banner (every page) -->
+    <header class="fan-banner" role="banner">
+        <span class="disclaimer-icon">&#9899;</span>
+        <strong>Unofficial fan project.</strong> Captain's Legacy — Hermes Agent is a fan-made fictional Cookie Run football story. Not affiliated with or endorsed by Devsisters Corporation. All events, characters, and locations are fictional.
+    </header>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+            <div class="sidebar-brand">
+                <div class="brand-mark">&#9917;</div>
+                <div class="brand-text">
+                    <div class="brand-name">Captain's Legacy</div>
+                    <div class="brand-sub">Hermes Agent</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-label">Dashboard</div>
+                    <a href="#" class="nav-item active" data-panel="overview" aria-current="page">
+                        <span class="nav-icon">&#127878;</span>
+                        <span class="nav-label">Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="captain">
+                        <span class="nav-icon">&#128171;</span>
+                        <span class="nav-label">Captain</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="journey">
+                        <span class="nav-icon">&#128212;</span>
+                        <span class="nav-label">Journey</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Club</div>
+                    <a href="#" class="nav-item" data-panel="club">
+                        <span class="nav-icon">&#127934;</span>
+                        <span class="nav-label">Club Info</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="history">
+                        <span class="nav-icon">&#128187;</span>
+                        <span class="nav-label">History</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="honours">
+                        <span class="nav-icon">&#127942;</span>
+                        <span class="nav-label">Honours</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Matchday</div>
+                    <a href="#" class="nav-item" data-panel="matches">
+                        <span class="nav-icon">&#127934;</span>
+                        <span class="nav-label">Matches</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="stats">
+                        <span class="nav-icon">&#128200;</span>
+                        <span class="nav-label">Statistics</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="tactics">
+                        <span class="nav-icon">&#9942;</span>
+                        <span class="nav-label">Tactics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">System</div>
+                    <a href="#" class="nav-item" data-panel="settings">
+                        <span class="nav-icon">&#9881;</span>
+                        <span class="nav-label">Settings</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="logs">
+                        <span class="nav-icon">&#128222;</span>
+                        <span class="nav-label">Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-status">
+                    <span class="status-dot status-online" title="Online"></span>
+                    <span class="status-text">System Online</span>
+                </div>
+                <div class="sidebar-version">
+                    Hermes Agent v1.0.0 &bull; Captain's Legacy
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content" id="main-content">
+            <!-- Top bar -->
+            <header class="topbar" id="topbar">
+                <button class="topbar-toggle" id="topbar-toggle" aria-label="Toggle sidebar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <div class="topbar-title">
+                    <div class="topbar-app">Captain's Legacy</div>
+                    <div class="topbar-mode">Career Manager Mode</div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="topbar-status">
+                        <span class="topbar-status-dot status-online" title="Online"></span>
+                        <span class="topbar-status-text">Online</span>
+                        <span class="topbar-clock" id="topbar-clock" title="IST">--:--:-- IST</span>
+                    </div>
+                    <button class="topbar-btn" id="topbar-notify" aria-label="Notifications">
+                        &#128227;
+                    </button>
+                    <button class="topbar-btn topbar-btn-user" id="topbar-user" aria-label="User profile">
+                        CA
+                    </button>
+                </div>
+            </header>
+
+            <!-- Overview / active panel -->
+            <section class="panel" id="panel-overview" aria-label="Overview">
+                <div class="panel-header">
+                    <h1 class="panel-title">Overview</h1>
+                    <p class="panel-sub">Captain Abinav's football career — preserved, managed, and celebrated.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-label">Club Status</div>
+                        <div class="stat-card-value">ACTIVE</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Cookie Runners United — CRU</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Captain</div>
+                        <div class="stat-card-value">1</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Captain Abinav</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Head Coach</div>
+                        <div class="stat-card-value">1</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Shadow Milk Cookie</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Club Identity</div>
+                        <div class="stat-card-value">CRU</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Rebranded from CRFC (Nov 2026)</div>
+                    </div>
+                </div>
+
+                <div class="panel-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Club Identity</h2>
+                            <span class="card-badge status-online">CRU</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Club:</strong> Cookie Runners United (CRU)</p>
+                            <p><strong>Former name:</strong> Cookie Run Football Club (CRFC)</p>
+                            <p><strong>Club Captain:</strong> Abinav</p>
+                            <p><strong>Head Coach:</strong> Shadow Milk Cookie</p>
+                            <p><strong>Home Ground:</strong> United Stadium</p>
+                            <p><strong>Home Colours:</strong> Royal Blue, Gold and White</p>
+                            <p><strong>Away Colours:</strong> White, Black and Gold</p>
+                            <p><strong>Motto:</strong> "One Run. One Dream. One United."</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">System Status</h2>
+                            <span class="card-badge status-online">Nominal</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span class="status-item-name">Hermes Agent Core</span>
+                                    <span class="status-item-value status-online">ONLINE</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Terminal UI</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Dashboard</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Captain's Legacy Records</span>
+                                    <span class="status-item-value status-online">LOADED</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Termux / Android 14</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Logs</h2>
+                        <span class="card-badge status-muted">live</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="log-console" id="log-console">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Captain's Legacy terminal welcome screen rendered.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Theme palette loaded from hermes-theme/theme.json.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Dashboard initialized — sidebar, navigation, cards active.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Unofficial fan project — not affiliated with Devsisters.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:04]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Captain's Legacy records loaded. Ready to preserve history.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Captain panel -->
+            <section class="panel hidden" id="panel-captain" aria-label="Captain">
+                <div class="panel-header">
+                    <h1 class="panel-title">Captain</h1>
+                    <p class="panel-sub">Captain Abinav's profile and career management.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Owner:</strong> Captain Abinav</p>
+                        <p><strong>Role:</strong> Club Captain, Cookie Runners United</p>
+                        <p><strong>Country:</strong> India</p>
+                        <p class="lore-note">Captain Abinav controls his own dialogue and decisions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journey panel -->
+            <section class="panel hidden" id="panel-journey" aria-label="Journey">
+                <div class="panel-header">
+                    <h1 class="panel-title">Journey</h1>
+                    <p class="panel-sub">Captain's football journey — chronological milestones.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="lore-list">
+                            <li class="lore-item">
+                                <span class="lore-name">Beginning of the journey</span>
+                                <span class="lore-tag status-info">Planned</span>
+                                <span class="lore-desc">Record the start of Captain Abinav's football journey.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Creation of CRFC</span>
+                                <span class="lore-tag status-info">Planned</span>
+                                <span class="lore-desc">Cookie Run Football Club founded.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Becoming club captain</span>
+                                <span class="lore-tag status-info">Planned</span>
+                                <span class="lore-desc">Abinav appointed club captain.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">CRU Rebranding</span>
+                                <span class="lore-tag status-online">Confirmed</span>
+                                <span class="lore-desc">CRFC rebranded to Cookie Runners United in November 2026.</span>
+                            </li>
+                        </ul>
+                        <p class="lore-note">Keep confirmed history separate from future plans.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Club panel -->
+            <section class="panel hidden" id="panel-club" aria-label="Club">
+                <div class="panel-header">
+                    <h1 class="panel-title">Club</h1>
+                    <p class="panel-sub">Cookie Runners United club information.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Official Name:</strong> Cookie Runners United (CRU)</p>
+                        <p><strong>Former Name:</strong> Cookie Run Football Club (CRFC)</p>
+                        <p><strong>Home Ground:</strong> United Stadium</p>
+                        <p><strong>Home Colours:</strong> Royal Blue, Gold and White</p>
+                        <p><strong>Away Colours:</strong> White, Black and Gold</p>
+                        <p><strong>Motto:</strong> One Run. One Dream. One United.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History panel -->
+            <section class="panel hidden" id="panel-history" aria-label="History">
+                <div class="panel-header">
+                    <h1 class="panel-title">History</h1>
+                    <p class="panel-sub">CRFC and CRU club history.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Preserve the history of CRFC and its rebranding into CRU in November 2026.</p>
+                        <p class="lore-note">Ask before changing important historical records.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Honours panel -->
+            <section class="panel hidden" id="panel-honours" aria-label="Honours">
+                <div class="panel-header">
+                    <h1 class="panel-title">Honours</h1>
+                    <p class="panel-sub">Individual awards and captaincy achievements.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>No honours recorded yet. Awaiting confirmed achievements from the captain.</p>
+                        <p class="lore-note">Never fabricate achievements.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Matches panel -->
+            <section class="panel hidden" id="panel-matches" aria-label="Matches">
+                <div class="panel-header">
+                    <h1 class="panel-title">Matches</h1>
+                    <p class="panel-sub">Matchday records and match summaries.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>No matches recorded yet. Awaiting confirmed match results from the captain.</p>
+                        <p class="lore-note">Never invent match statistics.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics panel -->
+            <section class="panel hidden" id="panel-stats" aria-label="Statistics">
+                <div class="panel-header">
+                    <h1 class="panel-title">Statistics</h1>
+                    <p class="panel-sub">Captain's career statistics.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>No statistics recorded yet. Maintain appearances, goals, assists, and captaincy achievements.</p>
+                        <p class="lore-note">Never invent statistics.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tactics panel -->
+            <section class="panel hidden" id="panel-tactics" aria-label="Tactics">
+                <div class="panel-header">
+                    <h1 class="panel-title">Tactics</h1>
+                    <p class="panel-sub">Coach Shadow Milk Cookie's tactical decisions.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Maintain records of starting lineups, formation changes, match strategies, team selections, training plans, and post-match analysis.</p>
+                        <p class="lore-note">Do not make coaching decisions on behalf of Shadow Milk Cookie unless explicitly authorized.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings panel -->
+            <section class="panel hidden" id="panel-settings" aria-label="Settings">
+                <div class="panel-header">
+                    <h1 class="panel-title">Settings</h1>
+                    <p class="panel-sub">Configure the Captain's Legacy Hermes Agent experience.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form class="settings-form">
+                            <div class="setting-group">
+                                <label class="setting-label">Agent Identity</label>
+                                <select class="setting-select">
+                                    <option value="captains-legacy" selected>Captain's Legacy</option>
+                                    <option value="cru-manager">CRU Manager</option>
+                                    <option value="crusmi">CRUSMI</option>
+                                    <option value="angel-of-doom">Angel of Doom</option>
+                                </select>
+                                <p class="setting-hint">Changes the agent's personality and visual theme.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Timezone</label>
+                                <select class="setting-select">
+                                    <option value="Asia/Kolkata" selected>Asia/Kolkata (IST, UTC+5:30)</option>
+                                    <option value="UTC">UTC</option>
+                                </select>
+                                <p class="setting-hint">All times displayed in IST per preference.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Theme</label>
+                                <select class="setting-select">
+                                    <option value="royal-night" selected>Royal Night (Captain's Legacy)</option>
+                                </select>
+                                <p class="setting-hint">CRU royal blue, gold and white club colours.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Status Indicators</label>
+                                <div class="setting-toggle">
+                                    <input type="checkbox" id="toggle-status" checked>
+                                    <label for="toggle-status" class="setting-toggle-slider"></label>
+                                </div>
+                                <p class="setting-hint">Show online/warning/error status dots throughout the UI.</p>
+                            </div>
+
+                            <div class="setting-actions">
+                                <button class="btn btn-primary" type="button">Save Settings</button>
+                                <button class="btn btn-ghost" type="button">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Logs panel -->
+            <section class="panel hidden" id="panel-logs" aria-label="Logs">
+                <div class="panel-header">
+                    <h1 class="panel-title">Logs</h1>
+                    <p class="panel-sub">System and agent activity log.</p>
+                </div>
+                <div class="card full-width">
+                    <div class="card-body">
+                        <div class="log-console" id="log-console-full">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Captain's Legacy Hermes Agent session started.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Visual identity palette loaded from measured reference.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Terminal UI and dashboard initialized.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Unofficial fan project — fictional story, not real-world news.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+[
+  "tests/test_app.py::test_404_returns_custom_page",
+  "tests/test_app.py::test_health_endpoint",
+  "tests/test_app.py::test_home_contains_expected_content",
+  "tests/test_app.py::test_home_has_unofficial_disclaimer",
+  "tests/test_app.py::test_home_references_static_assets",
+  "tests/test_app.py::test_home_returns_200"
+]

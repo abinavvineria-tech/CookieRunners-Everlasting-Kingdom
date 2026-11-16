@@ -1,0 +1,188 @@
+{
+  "tournament": {
+    "name": "Cookie Runners Football League (CRFL)",
+    "working_name": true,
+    "description": "Domestic football system of the Cookie Runners universe",
+    "divisions": [
+      "First Division",
+      "Second Division"
+    ],
+    "points_system": {
+      "win": 3,
+      "draw": 1,
+      "loss": 0,
+      "confirmed": false,
+      "note": "Proposed default — only active if the user confirms it"
+    },
+    "tie_breakers": [
+      "Points",
+      "Goal difference",
+      "Goals scored",
+      "Head-to-head record"
+    ],
+    "tie_breakers_confirmed": false,
+    "promotion_relegation": {
+      "rules_established": false,
+      "note": "Do not invent the number of promotion or relegation places"
+    },
+    "source": "fictional / fan universe — not official Cookie Run canon",
+    "status": "setup"
+  },
+  "divisions": {
+    "First Division": {
+      "level": 1,
+      "reigning_champion": "Cookie Run Football Club (CRFC)",
+      "clubs": [],
+      "standings": [],
+      "matches": [],
+      "note": "Do not invent current standings or other club names"
+    },
+    "Second Division": {
+      "level": 2,
+      "clubs": [
+        "Minecraft FC"
+      ],
+      "standings": [],
+      "matches": []
+    }
+  },
+  "clubs": {
+    "Cookie Run Football Club (CRFC)": {
+      "short_name": "CRFC",
+      "division": "First Division",
+      "known_info": "Main club; reigning league champions",
+      "manager": null,
+      "budget": null,
+      "stadium": null,
+      "trophies": [
+        "First Division champion (reigning)"
+      ],
+      "historical_achievements": []
+    },
+    "Minecraft FC": {
+      "short_name": "Minecraft FC",
+      "division": "Second Division",
+      "known_info": "Second Division club; opponent in CRFC semi-final",
+      "manager": null,
+      "budget": null,
+      "stadium": null,
+      "trophies": [],
+      "historical_achievements": []
+    },
+    "Minecraft Legends FC": {
+      "short_name": "MLF",
+      "division": null,
+      "known_info": "Group A opponent in CRCL — DISTINCT from Minecraft FC. Never merge these two teams.",
+      "manager": null,
+      "budget": null,
+      "stadium": null,
+      "trophies": [],
+      "historical_achievements": []
+    },
+    "Sonic Speedsters FC": {
+      "short_name": "Sonic Speedsters FC",
+      "division": null,
+      "known_info": "CRCL Group A club",
+      "manager": null,
+      "budget": null,
+      "stadium": null,
+      "trophies": [],
+      "historical_achievements": []
+    },
+    "Teyvat United": {
+      "short_name": "Teyvat United",
+      "division": null,
+      "known_info": "CRCL Group A club",
+      "manager": null,
+      "budget": null,
+      "stadium": null,
+      "trophies": [],
+      "historical_achievements": []
+    },
+    "RRFC": {
+      "short_name": "RRFC",
+      "division": null,
+      "known_info": "CRCL opponent",
+      "manager": null,
+      "budget": null,
+      "stadium": null,
+      "trophies": [],
+      "historical_achievements": []
+    }
+  },
+  "crcl": {
+    "name": "Cookie Runners Champions League",
+    "format": "16 clubs, four groups of four",
+    "stages": [
+      "Group stage",
+      "Round of 16",
+      "Quarter-Finals",
+      "Semi-Finals",
+      "Final"
+    ],
+    "crfc_group": "Group A",
+    "crfc_group_position": 1,
+    "crfc_progress": "Progressed through knockout stages",
+    "group_a_known_teams": [
+      "CRFC",
+      "Minecraft Legends FC"
+    ],
+    "group_a_status": "partial",
+    "groups": {},
+    "knockout": {
+      "round_of_16": [],
+      "quarter_finals": [],
+      "semi_finals": [],
+      "final": []
+    },
+    "winner": null,
+    "note": "Keep CRCL separate from the domestic league"
+  },
+  "transfer_market": {
+    "confirmed_transfers": [],
+    "proposed_transfers": [],
+    "note": "Never count a proposed fee as a completed payment. Keep each club's budget independent."
+  },
+  "player_database": [],
+  "awards": {
+    "categories": [
+      "Player of the Season",
+      "Golden Boot",
+      "Golden Glove",
+      "Best Young Player",
+      "Best Manager",
+      "Best Goal",
+      "Best Team",
+      "Team of the Season"
+    ],
+    "awards_confirmed": false,
+    "note": "Proposed award categories until the user establishes official awards",
+    "archive": {}
+  },
+  "season_archive": {},
+  "match_history": [],
+  "commands": {
+    "Show our league": "display the complete league structure",
+    "First Division": "show the top division",
+    "Second Division": "show the second division",
+    "Show standings": "display the requested league table",
+    "League history": "display previous seasons",
+    "Transfer market": "display confirmed and proposed transfers",
+    "Club database": "list all registered clubs",
+    "Player database": "show registered players",
+    "Awards": "display league awards",
+    "CRCL": "display Champions League progress",
+    "Update league": "save new confirmed league information",
+    "Season archive": "display historical seasons"
+  },
+  "integrity_rules": [
+    "Never invent a club, player, result, transfer, or trophy",
+    "Keep confirmed information separate from suggestions",
+    "Preserve all previous seasons",
+    "Keep domestic league and CRCL records separate",
+    "Never confuse Minecraft FC with Minecraft Legends FC",
+    "Follow the user's latest corrections",
+    "Ask when a missing detail is necessary",
+    "Update the persistent database after confirmed changes"
+  ]
+}

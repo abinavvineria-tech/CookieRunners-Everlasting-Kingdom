@@ -1,0 +1,85 @@
+{
+  "comment": "CAPTAIN'S LEGACY — Hermes Agent visual identity. Cookie Runners United (CRU) captain career manager. Royal blue, gold and white home colours; white, black and gold away colours. Dark stadium-night theme with royal blue and gold accents. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.",
+  "profile": {
+    "name": "Captain's Legacy",
+    "abbreviation": "CL",
+    "agent_name": "Captain's Legacy",
+    "profile_id": "cru-captain-legacy",
+    "role": "Personal Football Career Manager",
+    "owner": "Captain Abinav",
+    "country": "India",
+    "club": "Cookie Runners United",
+    "former_club": "Cookie Run Football Club (CRFC)",
+    "universe": "Cookie Run Football — Fictional Story",
+    "identity": "Captain's Personal Football Career Manager & Historian",
+    "head_coach": "Shadow Milk Cookie",
+    "club_captain": "Abinav",
+    "motto": "One Run. One Dream. One United."
+  },
+  "palette": {
+    "note": "CRU club colours: royal blue, gold and white (home); white, black and gold (away). Dark stadium-night theme with royal blue and gold accents.",
+    "background": {
+      "primary": "#0F1B2D",
+      "secondary": "#1B2A4A",
+      "tertiary": "#2A3A5F",
+      "surface": "#16243A",
+      "surface-lift": "#24365A"
+    },
+    "accent": {
+      "main": "#FFD700",
+      "main-dim": "#B8860B",
+      "soft": "#E6C866"
+    },
+    "accent-secondary": {
+      "main": "#4169E1",
+      "main-dim": "#2E52A0",
+      "soft": "#8AADF0"
+    },
+    "text": {
+      "primary": "#F5F5F5",
+      "secondary": "#D8D8D8",
+      "muted": "#8E9FB0",
+      "inverse": "#0F1B2D"
+    },
+    "highlight": {
+      "glow": "#FFF9C4",
+      "bright": "#FFFFFF"
+    },
+    "gradient": {
+      "royal": ["#FFD700", "#4169E1", "#1B2A4A", "#0F1B2D"],
+      "horizon": ["#FFF9C4", "#FFD700", "#0F1B2D"]
+    },
+    "border": {
+      "default": "#E6C866",
+      "focus": "#FFD700",
+      "glow": "#FFF9C4"
+    },
+    "status": {
+      "online": "#FFD700",
+      "offline": "#6E7383",
+      "warning": "#E6C866",
+      "error": "#C04040",
+      "success": "#4CAF50"
+    }
+  },
+  "typography": {
+    "display": "Cinzel",
+    "body": "Lora",
+    "mono": "JetBrains Mono"
+  },
+  "effects": {
+    "shadow_soft": "0 4px 16px rgba(27, 42, 74, 0.35)",
+    "shadow_glow": "0 0 24px rgba(255, 215, 0, 0.20)",
+    "border_glow": "0 0 14px rgba(255, 249, 196, 0.40)",
+    "radius": "10px",
+    "radius_sm": "6px",
+    "transition": "all 0.45s cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "metadata": {
+    "source": "Captain's Legacy design palette — CRU royal blue, gold and white club colours",
+    "status": "DESIGN (palette chosen for CRU identity)",
+    "fan_project": true,
+    "official_endorsement": false,
+    "fictional_story": true
+  }
+}

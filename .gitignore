@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+*.egg-info
+*.egg
+.Python
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Docker
+.dockerignore
+
+# Certs / secrets
+*.key
+*.pem
+secrets/
+
+# Nested Cookie Run project repos — track separately, not as embedded repos
+browser-use-web-ui/
+cookie-runner-nexus/
+cookie-runners-landing-page/
+cookieverse-eternal-worlds/
+crk-user-pages/
+everbloom-studios/
+everlasting-bloom-studio/
+everlasting-bonds/
+everlasting-lily/
+purelily-forever-together/
+champions-league-countdown-nexus/
+cookie-champions/
+cookie-run-update-nexus/
+sanctum_countdown/

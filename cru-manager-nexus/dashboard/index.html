@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRU Manager — Hermes Agent Dashboard</title>
+    <meta name="description" content="CRU Manager — AI Football Management Assistant. Cookie Runners United (CRU) — football operations, squad development, transfers, competitions and club history. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.">
+    <meta name="author" content="CookieBloom Nexus / Everlasting Bloom Studio">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fan-project disclaimer banner (every page) -->
+    <header class="fan-banner" role="banner">
+        <span class="disclaimer-icon">&#9899;</span>
+        <strong>Unofficial fan project.</strong> CRU Manager — Hermes Agent is a fan-made Cookie Run football project. Not affiliated with or endorsed by Devsisters Corporation. Character names, lore, and related trademarks belong to their respective owners.
+    </header>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+            <div class="sidebar-brand">
+                <div class="brand-mark">&#127897;</div>
+                <div class="brand-text">
+                    <div class="brand-name">CRU Manager</div>
+                    <div class="brand-sub">Hermes Agent</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-label">Dashboard</div>
+                    <a href="#" class="nav-item active" data-panel="overview" aria-current="page">
+                        <span class="nav-icon">&#127878;</span>
+                        <span class="nav-label">Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="agents">
+                        <span class="nav-icon">&#9998;</span>
+                        <span class="nav-label">Agents</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="projects">
+                        <span class="nav-icon">&#128221;</span>
+                        <span class="nav-label">Projects</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Football</div>
+                    <a href="#" class="nav-item" data-panel="squad">
+                        <span class="nav-icon">&#128171;</span>
+                        <span class="nav-label">Squad</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="transfers">
+                        <span class="nav-icon">&#128203;</span>
+                        <span class="nav-label">Transfers</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="tactics">
+                        <span class="nav-icon">&#9942;</span>
+                        <span class="nav-label">Tactics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Competitions</div>
+                    <a href="#" class="nav-item" data-panel="matches">
+                        <span class="nav-icon">&#127934;</span>
+                        <span class="nav-label">Matches</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="competitions">
+                        <span class="nav-icon">&#127936;</span>
+                        <span class="nav-label">Competitions</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="awards">
+                        <span class="nav-icon">&#127942;</span>
+                        <span class="nav-label">Awards</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">System</div>
+                    <a href="#" class="nav-item" data-panel="settings">
+                        <span class="nav-icon">&#9881;</span>
+                        <span class="nav-label">Settings</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="logs">
+                        <span class="nav-icon">&#128222;</span>
+                        <span class="nav-label">Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-status">
+                    <span class="status-dot status-online" title="Online"></span>
+                    <span class="status-text">System Online</span>
+                </div>
+                <div class="sidebar-version">
+                    Hermes Agent v1.0.0 &bull; CRU Manager
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content" id="main-content">
+            <!-- Top bar -->
+            <header class="topbar" id="topbar">
+                <button class="topbar-toggle" id="topbar-toggle" aria-label="Toggle sidebar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <div class="topbar-title">
+                    <div class="topbar-app">CRU Manager</div>
+                    <div class="topbar-mode">Football Management Mode</div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="topbar-status">
+                        <span class="topbar-status-dot status-online" title="Online"></span>
+                        <span class="topbar-status-text">Online</span>
+                        <span class="topbar-clock" id="topbar-clock" title="IST">--:--:-- IST</span>
+                    </div>
+                    <button class="topbar-btn" id="topbar-notify" aria-label="Notifications">
+                        &#128227;
+                    </button>
+                    <button class="topbar-btn topbar-btn-user" id="topbar-user" aria-label="User profile">
+                        CA
+                    </button>
+                </div>
+            </header>
+
+            <!-- Overview / active panel -->
+            <section class="panel" id="panel-overview" aria-label="Overview">
+                <div class="panel-header">
+                    <h1 class="panel-title">Overview</h1>
+                    <p class="panel-sub">Cookie Runners United — football management status and squad activity.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-label">Club Status</div>
+                        <div class="stat-card-value">ACTIVE</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Cookie Runners United — CRU</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Head Coach</div>
+                        <div class="stat-card-value">1</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Shadow Milk Cookie — Master of Deceit</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Signed Players</div>
+                        <div class="stat-card-value">3</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 60%"></div>
+                        </div>
+                        <div class="stat-card-note">Moonlight, Timekeeper, Lilybell</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Transfer Budget</div>
+                        <div class="stat-card-value">₹2,00,000</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Initial budget available</div>
+                    </div>
+                </div>
+
+                <div class="panel-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Club Identity</h2>
+                            <span class="card-badge status-online">CRU</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Club:</strong> Cookie Runners United (CRU)</p>
+                            <p><strong>Former identity:</strong> Cookie Run Football Club (CRFC)</p>
+                            <p><strong>Club Captain:</strong> Abinav</p>
+                            <p><strong>Head Coach:</strong> Shadow Milk Cookie</p>
+                            <p><strong>Motto:</strong> "ONE CLUB. ONE DREAM. ETERNAL GLORY."</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">System Status</h2>
+                            <span class="card-badge status-online">Nominal</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span class="status-item-name">Hermes Agent Core</span>
+                                    <span class="status-item-value status-online">ONLINE</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Terminal UI</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Dashboard</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">CRU Records</span>
+                                    <span class="status-item-value status-online">LOADED</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Termux / Android 14</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Logs</h2>
+                        <span class="card-badge status-muted">live</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="log-console" id="log-console">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">CRU Manager terminal welcome screen rendered.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Theme palette loaded from hermes-theme/theme.json.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Dashboard initialized — sidebar, navigation, cards active.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Unofficial fan project — not affiliated with Devsisters.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:04]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">CRU records loaded. Awaiting captain instructions.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agents panel -->
+            <section class="panel hidden" id="panel-agents" aria-label="Agents">
+                <div class="panel-header">
+                    <h1 class="panel-title">Agents</h1>
+                    <p class="panel-sub">Manage and monitor Hermes Agent instances.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>No additional agents configured. CRU Manager is the active AI Football Management Assistant.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects panel -->
+            <section class="panel hidden" id="panel-projects" aria-label="Projects">
+                <div class="panel-header">
+                    <h1 class="panel-title">Projects</h1>
+                    <p class="panel-sub">Cookie Run fan projects under the Everlasting Bloom Studio umbrella.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="project-list">
+                            <li class="project-item">
+                                <span class="project-name">Cookie Runners United (CRU)</span>
+                                <span class="project-tag status-online">Active</span>
+                                <span class="project-desc">Hermes Agent CRU Manager identity — this dashboard.</span>
+                            </li>
+                            <li class="project-item">
+                                <span class="project-name">PureLily: Forever Together</span>
+                                <span class="project-tag status-success">Flask</span>
+                                <span class="project-desc">Celebration of White Lily Cookie's return — PureLily friendship.</span>
+                            </li>
+                            <li class="project-item">
+                                <span class="project-name">Angel of Doom Nexus</span>
+                                <span class="project-tag status-online">Active</span>
+                                <span class="project-desc">Hermes Agent Angel of Doom identity — celestial intelligence.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Squad panel -->
+            <section class="panel hidden" id="panel-squad" aria-label="Squad">
+                <div class="panel-header">
+                    <h1 class="panel-title">Squad</h1>
+                    <p class="panel-sub">Cookie Runners United — signed players and squad depth.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="cookie-list">
+                            <li class="cookie-item">
+                                <span class="cookie-name">Shadow Milk Cookie</span>
+                                <span class="cookie-tag status-online">Head Coach</span>
+                                <span class="cookie-desc">Master of Deceit — Head Coach, not a player.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Moonlight Cookie</span>
+                                <span class="cookie-tag status-online">CAM</span>
+                                <span class="cookie-desc">Attacking midfielder — signed [CONFIRMED].</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Timekeeper Cookie</span>
+                                <span class="cookie-tag status-success">Signed</span>
+                                <span class="cookie-desc">Signed by the club — captain report [CONFIRMED].</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Lilybell Cookie</span>
+                                <span class="cookie-tag status-success">Signed</span>
+                                <span class="cookie-desc">Signed by the club — captain report [CONFIRMED].</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Time Balance Department</span>
+                                <span class="cookie-tag status-info">Department</span>
+                                <span class="cookie-desc">Club department — additional TBD members signed as reported by captain.</span>
+                            </li>
+                        </ul>
+                        <p class="lore-note">The captain will provide further squad updates. Never invent players.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transfers panel -->
+            <section class="panel hidden" id="panel-transfers" aria-label="Transfers">
+                <div class="panel-header">
+                    <h1 class="panel-title">Transfers</h1>
+                    <p class="panel-sub">Transfer department — scouting, negotiations, budget tracking.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Initial transfer budget:</strong> ₹2,00,000</p>
+                        <p><strong>Current available budget:</strong> ₹2,00,000</p>
+                        <p class="lore-note">Never approve a transfer without the captain's authorization. Never spend beyond the available budget.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tactics panel -->
+            <section class="panel hidden" id="panel-tactics" aria-label="Tactics">
+                <div class="panel-header">
+                    <h1 class="panel-title">Tactics</h1>
+                    <p class="panel-sub">Formations and matchday strategy.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Formations understood: 4-3-3, 4-2-3-1, 4-2-2-2, 4-4-2, 3-5-2, 3-4-3, 5-3-2.</p>
+                        <p class="lore-note">Recommend formations based on available players and positions. The captain has final authority over match decisions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Matches panel -->
+            <section class="panel hidden" id="panel-matches" aria-label="Matches">
+                <div class="panel-header">
+                    <h1 class="panel-title">Matches</h1>
+                    <p class="panel-sub">Match results and win/draw/loss records.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>No match results recorded yet. Awaiting first match confirmation from the captain.</p>
+                        <p class="lore-note">Never fabricate match events. Never invent scores or match results.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Competitions panel -->
+            <section class="panel hidden" id="panel-competitions" aria-label="Competitions">
+                <div class="panel-header">
+                    <h1 class="panel-title">Competitions</h1>
+                    <p class="panel-sub">Cookie Runners Champions League and domestic competitions.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Managed competitions: Cookie Runners Champions League, domestic competitions, knockout tournaments, semi-finals and finals.</p>
+                        <p class="lore-note">Trophy cabinet empty — awaiting first trophy.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Awards panel -->
+            <section class="panel hidden" id="panel-awards" aria-label="Awards">
+                <div class="panel-header">
+                    <h1 class="panel-title">Awards</h1>
+                    <p class="panel-sub">Club awards and honours.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Tracked awards: Cookie Runners Ballon d'Or, Team of the Year, Player of the Tournament, Golden Boot, Golden Glove, Best Coach, Best Young Player.</p>
+                        <p class="lore-note">No awards recorded yet — awaiting first awards cycle.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings panel -->
+            <section class="panel hidden" id="panel-settings" aria-label="Settings">
+                <div class="panel-header">
+                    <h1 class="panel-title">Settings</h1>
+                    <p class="panel-sub">Configure the CRU Manager Hermes Agent experience.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form class="settings-form">
+                            <div class="setting-group">
+                                <label class="setting-label">Agent Identity</label>
+                                <select class="setting-select">
+                                    <option value="cru-manager" selected>CRU Manager</option>
+                                    <option value="angel-of-doom">Angel of Doom</option>
+                                </select>
+                                <p class="setting-hint">Changes the agent's personality and visual theme.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Timezone</label>
+                                <select class="setting-select">
+                                    <option value="Asia/Kolkata" selected>Asia/Kolkata (IST, UTC+5:30)</option>
+                                    <option value="UTC">UTC</option>
+                                </select>
+                                <p class="setting-hint">All times displayed in IST per Cookie Run update tracking preference.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Theme</label>
+                                <select class="setting-select">
+                                    <option value="military-dark" selected>Military Dark (CRU Manager)</option>
+                                </select>
+                                <p class="setting-hint">Shadow Milk Cookie military theme palette.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Status Indicators</label>
+                                <div class="setting-toggle">
+                                    <input type="checkbox" id="toggle-status" checked>
+                                    <label for="toggle-status" class="setting-toggle-slider"></label>
+                                </div>
+                                <p class="setting-hint">Show online/warning/error status dots throughout the UI.</p>
+                            </div>
+
+                            <div class="setting-actions">
+                                <button class="btn btn-primary" type="button">Save Settings</button>
+                                <button class="btn btn-ghost" type="button">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Logs panel -->
+            <section class="panel hidden" id="panel-logs" aria-label="Logs">
+                <div class="panel-header">
+                    <h1 class="panel-title">Logs</h1>
+                    <p class="panel-sub">System and agent activity log.</p>
+                </div>
+                <div class="card full-width">
+                    <div class="card-body">
+                        <div class="log-console" id="log-console-full">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">CRU Manager Hermes Agent session started.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Visual identity palette loaded from measured reference.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Terminal UI and dashboard initialized.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Unofficial fan project — verify official sources for announcements.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

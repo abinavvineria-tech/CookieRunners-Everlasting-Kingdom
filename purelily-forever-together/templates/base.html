@@ -1,0 +1,56 @@
+{# PureLily: Forever Together — base layout #}
+{# Unofficial fan project — not affiliated with or endorsed by Devsisters. #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PureLily: Forever Together{% endblock %}</title>
+    <meta name="description" content="A fan-made celebration of White Lily Cookie's return, her reunion with Pure Vanilla Cookie, the Ancient Heroes, Mogra Cookie, Hollyberry Cookie, and every Cookie Runner.">
+    <meta name="author" content="PureLily: Forever Together — Abinav / Everlasting Bloom Studio">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Unofficial fan-project banner (every page) -->
+    <header class="fan-disclaimer-banner" role="banner">
+        <span class="disclaimer-icon">&#9899;</span>
+        <strong>Unofficial fan project.</strong> PureLily: Forever Together is a fan-made celebration of White Lily Cookie's return in Cookie Run: Kingdom. Not affiliated with or endorsed by Devsisters Corporation. Character names, lore, and related trademarks belong to their respective owners.
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" id="nav-logo">PureLily<span class="dot">&#10033;</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#garden-awaits">The Garden Awaits (Nov 4)</a></li>
+                <li><a href="#welcome-home">Welcome Home (Nov 5)</a></li>
+                <li><a href="#community-wall">Community Wall</a></li>
+                <li><a href="#lore-notes">Lore Notes</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p class="footer-disclaimer"><strong>Unofficial fan project.</strong> PureLily: Forever Together is fan-made content celebrating White Lily Cookie's return in Cookie Run: Kingdom. Not affiliated with or endorsed by Devsisters Corporation. Character names, lore, and related trademarks belong to their respective owners.</p>
+            <p class="footer-copy">&copy; 2026 PureLily: Forever Together &bull; Abinav / Everlasting Bloom Studio. Built with Flask and love for Cookie Runners everywhere.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

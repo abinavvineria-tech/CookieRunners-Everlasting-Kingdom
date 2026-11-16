@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUSMI — Hermes Agent Story Dashboard</title>
+    <meta name="description" content="CRUSMI — Cookie Runners United Shadow Milk India. Story memory and narrative intelligence for the fictional Cookie Run football club. Unofficial fan project — not affiliated with or endorsed by Devsisters Corporation.">
+    <meta name="author" content="CookieBloom Nexus / Everlasting Bloom Studio">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fan-project disclaimer banner (every page) -->
+    <header class="fan-banner" role="banner">
+        <span class="disclaimer-icon">&#9899;</span>
+        <strong>Unofficial fan project.</strong> CRUSMI — Hermes Agent is a fan-made fictional Cookie Run football story. Not affiliated with or endorsed by Devsisters Corporation. All events, characters, and locations are fictional.
+    </header>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+            <div class="sidebar-brand">
+                <div class="brand-mark">&#127897;</div>
+                <div class="brand-text">
+                    <div class="brand-name">CRUSMI</div>
+                    <div class="brand-sub">Hermes Agent</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-label">Dashboard</div>
+                    <a href="#" class="nav-item active" data-panel="overview" aria-current="page">
+                        <span class="nav-icon">&#128171;</span>
+                        <span class="nav-label">Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="story">
+                        <span class="nav-icon">&#128212;</span>
+                        <span class="nav-label">Story</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="achievements">
+                        <span class="nav-icon">&#127942;</span>
+                        <span class="nav-label">Achievements</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">India Tour</div>
+                    <a href="#" class="nav-item" data-panel="tour">
+                        <span class="nav-icon">&#128658;</span>
+                        <span class="nav-label">Tour Route</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="welcome">
+                        <span class="nav-icon">&#127884;</span>
+                        <span class="nav-label">Welcome Scene</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Team</div>
+                    <a href="#" class="nav-item" data-panel="teammates">
+                        <span class="nav-icon">&#128171;</span>
+                        <span class="nav-label">Teammates</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="dialogue">
+                        <span class="nav-icon">&#128172;</span>
+                        <span class="nav-label">Dialogue</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">System</div>
+                    <a href="#" class="nav-item" data-panel="settings">
+                        <span class="nav-icon">&#9881;</span>
+                        <span class="nav-label">Settings</span>
+                    </a>
+                    <a href="#" class="nav-item" data-panel="logs">
+                        <span class="nav-icon">&#128222;</span>
+                        <span class="nav-label">Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-status">
+                    <span class="status-dot status-online" title="Online"></span>
+                    <span class="status-text">Story Online</span>
+                </div>
+                <div class="sidebar-version">
+                    Hermes Agent v1.0.0 &bull; CRUSMI
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content" id="main-content">
+            <!-- Top bar -->
+            <header class="topbar" id="topbar">
+                <button class="topbar-toggle" id="topbar-toggle" aria-label="Toggle sidebar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <div class="topbar-title">
+                    <div class="topbar-app">CRUSMI</div>
+                    <div class="topbar-mode">Story Memory Mode</div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="topbar-status">
+                        <span class="topbar-status-dot status-online" title="Online"></span>
+                        <span class="topbar-status-text">Online</span>
+                        <span class="topbar-clock" id="topbar-clock" title="IST">--:--:-- IST</span>
+                    </div>
+                    <button class="topbar-btn" id="topbar-notify" aria-label="Notifications">
+                        &#128227;
+                    </button>
+                    <button class="topbar-btn topbar-btn-user" id="topbar-user" aria-label="User profile">
+                        CA
+                    </button>
+                </div>
+            </header>
+
+            <!-- Overview / active panel -->
+            <section class="panel" id="panel-overview" aria-label="Overview">
+                <div class="panel-header">
+                    <h1 class="panel-title">Overview</h1>
+                    <p class="panel-sub">CRUSMI — Cookie Runners United Shadow Milk India. Story memory and narrative continuity.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-label">Club Status</div>
+                        <div class="stat-card-value">ACTIVE</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Cookie Runners United Shadow Milk India</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Head Coach</div>
+                        <div class="stat-card-value">1</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Shadow Milk Cookie</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Club Captain</div>
+                        <div class="stat-card-value">1</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Abinav</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-label">Home Country</div>
+                        <div class="stat-card-value">INDIA</div>
+                        <div class="stat-card-bar">
+                            <div class="stat-bar-track"></div>
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="stat-card-note">Mumbai CSMT welcome</div>
+                    </div>
+                </div>
+
+                <div class="panel-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Club Identity</h2>
+                            <span class="card-badge status-online">CRUSMI</span>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Club:</strong> Cookie Runners United Shadow Milk India</p>
+                            <p><strong>Abbreviation:</strong> CRUSMI</p>
+                            <p><strong>Club Captain:</strong> Abinav</p>
+                            <p><strong>Head Coach:</strong> Shadow Milk Cookie</p>
+                            <p><strong>Home Country:</strong> India</p>
+                            <p><strong>Motto:</strong> "We stand together, we play together, and we rise together."</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">System Status</h2>
+                            <span class="card-badge status-online">Nominal</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span class="status-item-name">Hermes Agent Core</span>
+                                    <span class="status-item-value status-online">ONLINE</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Terminal UI</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Dashboard</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">CRUSMI Story Memory</span>
+                                    <span class="status-item-value status-online">LOADED</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-item-name">Termux / Android 14</span>
+                                    <span class="status-item-value status-online">READY</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Logs</h2>
+                        <span class="card-badge status-muted">live</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="log-console" id="log-console">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">CRUSMI terminal welcome screen rendered.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Story palette loaded from hermes-theme/theme.json.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Dashboard initialized — sidebar, navigation, cards active.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Fictional story — not real-world news.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:04]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">CRUSMI records loaded. Awaiting captain instructions.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story panel -->
+            <section class="panel hidden" id="panel-story" aria-label="Story">
+                <div class="panel-header">
+                    <h1 class="panel-title">Story</h1>
+                    <p class="panel-sub">CRUSMI narrative continuity — achievements, India tour, welcome scene.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Achievements:</strong> White Lily Cookie won the Cookie Runner Ballon d'Or 2026. Captain Abinav won Captain of the Year 2026.</p>
+                        <p><strong>India Tour:</strong> Mumbai CSMT (welcome) → Chennai → Kanyakumari → Ooty (by luxury train).</p>
+                        <p class="lore-note">Fictional Cookie Run football story. Do not present fictional events as real-world news.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements panel -->
+            <section class="panel hidden" id="panel-achievements" aria-label="Achievements">
+                <div class="panel-header">
+                    <h1 class="panel-title">Achievements</h1>
+                    <p class="panel-sub">CRUSMI club achievements and honours.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="lore-list">
+                            <li class="lore-item">
+                                <span class="lore-name">Cookie Runner Ballon d'Or 2026</span>
+                                <span class="lore-tag status-success">White Lily Cookie</span>
+                                <span class="lore-desc">Won by White Lily Cookie [CONFIRMED within story].</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Captain of the Year 2026</span>
+                                <span class="lore-tag status-success">Captain Abinav</span>
+                                <span class="lore-desc">Won by Captain Abinav [CONFIRMED within story].</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Team Victory Celebration</span>
+                                <span class="lore-tag status-online">Full Squad</span>
+                                <span class="lore-desc">The team celebrated its victories together.</span>
+                            </li>
+                        </ul>
+                        <p class="lore-note">Every teammate deserves recognition for the club's success.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tour panel -->
+            <section class="panel hidden" id="panel-tour" aria-label="Tour">
+                <div class="panel-header">
+                    <h1 class="panel-title">India Tour</h1>
+                    <p class="panel-sub">CRUSMI India tour route and destinations.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="lore-list">
+                            <li class="lore-item">
+                                <span class="lore-name">Mumbai CSMT</span>
+                                <span class="lore-tag status-online">Welcome Event</span>
+                                <span class="lore-desc">Fictional welcome-event location — CRUSMI arrived in Mumbai.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Chennai</span>
+                                <span class="lore-tag status-online">Tamil Nadu</span>
+                                <span class="lore-desc">First Tamil Nadu destination.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Kanyakumari</span>
+                                <span class="lore-tag status-info">Planned</span>
+                                <span class="lore-desc">First stop of the Tamil Nadu tour.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Ooty</span>
+                                <span class="lore-tag status-info">Planned</span>
+                                <span class="lore-desc">Follows Kanyakumari on the tour.</span>
+                            </li>
+                            <li class="lore-item">
+                                <span class="lore-name">Luxury Train</span>
+                                <span class="lore-tag status-info">Planned</span>
+                                <span class="lore-desc">The team discussed travelling by luxury train.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Welcome panel -->
+            <section class="panel hidden" id="panel-welcome" aria-label="Welcome">
+                <div class="panel-header">
+                    <h1 class="panel-title">Welcome Scene</h1>
+                    <p class="panel-sub">Historic Welcome Scene — 15 November 2026.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>CRUSMI arrived in Mumbai. The Chief Minister Vijay and the Prime Minister came to meet the team. Indian media covered the club's arrival.</p>
+                        <blockquote class="captain-quote">
+                            "Hello people of India! Captain of CRUSMI here! How is everyone doing? So… we won because of our teammates and our coach of CRUSMI!"
+                        </blockquote>
+                        <p><strong>Shadow Milk Cookie</strong> proudly praised the captain's leadership. <strong>White Lily</strong> and <strong>Pure Vanilla</strong> celebrated the team's unity.</p>
+                        <p class="lore-note">The reporters have asked Captain Abinav: "What would you like to say to all the young Cookie Runners watching you across India?"</p>
+                        <p class="lore-note">Fictional story — do not present fictional government visits or events as real-world news.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Teammates panel -->
+            <section class="panel hidden" id="panel-teammates" aria-label="Teammates">
+                <div class="panel-header">
+                    <h1 class="panel-title">Teammates</h1>
+                    <p class="panel-sub">CRUSMI squad and their reactions.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="cookie-list">
+                            <li class="cookie-item">
+                                <span class="cookie-name">Shadow Milk Cookie</span>
+                                <span class="cookie-tag status-online">Head Coach</span>
+                                <span class="cookie-desc">Head coach, not a player. Proud of the captain's leadership.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Captain Abinav</span>
+                                <span class="cookie-tag status-success">Captain</span>
+                                <span class="cookie-desc">Club captain — controls his own dialogue and decisions.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">White Lily Cookie</span>
+                                <span class="cookie-tag status-success">Ballon d'Or 2026</span>
+                                <span class="cookie-desc">Cookie Runner Ballon d'Or 2026 winner.</span>
+                            </li>
+                            <li class="cookie-item">
+                                <span class="cookie-name">Pure Vanilla Cookie</span>
+                                <span class="cookie-tag status-info">Teammate</span>
+                                <span class="cookie-desc">Celebrated the team's unity.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dialogue panel -->
+            <section class="panel hidden" id="panel-dialogue" aria-label="Dialogue">
+                <div class="panel-header">
+                    <h1 class="panel-title">Dialogue</h1>
+                    <p class="panel-sub">Cookie teammate dialogue and reactions.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Give Cookie teammates their own dialogue and reactions. Maintain continuity with CRUSMI's achievements and India tour.</p>
+                        <p class="lore-note">Captain Abinav's dialogue is controlled by the user — Hermes does not speak for the captain.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings panel -->
+            <section class="panel hidden" id="panel-settings" aria-label="Settings">
+                <div class="panel-header">
+                    <h1 class="panel-title">Settings</h1>
+                    <p class="panel-sub">Configure the CRUSMI Hermes Agent experience.</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form class="settings-form">
+                            <div class="setting-group">
+                                <label class="setting-label">Agent Identity</label>
+                                <select class="setting-select">
+                                    <option value="crusmi" selected>CRUSMI</option>
+                                    <option value="cru-manager">CRU Manager</option>
+                                    <option value="angel-of-doom">Angel of Doom</option>
+                                </select>
+                                <p class="setting-hint">Changes the agent's personality and visual theme.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Timezone</label>
+                                <select class="setting-select">
+                                    <option value="Asia/Kolkata" selected>Asia/Kolkata (IST, UTC+5:30)</option>
+                                    <option value="UTC">UTC</option>
+                                </select>
+                                <p class="setting-hint">All times displayed in IST per preference.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Theme</label>
+                                <select class="setting-select">
+                                    <option value="india-earth" selected>India Earth (CRUSMI)</option>
+                                </select>
+                                <p class="setting-hint">Warm Indian earth palette with saffron accents.</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="setting-label">Status Indicators</label>
+                                <div class="setting-toggle">
+                                    <input type="checkbox" id="toggle-status" checked>
+                                    <label for="toggle-status" class="setting-toggle-slider"></label>
+                                </div>
+                                <p class="setting-hint">Show online/warning/error status dots throughout the UI.</p>
+                            </div>
+
+                            <div class="setting-actions">
+                                <button class="btn btn-primary" type="button">Save Settings</button>
+                                <button class="btn btn-ghost" type="button">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Logs panel -->
+            <section class="panel hidden" id="panel-logs" aria-label="Logs">
+                <div class="panel-header">
+                    <h1 class="panel-title">Logs</h1>
+                    <p class="panel-sub">System and agent activity log.</p>
+                </div>
+                <div class="card full-width">
+                    <div class="card-body">
+                        <div class="log-console" id="log-console-full">
+                            <div class="log-line">
+                                <span class="log-time">[00:00:00]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">CRUSMI Hermes Agent session started.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:01]</span>
+                                <span class="log-level log-success">OK</span>
+                                <span class="log-message">Visual identity palette loaded from measured reference.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:02]</span>
+                                <span class="log-level log-info">INFO</span>
+                                <span class="log-message">Terminal UI and dashboard initialized.</span>
+                            </div>
+                            <div class="log-line">
+                                <span class="log-time">[00:00:03]</span>
+                                <span class="log-level log-warn">WARN</span>
+                                <span class="log-message">Fictional story — not real-world news.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
