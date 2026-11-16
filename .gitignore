@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 *.so
 .Python
+
 build/
 develop-eggs/
 dist/
@@ -13,11 +14,10 @@ eggs/
 parts/
 var/
 sdist/
-develop-eggs/
+.develop-eggs/
 .installed.cfg
 *.egg-info
 *.egg
-.Python
 .env
 .venv/
 env/
@@ -25,6 +25,13 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# venv
+venv/
+.venv/
+env/
+.env
+.python-version
 
 # IDE / editors
 .vscode/
@@ -41,6 +48,7 @@ Desktop.ini
 
 # Logs
 *.log
+logs/
 
 # pytest
 .pytest_cache/
@@ -55,6 +63,33 @@ htmlcov/
 *.key
 *.pem
 secrets/
+
+# Hermes — do NOT commit agent operational data
+.hermes/
+
+# Releases
+*.zip
+*.tar.gz
+
+# Frontend
+frontend/node_modules/
+frontend/.vite/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+.npm
+.npmrc
+
+# SQLite / data
+*.db
+*.db-shm
+*.db-wal
+data/*.sqlite
+data/*.sqlite3
+
+# Uploads (user data — not committed)
+uploads/*
 
 # Nested Cookie Run project repos — track separately, not as embedded repos
 browser-use-web-ui/
