@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if character %}Edit {{ character.name }}{% else %}Add Character{% endif %} · Admin · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Administration · Characters</span>
+    <h2>{% if character %}Edit {{ character.name }}{% else %}Add a Character{% endif %}</h2>
+    <p>{% if character %}Update an existing character profile.{% else %}Create a new character for the Character Archives.{% endif %}</p>
+  </div>
+
+  <div class="form-card">
+    <form method="post" action="{{ action }}">
+      <div class="form-group">
+        <label for="name">Name <span style="color:var(--color-danger)">*</span></label>
+        <input type="text" id="name" name="name" value="{{ character.name if character else '' }}" required>
+      </div>
+      <div class="form-group">
+        <label for="title">Title <span style="color:var(--color-danger)">*</span></label>
+        <input type="text" id="title" name="title" value="{{ character.title if character else '' }}" required placeholder="e.g. Guardian of the Night Sky">
+      </div>
+      <div class="form-group">
+        <label for="role">Role <span style="color:var(--color-danger)">*</span></label>
+        <input type="text" id="role" name="role" value="{{ character.role if character else '' }}" required placeholder="e.g. Wayfinder">
+      </div>
+      <div class="form-group">
+        <label for="description">Description <span style="color:var(--color-danger)">*</span></label>
+        <textarea id="description" name="description" required>{{ character.description if character else '' }}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="history">History</label>
+        <textarea id="history" name="history">{{ character.history if character else '' }}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="personality">Personality</label>
+        <textarea id="personality" name="personality">{{ character.personality if character else '' }}</textarea>
+      </div>
+      <div class="settings-grid">
+        <div class="form-group">
+          <label for="color">Colour</label>
+          <input type="color" id="color" name="color" value="{{ character.color if character else '#1e3a8a' }}">
+        </div>
+        <div class="form-group">
+          <label for="image_emoji">Emoji / icon</label>
+          <input type="text" id="image_emoji" name="image_emoji" value="{{ character.image_emoji if character else '🍪' }}" maxlength="2" placeholder="🍪">
+        </div>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="is_featured" name="is_featured" value="1" {{ 'checked' if character and character.is_featured else '' }}>
+        <label for="is_featured"><strong>Featured</strong> — show on the home dashboard</label>
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">{% if character %}Save changes{% else %}Add character{% endif %}</button>
+        <a href="{{ url_for('admin_characters') }}" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}About · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}About Everlasting Horizon — an unofficial fan-made Cookie Run-inspired digital universe.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="card-glass">
+    <h2>About Everlasting Horizon</h2>
+    <p>{{ settings.about_text or 'Everlasting Horizon is an unofficial, fan-made digital universe celebrating friendship, creativity, adventures, memories, and the future of Cookie Run.' }}</p>
+
+    <h3 style="margin-top:22px;color:var(--color-text)">Project identity</h3>
+    <ul style="color:var(--color-text-muted);line-height:1.8;margin-left:20px;margin-top:8px;">
+      <li><strong>Name:</strong> Everlasting Horizon</li>
+      <li><strong>Tagline:</strong> {{ settings.site_tagline or 'A New Journey. A New World. An Everlasting Dream.' }}</li>
+      <li><strong>Motto:</strong> {{ settings.site_motto or 'One Run. One Dream. One United.' }}</li>
+      <li><strong>Colours:</strong> Royal blue, gold, white, and magical purple.</li>
+    </ul>
+
+    <h3 style="margin-top:22px;color:var(--color-text)">Unofficial fan-project disclaimer</h3>
+    <p style="color:var(--color-text-muted);font-size:0.9rem;">
+      Everlasting Horizon is an unofficial, community-made fan project. It is not affiliated with,
+      endorsed by, or sponsored by Devsisters Corporation or the official Cookie Run games. All Cookie
+      Run names, characters, artwork, trademarks, and related intellectual property belong to their
+      respective owners. All content here is original fan-created material made for celebration,
+      creativity, and community fun. No commercial use is implied or permitted.
+    </p>
+
+    <div style="margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="{{ url_for('home') }}" class="btn btn-outline">← Back Home</a>
+      <a href="{{ url_for('cookieverse') }}" class="btn btn-outline">Explore CookieVerse</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Journey Timeline · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Milestones, memories, and future plans from the Everlasting Horizon journey.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Journey Timeline</span>
+    <h2>Moments &amp; Milestones</h2>
+    <p>Important milestones and future plans from our shared journey.</p>
+  </div>
+
+  {% if events %}
+  <div class="timeline">
+    {% for event in events %}
+    <div class="timeline-item">
+      <span class="category-tag badge badge-{{ event.category }}">{{ event.category }}</span>
+      <span class="date">{{ event.event_date }}</span>
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.description }}</p>
+      <div style="font-size:0.78rem;color:var(--color-text-dim);margin-top:6px;">
+        Source: {{ event.source }}
+      </div>
+      <div class="marker" aria-hidden="true"></div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <h2>No timeline events yet</h2>
+    <p>The journey is just beginning. Record your first milestone in the Admin Dashboard.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

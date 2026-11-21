@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Project Settings · Admin · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Administration · Settings</span>
+    <h2>Project Settings</h2>
+    <p>Manage the site identity, colours, and about text for Everlasting Horizon.</p>
+  </div>
+
+  <div class="form-card">
+    <form method="post" action="{{ url_for('admin_settings') }}">
+      <div class="form-group">
+        <label for="site_name">Site name</label>
+        <input type="text" id="site_name" name="site_name" value="{{ settings.site_name or 'Everlasting Horizon' }}">
+      </div>
+      <div class="form-group">
+        <label for="site_tagline">Tagline</label>
+        <input type="text" id="site_tagline" name="site_tagline" value="{{ settings.site_tagline or 'A New Journey. A New World. An Everlasting Dream.' }}">
+      </div>
+      <div class="form-group">
+        <label for="site_motto">Motto</label>
+        <input type="text" id="site_motto" name="site_motto" value="{{ settings.site_motto or 'One Run. One Dream. One United.' }}">
+      </div>
+      <div class="form-group">
+        <label for="about_text">About text</label>
+        <textarea id="about_text" name="about_text">{{ settings.about_text or '' }}</textarea>
+      </div>
+      <div class="settings-grid">
+        <div class="form-group">
+          <label for="primary_color">Primary colour (royal blue)</label>
+          <input type="color" id="primary_color" name="primary_color" value="{{ settings.primary_color or '#1e3a8a' }}">
+        </div>
+        <div class="form-group">
+          <label for="accent_color">Accent colour (gold)</label>
+          <input type="color" id="accent_color" name="accent_color" value="{{ settings.accent_color or '#d4af37' }}">
+        </div>
+        <div class="form-group">
+          <label for="magic_color">Magic colour (purple)</label>
+          <input type="color" id="magic_color" name="magic_color" value="{{ settings.magic_color or '#7c3aed' }}">
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">Save settings</button>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Character Archives · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Meet the cookies of Everlasting Horizon — their profiles, histories, friendships, and memorable moments.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Character Archives</span>
+    <h2>Friends of the Kingdom</h2>
+    <p>Character profiles, histories, friendships, and memorable moments.</p>
+  </div>
+
+  {% if characters %}
+  <div class="characters-grid">
+    {% for character in characters %}
+    <a href="{{ url_for('character_detail', character_id=character.id) }}" class="character-card {{ 'featured' if character.is_featured }}">
+      <span class="card-emoji" aria-hidden="true">{{ character.image_emoji or '🍪' }}</span>
+      <div class="card-body">
+        <span class="card-title">{{ character.title }}</span>
+        <h3 class="card-name">{{ character.name }}</h3>
+        <span class="card-role">{{ character.role }}</span>
+        <p class="card-desc">{{ character.description }}</p>
+      </div>
+      <div class="card-footer">
+        <span class="badge" style="background-color:{{ character.color }};color:#ffffff">{{ character.color }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <h2>No characters yet</h2>
+    <p>The Character Archives are empty. Add your first friend in the Admin Dashboard.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

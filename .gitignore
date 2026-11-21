@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+.pytest_cache/
+.mypy_cache/
+.pyre/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+*.egg-info/
+.eggs/
+build/
+dist/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Node.js and frontend builds
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.yarn-cache/
+.yarn-integrity
+.parcel-cache/
+.turbo/
+.vite/
+coverage/
+.next/
+out/
+
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+
+# Databases and runtime data
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+data/
+instance/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+.cache/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# Test and browser artifacts
+test-results/
+playwright-report/
+.nyc_output/
+
+# Deployment and tool state
+.vercel/
+.netlify/
+.direnv/

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Adventure Hub · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Stories, quests, and creative adventures from the CookieRun-inspired universe.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Adventure Hub</span>
+    <h2>Stories &amp; Quests</h2>
+    <p>Creative adventures waiting to be lived. Choose a tale and begin your journey.</p>
+  </div>
+
+  {% if adventures %}
+  <div class="adventures-grid">
+    {% for adventure in adventures %}
+    <a href="{{ url_for('adventure_detail', adventure_id=adventure.id) }}" class="adventure-card">
+      <span class="badge badge-{{ adventure.type }}">{{ adventure.type }}</span>
+      <h3>{{ adventure.title }}</h3>
+      <p>{{ adventure.description }}</p>
+      <span class="reward">Reward: {{ adventure.reward or 'A memory made' }}</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <h2>No adventures yet</h2>
+    <p>The Adventure Hub is waiting. Add your first story or quest in the Admin Dashboard.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if event %}Edit {{ event.title }}{% else %}Add Timeline Event{% endif %} · Admin · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Administration · Journey Timeline</span>
+    <h2>{% if event %}Edit Event{% else %}Add a Timeline Event{% endif %}</h2>
+    <p>{% if event %}Update an existing milestone or memory.{% else %}Record a new milestone, memory, or future plan.{% endif %}</p>
+  </div>
+
+  <div class="form-card">
+    <form method="post" action="{{ action }}">
+      <div class="form-group">
+        <label for="title">Title <span style="color:var(--color-danger)">*</span></label>
+        <input type="text" id="title" name="title" value="{{ event.title if event else '' }}" required>
+      </div>
+      <div class="form-group">
+        <label for="event_date">Date <span style="color:var(--color-danger)">*</span></label>
+        <input type="date" id="event_date" name="event_date" value="{{ event.event_date if event else '' }}" required>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="milestone" {{ 'selected' if (event and event.category=='milestone') else '' }}>Milestone</option>
+          <option value="memory" {{ 'selected' if (event and event.category=='memory') else '' }}>Memory</option>
+          <option value="future" {{ 'selected' if (event and event.category=='future') else '' }}>Future</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="description">Description <span style="color:var(--color-danger)">*</span></label>
+        <textarea id="description" name="description" required>{{ event.description if event else '' }}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="source">Source</label>
+        <input type="text" id="source" name="source" value="{{ event.source if event else 'Fan project' }}" placeholder="e.g. Fan-created world lore">
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">{% if event %}Save changes{% else %}Record event{% endif %}</button>
+        <a href="{{ url_for('admin_timeline') }}" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

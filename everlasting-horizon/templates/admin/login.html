@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Login · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="form-card">
+    <h2>Administrator Sign In</h2>
+    <p style="color:var(--color-text-muted);margin-bottom:22px;text-align:center;">
+      Protected area. Manage characters, timelines, adventures, and project settings.
+    </p>
+    <form method="post" action="{{ url_for('admin_login') }}?next={{ next_url }}">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+      <div class="btn-group" style="justify-content:center;">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        <a href="{{ url_for('home') }}" class="btn btn-outline">← Return Home</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

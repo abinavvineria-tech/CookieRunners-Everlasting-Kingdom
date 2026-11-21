@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Join · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Create a new Everlasting Horizon account.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="form-card">
+    <h2>Create an account</h2>
+    <p style="color:var(--color-text-muted);margin-bottom:22px;text-align:center;">
+      Join the Cookie Runners community and track your journey across Everlasting Horizon.
+    </p>
+    <form method="post" action="{{ url_for('register') }}">
+      <div class="form-group">
+        <label for="username">Username <span style="color:var(--color-danger)">*</span></label>
+        <input type="text" id="username" name="username" required autocomplete="username" placeholder="e.g. StarlightRunner">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address <span style="color:var(--color-danger)">*</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="password">Password <span style="color:var(--color-danger)">*</span></label>
+        <input type="password" id="password" name="password" required autocomplete="new-password" minlength="6">
+      </div>
+      <div class="form-group">
+        <label for="confirm">Confirm password <span style="color:var(--color-danger)">*</span></label>
+        <input type="password" id="confirm" name="confirm" required autocomplete="new-password">
+      </div>
+      <div class="btn-group" style="justify-content:center;margin-top:12px;">
+        <button type="submit" class="btn btn-primary">Create account</button>
+        <a href="{{ url_for('home') }}" class="btn btn-outline">← Return Home</a>
+      </div>
+      <p style="margin-top:16px;text-align:center;font-size:0.9rem;color:var(--color-text-muted);">
+        Already have an account? <a href="{{ url_for('login') }}">Sign in →</a>
+      </p>
+    </form>
+  </div>
+</section>
+{% endblock %}

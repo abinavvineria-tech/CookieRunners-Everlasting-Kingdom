@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Characters · Admin · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Administration · Characters</span>
+    <h2>Character Archives</h2>
+    <p>Create, edit, and remove character profiles.</p>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
+    <a href="{{ url_for('admin_character_new') }}" class="btn btn-primary">+ Add Character</a>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline btn-sm">← Dashboard</a>
+  </div>
+
+  {% if characters %}
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Role</th>
+        <th>Featured</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for character in characters %}
+      <tr>
+        <td>
+          <span style="font-size:1.4rem;">{{ character.image_emoji or '🍪' }}</span>
+          <strong>{{ character.name }}</strong>
+        </td>
+        <td>{{ character.title }}</td>
+        <td>{{ character.role }}</td>
+        <td>
+          <span class="badge" style="background:{{ 'rgba(212,175,55,0.2)' if character.is_featured else 'transparent' }};color:{{ 'var(--color-accent)' if character.is_featured else 'var(--color-text-muted)' }}">
+            {{ 'Yes' if character.is_featured else 'No' }}
+          </span>
+        </td>
+        <td>
+          <div class="btn-group">
+            <a href="{{ url_for('admin_character_edit', character_id=character.id) }}" class="btn btn-outline btn-sm">Edit</a>
+            <form action="{{ url_for('admin_character_delete', character_id=character.id) }}" method="post" style="display:inline;" data-confirm="Delete "{{ character.name }}"? This cannot be undone.">
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state">
+    <h2>No characters yet</h2>
+    <p>Add your first character to the archives.</p>
+    <a href="{{ url_for('admin_character_new') }}" class="btn btn-primary">+ Add Character</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
