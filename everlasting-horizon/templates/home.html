@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}{{ settings.site_tagline or 'A New Journey. A New World. An Everlasting Dream.' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="hero">
+    <span class="kicker">✨ {{ settings.site_motto or 'One Run. One Dream. One United.' }}</span>
+    <h1>{{ settings.site_name or 'Everlasting Horizon' }}</h1>
+    <span class="subtitle">{{ settings.site_tagline or 'A New Journey. A New World. An Everlasting Dream.' }}</span>
+    <p class="lead">{{ settings.about_text or 'An unofficial, fan-made digital universe celebrating friendship, creativity, adventures, memories, and the future of Cookie Run.' }}</p>
+
+    <div class="hero-actions">
+      <a href="{{ url_for('cookieverse') }}" class="btn btn-primary">Explore the CookieVerse</a>
+      <a href="{{ url_for('characters') }}" class="btn btn-outline">Meet the Characters</a>
+      <a href="{{ url_for('timeline') }}" class="btn btn-ghost">Journey Timeline</a>
+    </div>
+  </div>
+</section>
+
+{% if characters or worlds or timeline or adventures %}
+<section class="section">
+  <div class="feature-grid">
+    {% if characters %}
+    <div class="feature-card">
+      <span class="mark">🍪</span>
+      <h3>Character Archives</h3>
+      <p>{{ characters|length }} friend profiles and their stories.</p>
+      <a href="{{ url_for('characters') }}" class="btn-ghost" style="margin-top:10px;display:inline-block">View archive →</a>
+    </div>
+    {% endif %}
+    {% if worlds %}
+    <div class="feature-card">
+      <span class="mark">🌍</span>
+      <h3>CookieVerse</h3>
+      <p>{{ worlds|length }} worlds to explore and stories to discover.</p>
+      <a href="{{ url_for('cookieverse') }}" class="btn-ghost" style="margin-top:10px;display:inline-block">Enter the worlds →</a>
+    </div>
+    {% endif %}
+    {% if timeline %}
+    <div class="feature-card">
+      <span class="mark">🗺️</span>
+      <h3>Journey Timeline</h3>
+      <p>Milestones, memories, and what lies ahead.</p>
+      <a href="{{ url_for('timeline') }}" class="btn-ghost" style="margin-top:10px;display:inline-block">View timeline →</a>
+    </div>
+    {% endif %}
+    {% if adventures %}
+    <div class="feature-card">
+      <span class="mark">🎯</span>
+      <h3>Adventure Hub</h3>
+      <p>Stories and quests awaiting your imagination.</p>
+      <a href="{{ url_for('adventures') }}" class="btn-ghost" style="margin-top:10px;display:inline-block">Begin an adventure →</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if characters %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Featured Friends</span>
+    <h2>Characters of the Kingdom</h2>
+    <p>Meet the cookies who call Everlasting Horizon home.</p>
+  </div>
+  <div class="characters-grid">
+    {% for character in characters %}
+    <a href="{{ url_for('character_detail', character_id=character.id) }}" class="character-card {{ 'featured' if character.is_featured }}">
+      <span class="card-emoji" aria-hidden="true">{{ character.image_emoji or '🍪' }}</span>
+      <div class="card-body">
+        <span class="card-title">{{ character.title }}</span>
+        <h3 class="card-name">{{ character.name }}</h3>
+        <span class="card-role">{{ character.role }}</span>
+        <p class="card-desc">{{ character.description }}</p>
+      </div>
+      <div class="card-footer">
+        <span class="badge" style="background:rgba(124,58,237,0.15);color:var(--color-magic-light);border-color:rgba(124,58,237,0.3)">{{ character.color }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if worlds %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">CookieVerse</span>
+    <h2>Worlds &amp; Stories</h2>
+    <p>Wander through Cookie Run-inspired worlds and the tales that live within them.</p>
+  </div>
+  <div class="worlds-grid">
+    {% for world in worlds %}
+    <a href="{{ url_for('cookieverse') }}#world-{{ world.id }}" class="world-card {{ 'featured' if world.is_featured }}">
+      <span class="world-emoji" aria-hidden="true">{{ world.image_emoji or '🌍' }}</span>
+      <div class="world-body">
+        <span class="world-region">{{ world.region }}</span>
+        <h3 class="world-name">{{ world.name }}</h3>
+        <p class="world-desc">{{ world.description }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if timeline %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Journey Timeline</span>
+    <h2>Moments That Matter</h2>
+    <p>Recent milestones and memories from our shared journey.</p>
+  </div>
+  <div class="timeline">
+    {% for event in timeline %}
+    <div class="timeline-item">
+      <span class="category-tag badge badge-{{ event.category }}">{{ event.category }}</span>
+      <span class="date">{{ event.event_date }}</span>
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.description }}</p>
+      <div class="marker" aria-hidden="true"></div>
+    </div>
+    {% endfor %}
+  </div>
+  <div style="text-align:center;margin-top:20px;">
+    <a href="{{ url_for('timeline') }}" class="btn btn-outline">See the full timeline</a>
+  </div>
+</section>
+{% endif %}
+
+{% if adventures %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Adventure Hub</span>
+    <h2>Stories &amp; Quests</h2>
+    <p>Creative adventures waiting to be lived.</p>
+  </div>
+  <div class="adventures-grid">
+    {% for adventure in adventures %}
+    <a href="{{ url_for('adventure_detail', adventure_id=adventure.id) }}" class="adventure-card">
+      <span class="badge badge-{{ adventure.type }}">{{ adventure.type }}</span>
+      <h3>{{ adventure.title }}</h3>
+      <p>{{ adventure.description }}</p>
+      <span class="reward">Reward: {{ adventure.reward or 'A memory made' }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

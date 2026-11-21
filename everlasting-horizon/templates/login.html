@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign in · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Sign in to your Everlasting Horizon account.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="form-card">
+    <h2>Sign in</h2>
+    <p style="color:var(--color-text-muted);margin-bottom:22px;text-align:center;">
+      Welcome back to the kingdom. Enter your credentials below.
+    </p>
+    <form method="post" action="{{ url_for('login') }}?next={{ next_url }}">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autocomplete="username" placeholder="e.g. StarlightRunner">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+      <div class="btn-group" style="justify-content:center;margin-top:8px;">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        <a href="{{ url_for('home') }}" class="btn btn-outline">← Return Home</a>
+      </div>
+      <p style="margin-top:16px;text-align:center;font-size:0.9rem;color:var(--color-text-muted);">
+        Don't have an account? <a href="{{ url_for('register') }}">Create one →</a>
+      </p>
+      <p style="margin-top:8px;text-align:center;font-size:0.85rem;color:var(--color-text-muted);">
+        Site administration? <a href="{{ url_for('admin_login') }}">Admin sign in</a>
+      </p>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}CookieVerse · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Wander through Cookie Run-inspired worlds and discover the stories that live within them.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">CookieVerse</span>
+    <h2>Worlds &amp; Stories</h2>
+    <p>A collection of Cookie Run-inspired worlds and the tales that live within them. Every world has a story, and every story has a home.</p>
+  </div>
+
+  <div class="worlds-grid">
+    {% for world in worlds %}
+    <a href="#world-{{ world.id }}" id="world-{{ world.id }}" class="world-card {{ 'featured' if world.is_featured }}">
+      <span class="world-emoji" aria-hidden="true">{{ world.image_emoji or '🌍' }}</span>
+      <div class="world-body">
+        <span class="world-region">{{ world.region }}</span>
+        <h3 class="world-name">{{ world.name }}</h3>
+        <p class="world-desc">{{ world.description }}</p>
+      </div>
+    </a>
+    {% else %}
+    <div class="empty-state">
+      <h2>No worlds yet</h2>
+      <p>The CookieVerse is waiting to be discovered. Add your first world in the Admin Dashboard.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% if stories %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Stories</span>
+    <h2>Tales from the Worlds</h2>
+    <p>Memories and adventures recorded across the CookieVerse.</p>
+  </div>
+  <div class="stories-list">
+    {% for story in stories %}
+    <div class="story-card">
+      <span class="world-tag">{{ story.world_name }}</span>
+      <h3>{{ story.title }}</h3>
+      <p>{{ story.excerpt }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}
