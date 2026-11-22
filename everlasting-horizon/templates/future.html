@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Future Horizon · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Upcoming projects and possibilities for the Everlasting Horizon universe.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Future Horizon</span>
+    <h2>What Lies Ahead</span>
+    <p>A section dedicated to upcoming Cookie Run projects and possibilities, shaped by the community.</p>
+  </div>
+
+  {% if projects %}
+  <div class="future-grid">
+    {% for project in projects %}
+    <div class="future-card">
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description }}</p>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>{{ project.status }}</span>
+          <span>{{ project.progress }}%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="fill" style="width: {{ project.progress }}%;"></div>
+        </div>
+        {% if project.target_date %}
+        <div class="small" style="color:var(--color-text-dim);">Target: {{ project.target_date }}</div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <h2>No future projects yet</h2>
+    <p>The horizon is open. Propose your first project in the Admin Dashboard.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

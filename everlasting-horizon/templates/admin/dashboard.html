@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Administration</span>
+    <h2>Admin Dashboard</h2>
+    <p>Welcome back, {{ session.admin_username or 'administrator' }}. Manage the Everlasting Horizon universe.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="value">{{ counts.characters }}</span>
+      <span class="label">Characters</span>
+    </div>
+    <div class="stat-card">
+      <span class="value">{{ counts.worlds }}</span>
+      <span class="label">Worlds</span>
+    </div>
+    <div class="stat-card">
+      <span class="value">{{ counts.stories }}</span>
+      <span class="label">Stories</span>
+    </div>
+    <div class="stat-card">
+      <span class="value">{{ counts.adventures }}</span>
+      <span class="label">Adventures</span>
+    </div>
+    <div class="stat-card">
+      <span class="value">{{ counts.timeline_events }}</span>
+      <span class="label">Timeline Events</span>
+    </div>
+    <div class="stat-card">
+      <span class="value">{{ counts.community_members }}</span>
+      <span class="label">Community</span>
+    </div>
+    <div class="stat-card">
+      <span class="value">{{ counts.future_projects }}</span>
+      <span class="label">Future Projects</span>
+    </div>
+  </div>
+
+  <div class="card-glass">
+    <h3 style="margin-bottom:14px;">Recent timeline events</h3>
+    {% if recent %}
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in recent %}
+        <tr>
+          <td>{{ event.title }}</td>
+          <td>{{ event.event_date }}</td>
+          <td><span class="badge badge-{{ event.category }}">{{ event.category }}</span></td>
+          <td>{{ event.source }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p style="color:var(--color-text-muted)">No timeline events recorded yet.</p>
+    {% endif %}
+    <div style="margin-top:14px;text-align:right;">
+      <a href="{{ url_for('admin_timeline') }}" class="btn btn-outline btn-sm">Manage timeline →</a>
+    </div>
+  </div>
+
+  <div class="card-glass" style="margin-top:24px;">
+    <h3 style="margin-bottom:14px;">Quick actions</h3>
+    <div class="btn-group" style="justify-content:flex-start;">
+      <a href="{{ url_for('admin_characters') }}" class="btn btn-outline">Manage Characters</a>
+      <a href="{{ url_for('admin_timeline') }}" class="btn btn-outline">Manage Timeline</a>
+      <a href="{{ url_for('admin_settings') }}" class="btn btn-outline">Project Settings</a>
+      <a href="{{ url_for('admin_logout') }}" class="btn btn-outline">Sign Out</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

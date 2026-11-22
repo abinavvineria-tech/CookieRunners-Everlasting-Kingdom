@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ character.name }} · Character Archives · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}{{ character.description }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <header class="character-hero">
+    <span class="emoji" aria-hidden="true">{{ character.image_emoji or '🍪' }}</span>
+    <h1>{{ character.name }}</h1>
+    <span class="role">{{ character.title }}</span>
+    <span style="display:inline-flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;">
+      <span class="color-chip" style="background-color:{{ character.color }};" aria-label="{{ character.color }}"></span>
+      <span class="small" style="color:var(--color-text-muted)">{{ character.role }} · {{ character.color }}</span>
+    </span>
+  </header>
+
+  <div class="character-content">
+    <div>
+      <div class="box">
+        <h4>Description</h4>
+        <p>{{ character.description }}</p>
+      </div>
+      <div class="box">
+        <h4>History</h4>
+        <p>{{ character.history }}</p>
+      </div>
+    </div>
+    <div>
+      <div class="box">
+        <h4>Personality</h4>
+        <p>{{ character.personality }}</p>
+      </div>
+      {% if friends %}
+      <div class="box">
+        <h4>Friendships</h4>
+        <div class="friend-list">
+          {% for f in friends %}
+          <div class="friend-item">
+            <span class="emoji" aria-hidden="true">{{ f.friend.image_emoji or '🍪' }}</span>
+            <div>
+              <div class="name">{{ f.friend.name }}</div>
+              <div class="moment">“{{ f.moment }}”</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:26px;">
+    <a href="{{ url_for('characters') }}" class="btn btn-outline">← Back to Archives</a>
+  </div>
+</section>
+{% endblock %}

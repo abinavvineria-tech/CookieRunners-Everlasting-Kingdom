@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Community Hall · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Celebrate Cookie Runners and their creativity in the Community Hall.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Community Hall</span>
+    <h2>Celebrating Cookie Runners</h2>
+    <p>A place to celebrate Cookie Runners and their creativity across the kingdom.</p>
+  </div>
+
+  {% if members %}
+  <div class="community-grid">
+    {% for member in members %}
+    <div class="member-card">
+      <span class="mark" aria-hidden="true">👑</span>
+      <h3>{{ member.name }}</h3>
+      <div class="role">{{ member.contribution }}</div>
+      {% if member.message %}
+      <p>{{ member.message }}</p>
+      {% endif %}
+      <div class="joined">Joined {{ member.join_date[:10] if member.join_date }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <h2>No community members yet</h2>
+    <p>The Community Hall is ready to celebrate its first Cookie Runner.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}Your Everlasting Horizon account profile.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="card-glass" style="max-width:560px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:22px;">
+      <span style="font-size:3.2rem;" aria-hidden="true">🍪</span>
+      <h1 style="margin-top:10px;">{{ user.username }}</h1>
+      <div style="display:inline-flex;align-items:center;gap:8px;justify-content:center;margin-top:6px;">
+        <span class="badge" style="background:rgba(124,58,237,0.15);color:var(--color-magic-light);border-color:rgba(124,58,237,0.3)">{{ user.role }}</span>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-bottom:14px;">
+      <label style="display:block;font-size:0.8rem;font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.1em;">Email</label>
+      <p style="color:var(--color-text);margin:4px 0 0;word-break:break-all;">{{ user.email }}</p>
+    </div>
+
+    <div class="form-group" style="margin-bottom:14px;">
+      <label style="display:block;font-size:0.8rem;font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.1em;">Member since</label>
+      <p style="color:var(--color-text);margin:4px 0 0;">{{ user.created_at[:10] if user.created_at }}</p>
+    </div>
+
+    <div class="form-group" style="margin-bottom:0;">
+      <label style="display:block;font-size:0.8rem;font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.1em;">Account ID</label>
+      <p style="color:var(--color-text-muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85rem;margin:4px 0 0;">#{{ user.id }}</p>
+    </div>
+
+    <div style="margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a href="{{ url_for('home') }}" class="btn btn-outline">← Return Home</a>
+      <a href="{{ url_for('logout') }}" class="btn btn-outline">Sign out</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Timeline · Admin · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-header">
+    <span class="eyebrow">Administration · Journey Timeline</span>
+    <h2>Timeline Events</h2>
+    <p>Record milestones, memories, and future plans.</p>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
+    <a href="{{ url_for('admin_timeline_new') }}" class="btn btn-primary">+ Add Event</a>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline btn-sm">← Dashboard</a>
+  </div>
+
+  {% if events %}
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Source</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      <tr>
+        <td><strong>{{ event.title }}</strong></td>
+        <td>{{ event.event_date }}</td>
+        <td><span class="badge badge-{{ event.category }}">{{ event.category }}</span></td>
+        <td>{{ event.source }}</td>
+        <td>
+          <div class="btn-group">
+            <a href="{{ url_for('admin_timeline_edit', event_id=event.id) }}" class="btn btn-outline btn-sm">Edit</a>
+            <form action="{{ url_for('admin_timeline_delete', event_id=event.id) }}" method="post" style="display:inline;" data-confirm="Delete "{{ event.title }}"? This cannot be undone.">
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state">
+    <h2>No timeline events yet</h2>
+    <p>Record the first milestone of the journey.</p>
+    <a href="{{ url_for('admin_timeline_new') }}" class="btn btn-primary">+ Add Event</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

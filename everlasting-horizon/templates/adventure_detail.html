@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ adventure.title }} · Adventure Hub · {{ settings.site_name or 'Everlasting Horizon' }}{% endblock %}
+{% block description %}{{ adventure.description }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="adventure-detail">
+    <span class="badge badge-{{ adventure.type }}">{{ adventure.type }}</span>
+    <h1>{{ adventure.title }}</h1>
+    <p>{{ adventure.description }}</p>
+    {% if adventure.reward %}
+    <p><strong>Reward:</strong> {{ adventure.reward }}</p>
+    {% endif %}
+    <p style="font-size:0.8rem;color:var(--color-text-dim);margin-top:14px;">Status: {{ adventure.status }}</p>
+  </div>
+
+  <div style="text-align:center;margin-top:26px;">
+    <a href="{{ url_for('adventures') }}" class="btn btn-outline">← Back to Adventures</a>
+  </div>
+</section>
+{% endblock %}
