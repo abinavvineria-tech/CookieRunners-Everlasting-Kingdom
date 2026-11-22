@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Update Calendar · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-calendar{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Update Calendar</h1>
+      <p class="section-lead">Game launches, scheduled updates, maintenance, events, anniversaries and developer announcements —
+      monthly and weekly views.</p>
+    </div>
+    <div class="cal-toolbar" style="margin-left:0;">
+      <a href="{{ url_for('calendar', view='month', year=year, month=month) }}" class="btn btn-outline btn-sm {% if view=='month' %}btn-primary{% endif %}>Month</a>
+      <a href="{{ url_for('calendar', view='week', year=year, month=month) }}" class="btn btn-outline btn-sm {% if view=='week' %}btn-primary{% endif %}>Week</a>
+      {% if month > 1 %}
+        <a href="{{ url_for('calendar', view=view, year=year, month=month-1) }}" class="btn btn-ghost btn-sm">‹ Prev</a>
+      {% else %}
+        <a href="{{ url_for('calendar', view=view, year=year-1, month=12) }}" class="btn btn-ghost btn-sm">‹ Prev</a>
+      {% endif %}
+      <strong style="margin:0 0.5rem;">{{ ['January','February','March','April','May','June','July','August','September','October','November','December'][month-1] }} {{ year }}</strong>
+      {% if month < 12 %}
+        <a href="{{ url_for('calendar', view=view, year=year, month=month+1) }}" class="btn btn-ghost btn-sm">Next ›</a>
+      {% else %}
+        <a href="{{ url_for('calendar', view=view, year=year+1, month=1) }}" class="btn btn-ghost btn-sm">Next ›</a>
+      {% endif %}
+      {% if session.admin_user %}
+        <a href="{{ url_for('admin_calendar') }}" class="btn btn-outline btn-sm">Manage →</a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if items %}
+    <div class="cal-grid">
+      <div class="cal-day-header">Sun</div><div class="cal-day-header">Mon</div><div class="cal-day-header">Tue</div>
+      <div class="cal-day-header">Wed</div><div class="cal-day-header">Thu</div><div class="cal-day-header">Fri</div>
+      <div class="cal-day-header">Sat</div>
+      {% set month_weeks = weeks %}
+      {% for week in month_weeks %}
+        {% for weekday in week %}
+          {% if weekday == 0 %}
+            <div class="cal-day empty"></div>
+          {% else %}
+            {% set day_items = [] %}
+            {% for it in items %}
+              {% set it_start = it['start_date'][:10] if it['start_date'] else '' %}
+              {% set it_end = it['end_date'][:10] if it['end_date'] else '' %}
+              {% set in_range = false %}
+              {% if it_start and (it_start[:4]|int == year and it_start[5:7]|int == month and it_start[8:10]|int == weekday) %}
+                {% set in_range = true %}
+              {% elif it_start and it_end and it_start[:4]|int <= year and (it_start[5:7]|int < month or (it_start[5:7]|int == month and it_start[8:10]|int <= weekday)) and (it_end[:4]|int > year or (it_end[:4]|int == year and (it_end[5:7]|int > month or (it_end[5:7]|int == month and it_end[8:10]|int >= weekday)))) %}
+                {% set in_range = true %}
+              {% endif %}
+              {% if in_range %}
+                {% set _ = day_items.append(it) %}
+              {% endif %}
+            {% endfor %}
+            <div class="cal-day {% if loop.index0 == 0 or loop.index0 == 6 %}weekend{% endif %}">
+              <span class="date">{{ weekday }}</span>
+              {% for it in day_items %}
+                <a href="{{ it['url'] or (url_for('game_detail', slug='') if it['game_id'] else '#') }}" class="cal-event" style="background:var(--accent-bg);border-color:var(--brand);">
+                  {{ it['title'] }}
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+    <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.85rem;">
+      Colored dots/bars show scheduled items. Click an item to open it. Items without dates appear in the admin calendar list only.
+    </p>
+  {% else %}
+    <div class="empty-state">
+      <span class="icon">📅</span>
+      <h2>No calendar items for this month</h2>
+      <p>Admins can add launches, updates, maintenance, events and anniversaries in the admin calendar.</p>
+    </div>
+  {% endif %}
+
+  <div class="notice">
+    <strong>Legend:</strong> launch · update · maintenance · event · anniversary · announcement. Confirmation badges on item pages
+    show whether an entry is Confirmed, Rumour or Speculation — rumoured items are never shown as confirmed dates.
+  </div>
+</section>
+{% endblock %}

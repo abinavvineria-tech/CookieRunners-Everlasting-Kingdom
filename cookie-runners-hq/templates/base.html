@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cookie Runners HQ — community hub for Cookie Run announcements, game updates, upcoming titles and events.">
+  <title>{% block title %}Cookie Runners HQ{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ url_for('dashboard') }}">🍪 Cookie Runners HQ</a>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark theme" aria-pressed="false">🌙</button>
+        <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+
+      <nav class="site-nav" id="site-nav">
+        <ul>
+          <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li><a href="{{ url_for('games_list') }}">Games Directory</a></li>
+          <li><a href="{{ url_for('tracker') }}">Devsisters Tracker</a></li>
+          <li><a href="{{ url_for('upcoming') }}">Upcoming Games</a></li>
+          <li><a href="{{ url_for('calendar') }}">Calendar</a></li>
+          <li><a href="{{ url_for('search') }}">Search</a></li>
+          {% if session.admin_user %}
+            <li><a href="{{ url_for('admin_dashboard') }}">Admin</a></li>
+            <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+          {% else %}
+            <li><a href="{{ url_for('admin_login') }}">Admin Login</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-container">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main class="page">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><strong>Cookie Runners HQ</strong> — a fan-made community information hub for Cookie Run fans.</p>
+      <p class="small">Not an official Devsisters product. No official artwork is used. Announcement entries are manually curated;
+      always verify against official Devsisters sources before sharing. Entries marked <span class="badge badge-rumour">Rumour</span>
+      or <span class="badge badge-speculation">Speculation</span> are <strong>not confirmed news</strong>.</p>
+      <p class="small">Official sources: devsisters.com · kingdom.cookie-run.com · ovenbreak.cookie-run.com</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Edit Game · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-edit-game{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Edit Game</h1>
+      <p class="section-lead">Editing <strong>{{ game['title'] }}</strong>.</p>
+    </div>
+    <a href="{{ url_for('admin_games') }}" class="btn btn-ghost btn-sm">← Back to games</a>
+  </div>
+
+  <div class="card">
+    <form method="post" action="{{ url_for('admin_edit_game', gid=game['id']) }}">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Title</label>
+          <input name="title" required value="{{ game['title'] }}">
+        </div>
+        <div class="form-group">
+          <label>Slug (URL-friendly)</label>
+          <input name="slug" required value="{{ game['slug'] }}">
+        </div>
+        <div class="form-group">
+          <label>Short description</label>
+          <input name="short_description" value="{{ game['short_description'] or '' }}">
+        </div>
+        <div class="form-group">
+          <label>Release date</label>
+          <input name="release_date" type="date" value="{{ game['release_date'][:10] if game['release_date'] else '' }}">
+        </div>
+        <div class="form-group">
+          <label>Platforms</label>
+          <input name="platforms" value="{{ game['platforms'] or '' }}">
+        </div>
+        <div class="form-group">
+          <label>Developer</label>
+          <input name="developer" value="{{ game['developer'] or 'Devsisters' }}">
+        </div>
+        <div class="form-group">
+          <label>Publisher</label>
+          <input name="publisher" value="{{ game['publisher'] or 'Devsisters' }}">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select name="status">
+            {% for s in game_statuses %}<option value="{{ s }}" {% if game['status']==s %}selected{% endif %}>{{ s }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Game type</label>
+          <select name="game_type">
+            <option value="kingdom" {% if game['game_type']=='kingdom' %}selected{% endif %}>CookieRun: Kingdom</option>
+            <option value="ovenbreak" {% if game['game_type']=='ovenbreak' %}selected{% endif %}>CookieRun: OvenBreak</option>
+            <option value="upcoming" {% if game['game_type']=='upcoming' %}selected{% endif %}>Upcoming / announced</option>
+            <option value="other" {% if game['game_type']=='other' %}selected{% endif %}>Other title</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Confirmation status</label>
+          <select name="confirmation_status">
+            <option value="confirmed" {% if game['confirmation_status']=='confirmed' %}selected{% endif %}>Confirmed</option>
+            <option value="rumour" {% if game['confirmation_status']=='rumour' %}selected{% endif %}>Rumour</option>
+            <option value="speculation" {% if game['confirmation_status']=='speculation' %}selected{% endif %}>Speculation</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Featured</label>
+          <input name="featured" type="checkbox" {% if game['featured'] %}checked{% endif %} style="width:auto;"> Show on homepage
+        </div>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Official website</label>
+        <input name="official_website" value="{{ game['official_website'] or '' }}">
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Announcement link</label>
+        <input name="announcement_link" value="{{ game['announcement_link'] or '' }}">
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Trailer URL</label>
+        <input name="trailer_url" value="{{ game['trailer_url'] or '' }}">
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Image URL</label>
+        <input name="image_url" value="{{ game['image_url'] or '' }}">
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Full description</label>
+        <textarea name="description" rows="4">{{ game['description'] or '' }}</textarea>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Notes / verification note</label>
+        <textarea name="notes" rows="3">{{ game['notes'] or '' }}</textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Save changes</button>
+        <a href="{{ url_for('admin_games') }}" class="btn btn-ghost btn-sm">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

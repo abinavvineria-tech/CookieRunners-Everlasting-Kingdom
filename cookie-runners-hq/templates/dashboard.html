@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Dashboard · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-dashboard{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Cookie Runners HQ</h1>
+      <p class="section-lead">One community. Every cookie. Infinite adventures. Discover what is happening today, what is coming
+      tomorrow, and what adventures Devsisters has planned next.</p>
+    </div>
+    <a href="{{ url_for('games_list') }}" class="btn btn-primary">Browse All Games →</a>
+  </div>
+
+  <!-- Featured games -->
+  <div class="section-header">
+    <h2 style="margin:0;font-size:1.25rem;">Featured Cookie Run Games</h2>
+  </div>
+  <div class="grid">
+    {% for game in featured_games %}
+      <a href="{{ url_for('game_detail', slug=game['slug']) }}" class="card slide-up">
+        <div style="font-size:0.78rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">
+          {{ game['game_type'].replace('_',' ') | title }}
+        </div>
+        <h3 style="margin:0 0 0.5rem;">{{ game['title'] }}</h3>
+        <p>{{ game['short_description'] or game['description'][:140] }}</p>
+        {{ m.status_badge(game['status']) }}
+        <span class="badge badge-{{ game['confirmation_status'] }}">{{ game['confirmation_status'] }}</span>
+      </a>
+    {% else %}
+      <div class="card"><p>No featured games yet.</p></div>
+    {% endfor %}
+  </div>
+
+  <!-- Latest announcements + upcoming releases -->
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+    <div class="card" style="grid-column: span 2;">
+      <h2 style="margin:0 0 1rem;font-size:1.25rem;">Latest Announcements</h2>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {% for a in latest_announcements %}
+          <div style="border-bottom:1px solid var(--border-soft);padding-bottom:0.6rem;" {% if loop.last %}style="border:none;padding-bottom:0;"{% endif %}>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;margin-bottom:0.3rem;">
+              <a href="{{ url_for('announcement_detail', slug=a['slug']) }}" style="font-weight:700;color:var(--ink);font-size:0.95rem;">{{ a['title'] }}</a>
+              {{ m.confirmation_badge(a['confirmation_status']) }}
+            </div>
+            <div style="font-size:0.82rem;color:var(--text-muted);">{{ a['summary'] or a['content'][:120] }}</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">{{ a['source_name'] or 'Cookie Runners HQ' }}{% if a['published_at'] %} · {{ a['published_at'][:10] }}{% endif %}</div>
+          </div>
+        {% else %}
+          <div class="empty-state" style="padding:1.5rem 1rem;"><span class="icon">📭</span><h2>No announcements yet</h2><p>Admins can publish announcements from the admin dashboard.</p></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 1rem;font-size:1.25rem;">Upcoming Releases</h2>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {% for g in upcoming_releases %}
+          <div style="border-bottom:1px solid var(--border-soft);padding-bottom:0.6rem;" {% if loop.last %}style="border:none;padding-bottom:0;"{% endif %}>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;margin-bottom:0.3rem;">
+              <a href="{{ url_for('game_detail', slug=g['slug']) }}" style="font-weight:700;color:var(--ink);font-size:0.95rem;">{{ g['title'] }}</a>
+              {{ m.status_badge(g['status']) }}
+            </div>
+            <div style="font-size:0.82rem;color:var(--text-muted);">{{ g['short_description'] or g['description'][:120] }}</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">
+              {% if g['release_date'] %}Expected: {{ g['release_date'][:10] }}{% else %}Date TBA{% endif %}
+              · {{ g['platforms'] or 'Platforms TBA' }}
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state" style="padding:1.5rem 1rem;"><span class="icon">🗓️</span><h2>No upcoming releases</h2><p>No officially announced upcoming games yet.</p></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent updates + current events -->
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+    <div class="card" style="grid-column: span 2;">
+      <h2 style="margin:0 0 1rem;font-size:1.25rem;">Recent Game Updates</h2>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {% for u in recent_updates %}
+          <div style="border-bottom:1px solid var(--border-soft);padding-bottom:0.6rem;" {% if loop.last %}style="border:none;padding-bottom:0;"{% endif %}>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;margin-bottom:0.3rem;">
+              <a href="{{ url_for('game_detail', slug=u['game_title']|lower|replace(' ', '-')) if u['game_title'] else '#' }}" style="font-weight:700;color:var(--ink);font-size:0.95rem;">{{ u['title'] }}</a>
+              {{ m.confirmation_badge(u['confirmation_status']) }}
+            </div>
+            <div style="font-size:0.82rem;color:var(--text-muted);">{{ u['patch_notes'] or u['version'] or '' }}</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">
+              {{ u['game_title'] or 'General' }}{% if u['release_date'] %} · {{ u['release_date'][:10] }}{% endif %}
+              {% if u['maintenance'] %} · <span style="color:var(--rumour);font-weight:700;">Maintenance</span>{% endif %}
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state" style="padding:1.5rem 1rem;"><span class="icon">📦</span><h2>No updates yet</h2><p>No game updates recorded yet.</p></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 1rem;font-size:1.25rem;">Current &amp; Upcoming Events</h2>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {% for e in current_events %}
+          <div style="border-bottom:1px solid var(--border-soft);padding-bottom:0.6rem;" {% if loop.last %}style="border:none;padding-bottom:0;"{% endif %}>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;margin-bottom:0.3rem;">
+              <a href="{{ url_for('game_detail', slug=e['game_title']|lower|replace(' ', '-')) if e['game_title'] else '#' }}" style="font-weight:700;color:var(--ink);font-size:0.95rem;">{{ e['title'] }}</a>
+              {{ m.confirmation_badge(e['confirmation_status']) }}
+            </div>
+            <div style="font-size:0.82rem;color:var(--text-muted);">{{ e['description'] or '' }}</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">
+              {% if e['start_date'] %}From {{ e['start_date'][:10] }}{% endif %}
+              {% if e['end_date'] %} to {{ e['end_date'][:10] }}{% endif %}
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state" style="padding:1.5rem 1rem;"><span class="icon">🎉</span><h2>No events yet</h2><p>No in-game events recorded yet.</p></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Community news -->
+  <div class="card">
+    <h2 style="margin:0 0 1rem;font-size:1.25rem;">Community News</h2>
+    <div style="display:flex;flex-direction:column;gap:0.6rem;">
+      {% for n in community_news %}
+        <div style="border-bottom:1px solid var(--border-soft);padding:0.6rem 0;" {% if loop.last %}style="border:none;padding:0.6rem 0 0;"{% endif %}>
+          <div style="font-weight:700;color:var(--ink);font-size:0.92rem;">{{ n['title'] }}</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">{{ n['summary'] or n['content'][:140] }}</div>
+        </div>
+      {% else %}
+        <div class="empty-state" style="padding:1.5rem 1rem;"><span class="icon">📰</span><h2>No community news</h2><p>No community news items yet.</p></div>
+      {% endfor %}
+    </div>
+    <div style="margin-top:1rem;display:flex;gap:0.5rem;">
+      <a href="{{ url_for('tracker') }}" class="btn btn-outline btn-sm">View Full Tracker →</a>
+      <a href="{{ url_for('calendar') }}" class="btn btn-outline btn-sm">Open Calendar →</a>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="notice">
+    <strong>Verification note:</strong> Announcement, update and event entries in Cookie Runners HQ are manually curated. Where an
+    official source link is provided, the entry has been matched to a public Devsisters source. Entries marked Rumour or Speculation
+    are <strong>not confirmed news</strong> — never present them as official announcements.
+  </div>
+</section>
+{% endblock %}

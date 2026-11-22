@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Something went wrong · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-error{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="error-state">
+    <span class="icon">🍪💥</span>
+    <h2>Something went wrong</h2>
+    <p>The jar crumbled on our end. Try again, or contact the Cookie Runners HQ administrators.</p>
+    <div style="margin-top:1rem;">
+      <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Go to Dashboard →</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

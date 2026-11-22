@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Games Directory · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-games{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Games Directory</h1>
+      <p class="section-lead">CookieRun: Kingdom, OvenBreak, Tower of Adventures and other Cookie Run titles — with release
+      details, platforms, events and official links.</p>
+    </div>
+    <a href="{{ url_for('upcoming') }}" class="btn btn-outline">Upcoming Tracker →</a>
+  </div>
+
+  <div class="filter-bar">
+    <form method="get" action="{{ url_for('games_list') }}" style="display:flex;gap:0.5rem;flex:1 1 220px;flex-wrap:wrap;align-items:center;">
+      <select name="type" style="width:auto;">
+        <option value="">All titles</option>
+        <option value="kingdom" {% if game_type=='kingdom' %}selected{% endif %}>CookieRun: Kingdom</option>
+        <option value="ovenbreak" {% if game_type=='ovenbreak' %}selected{% endif %}>CookieRun: OvenBreak</option>
+        <option value="upcoming" {% if game_type=='upcoming' %}selected{% endif %}>Upcoming / announced</option>
+        <option value="other" {% if game_type=='other' %}selected{% endif %}>Other titles</option>
+      </select>
+      <select name="status" style="width:auto;">
+        <option value="">All statuses</option>
+        {% for s in game_statuses %}
+          <option value="{{ s }}" {% if status==s %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+      <input name="q" placeholder="Search games…" value="{{ q or '' }}" style="width:auto;">
+      <button class="btn btn-primary btn-sm" type="submit">Filter</button>
+      {% if q or game_type or status %}
+        <a href="{{ url_for('games_list') }}" class="btn btn-ghost btn-sm">Clear</a>
+      {% endif %}
+    </form>
+  </div>
+
+  {% if games %}
+    <div class="grid">
+      {% for g in games %}
+        <a href="{{ url_for('game_detail', slug=g['slug']) }}" class="card slide-up">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;">
+            {{ m.status_badge(g['status']) }}
+            {{ m.confirmation_badge(g['confirmation_status']) }}
+          </div>
+          <h3 style="margin:0.5rem 0 0.4rem;">{{ g['title'] }}</h3>
+          <p style="color:var(--text-muted);font-size:0.85rem;flex:1;">{{ g['short_description'] or g['description'][:130] }}</p>
+          <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:0.4rem;">
+            <span style="font-size:0.72rem;color:var(--text-muted);">{{ g['platforms'] or 'Platforms TBA' }}</span>
+            {% if g['featured'] %}<span style="font-size:0.72rem;color:var(--brand-2);font-weight:700;">★ Featured</span>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <span class="icon">🍪</span>
+      <h2>No games found</h2>
+      <p>Try adjusting your filters, or <a href="{{ url_for('admin_games') }}">add a game</a> (admin).</p>
+    </div>
+  {% endif %}
+
+  <div class="notice">
+    <strong>Legend:</strong> statuses show the development/release state of each title. Confirmation badges show how strongly the
+    entry is backed by official sources — <span class="badge badge-confirmed">Confirmed</span> entries cite official Devsisters
+    sources; <span class="badge badge-rumour">Rumour</span> and <span class="badge badge-speculation">Speculation</span> entries are
+    unverified and must not be presented as official news.
+  </div>
+</section>
+{% endblock %}

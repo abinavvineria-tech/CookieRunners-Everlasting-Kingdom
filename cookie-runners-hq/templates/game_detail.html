@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}{{ game['title'] }} · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-game-detail{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="hero">
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:baseline;margin-bottom:0.75rem;">
+      {{ m.status_badge(game['status']) }}
+      {{ m.confirmation_badge(game['confirmation_status']) }}
+      {% if game['featured'] %}<span class="badge badge-{{ game['confirmation_status'] }}" style="background:var(--accent-bg);color:var(--brand-2);">★ Featured</span>{% endif %}
+    </div>
+    <h1>{{ game['title'] }}</h1>
+    <div class="subtitle">{{ game['short_description'] or '' }}</div>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item"><div class="label">Developer</div><div class="value">{{ game['developer'] }}</div></div>
+    <div class="meta-item"><div class="label">Publisher</div><div class="value">{{ game['publisher'] }}</div></div>
+    <div class="meta-item"><div class="label">Release date</div><div class="value">{{ game['release_date'][:10] if game['release_date'] else 'Not announced' }}</div></div>
+    <div class="meta-item"><div class="label">Platforms</div><div class="value">{{ game['platforms'] or 'Not announced' }}</div></div>
+    <div class="meta-item"><div class="label">Title type</div><div class="value">{{ game['game_type'].replace('_',' ') | title }}</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:1.25rem;">
+    <div class="card">
+      <h2 style="margin:0 0 0.75rem;font-size:1.15rem;">About</h2>
+      <p style="color:var(--text-muted);">{{ game['description'] }}</p>
+      {% if game['notes'] %}
+        <div class="notice {% if game['confirmation_status'] != 'confirmed' %}warn{% endif %}">
+          {{ game['notes'] }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 0.75rem;font-size:1.15rem;">Official links</h2>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        {% if game['official_website'] %}
+          <a href="{{ game['official_website'] }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Official website →</a>
+        {% endif %}
+        {% if game['announcement_link'] %}
+          <a href="{{ game['announcement_link'] }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Developer announcements →</a>
+        {% endif %}
+        {% if game['trailer_url'] %}
+          <a href="{{ game['trailer_url'] }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Official trailer →</a>
+        {% endif %}
+        {% if not game['official_website'] and not game['announcement_link'] and not game['trailer_url'] %}
+          <p style="color:var(--text-muted);font-size:0.85rem;">No official links recorded yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if updates or events %}
+    <div style="display:grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:1.25rem; margin-top:1rem;">
+      <div class="card">
+        <h2 style="margin:0 0 0.75rem;font-size:1.15rem;">Latest updates</h2>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          {% for u in updates %}
+            <div style="border-bottom:1px solid var(--border-soft);padding-bottom:0.5rem;" {% if loop.last %}style="border:none;padding-bottom:0;"{% endif %}>
+              <div style="font-weight:700;color:var(--ink);font-size:0.9rem;">{{ u['title'] }}</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">{{ u['version'] or '' }} {{ u['release_date'][:10] if u['release_date'] else '' }}</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);">{{ u['patch_notes'][:120] if u['patch_notes'] else '' }}</div>
+              {{ m.confirmation_badge(u['confirmation_status']) }}
+            </div>
+          {% else %}
+            <p style="color:var(--text-muted);font-size:0.85rem;">No updates recorded.</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="card">
+        <h2 style="margin:0 0 0.75rem;font-size:1.15rem;">Events</h2>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          {% for e in events %}
+            <div style="border-bottom:1px solid var(--border-soft);padding-bottom:0.5rem;" {% if loop.last %}style="border:none;padding-bottom:0;"{% endif %}>
+              <div style="font-weight:700;color:var(--ink);font-size:0.9rem;">{{ e['title'] }}</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">{{ e['start_date'][:10] if e['start_date'] else 'Date TBA' }}{% if e['end_date'] %} → {{ e['end_date'][:10] }}{% endif %}</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);">{{ e['description'][:120] if e['description'] else '' }}</div>
+              {{ m.confirmation_badge(e['confirmation_status']) }}
+            </div>
+          {% else %}
+            <p style="color:var(--text-muted);font-size:0.85rem;">No events recorded.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div style="margin-top:1rem;">
+    <a href="{{ url_for('games_list') }}" class="btn btn-ghost btn-sm">← Back to directory</a>
+    {% if session.admin_user %}
+      <a href="{{ url_for('admin_edit_game', gid=game['id']) }}" class="btn btn-outline btn-sm">Edit game</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

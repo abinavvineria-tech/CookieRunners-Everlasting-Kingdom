@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Edit Announcement · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-edit-announcement{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Edit Announcement</h1>
+      <p class="section-lead">Editing <strong>{{ announcement['title'] }}</strong>.</p>
+    </div>
+    <a href="{{ url_for('admin_announcements') }}" class="btn btn-ghost btn-sm">← Back to announcements</a>
+  </div>
+
+  <div class="card">
+    <form method="post" action="{{ url_for('admin_edit_announcement', aid=announcement['id']) }}">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Title</label>
+          <input name="title" required value="{{ announcement['title'] }}">
+        </div>
+        <div class="form-group">
+          <label>Slug (URL-friendly)</label>
+          <input name="slug" required value="{{ announcement['slug'] }}">
+        </div>
+        <div class="form-group">
+          <label>Summary</label>
+          <input name="summary" value="{{ announcement['summary'] or '' }}">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select name="category_id">
+            <option value="">General (no category)</option>
+            {% for c in categories %}<option value="{{ c['id'] }}" {% if announcement['category_id']==c['id'] %}selected{% endif %}>{{ c['name'] }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Announcement type</label>
+          <select name="announcement_type">
+            {% for t in announcement_types %}<option value="{{ t }}" {% if announcement['announcement_type']==t %}selected{% endif %}>{{ t | title }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Confirmation status</label>
+          <select name="confirmation_status">
+            <option value="confirmed" {% if announcement['confirmation_status']=='confirmed' %}selected{% endif %}>Confirmed</option>
+            <option value="rumour" {% if announcement['confirmation_status']=='rumour' %}selected{% endif %}>Rumour</option>
+            <option value="speculation" {% if announcement['confirmation_status']=='speculation' %}selected{% endif %}>Speculation</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Published at (YYYY-MM-DD)</label>
+          <input name="published_at" type="date" value="{{ announcement['published_at'][:10] if announcement['published_at'] else '' }}">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Source URL</label>
+          <input name="source_url" value="{{ announcement['source_url'] or '' }}">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Source name</label>
+          <input name="source_name" value="{{ announcement['source_name'] or '' }}">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Pin to top of lists</label>
+          <input name="is_pinned" type="checkbox" {% if announcement['is_pinned'] %}checked{% endif %} style="width:auto;">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Publish immediately</label>
+          <input name="is_published" type="checkbox" {% if announcement['is_published'] %}checked{% endif %} style="width:auto;">
+        </div>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Content</label>
+        <textarea name="content" rows="6">{{ announcement['content'] or '' }}</textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Save changes</button>
+        <a href="{{ url_for('admin_announcements') }}" class="btn btn-ghost btn-sm">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

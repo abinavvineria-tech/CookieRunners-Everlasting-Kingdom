@@ -1,0 +1,18 @@
+{% macro status_badge(status) %}
+  {% set cls = {
+    "Released": "status-released",
+    "Officially announced": "status-announced",
+    "In development": "status-development",
+    "Unconfirmed / Rumoured": "status-rumoured",
+    "Release date announced": "status-development",
+  }.get(status, "") %}
+  <span class="badge status-badge {{ cls }}">{{ status }}</span>
+{% endmacro %}
+
+{% macro confirmation_badge(status) %}
+  <span class="badge badge-{{ status }}">{{ status | capitalize }}</span>
+{% endmacro %}
+
+{% macro date_fmt(value) %}
+  {% if value %}{{ value[:10] }}{% else %}<span class="text-muted">—</span>{% endif %}
+{% endmacro %}
