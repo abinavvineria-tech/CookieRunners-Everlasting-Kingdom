@@ -1,5 +1,8 @@
 import os
+import sys
 import tempfile
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 os.environ["CRU_DATABASE_PATH"] = tempfile.mktemp(suffix=".db")
 os.environ["SECRET_KEY"] = "test-secret"
