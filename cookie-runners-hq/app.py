@@ -470,7 +470,7 @@ def create_app():
             "source_name": (request.form.get("source_name") or "").strip(),
             "published_at": (request.form.get("published_at") or "") or None,
             "is_pinned": 1 if request.form.get("is_pinned") else 0,
-            "is_published": 1 if request.form.get("is_published") else 1,
+            "is_published": 1 if request.form.get("is_published") else 0,
         }
 
     def _update_form_data():
