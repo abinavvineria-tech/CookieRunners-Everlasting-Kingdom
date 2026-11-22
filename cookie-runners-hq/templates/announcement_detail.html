@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}{{ announcement['title'] }} · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-announcement{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>{{ announcement['title'] }}</h1>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-top:0.5rem;">
+        <span style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:800;">
+          {{ announcement['announcement_type'] | title }}
+        </span>
+        {{ m.confirmation_badge(announcement['confirmation_status']) }}
+        {% if announcement['category_name'] %}
+          <a href="{{ url_for('tracker', category=announcement['category_slug'] if announcement['category_slug'] else '') }}" style="font-size:0.78rem;color:var(--brand);">{{ announcement['category_name'] }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="hero" style="background:var(--card);border:1px solid var(--border);">
+    <div style="white-space:pre-wrap;color:var(--text);line-height:1.7;">{{ announcement['content'] }}</div>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item"><div class="label">Source</div><div class="value">
+      {% if announcement['source_url'] %}
+        <a href="{{ announcement['source_url'] }}" target="_blank" rel="noopener">{{ announcement['source_name'] or 'Official source' }} →</a>
+      {% else %}
+        <span style="color:var(--text-muted);">{{ announcement['source_name'] or 'No source recorded' }}</span>
+      {% endif %}
+    </div></div>
+    <div class="meta-item"><div class="label">Published</div><div class="value">{{ announcement['published_at'][:10] if announcement['published_at'] else 'Not recorded' }}</div></div>
+    <div class="meta-item"><div class="label">Confirmation</div><div class="value">{{ m.confirmation_badge(announcement['confirmation_status']) }}</div></div>
+  </div>
+
+  {% if announcement['confirmation_status'] != 'confirmed' %}
+    <div class="notice warn">
+      <strong>Not confirmed news.</strong> This entry is marked <span class="badge badge-{{ announcement['confirmation_status'] }}">{{ announcement['confirmation_status'] }}</span>.
+      It has not been matched to an official Devsisters source. Do not share it as confirmed Cookie Run news.
+    </div>
+  {% endif %}
+
+  <div style="margin-top:1rem;">
+    <a href="{{ url_for('tracker') }}" class="btn btn-ghost btn-sm">← Back to tracker</a>
+    {% if session.admin_user %}
+      <a href="{{ url_for('admin_edit_announcement', aid=announcement['id']) }}" class="btn btn-outline btn-sm">Edit announcement</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Admin · Updates · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-updates{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Manage Game Updates</h1>
+      <p class="section-lead">Add patch notes, update releases and maintenance notices for tracked games.</p>
+    </div>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-ghost btn-sm">← Back to admin</a>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 1rem;font-size:1.15rem;">Add a game update</h2>
+    <form method="post" action="{{ url_for('admin_updates') }}">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Game</label>
+          <select name="game_id" required>
+            <option value="">Select a game</option>
+            {% for g in games %}<option value="{{ g['id'] }}">{{ g['title'] }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input name="title" required placeholder="Version 8.x — New Cookies!">
+        </div>
+        <div class="form-group">
+          <label>Version</label>
+          <input name="version" placeholder="v8.2">
+        </div>
+        <div class="form-group">
+          <label>Release date</label>
+          <input name="release_date" type="date">
+        </div>
+        <div class="form-group">
+          <label>Maintenance notice</label>
+          <input name="maintenance" type="checkbox" style="width:auto;"> This is a scheduled maintenance notice
+        </div>
+        <div class="form-group">
+          <label>Confirmation status</label>
+          <select name="confirmation_status">
+            <option value="confirmed">Confirmed</option>
+            <option value="rumour">Rumour</option>
+            <option value="speculation">Speculation</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Source URL</label>
+          <input name="source_url" placeholder="https://...">
+        </div>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Patch notes</label>
+        <textarea name="patch_notes" rows="4" placeholder="What changed in this update…"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Add update</button>
+      </div>
+    </form>
+  </div>
+
+  <h2 style="margin:1.5rem 0 0.75rem;font-size:1.2rem;">Recent updates</h2>
+  {% if updates %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Game</th>
+            <th>Title</th>
+            <th>Version</th>
+            <th>Date</th>
+            <th>Confirmation</th>
+            <th style="width:14%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for u in updates %}
+            <tr>
+              <td style="font-weight:700;color:var(--ink);">{{ u['game_title'] or 'General' }}</td>
+              <td style="font-weight:600;">{{ u['title'] }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ u['version'] or '—' }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ u['release_date'][:10] if u['release_date'] else '—' }}</td>
+              <td>{{ m.confirmation_badge(u['confirmation_status']) }}</td>
+              <td>
+                <form method="post" action="{{ url_for('admin_delete_update', uid=u['id']) }}" style="display:inline;" data-confirm="Delete this update?">
+                  <button class="btn btn-danger btn-sm" type="submit" style="padding:0.35rem 0.7rem;">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state"><span class="icon">📦</span><h2>No updates yet</h2><p>Add your first update above.</p></div>
+  {% endif %}
+</section>
+{% endblock %}

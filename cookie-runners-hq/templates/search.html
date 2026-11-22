@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Search · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-search{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Search</h1>
+      <p class="section-lead">Search games, announcements and events across Cookie Runners HQ.</p>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <form method="get" action="{{ url_for('search') }}" style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+      <input name="q" placeholder="Search games, announcements, events…" value="{{ q }}" style="min-width:320px;flex:1 1 320px;">
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
+
+  {% if q %}
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="card" style="grid-column: span 2;">
+        <h2 style="margin:0 0 1rem;font-size:1.15rem;">Games matching "{{ q }}"</h2>
+        {% if results.games %}
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            {% for g in results.games %}
+              <a href="{{ url_for('game_detail', slug=g['slug']) }}" style="font-weight:700;color:var(--ink);text-decoration:none;">{{ g['title'] }}</a>
+              <div style="font-size:0.82rem;color:var(--text-muted);">{{ m.status_badge(g['status']) }} {{ m.confirmation_badge(g['confirmation_status']) }}</div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p style="color:var(--text-muted);font-size:0.85rem;">No games match.</p>
+        {% endif %}
+      </div>
+      <div class="card">
+        <h2 style="margin:0 0 1rem;font-size:1.15rem;">Announcements matching "{{ q }}"</h2>
+        {% if results.announcements %}
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            {% for a in results.announcements %}
+              <a href="{{ url_for('announcement_detail', slug=a['slug']) }}" style="font-weight:700;color:var(--ink);text-decoration:none;">{{ a['title'] }}</a>
+              <div style="font-size:0.82rem;color:var(--text-muted);">{{ m.confirmation_badge(a['confirmation_status']) }} · {{ a['announcement_type'] | title }}</div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p style="color:var(--text-muted);font-size:0.85rem;">No announcements match.</p>
+        {% endif %}
+      </div>
+      <div class="card">
+        <h2 style="margin:0 0 1rem;font-size:1.15rem;">Events matching "{{ q }}"</h2>
+        {% if results.events %}
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            {% for e in results.events %}
+              <div style="font-weight:700;color:var(--ink);text-decoration:none;">{{ e['title'] }}</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">{{ m.confirmation_badge(e['confirmation_status']) }} · {{ e['game_title'] or 'General' }}</div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p style="color:var(--text-muted);font-size:0.85rem;">No events match.</p>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <span class="icon">🔍</span>
+      <h2>Search anything</h2>
+      <p>Enter a keyword above to search games, announcements and events.</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

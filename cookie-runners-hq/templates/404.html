@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Not found · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-error{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="error-state">
+    <span class="icon">🍪💨</span>
+    <h2>Page not found</h2>
+    <p>That page isn’t in the Oven today. Head back to the Dashboard.</p>
+    <div style="margin-top:1rem;">
+      <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Go to Dashboard →</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

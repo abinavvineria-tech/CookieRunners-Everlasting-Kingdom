@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Admin · Games · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-games{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Manage Games</h1>
+      <p class="section-lead">Add, edit and remove games in the directory.</p>
+    </div>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-ghost btn-sm">← Back to admin</a>
+  </div>
+
+  <!-- Add game form -->
+  <div class="card">
+    <h2 style="margin:0 0 1rem;font-size:1.15rem;">Add a new game</h2>
+    <form method="post" action="{{ url_for('admin_games') }}">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Title</label>
+          <input name="title" required placeholder="Cookie Run: ...">
+        </div>
+        <div class="form-group">
+          <label>Slug (URL-friendly)</label>
+          <input name="slug" required placeholder="cookie-run-kingdom">
+        </div>
+        <div class="form-group">
+          <label>Short description</label>
+          <input name="short_description" placeholder="One-line summary">
+        </div>
+        <div class="form-group">
+          <label>Release date</label>
+          <input name="release_date" type="date">
+        </div>
+        <div class="form-group">
+          <label>Platforms</label>
+          <input name="platforms" placeholder="iOS, Android, PC">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select name="status">
+            {% for s in game_statuses %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Game type</label>
+          <select name="game_type">
+            <option value="kingdom">CookieRun: Kingdom</option>
+            <option value="ovenbreak">CookieRun: OvenBreak</option>
+            <option value="upcoming">Upcoming / announced</option>
+            <option value="other">Other title</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Confirmation status</label>
+          <select name="confirmation_status">
+            <option value="confirmed">Confirmed</option>
+            <option value="rumour">Rumour</option>
+            <option value="speculation">Speculation</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Featured</label>
+          <input name="featured" type="checkbox" style="width:auto;grid-column:auto;"> Show on homepage
+        </div>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Full description</label>
+        <textarea name="description" rows="3" placeholder="Describe the game…"></textarea>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Official website</label>
+        <input name="official_website" placeholder="https://...">
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Announcement link</label>
+        <input name="announcement_link" placeholder="https://...">
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Trailer URL</label>
+        <input name="trailer_url" placeholder="https://...">
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Notes / verification note</label>
+        <textarea name="notes" rows="2" placeholder="e.g. unverified — do not present as official news"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Add game</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Games list -->
+  <h2 style="margin:1.5rem 0 0.75rem;font-size:1.2rem;">Games in directory</h2>
+  {% if games %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Platforms</th>
+            <th>Confirmation</th>
+            <th>Featured</th>
+            <th style="width:16%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for g in games %}
+            <tr>
+              <td>
+                <a href="{{ url_for('game_detail', slug=g['slug']) }}" style="font-weight:700;color:var(--ink);text-decoration:none;">{{ g['title'] }}</a>
+                <div style="font-size:0.78rem;color:var(--text-muted);">{{ g['slug'] }}</div>
+              </td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ g['game_type'].replace('_',' ') | title }}</td>
+              <td>{{ m.status_badge(g['status']) }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ g['platforms'] or '—' }}</td>
+              <td>{{ m.confirmation_badge(g['confirmation_status']) }}</td>
+              <td style="font-size:0.82rem;">{{ '★ Yes' if g['featured'] else '—' }}</td>
+              <td>
+                <a href="{{ url_for('admin_edit_game', gid=g['id']) }}" class="btn btn-outline btn-sm" style="padding:0.35rem 0.7rem;">Edit</a>
+                <form method="post" action="{{ url_for('admin_delete_game', gid=g['id']) }}" style="display:inline;" data-confirm="Delete this game and its related data? This cannot be undone.">
+                  <button class="btn btn-danger btn-sm" type="submit" style="padding:0.35rem 0.7rem;">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state"><span class="icon">🎮</span><h2>No games yet</h2><p>Add your first game using the form above.</p></div>
+  {% endif %}
+</section>
+{% endblock %}

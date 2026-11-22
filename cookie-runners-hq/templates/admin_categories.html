@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Admin · Categories · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-categories{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Manage Categories</h1>
+      <p class="section-lead">Organize announcements into news, updates, maintenance, events, releases and anniversaries.</p>
+    </div>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-ghost btn-sm">← Back to admin</a>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 1rem;font-size:1.15rem;">Add a category</h2>
+    <form method="post" action="{{ url_for('admin_categories') }}">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Name</label>
+          <input name="name" required placeholder="News">
+        </div>
+        <div class="form-group">
+          <label>Slug (URL-friendly)</label>
+          <input name="slug" required placeholder="news">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input name="description" placeholder="What this category is for">
+        </div>
+        <div class="form-group">
+          <label>Accent color</label>
+          <input name="color" type="color" value="#8b5cf6">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Add category</button>
+      </div>
+    </form>
+  </div>
+
+  <h2 style="margin:1.5rem 0 0.75rem;font-size:1.2rem;">All categories</h2>
+  {% if categories %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Description</th>
+            <th>Color</th>
+            <th style="width:14%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in categories %}
+            <tr>
+              <td style="font-weight:700;color:var(--ink);">{{ c['name'] }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ c['slug'] }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ c['description'] or '—' }}</td>
+              <td><div style="width:1.4rem;height:1.4rem;border-radius:4px;border:1px solid var(--border);background:{{ c['color'] }};"></div></td>
+              <td>
+                <form method="post" action="{{ url_for('admin_delete_category', cid=c['id']) }}" style="display:inline;" data-confirm="Delete this category? Announcements using it will keep their text but lose the category link.">
+                  <button class="btn btn-danger btn-sm" type="submit" style="padding:0.35rem 0.7rem;">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state"><span class="icon">🏷️</span><h2>No categories yet</h2><p>Add your first category above.</p></div>
+  {% endif %}
+</section>
+{% endblock %}

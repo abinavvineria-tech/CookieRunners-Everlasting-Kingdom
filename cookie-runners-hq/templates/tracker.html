@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Devsisters Update Tracker · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-tracker{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Devsisters Update Tracker</h1>
+      <p class="section-lead">Track official Devsisters announcements, game updates, maintenance notices, patch notes, new
+      cookies, collaborations, special events and new game announcements.</p>
+    </div>
+    <a href="{{ url_for('admin_announcements') }}" class="btn btn-outline">Publish Announcement →</a>
+  </div>
+
+  <div class="filter-bar">
+    <form method="get" action="{{ url_for('tracker') }}" style="display:flex;gap:0.5rem;flex:1 1 260px;flex-wrap:wrap;align-items:center;">
+      <select name="category" style="width:auto;">
+        <option value="">All categories</option>
+        {% for c in categories %}
+          <option value="{{ c['slug'] }}" {% if category==c['slug'] %}selected{% endif %}>{{ c['name'] }}</option>
+        {% endfor %}
+      </select>
+      <select name="type" style="width:auto;">
+        <option value="">All types</option>
+        {% for t in announcement_types %}
+          <option value="{{ t }}" {% if atype==t %}selected{% endif %}>{{ t | title }}</option>
+        {% endfor %}
+      </select>
+      <select name="confirmation" style="width:auto;">
+        <option value="">All confirmation levels</option>
+        <option value="confirmed" {% if conf=='confirmed' %}selected{% endif %}>Confirmed</option>
+        <option value="rumour" {% if conf=='rumour' %}selected{% endif %}>Rumour</option>
+        <option value="speculation" {% if conf=='speculation' %}selected{% endif %}>Speculation</option>
+      </select>
+      <input name="q" placeholder="Search announcements…" value="{{ q or '' }}" style="width:auto;">
+      <button class="btn btn-primary btn-sm" type="submit">Filter</button>
+      {% if category or atype or conf or q %}
+        <a href="{{ url_for('tracker') }}" class="btn btn-ghost btn-sm">Clear</a>
+      {% endif %}
+    </form>
+  </div>
+
+  {% if announcements %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th style="width:34%;">Title</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th style="width:14%;">Confirmation</th>
+            <th style="width:16%;">Published</th>
+            <th style="width:14%;">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in announcements %}
+            <tr>
+              <td>
+                <a href="{{ url_for('announcement_detail', slug=a['slug']) }}" style="font-weight:700;color:var(--ink);">{{ a['title'] }}</a>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">{{ a['summary'] or (a['content'][:100] + '…') }}</div>
+              </td>
+              <td>
+                {% if a['category_name'] %}
+                  <span style="font-size:0.78rem;color:var(--text-muted);">{{ a['category_name'] }}</span>
+                {% else %}
+                  <span style="font-size:0.78rem;color:var(--text-muted);">—</span>
+                {% endif %}
+              </td>
+              <td><span style="font-size:0.78rem;color:var(--text-muted);">{{ a['announcement_type'] | title }}</span></td>
+              <td>{{ m.confirmation_badge(a['confirmation_status']) }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ a['published_at'][:10] if a['published_at'] else '—' }}</td>
+              <td style="font-size:0.82rem;">
+                {% if a['source_url'] %}
+                  <a href="{{ a['source_url'] }}" target="_blank" rel="noopener">{{ a['source_name'] or 'Source' }} →</a>
+                {% else %}
+                  <span style="font-size:0.82rem;color:var(--text-muted);">{{ a['source_name'] or 'No source' }}</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <span class="icon">📭</span>
+      <h2>No announcements match your filters</h2>
+      <p>Try different filters, or <a href="{{ url_for('admin_announcements') }}">publish an announcement</a> (admin).</p>
+    </div>
+  {% endif %}
+
+  <div class="notice warn">
+    <strong>Confirmation levels explained:</strong>
+    <span class="badge badge-confirmed" style="margin-right:0.4rem;">Confirmed</span> matched to an official Devsisters source.
+    <span class="badge badge-rumour" style="margin-right:0.4rem;">Rumour</span> and
+    <span class="badge badge-speculation">Speculation</span> entries are unverified community-curated items — they are
+    <strong>not official news</strong>. Never present them as confirmed Devsisters announcements.
+  </div>
+</section>
+{% endblock %}

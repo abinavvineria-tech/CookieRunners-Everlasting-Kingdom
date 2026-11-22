@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Admin Login · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-login{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div style="max-width:400px;margin:2rem auto;">
+    <div class="card">
+      <div style="text-align:center;margin-bottom:1.25rem;">
+        <div style="font-size:2rem;">🍪</div>
+        <h2 style="margin:0.5rem 0 0.25rem;">Cookie Runners HQ</h2>
+        <p style="color:var(--text-muted);font-size:0.85rem;margin:0;">Administrator sign-in</p>
+      </div>
+      <form method="post" action="{{ url_for('admin_login') }}">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Username</label>
+            <input name="username" required value="">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input name="password" type="password" required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary btn-full" type="submit">Sign in</button>
+        </div>
+        {% if session.admin_user is none and false %}{% endif %}
+      </form>
+      <p style="margin-top:1rem;font-size:0.82rem;color:var(--text-muted);text-align:center;">
+        Not an administrator? Cookie Runners HQ is run by Captain Abinav and the Cookie Runners United family.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

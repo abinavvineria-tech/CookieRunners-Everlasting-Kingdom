@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Admin · Calendar · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-calendar{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Manage Calendar</h1>
+      <p class="section-lead">Schedule launches, updates, maintenance, events, anniversaries and announcements on the calendar.</p>
+    </div>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-ghost btn-sm">← Back to admin</a>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 1rem;font-size:1.15rem;">Add a calendar item</h2>
+    <form method="post" action="{{ url_for('admin_calendar') }}">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Title</label>
+          <input name="title" required placeholder="Cookie Run: Kingdom anniversary">
+        </div>
+        <div class="form-group">
+          <label>Item type</label>
+          <select name="item_type">
+            {% for t in calendar_item_types %}<option value="{{ t }}">{{ t | title }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Start date</label>
+          <input name="start_date" type="date" required>
+        </div>
+        <div class="form-group">
+          <label>End date</label>
+          <input name="end_date" type="date">
+        </div>
+        <div class="form-group">
+          <label>All-day item</label>
+          <input name="all_day" type="checkbox" checked style="width:auto;">
+        </div>
+        <div class="form-group">
+          <label>Related game</label>
+          <select name="game_id">
+            <option value="">None</option>
+            {% for g in games %}<option value="{{ g['id'] }}">{{ g['title'] }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Confirmation status</label>
+          <select name="confirmation_status">
+            <option value="confirmed">Confirmed</option>
+            <option value="rumour">Rumour</option>
+            <option value="speculation">Speculation</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Link URL</label>
+          <input name="url" placeholder="https://...">
+        </div>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Description</label>
+        <textarea name="description" rows="3" placeholder="What is happening on this date…"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Add calendar item</button>
+      </div>
+    </form>
+  </div>
+
+  <h2 style="margin:1.5rem 0 0.75rem;font-size:1.2rem;">All calendar items</h2>
+  {% if items %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Game</th>
+            <th>Confirmation</th>
+            <th style="width:14%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for it in items %}
+            <tr>
+              <td style="font-weight:700;color:var(--ink);">{{ it['title'] }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ it['item_type'] or '—' }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ it['start_date'][:10] if it['start_date'] else '—' }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ it['end_date'][:10] if it['end_date'] else '—' }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ it['game_title'] or '—' }}</td>
+              <td>{{ m.confirmation_badge(it['confirmation_status']) }}</td>
+              <td>
+                <form method="post" action="{{ url_for('admin_delete_calendar_item', cid=it['id']) }}" style="display:inline;" data-confirm="Delete this calendar item?">
+                  <button class="btn btn-danger btn-sm" type="submit" style="padding:0.35rem 0.7rem;">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state"><span class="icon">📅</span><h2>No calendar items yet</h2><p>Add your first calendar item above.</p></div>
+  {% endif %}
+</section>
+{% endblock %}

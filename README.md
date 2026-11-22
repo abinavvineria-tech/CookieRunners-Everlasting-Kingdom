@@ -53,6 +53,7 @@ The following areas are the focus of this community project. Each is labeled by 
 | Cookie Run timelines | Community-maintained notes on game milestones and anniversaries. | In progress |
 | Anniversary celebrations | Fan events marking Cookie Run anniversaries (e.g. OvenBreak's 10th year). | Planned / seasonal |
 | Flask websites | Small, working Flask-based fan sites that run locally (Termux + Ubuntu). | Prototype exists in sibling workspace |
+| Cookie Runners HQ | Central information hub for Cookie Run announcements, game updates, upcoming titles, events and a calendar, with admin dashboard and rumour/speculation labeling. | Active |
 | Termux tools | Android-friendly command-line utilities for Cookie Runners on Termux. | Planned |
 | Ubuntu utilities | Linux/Ubuntu command-line and desktop utilities. | Planned |
 | Creative experiments | Art, writing, code experiments, and fan lore explorations. | Ongoing |

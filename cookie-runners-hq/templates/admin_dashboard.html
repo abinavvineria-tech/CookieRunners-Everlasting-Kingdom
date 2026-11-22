@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Admin Dashboard · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p class="section-lead">Manage games, announcements, updates, events, calendar items and categories.</p>
+    </div>
+    <a href="{{ url_for('admin_logout') }}" class="btn btn-danger">Logout</a>
+  </div>
+
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom:1.5rem;">
+    <div class="card">
+      <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Games</div>
+      <div style="font-size:1.75rem;font-weight:800;color:var(--ink);">{{ featured_games|length }}</div>
+    </div>
+    <div class="card">
+      <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Announcements</div>
+      <div style="font-size:1.75rem;font-weight:800;color:var(--ink);">{{ latest_announcements|length }}</div>
+    </div>
+    <div class="card">
+      <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Recent updates</div>
+      <div style="font-size:1.75rem;font-weight:800;color:var(--ink);">{{ recent_updates|length }}</div>
+    </div>
+    <div class="card">
+      <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Events</div>
+      <div style="font-size:1.75rem;font-weight:800;color:var(--ink);">{{ current_events|length }}</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2 style="margin:0;font-size:1.2rem;">Quick actions</h2>
+  </div>
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+    <a href="{{ url_for('admin_games') }}" class="card btn-outline btn-full" style="justify-content:center;gap:0.5rem;text-decoration:none;color:var(--ink);font-weight:700;">
+      🎮 Manage Games
+    </a>
+    <a href="{{ url_for('admin_announcements') }}" class="card btn-outline btn-full" style="justify-content:center;gap:0.5rem;text-decoration:none;color:var(--ink);font-weight:700;">
+      📢 Manage Announcements
+    </a>
+    <a href="{{ url_for('admin_updates') }}" class="card btn-outline btn-full" style="justify-content:center;gap:0.5rem;text-decoration:none;color:var(--ink);font-weight:700;">
+      📦 Manage Updates
+    </a>
+    <a href="{{ url_for('admin_events') }}" class="card btn-outline btn-full" style="justify-content:center;gap:0.5rem;text-decoration:none;color:var(--ink);font-weight:700;">
+      🎉 Manage Events
+    </a>
+    <a href="{{ url_for('admin_calendar') }}" class="card btn-outline btn-full" style="justify-content:center;gap:0.5rem;text-decoration:none;color:var(--ink);font-weight:700;">
+      📅 Manage Calendar
+    </a>
+    <a href="{{ url_for('admin_categories') }}" class="card btn-outline btn-full" style="justify-content:center;gap:0.5rem;text-decoration:none;color:var(--ink);font-weight:700;">
+      🏷️ Manage Categories
+    </a>
+  </div>
+
+  <div class="section-header" style="margin-top:2rem;">
+    <h2 style="margin:0;font-size:1.2rem;">Latest announcements</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0.6rem;">
+    {% for a in latest_announcements %}
+      <div style="border-bottom:1px solid var(--border-soft);padding:0.6rem 0;display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;" {% if loop.last %}style="border:none;padding:0.6rem 0 0;"{% endif %}>
+        <div>
+          <a href="{{ url_for('announcement_detail', slug=a['slug']) }}" style="font-weight:700;color:var(--ink);text-decoration:none;">{{ a['title'] }}</a>
+          <div style="font-size:0.8rem;color:var(--text-muted);">{{ m.confirmation_badge(a['confirmation_status']) }} · {{ a['announcement_type'] | title }}</div>
+        </div>
+        <div style="font-size:0.8rem;color:var(--text-muted);">{{ a['published_at'][:10] if a['published_at'] else '—' }}</div>
+      </div>
+    {% else %}
+      <p style="color:var(--text-muted);font-size:0.85rem;">No announcements yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

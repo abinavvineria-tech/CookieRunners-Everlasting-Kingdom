@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block title %}Admin · Announcements · Cookie Runners HQ{% endblock %}
+{% block body_class %}page-admin-announcements{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+  <div class="section-header">
+    <div>
+      <h1>Manage Announcements</h1>
+      <p class="section-lead">Publish, edit and remove Devsisters announcement tracker entries.</p>
+    </div>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-ghost btn-sm">← Back to admin</a>
+  </div>
+
+  <!-- Add announcement form -->
+  <div class="card">
+    <h2 style="margin:0 0 1rem;font-size:1.15rem;">Publish a new announcement</h2>
+    <form method="post" action="{{ url_for('admin_announcements') }}">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Title</label>
+          <input name="title" required placeholder="Cookie Run: ...">
+        </div>
+        <div class="form-group">
+          <label>Slug (URL-friendly)</label>
+          <input name="slug" required placeholder="cookie-run-kingdom-update">
+        </div>
+        <div class="form-group">
+          <label>Summary</label>
+          <input name="summary" placeholder="Short summary shown in lists">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select name="category_id">
+            <option value="">General (no category)</option>
+            {% for c in categories %}<option value="{{ c['id'] }}">{{ c['name'] }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Announcement type</label>
+          <select name="announcement_type">
+            {% for t in announcement_types %}<option value="{{ t }}">{{ t | title }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Confirmation status</label>
+          <select name="confirmation_status">
+            <option value="confirmed">Confirmed</option>
+            <option value="rumour">Rumour</option>
+            <option value="speculation">Speculation</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Published at (YYYY-MM-DD)</label>
+          <input name="published_at" type="date">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Source URL</label>
+          <input name="source_url" placeholder="https://...">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Source name</label>
+          <input name="source_name" placeholder="Devsisters">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Pin to top of lists</label>
+          <input name="is_pinned" type="checkbox" style="width:auto;">
+        </div>
+        <div class="form-group" style="grid-column:1/-1;">
+          <label>Publish immediately</label>
+          <input name="is_published" type="checkbox" checked style="width:auto;">
+        </div>
+      </div>
+      <div class="form-group" style="grid-column:1/-1;">
+        <label>Content</label>
+        <textarea name="content" rows="5" placeholder="Full announcement text…"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Publish announcement</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Announcements list -->
+  <h2 style="margin:1.5rem 0 0.75rem;font-size:1.2rem;">All announcements</h2>
+  {% if announcements %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Confirmation</th>
+            <th>Published</th>
+            <th style="width:16%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in announcements %}
+            <tr>
+              <td>
+                <a href="{{ url_for('announcement_detail', slug=a['slug']) }}" style="font-weight:700;color:var(--ink);text-decoration:none;">{{ a['title'] }}</a>
+                <div style="font-size:0.78rem;color:var(--text-muted);max-width:30ch;overflow:hidden;text-overflow:ellipsis;">{{ (a['summary'] or a['content'][:90]) }}</div>
+              </td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ a['category_name'] or '—' }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ a['announcement_type'] | title }}</td>
+              <td>{{ m.confirmation_badge(a['confirmation_status']) }}</td>
+              <td style="font-size:0.82rem;color:var(--text-muted);">{{ a['published_at'][:10] if a['published_at'] else '—' }}</td>
+              <td>
+                <a href="{{ url_for('admin_edit_announcement', aid=a['id']) }}" class="btn btn-outline btn-sm" style="padding:0.35rem 0.7rem;">Edit</a>
+                <form method="post" action="{{ url_for('admin_delete_announcement', aid=a['id']) }}" style="display:inline;" data-confirm="Delete this announcement?">
+                  <button class="btn btn-danger btn-sm" type="submit" style="padding:0.35rem 0.7rem;">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state"><span class="icon">📢</span><h2>No announcements yet</h2><p>Publish your first announcement above.</p></div>
+  {% endif %}
+</section>
+{% endblock %}
